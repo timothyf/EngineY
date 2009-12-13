@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+  <title>PrototypeCompat unit test</title>
+
+  <style type="text/css">
+    @import "../../../dojo/drails/resources/dndDefault.css";
+  </style>
+
+  <!-- required: dojo.js -->
+  <script type="text/javascript" src="/javascripts/dojo/dojo/dojo.js"
+    djConfig="isDebug: true"></script>
+  <script type="text/javascript" src="/javascripts/prototype.js"></script>
+  <script type="text/javascript" src="/javascripts/scriptaculous.js"></script>
+
+
+  <script type="text/javascript">
+    
+    dojo.registerModulePath("drails", "/javascripts/dojo/drails");
+    dojo.require("doh.runner");
+    dojo.require("drails.tests.ext");
+    doh.pollute();
+    
+    dojo.require("drails.common");
+    dojo.require("drails.tests.helpers");
+    
+    var element = "my_source";
+    var skip = false;
+    
+    // Test implementation for drails.dnd.Source mixin
+    dojo.declare("test.dnd.SourceImpl", [drails.dnd.Source], {
+      constructor: function(element, options){
+        this.initSource(dojo.byId(element));
+        this.applyOptions(options);
+      }
+    });
+    
+    // Init in the addOnLoad below
+    var generator = null;
+    
+    spec("drails.dnd.Source", function() {
+      
+      before(function(){
+        generator.generate(skip);
+      });
+      
+      after(function(){
+        generator.reset(skip);
+      });
+      
+      it("creates a dojo.dnd.Source", function(t){
+        var impl = new test.dnd.SourceImpl(element);
+        t.t(impl.source.constructor == dojo.dnd.Source);
+      });
+      
+      it("destroys properly", function(t){
+        var impl = new test.dnd.SourceImpl(element, { onDndDrop: function() {} });
+        impl.destroy();
+        t.t(impl.source == null);
+        t.t(impl.connects == null);
+        t.t(impl.options == null);
+      });
+      
+      it("it has supported callbacks", function(t){
+        t.t(drails.dnd.Source._supportedCallbacks.length > 0);
+      });
+      
+      dojo.forEach(drails.dnd.Source._supportedCallbacks, function(cb){
+        it("connects the supported '" + cb + "' callback if it is passed in the options", function(t){
+          var options = {};
+          var success = false;
+          options[cb] = function() { success = true; }
+          
+          var impl = new test.dnd.SourceImpl(element, options);
+          impl[cb]();
+          impl.destroy();
+          t.t(success);
+        });
+      });
+    });
+    
+    dojo.addOnLoad(function(){
+      generator = new drails.test.Generator("test_container", "generator");
+      doh.spec.register();
+      doh.run();
+    });
+
+  </script>
+</head>
+<body>
+
+<style type="text/css">
+.draggable {
+  height: 50px;
+  width: 50px;
+  border: 1px dotted #fff;
+  color: #fff;
+  background-color: red;
+}
+</style>
+
+<div id="test_container"></div>
+
+<div id="generator">
+  <div id="my_source" class="draggable">Source!</div>
+</div>
+
+</body>
+</html>

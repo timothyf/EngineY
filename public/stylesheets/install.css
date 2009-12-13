@@ -1,0 +1,78 @@
+
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#network_detail {
+	float: left;
+	clear: both;
+	width: 400px;
+}
+
+#admin_user {
+	float: left;
+	width: 300px;
+}
+
+#admin_user label {
+	width: 140px;
+}
+
+#widget_setup {
+	float: left;
+	clear: both;
+	width: 750px;
+	margin-top: 30px;
+}
+
+label {
+	clear: both;
+	float: left;
+	width: 100px;
+	line-height: 3em;
+}
+
+input {
+	float: left;
+	line-height: 3em;
+}
+
+#col1_area {
+	float: left;
+	width: 150px;
+}
+
+#col2_area {
+	float: left;
+	width: 150px;
+}
+
+#col3_area {
+	float: left;
+	width: 150px;
+}
+
+#menu_area {
+	padding-left: 30px;
+}
+
+.column_1 {
+	float: left;
+	width: 180px;
+}
+
+.column_2 {
+	float: left;
+	margin-left: 10px;
+}
+
+#buttons {
+	float: left;
+	clear: both;
+	margin-left: 550px;
+	margin-top: 30px;
+}

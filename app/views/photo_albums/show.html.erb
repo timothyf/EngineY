@@ -1,0 +1,14 @@
+
+<%= @photo_album.title %><br/><br/>
+
+<%= link_to 'Add Photo', new_photo_path %>
+
+<% @photo_album.photos.each do |photo| %>
+	<div id="photos_table">
+		<%= render :partial => 'photos/photo_brief', :locals=>{:photo=>photo} %>
+	</div>
+<% end %>
+
+<% if @photo_album.photos.empty? %>
+	This album is empty.
+<% end %>

@@ -1,0 +1,104 @@
+
+.column_1 {
+	float: left;
+	width: 180px;
+}
+
+.column_2 {
+	float: left;
+	width:540px;
+}
+
+#main .col1 h1 {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.user_profile_section {
+	background-color: #ffffff;
+	width: 180px;
+}
+
+#friends_add {
+	float: left;
+	margin-left: 100px;
+}
+
+#members_all {
+	float: left;
+}
+
+#members_my {
+	float: left;
+	margin-left: 25px;
+}
+
+#add_friend, #friends_table {
+	background-color: #ffffff;
+	width: 80%;
+	padding: 25px;
+}
+
+#add_friend label {
+	font-size: 10pt;
+	width: 100px;
+	display: block;
+	float: left;
+}
+
+.add_button {
+	clear: both;
+	float: right;
+	background:#283F4B none repeat scroll 0 0;
+	color:#FFFFFF;
+}
+
+.input_field {
+	width: 300px;
+}
+
+#friends_table {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+}
+
+.column_1 {
+	width: 502px;
+}
+
+.column_2 {
+	width: 230px;
+}
+
+.column_3 {
+	
+}
+
+.user_brief {
+	width: 230px;
+	height: 100px;
+	float: left;
+	margin: 8px;
+	text-align: center;
+}
+
+.user_brief_photo {
+	float: left;
+}
+
+.user_brief_photo img {
+	border: 1px solid #cccccc;
+}
+
+.user_brief_text {
+	float: left;
+	margin-left: 10px;
+	line-height: 1.5em;
+	text-align: left;
+	width: 120px;
+}
+
+

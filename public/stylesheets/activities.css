@@ -1,0 +1,31 @@
+
+.col1 {
+	float: left;
+	width: 700px;
+}
+
+.col2 {
+	float: left;
+	margin-left: 10px;
+}
+
+
+#activities_table {
+	
+}
+
+#activities_table {
+	float: left;
+	clear: both;
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+	margin-top: 20px;
+}
+
+.activity_feed_item {
+	border-bottom-style: solid;
+	border-width: 0 0 1px;
+	border-color: #bbbbbb;
+	line-height: 4em;	
+}

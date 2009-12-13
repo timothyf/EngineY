@@ -1,0 +1,152 @@
+
+#photos_links {
+	margin-top: 15px;
+}
+
+#photos_all {
+	float: left;
+}
+
+#photos_my, #albums_my, #albums_all {
+	float: left;	
+	margin-left: 50px;
+}
+
+#photos_add {
+	float: left;
+	margin-left: 100px;
+}
+
+#add_photo, #photos_table, #edit_photo {
+	float: left;
+	clear: both;
+	margin-top: 15px;
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+}
+
+#photos_table {
+	margin-top: 20px;
+}
+
+#add_photo label, #edit_photo label {
+	clear: both;
+	font-size: 10pt;
+	width: 100px;
+	display: block;
+	float: left;
+	margin-top: 15px;
+}
+
+.add_button {
+	clear: both;
+	float: left;
+	margin-top: 15px;
+}
+
+.input_field {
+	float: left;
+	width: 300px;
+	margin-top: 15px;
+}
+
+.photo_field {
+	float: left;
+	margin-top: 15px;
+}
+
+.photo_brief {
+	width: 125px;
+	height: 125px;
+	float: left;
+	margin: 4px;
+	text-align: center;
+}
+
+.photo_brief_photo {
+	height: 99px;
+	line-height: 99px;
+	display: inline;
+}
+
+.photo_brief_photo a {
+	font-size:80px;
+}
+
+.photo_brief_photo a img {
+	height: auto;
+	vertical-align: bottom;
+}
+
+h1 {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+#photo_name {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+#photo_photo {
+	float: left;
+}
+
+#photo_description {
+	float: left;
+	margin-top: 15px;
+}
+
+#edit_photo_pic {
+	float: left;
+}
+
+#edit_photo_form {
+	float: left;
+	margin-left: 15px;
+}
+
+#photo_pic {
+	float: left;
+}
+
+#photo_pic a, #photo_pic a:visited {
+	border-style: none;
+}
+
+#admin_controls {
+	float: left;
+	clear: both;
+}
+
+#photo_comments {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	width: 650px;
+}
+
+#photo_comments h2 {
+	font-weight: bold;
+}
+
+.add_comment {
+	float: left;
+	clear: both;
+	width: 650px;
+}
+
+.comment_display {
+	float: left;
+	clear: both;
+	background-color: white;
+}
+
+.a_comment {
+	float: left;
+	clear: both;
+	margin-bottom: 15px;
+}

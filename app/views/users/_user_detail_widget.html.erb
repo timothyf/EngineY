@@ -1,0 +1,42 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<div class="module">
+	<div class="module_body">
+		<span id="profile_name"><%= @user.first_name %> <%= @user.last_name %></span><br/>
+		<%= @user.sex %><br/>
+		<%= @user.city %><% if @user.state %>, <%= @user.state.name %><% end %><br/>
+		<% if (current_user == @user) %>
+			Change <%= link_to 'My Photo', edit_user_path(@user) %><br/>
+		<% end %>
+		<% if logged_in? && current_user != @user %>
+			<%= link_to 'Send', new_message_path({:recipient_id=>@user.id}) %> <%= @user.first_name %> a message
+			<br/>
+		<% end %>
+		<br/>
+		<% if @user.blog && @user.blog.length > 0 %>
+			<%= link_to(image_tag('blog-32x32.png', :alt=>'My Blog'), @user.blog) %>
+		<% end %>
+		<% if @user.twitter_id && @user.twitter_id.length > 0 %>
+			<%= link_to(image_tag('twitter-32x32.png', :alt=>'My Twitter'), 'http://twitter.com/'+@user.twitter_id) %>
+		<% end %>
+		<% if @user.linked_in_url && @user.linked_in_url.length > 0 %>
+			<%= link_to(image_tag('linkedin_icon.png', :alt=>'My LinkedIn Profile'), @user.linked_in_url) %>
+		<% end %>
+		<% if @user.facebook_url && @user.facebook_url.length > 0 %>
+			<%= link_to(image_tag('facebook-32x32.png', :alt=>'My Facebook'), @user.facebook_url) %>
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,130 @@
+= TinyMCE for Rails
+
+This plugin provides for the installation and utilization of TinyMCE 3.2.1 in Ruby on Rails applications.
+
+TinyMCE is a WYSIWYG HTML editing component released under the GNU Public License 2.1 (GPL 2.1) by Moxiecode Systems (http://tinymce.moxiecode.com/).
+
+
+== Installation
+
+Installing TinyMCE for Rails takes no more than a few minutes to install.
+
+=== Step 1
+
+Open a console, and in the root of you Rails application, install the plugin by running one of the following (depending on the method you use to import plugins):
+
+* script/plugin install git://github.com/kete/tiny_mce.git
+* piston import git://github.com/kete/tiny_mce.git vendor/plugins/tiny_mce
+* git submodule add git://github.com/kete/tiny_mce.git vendor/plugins/tiny_mce
+* Download the latest files ( http://github.com/kete/tiny_mce/tarball/master ) and extract to vendor/plugins/tiny_mce
+
+=== Step 2
+
+Then install the necessary files into your public directory by running
+
+  rake tiny_mce:install
+
+or, if you are updating a previously installed version
+
+  rake tiny_mce:update
+
+=== Step 3
+
+Add the following to the controller of the page you want to add TinyMCE to.
+
+  uses_tiny_mce
+
+Then append the following to the text area you want to transform into a TinyMCE editor. You can change the name by editing the 'editor_selector' param in the controller code options.
+
+  :class => "mceEditor"
+
+Lastly, add the following line(s) to the <head> element of your application view:
+
+  <%= include_tiny_mce_if_needed %>
+
+Now you're all set!
+
+
+== Configuration
+
+There are several ways to configure the plugin to get the desirable effect you're looking for. The following ways can be combined to create complex tiny mce setups
+
+=== TinyMCE options
+
+You can change the theme, order/choice of buttons, selectors Id, plugins, and many more by passing an :options hash to the uses_tiny_mce declaration.
+
+The options hash can contain any number of settings available in tiny_mce_options.yml  (a copy of the settings available per version).
+
+If an option is misspelled, invalid, or deprecated (no longer in TinyMCE), when you go to a page containing your editor, you will receive an Exception, which must be dealt with before continuing.
+
+You can read about all these options at http://tinymce.moxiecode.com/documentation.php
+
+==== Example
+
+  uses_tiny_mce :options => {
+                              :theme => 'advanced',
+                              :theme_advanced_resizing => true,
+                              :theme_advanced_resize_horizontal => false,
+                              :plugins => %w{ table fullscreen }
+                            }
+
+=== Filter options
+
+If, like most applications, you only need the editor on the new, create, edit, and update pages, then tell the uses_tiny_mce declaration this, so it doesn't load up all the files unnecessarily.
+
+The declaration accepts any number of default parameters a normal controller filter would.
+
+==== Example
+
+  uses_tiny_mce :only => [:new, :create, :edit, :update]
+
+
+=== Additional Javascript options
+
+Sometimes, when you need complex arrays of data for plugins or such, the plugin helpers aren't complex enough to do what you need. But you can always fall back to supplying your own options. You can this by passing a raw javascript (no <script> tags) to the uses_tiny_mce declaration. Consider the following example for the template plugin.
+
+  uses_tiny_mce :raw_options => "template_templates : [ {
+                                                          title : 'Editor Details',
+                                                          src : 'editor_details.htm',
+                                                          description : 'Adds Editors Name and Staff ID'
+                                                      } ]"
+
+
+== Methods
+
+TinyMCE has a range of convenience methods for loading TinyMCE. Besides the uses_tiny_mce shown above, they include:
+
+  using_tiny_mce?
+      Check whether the uses_tiny_mce declaration has been made in the current controller
+
+  raw_tiny_mce_init
+      Creates a string of javascript formed from the options declared to uses_tiny_mce (is not wrapped in a JS tag though, use tiny_mce_init for that)
+
+  tiny_mce_init
+      Creates a javascript tag formed from the options declared to uses_tiny_mce (executes whether uses_tiny_mce was declared or not)
+  tiny_mce_init_if_needed
+      Creates a javascript tag formed from the options declared to uses_tiny_mce (executes only when uses_tiny_mce has been declared)
+
+  include_tiny_mce_js
+      Includes the TinyMCE core javascript file, must be declared before tiny_mce_init (executes whether uses_tiny_mce was declared or not)
+  include_tiny_mce_js_if_needed
+      Includes the TinyMCE core javascript file, must be declared before tiny_mce_init (executes only when uses_tiny_mce has been declared)
+
+  include_tiny_mce_if_needed
+      Includes the TinyMCE core javascript file, and creates a string of javascript formed from the options declared to uses_tiny_mce (executes only when uses_tiny_mce has been declared)
+
+
+== Spellchecking
+
+See SPELLCHECKING_PLUGIN.rdoc
+
+http://github.com/kete/tiny_mce/tree/master/SPELLCHECKING_PLUGIN.rdoc
+
+
+= Credits
+
+This plugin was created by Blake Watters <blake@near-time.com>
+
+This plugin is currently maintained by Kieran Pilkington <kieran@katipo.co.nz>
+
+Bundled TinyMCE version: 3.2.1

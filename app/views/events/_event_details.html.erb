@@ -1,0 +1,47 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<div class="module" style="background-color:white;">
+	<div class="module_head">Event Details</div>
+	<div class="module_body">
+		<div id="event_photo">
+			<% if (@event.profile_photo) %>
+				<%= image_tag(@event.profile_photo.public_filename()) %>
+			<% else %>
+				No Photo
+			<% end %>
+		</div>
+		<div id="event_description">
+			<div class="event_detail_name"><%= @event.name %></div>
+			<%= link_to @event.website, @event.website %><br/>
+			Time: <%= @event.start_time.to_s(:event_brief) %><br/>
+			Location: <%= @event.location %><br/>
+			City/Town: <%= @event.city %><br/>
+			Event Type: <%= @event.event_type %><br/>
+			Organized By: <%= @event.organized_by %>					
+		</div>
+		<% if logged_in? %>
+			<div id="event_attendance">
+				<% if current_user.events.include?(@event) %>
+					You are attending this event
+					<%= link_to '(X)', '/attendances/destroy?user_id='+current_user.id.to_s + '&event_id=' + @event.id.to_s %>
+				<% else %>
+					<%= link_to 'Attend this Event', '/attendances/create?user_id='+current_user.id.to_s + '&event_id=' + @event.id.to_s %>
+				<% end %>
+			</div>
+		<% end %>
+		<div style="clear:both"></div>
+	</div>
+</div>

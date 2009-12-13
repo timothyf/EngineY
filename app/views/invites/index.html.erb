@@ -1,0 +1,18 @@
+<h1>Listing invites</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for invite in @invites %>
+  <tr>
+    <td><%= link_to 'Show', invite %></td>
+    <td><%= link_to 'Edit', edit_invite_path(invite) %></td>
+    <td><%= link_to 'Destroy', invite, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New invite', new_invite_path %>

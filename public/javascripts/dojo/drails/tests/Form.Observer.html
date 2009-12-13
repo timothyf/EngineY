@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+  <title>PrototypeCompat unit test</title>
+  <style type="text/css">
+    @import "../../../dojo/resources/dojo.css";
+    @import "../css/dijitTests.css";
+  </style>
+
+  <!-- required: the default dijit theme: -->
+  <link id="themeStyles" rel="stylesheet" href="../../../dijit/themes/tundra/tundra.css">
+
+  <!-- required: dojo.js -->
+  <script type="text/javascript" src="/javascripts/dojo/dojo/dojo.js"
+    djConfig="isDebug: true, parseOnLoad: true"></script>
+
+
+  <script type="text/javascript">
+    
+    dojo.registerModulePath("drails", "/javascripts/dojo/drails");
+    dojo.require("doh.runner");
+    dojo.require("drails.tests.ext");
+    doh.pollute();
+    
+    dojo.require("drails.common");
+    dojo.require("drails.tests.helpers");
+    
+    spec("drails.Form.Observer", function() {
+      before(function() {
+        dojo.byId("foo").value = "somevalue";
+      });
+      
+      it("gets the value from the form element", function(t) {
+        var expected = {
+          foo_name: 'somevalue',
+          bar_name: 'somevalue2',
+          baz_radio: 'somevalue3'
+        }
+        var o = new drails.Form.Observer('my_form', .1, function(element, value){
+          this.stop();
+        });
+        t.is(dojo.objectToQuery(expected), o.getValue());
+      });
+      
+      it("calls executes the callback when a form value changes", function(t){
+        var d = new doh.Deferred();
+        var callbackCount = 0;
+        var success = false;
+        
+        setTimeout(function(){ d.callback(success) }, 200);
+        var o = new drails.Form.Observer('my_form', .05, function(element, value){
+          if (++callbackCount > 1) {
+            success = true;
+            this.stop();
+          }else{
+            dojo.byId('foo').value = 'bar';
+          }
+        });
+        return d;
+      });
+    });
+    
+    dojo.addOnLoad(function(){
+      doh.spec.register();
+      doh.run();
+    });
+
+  </script>
+</head>
+<body class="tundra">
+
+<form id="my_form">
+  <input type="text" id="foo" name="foo_name" value="somevalue" />
+  <input type="text" id="bar" name="bar_name" value="somevalue2" />
+  <input type="checkbox" id="baz_radio1" name="baz_radio" value="somevalue3" checked />
+  <input type="checkbox" id="baz_radio2" name="baz_radio" value="somevalue4" />
+</form>
+
+</body>
+</html>

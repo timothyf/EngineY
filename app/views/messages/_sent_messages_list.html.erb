@@ -1,0 +1,24 @@
+<div id="sent_messages">
+	<div class="title">Sent Messages (<%= @sent_messages.size %>)</div>
+	<table id="sent_message_table" border="1" cellpadding="0" cellspacing="0">
+		<thead>
+			<th>To</th>
+			<th>Subject</th>
+			<th>Sent</th>
+			<th>Control</th>
+		</thead>
+		<tbody>
+		<% @sent_messages.each do |message| %>
+			<tr>
+				<td><%= link_to message.recipient.name, user_path(message.recipient) %></td>
+				<td><%= link_to message.subject, message_path(message) %></td>
+				<td><%= message.created_at %></td>
+				<td><%= link_to "Delete", message_path(message), :confirm => "Are you sure", :method => :delete %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+	<% if @sent_messages.length == 0 %>
+		You have not sent any messages.
+	<% end %>
+</div>

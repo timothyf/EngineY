@@ -1,0 +1,47 @@
+.help_text {
+	
+}
+
+#add_invite {
+	float: left;
+	clear: both;
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+}
+
+.form_field {
+	clear: both;
+	float: left;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+.form_field .help_text {
+	float: left;
+	margin-top: 0px;	
+	margin-left: 20px;
+}
+
+.form_field textarea {
+	float: left;
+	clear: both;
+}
+
+#add_invite label {
+	font-size: 10pt;
+	font-weight: bold;
+	float: left;
+	clear: both;
+}
+
+.label_help {
+	color: gray;
+	font-weight: normal;
+}
+
+#invite_sent_message {
+	background-color: white;
+	width: 650px;
+	padding: 15px;
+}

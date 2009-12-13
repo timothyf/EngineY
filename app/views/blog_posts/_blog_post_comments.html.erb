@@ -1,0 +1,7 @@
+<div id="blog_post_comments">
+	<% @blog_post.comments.each do |comment| %>
+		<div class="comment_display">
+			<%= comment.comment %>
+		</div>
+	<% end %>
+</div>

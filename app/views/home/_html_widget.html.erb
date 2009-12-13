@@ -1,0 +1,34 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<div class="module">
+	<div class="module_head">HTML Widget</div>
+	<div class="module_body">
+		This widget should show an edit button and allow the admin to 
+		enter random HTML or JavaScript.
+		<br/><br/>
+		Non-admin users should only see the resulting HTML or Javascript 
+		displayed.
+	</div>
+	<div class="module_foot">
+		<div class="foot_left"></div>
+		<div class="foot_right"><%= link_to 'Edit' %></div>
+		<div style="clear:both;"></div>
+	</div>
+</div>
+
+
+// on edit, replace html or js with an editable text area
+// save content into database

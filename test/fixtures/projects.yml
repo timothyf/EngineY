@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+ one:
+   user_id: 1
+   url: http://www.project.com/1
+   name: test project
+   description: a test project
+
+ two:
+   user_id: 1
+   url: http://www.project.com/2
+   name: test project 2
+   description: a test project 2

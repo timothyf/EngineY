@@ -1,0 +1,14 @@
+Widgets may contain the following views:
+  _home => the widget displayed on the network home page
+  _profile => the widget displayed on a user profile page
+  _canvas => the widget displayed on a dedicated page
+
+
+
+Widget format:
+
+<div class="module">
+	<%= render :partial=>'widgets/widget_header', :locals=>{:title=>'Blog Posts'} %>
+	<div class="module_body"></div>
+	<div class="module_foot"></div>
+</div>

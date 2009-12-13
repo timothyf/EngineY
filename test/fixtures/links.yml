@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+ one:
+   user_id: 1
+   title: link 1
+   url: http://www.myurl.com
+
+ two:
+   user_id: 1
+   title: link 2
+   url: http://www.myurl2.com

@@ -1,0 +1,56 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<%= stylesheet_link_tag 'install' %>
+
+<h1>This is where you will setup your network.</h1>
+
+<form id="install_form" name="install_form" action="do_install">
+	<div id="network_detail">
+		<h2>Network Detail</h2>
+		<label>Name:</label>
+		<input type="text" name="network_name" id="network_name" value="" />
+		<br/>
+		<label>Organization:</label>
+		<input type="text" name="network_org" id="network_org" value="" />
+		<br/>
+		<label>Website:</label>
+		<input type="text" name="network_website" id="network_website" value="" />
+		<br/>
+		<label>Description:</label>
+		<textarea name="network_desc" id="network_desc" rows="10" cols="30"></textarea>
+	</div>
+
+	<div id="admin_user">
+		<h2>Create Admin User</h2>
+		<label>First Name:</label>
+		<input type="text" name="first_name" id="first_name" value="" /><br/>
+		<label>Last Name:</label>
+		<input type="text" name="last_name" id="last_name" value="" /><br/>
+		<label>Login:</label>
+		<input type="text" name="login" id="login" value="" /><br/>
+		<label>Email:</label>
+		<input type="text" name="email" id="email" value="" /><br/>
+		<label>Password:</label>
+		<input type="password" name="password" id="password" value="" /><br/>
+		<label>Password Confirmation:</label>
+		<input type="password" name="password_confirmation" id="password_confirmation" value="" />
+	</div>		
+	
+	<div id="buttons" class="tundra">
+		<button dojoType="dijit.form.Button" onclick="$('install_form').submit()">Create</button>
+	</div>
+</form>
+

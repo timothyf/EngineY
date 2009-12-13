@@ -1,0 +1,36 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<div class="module">
+	<div class="module_head">
+		<%= render :partial=>'widgets/widget_header', :locals=>{:widget_title=>'On Twitter'} %>
+	</div>
+	<div class="module_body">
+		<% @tweets.each do |tweet| %>
+			<div class="twitter_item">
+				<%= tweet['body'] %><br/>
+				<span class="tweet_date">Posted: <%= tweet['created_at'] %></span>
+			</div>
+		<% end %>
+	</div>
+	<div class="module_foot">
+		<div class="foot_left">&nbsp;</div>
+		<div class="foot_right">
+			<%= link_to 'Follow Me', 'http://twitter.com/twitter_name' %>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+	<div style="clear:both;"></div>
+</div>

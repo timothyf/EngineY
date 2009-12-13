@@ -1,0 +1,31 @@
+# == Schema Information
+# Schema version: 20090206190209
+#
+# Table name: widgets
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)
+#  title      :string(255)
+#  body       :text
+#  active     :boolean(1)
+#  page_order :integer(4)
+#  path       :string(255)
+#  index_url  :string(255)
+#  col_num    :integer(4)
+#  menu_item  :boolean(1)
+#  protected  :boolean(1)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  name: 'Test Widget 1'
+  title: 'Test Widget 1'
+#
+two:
+  id: 2
+  name: 'Test Widget 2'
+  title: 'Test Widget 2'

@@ -1,0 +1,86 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<% widget_title = "My Blog" %>
+
+<% @user = User.find(user_id) %>
+
+<% content_for :module_header do %>
+	<div class="head_left">
+		<%= image_tag('blogs.png', :alt=>'blogs', :align=>'absmiddle')%>&nbsp;&nbsp;<%= widget_title %>
+	</div>
+	<div class="head_right">
+		<%= show_expand_collapse_btn %>
+	</div>
+	<div style="clear:both;"></div>
+<% end %>
+
+<% content_for :module_body do %>
+		<% if @user.blog_feed != nil && @user.blog_feed != '' %>
+			<% posts = RssReader.posts_for(@user.blog_feed) %>
+			<% if posts.length == 0 %>
+				Could not read RSS feed!
+			<% else %>
+				<% posts.each do |post| %>
+					<div class="blog_post_brief">
+						<a href="<%= post.link %>"><%= post.title %></a><br/>
+						<%= post.description %>
+					</div>
+				<% end %>
+			<% end %>
+		<% else %>
+			<% @user.blog_posts.each do |post| %>
+				<% if post.published %>
+					<div class="blog_post_brief">
+						<div class="blog_post_title">
+							<%= link_to post.title, blog_post_url(post) %>
+						</div>
+						<% if logged_in? && (current_user.is_admin || current_user.id == post.user.id) %>
+							<div class="blog_post_controls">
+								<div class="edit_blog_post_link"><%= link_to 'Edit', edit_blog_post_path(post) %></div>
+								<div class="delete_blog_post_link"><%= link_to "Delete", blog_post_path(post), :confirm => "Are you sure", :method => :delete %></div>
+							</div>
+						<% end %>
+						<div class="blog_post_snippet">
+							<%= snippet(post.body, 45, "#{link_to "Read more...", post}") %>
+						</div>
+					</div>
+				<% end %>
+			<% end %>
+			<% if @user.blog_posts.length == 0 %>
+				No Blog Posts Exist!
+			<% end %>
+		<% end %>
+		<div style="clear:both;"></div>
+<% end %>
+
+<% content_for :module_footer do %>
+	<% if @user.blog_feed != nil && @user.blog_feed != '' %>
+		<div class="foot_left">&nbsp;</div>
+		<div class="foot_right">
+			<%= link_to 'View All', blog_posts_url %>
+		</div>
+	<% else %>
+		<div class="foot_left">
+			<% if logged_in? && (@user.id == current_user.id) %>
+				<%= link_to 'Add Post', new_blog_post_path %>
+			<% end %>
+		</div>
+		<div class="foot_right">
+			<%= link_to 'View All', user_blog_posts_path(@user) %>
+		</div>
+	<% end %>
+	<div style="clear:both;"></div>
+<% end %>

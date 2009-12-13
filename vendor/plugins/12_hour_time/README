@@ -1,0 +1,16 @@
+12-HOUR TIME PLUGIN
+
+Not all of us are adept at those exotic, 24-hour clocks. So for the rest of us,
+here's a simple plugin that tacks on an AM/PM selector to the DateHelper
+methods. It also handles the backend, so things are properly stored in 24-hour
+format.
+
+USAGE:
+
+  <%= time_select 'event', 'time', {:twelve_hour => true} %>
+
+Authors: Nick Muerdter (original code)
+         Maurice Aubrey <maurice.aubrey+12hour@gmail.com>
+
+Homepage:
+http://code.google.com/p/rails-twelve-hour-time-plugin/

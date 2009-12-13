@@ -1,0 +1,48 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<div class="module">
+	<div class="module_head">Members</div>
+	<div class="module_body">
+		<% count = 0 %>
+		<div style="float:left;clear:both;width:100%;">
+		<% unless @group.users.empty? %>
+			<% @group.users.each do |u| %>
+				<% count = count + 1 %>
+				<div class="member_widget_user">
+					<% if u.profile_photo %>
+						<%= link_to image_tag(u.profile_photo.public_filename(:small), :alt=>u.name), user_path(u.id) %>
+					<% else %>
+						<%= link_to '<div class="no_photo_members_widget"></div>', user_url(u.id) %>
+					<% end %>
+				</div>
+				<% if count > 11 %>
+					<% break %>
+				<% end %>
+				<% if count%3 == 0%>
+					</div><div style="float:left;clear:both;margin-top:5px;width:100%;">
+				<% end %>
+			<% end %>
+			</div>
+			<div style="clear:both;"></div>
+		<% else %>
+			</div>
+		<% end %>
+		<% if @group.users.length == 0 %>
+			No members in this group.
+		<% end %>
+	</div>
+	<div class="module_foot"><%= link_to "View All (#{@group.users.length})", group_users_url(@group) %></div>
+</div>

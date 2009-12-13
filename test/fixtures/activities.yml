@@ -1,0 +1,21 @@
+# == Schema Information
+# Schema version: 20090206190209
+#
+# Table name: activities
+#
+#  id         :integer(4)      not null, primary key
+#  user_id    :integer(4)
+#  public     :boolean(1)
+#  item_id    :integer(4)
+#  item_type  :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value

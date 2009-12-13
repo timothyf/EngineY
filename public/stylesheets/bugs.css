@@ -1,0 +1,232 @@
+
+#bugs_links {
+	margin-top: 15px;
+}
+
+#bugs_all {
+	float: left;
+}
+
+#bugs_my {
+	float: left;	
+	margin-left: 50px;
+}
+
+#bugs_add {
+	float: left;
+	margin-left: 100px;
+}
+
+#add_bug, #bugs_table {
+	float: left;
+	clear: both;
+	background-color: #ffffff;
+	width: 670px;
+	padding: 15px;
+}
+
+#bugs_table {
+	margin-top: 20px;
+}
+
+#add_bug label {
+	font-size: 10pt;
+	font-weight: bold;
+	float: left;
+	clear: both;
+}
+
+.form_field {
+	clear: both;
+	float: left;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+.add_button {
+	clear: both;
+	float: right;
+	background:#283F4B none repeat scroll 0 0;
+	color:#FFFFFF;
+}
+
+.input_field {
+	width: 650px;
+}
+
+#user_control_widget {
+	width: 180px;
+}
+
+.bug_brief {
+	border: 1px solid gray;
+	width: 170px;
+	height: 100px;
+	float: left;
+	margin: 8px;
+	text-align: center;
+}
+
+
+#main #col1 h1 {
+	float: left;
+	clear: both;
+	margin-bottom: 0px;
+	font-size: 18pt;
+	font-weight: normal;
+}
+
+.column_1 {
+	width: 502px;
+}
+
+.column_2 {
+	width: 230px;
+}
+
+.column_3 {
+	
+}
+
+#bug_name {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.bug_post {
+	float: left;
+	margin-bottom: 25px;
+}
+
+.bug_body {
+	float: left;
+	clear: both;
+	width: 650px;
+	padding: 10px;
+	background-color: white;
+}
+
+.add_button {
+	float: left;
+	clear: both;
+}
+
+.form_field .help_text {
+	float: left;
+	margin-top: 0px;	
+	margin-left: 20px;
+}
+
+.form_field textarea {
+	float: left;
+	clear: both;
+}
+
+#add_blog .mceEditor {
+	float: left;
+	clear: both;
+}
+
+.bug_edit_link {
+	float: left;
+	clear: both;
+}
+
+.a_bug {
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+.a_bug a {
+	text-decoration: none;
+}
+
+.a_bug a:hover {
+	text-decoration: underline;
+}
+
+#bug_table {
+	width: 670px;
+}
+
+#bug_table thead th {
+	background-color: #283F4B;
+	color: white;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: left;
+	padding-left: 10px;
+}
+
+#bug_table td {
+	padding: 8px;
+}
+
+.bug_created_at {
+	width: 175px;
+	text-align: left;
+}
+
+.bug_title {
+	width: 175px;
+	text-align: left;
+	color: #283F4B;
+}
+
+.bug_title a, .bug_title a:visited {
+	color: #283F4B;
+	font-weight: bold;
+}
+
+.bug_browser {
+	float: left;
+	width: 80px;
+}
+
+.bug_resolved {
+	float: left;
+	width: 75px;
+}
+
+.bug_resolution_date {
+	float: left;
+
+}
+
+#bugs_header {
+	font-weight: bold;
+}
+
+.bug_description, .bug_comment {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+}
+
+#bug_report {
+	float: left;
+	clear: both;
+	background-color: white;
+	width: 650px;
+	padding: 20px;
+}
+
+#bug_report .bug_title {
+	font-size: 12pt;
+	font-weight: bold;
+	line-height: 2em;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+#bug_report .bug_browser {
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+#bug_report div {
+	width: 100%;
+}
+

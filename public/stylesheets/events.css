@@ -1,0 +1,193 @@
+
+.column_1 {
+	width: 500px;
+}
+
+.column_2 {
+	width: 220px;
+}
+
+#events_all {
+	float: left;
+}
+
+#events_add {
+	float: left;
+	margin-left: 100px;
+}
+
+#add_event, #events_table {
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+	float: left;
+	margin-top: 15px;
+}
+
+#add_event label {
+	clear:both;
+	margin-top: 15px;
+	font-size: 10pt;
+	width: 120px;
+	display: block;
+	float: left;
+}
+
+#add_event input {
+	margin-top: 15px;
+	float: left;
+}
+
+.datetime {
+	float: left;
+	margin-top: 15px;
+	width: 355px;
+}
+
+.add_button {
+	clear: both;
+	float: right;
+	background:#283F4B none repeat scroll 0 0;
+	color:#FFFFFF;
+}
+
+.input_field {
+	width: 300px;
+}
+
+#user_control_widget {
+	width: 180px;
+}
+
+#events_table {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+}
+
+.event_brief {
+	border: 1px solid gray;
+	width: 500px;
+	float: left;
+	clear: both;
+	margin: 8px;
+	text-align: center;
+	padding: 8px;
+}
+
+.event_date {
+	float: left;
+	margin: 10px;
+}
+
+.event_brief_photo {
+	float: left;
+	height: 82px;
+	width: 82px;
+}
+
+.event_brief_text {
+	float: left;
+	text-align: left;
+	margin-left: 15px;
+}
+
+.event_list_date_month {
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+h1 {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+#event_photo {
+	float: left;
+}
+
+.field_help_text {
+	float: left;
+	clear: both;
+	margin-left: 120px;
+	font-size: 8pt;
+	width: 100%;
+}
+
+#event_description {
+	margin-top: 15px;
+	float: left;
+	margin-left: 10px;
+}
+
+#event_attendance {
+	margin-top: 15px;
+	float: left;
+	margin-left: 10px;
+	width: 260px;
+	font-size: 12pt;
+}
+
+#event_attendance a {
+	font-size: 12pt;
+}
+
+.no_photo_members_widget {
+	width: 48px;
+	height: 48px;
+	background: url(/images/nophoto_small.png);
+}
+
+.member_widget_user {
+	float: left;
+	margin-left: 5px;
+}
+
+.member_widget_user a, .member_widget_user a img {
+	border: none;
+}
+
+#attendees_table {
+	background-color: #ffffff;
+	width: 80%;
+	padding: 25px;
+	float: left;
+	clear: both;
+	margin-top: 20px;
+}
+
+.user_brief {
+	width: 230px;
+	height: 100px;
+	float: left;
+	margin: 8px;
+	text-align: center;
+}
+
+.user_brief_photo {
+	float: left;
+}
+
+.user_brief_photo img {
+	border: 1px solid #cccccc;
+}
+
+.user_brief_text {
+	float: left;
+	margin-left: 10px;
+	line-height: 1.5em;
+	text-align: left;
+	width: 120px;
+}
+
+#members_all {
+	float: left;
+}
+
+#members_my {
+	float: left;
+	margin-left: 25px;
+}
+

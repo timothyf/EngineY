@@ -1,0 +1,26 @@
+# == Schema Information
+# Schema version: 20090206190209
+#
+# Table name: html_contents
+#
+#  id         :integer(4)      not null, primary key
+#  title      :string(255)
+#  body       :text
+#  widget_id  :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+   id: 1
+   title: test html
+   body: test body
+   widget_id: 1
+
+two:
+   id: 2
+   title: test html
+   body: test body
+   widget_id: 2

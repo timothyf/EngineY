@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+  <title>PrototypeCompat unit test</title>
+
+  <style type="text/css">
+    @import "../../../dojo/drails/resources/dndDefault.css";
+  </style>
+
+  <!-- required: dojo.js -->
+  <script type="text/javascript" src="/javascripts/dojo/dojo/dojo.js"
+    djConfig="isDebug: true"></script>
+  <script type="text/javascript" src="/javascripts/prototype.js"></script>
+  <script type="text/javascript" src="/javascripts/scriptaculous.js"></script>
+
+
+  <script type="text/javascript">
+    
+    dojo.registerModulePath("drails", "/javascripts/dojo/drails");
+    dojo.require("doh.runner");
+    dojo.require("drails.tests.ext");
+    doh.pollute();
+    
+    dojo.require("drails.common");
+    dojo.require("drails.tests.helpers");
+    
+    // Init in the addOnLoad below
+    var generator = null;
+    
+    var element = 'foo';
+    var skip = false;
+    var widget = null
+    
+    spec("drails.Draggable", function() {
+      var generatorHTML;
+      
+      before(function(){
+        generator.generate(skip);
+      });
+      
+      after(function(){
+        generator.generate(skip, function(){
+          if (widget && widget.destroy) widget.destroy();
+        });
+      });
+      
+      it("initializes a drails.dnd.Source", function(t){
+        widget = new drails.Droppable(element);
+        t.t(widget.source.constructor == dojo.dnd.Source);
+      });
+    });
+    
+    dojo.addOnLoad(function(){
+      generator = new drails.test.Generator("test_container", "generator");
+      doh.spec.register();
+      doh.run();
+    });
+
+  </script>
+</head>
+<body>
+
+
+<div id="test_container">
+</div>
+
+<div id="generator">
+  <div id="foo" class="droppable">
+    Drop here 1!
+  </div>
+</div>
+
+</body>
+</html>

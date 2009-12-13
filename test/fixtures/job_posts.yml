@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+   id: 1
+   job_title: good job
+   company: company a
+   website: website.com
+   contact_name: test dude
+   email: job@email.com
+   description: pretty good job
+   featured: false
+   end_date: <%= Time.now %>
+
+two:
+   id: 2
+   job_title: good job
+   company: company a
+   website: website.com
+   contact_name: test dude
+   email: job@email.com
+   description: pretty good job
+   featured: false
+   end_date: <%= Time.now %>
+
+   

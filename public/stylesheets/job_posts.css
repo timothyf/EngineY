@@ -1,0 +1,168 @@
+
+h1 {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+#jobs_links {
+	margin-top: 15px;
+}
+
+#jobs_all {
+	float: left;
+}
+
+#jobs_add {
+	float: left;
+	margin-left: 100px;
+}
+
+#add_job, #jobs_table {
+	float: left;
+	clear: both;
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+}
+
+#jobs_table {
+	margin-top: 0px;
+}
+
+#add_job label {
+	font-size: 10pt;
+	font-weight: bold;
+	float: left;
+	clear: both;
+	width: 120px;
+}
+
+.form_field {
+	clear: both;
+	float: left;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+.add_button {
+	clear: both;
+	float: right;
+	background:#283F4B none repeat scroll 0 0;
+	color:#FFFFFF;
+}
+
+.input_field {
+	width: 650px;
+	float: left;
+	width: 300px;
+}
+
+.job_brief {
+	border: 1px solid gray;
+	width: 170px;
+	height: 100px;
+	float: left;
+	margin: 8px;
+	text-align: center;
+}
+
+#job_name {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.job_post {
+	float: left;
+	clear: both;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.job_post_title {
+	font-size: 12pt;
+	font-weight: bold;
+	float: left;
+	clear: both;
+	margin-bottom: 3px;
+}
+
+.job_post_created {
+	float: left;
+	clear: both;
+}
+
+.job_post_id {
+	float: left;
+	clear: both;
+}
+
+.job_post_contact {
+	float: left;
+	clear: both;
+}
+
+.job_post_web {
+	clear: both;
+	float: left;
+}
+
+.job_post_email {
+	float: left;
+	clear: both;
+}
+
+.job_post_company {
+	float: left;
+	clear: both;
+	font-size: 10pt;
+	margin-bottom: 3px;
+}
+
+.job_post_description {
+	float: left;
+	clear: both;
+	margin-top: 10px;
+}
+
+.add_button {
+	float: left;
+	clear: both;
+}
+
+.page_title {
+	float: left;
+	clear: both;
+	font-size: 24pt;
+	margin-bottom: 10px;
+}
+
+
+.form_field .help_text {
+	float: left;
+	margin-top: 0px;	
+	margin-left: 20px;
+}
+
+.form_field textarea {
+	float: left;
+	clear: both;
+}
+
+#add_job .mceEditor {
+	float: left;
+	clear: both;
+}
+
+.job_post_edit_link {
+	float: left;
+	clear: both;
+}
+
+.job_post_controls {
+	float: left;
+	clear: both;
+	width: 100%;
+	margin-bottom: 30px;
+}

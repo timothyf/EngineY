@@ -1,0 +1,17 @@
+<div class="photo_album">
+	<div class="photo_album_pic">	
+		<% if album.cover_photo %>
+			<%= image_tag(album.cover_photo.public_filename(:member)) %>
+		<% else %> 
+			No Photos
+		<% end %> 
+	</div>
+	<div class="photo_album_info">
+		<%= link_to album.title, photo_album_path(album) %><br/>
+		<%= album.photos.size.to_s %> Photos<br/>
+		<% if logged_in? && (current_user.is_admin) %>
+			<%= link_to 'Edit', edit_photo_album_path(album) %><br/>
+			<%= link_to 'Delete', '' %>
+		<% end %>
+	</div>
+</div>

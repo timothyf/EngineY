@@ -1,0 +1,223 @@
+
+#blogs_links {
+	margin-top: 15px;
+	float: left;
+	clear: both;
+}
+
+#blogs_all {
+	float: left;
+}
+
+#blogs_my {
+	float: left;	
+	margin-left: 50px;
+}
+
+#blogs_add {
+	float: left;
+	margin-left: 100px;
+}
+
+#add_blog, #blogs_table {
+	float: left;
+	clear: both;
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+}
+
+#blogs_table {
+	margin-top: 5px;
+}
+
+#add_blog label {
+	font-size: 10pt;
+	font-weight: bold;
+	float: left;
+	clear: both;
+}
+
+.form_field {
+	clear: both;
+	float: left;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+.add_button {
+	clear: both;
+	float: left;
+}
+
+.input_field {
+	width: 650px;
+}
+
+.checkbox_input {
+	width: 20px;
+	float: left;
+}
+
+.blog_brief {
+	border: 1px solid gray;
+	width: 170px;
+	height: 100px;
+	float: left;
+	margin: 8px;
+	text-align: center;
+}
+
+
+#main .col1 h1, #main .col1 h2 {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.column_1 {
+	width: 502px;
+}
+
+.column_2 {
+	width: 230px;
+}
+
+.column_3 {
+	
+}
+
+#blog_name {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.blog_post {
+	float: left;
+	margin-bottom: 25px;
+}
+
+.blog_post_view {
+	margin-top: 35px;	
+}
+
+.blog_post_draft {
+	display: none;
+}
+
+.blog_post_user {
+	float: left;
+}
+
+.blog_post_photo {
+	float: left;
+}
+
+.blog_post_text {
+	float: left;
+	margin-left: 5px;
+}
+
+.blog_post_title {
+	float: left;
+	font-size: 12pt;
+}
+
+.blog_post_body {
+	float: left;
+	clear: both;
+	width: 650px;
+	padding: 10px;
+	background-color: white;
+}
+
+.blog_post_tags {
+	float: left;
+	clear: both;
+	width: 650px;
+	padding: 10px;
+	padding-top:20px;
+	background-color: white;		
+}
+
+.blog_post_detail {
+	float: left;
+	clear: both;
+}
+
+.form_field .help_text {
+	float: left;
+	margin-top: 0px;	
+	margin-left: 20px;
+}
+
+.form_field textarea {
+	float: left;
+	clear: both;
+}
+
+#add_blog .mceEditor {
+	float: left;
+	clear: both;
+}
+
+.blog_post_edit_link {
+	float: left;
+	clear: both;
+}
+
+#blogs_table_header {
+	margin-top: 20px;	
+	background-color: white;
+	float: left;
+	clear: both;
+	width: 684px;
+	padding: 8px;
+}
+
+.blog_post_controls {
+	float: left;
+	clear: both;
+	margin-top: 10px;
+}
+
+.edit_blog_post_link, .delete_blog_post_link {
+	display: inline;
+	font-style: italic;
+}
+
+.delete_blog_post_link {
+	margin-left: 10px;
+}
+
+.edit_blog_post_link a, .delete_blog_post_link a {
+	text-decoration: none;
+	color: gray;
+}
+
+.edit_blog_post_link a:hover, .delete_blog_post_link a:hover {
+	text-decoration: underline;
+	color: blue;
+}
+
+#blog_post_comments {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.add_comment {
+	float: left;
+	clear: both;
+}
+
+.comment_display {
+	float: left;
+	clear: both;
+	background-color: white;
+	margin-top: 10px;
+	width: 650px;
+	padding: 8px;
+}
+
+

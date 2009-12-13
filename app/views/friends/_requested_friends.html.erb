@@ -1,0 +1,36 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<% unless @user.requested_friends.empty? %>
+	<% @user.requested_friends[0..2].each do |u| %>
+		<div class="requested_friend">
+			<div class="requested_friend_photo">
+				<% if u.profile_photo %>
+					<%= link_to image_tag(u.profile_photo.public_filename(:small), :alt=>u.name), user_path(u.id) %>
+				<% else %>
+					<%= link_to 'no photo', user_path(u.id) %>
+				<% end %>
+			</div>
+			<div class="requested_friend_task">
+				<%= u.name %><br/>
+				<% if logged_in? && @user == current_user %>
+					<%= link_to '[Cancel]', user_friend_path(:user_id => current_user, :id => u), :method => :delete, :confirm => 'Are you sure?' %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+<% else %>
+	None
+<% end %> 

@@ -1,0 +1,58 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<%= stylesheet_link_tag 'blogs' %>
+	
+<div id="blogs_links">
+	<% if logged_in? %>
+		<div id="blogs_all"><%= link_to 'All Blog Posts' %></div>
+		<div id="blogs_my"><%= link_to 'My Blog', user_blog_posts_path(current_user) %></div>
+		<div id="blogs_add"><%= link_to 'Add a Blog Post', new_blog_post_path %></div>
+	<% end %>
+</div>
+<div class="blog_post blog_post_view">
+	<div class="blog_post_photo">
+		<% if @blog_post.user.profile_photo %>
+			<%= link_to image_tag(@blog_post.user.profile_photo.public_filename(:medium), :alt=>@blog_post.user.name), user_url(@blog_post.user) %>
+		<% end %>
+	</div>
+	<div class="blog_post_text">
+		<div class="blog_post_title"><%= link_to @blog_post.title, blog_post_path(@blog_post) %></div>
+		<div class="blog_post_detail">Posted by <%= @blog_post.user.name %> at <%= @blog_post.created_at %></div>
+		<% if current_user == @blog_post.user %>
+			<div class="blog_post_edit_link">
+				<%= link_to 'Edit Post', edit_blog_post_path(@blog_post) %>
+				<% if !@blog_post.published %>
+					&nbsp;&nbsp;
+					<%= link_to 'Publish', "/blog_posts/publish/#{@blog_post.id}" %> 
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+	<div class="blog_post_body">
+		<%= @blog_post.body %>
+	</div>
+	<div class="blog_post_tags">
+		<b>Tags:</b> <%= @blog_post.tag_list %>
+	</div>
+	<div style="clear:both;"></div>
+</div>
+<div id="blog_post_comments_area">
+	<%= render :partial => 'blog_post_comments' %>
+</div>
+<%= render :partial => 'blog_post_comment_form' %>
+
+
+

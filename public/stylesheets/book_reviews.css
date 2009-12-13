@@ -1,0 +1,34 @@
+#book_review_links {
+	margin-top: 15px;
+}
+
+#book_reviews_table {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+}
+
+#book_reviews_all {
+	float: left;
+}
+
+#book_reviews_my {
+	float: left;	
+	margin-left: 50px;
+}
+
+#book_reviews_add {
+	float: left;
+	margin-left: 100px;
+}
+
+#add_book_review {
+	float: left;
+	clear: both;
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+}

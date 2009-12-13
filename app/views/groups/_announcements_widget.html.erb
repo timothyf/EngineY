@@ -1,0 +1,38 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<div class="module">
+	<div class="module_head">Group Announcements</div>
+	<div class="module_body">
+		<% if @group.announcements && @group.announcements.length != 0 %>
+			<%= @group.announcements %>
+		<% else %>
+			<% if logged_in? && current_user.is_group_admin(@group) %>
+				<span class="help_text">
+					<%= link_to 'Enter some text here now...', edit_group_path(@group) %>
+				</span>
+			<% else %>
+				<span class="help_text">
+					No announcements exist yet...
+				</span>
+			<% end %>
+		<% end %>
+	</div>
+	<% if logged_in? && current_user.is_group_admin(@group) %>
+		<div class="module_foot">
+			<%= link_to 'Edit', edit_group_url(@group) %>
+		</div>
+	<% end %>
+</div>

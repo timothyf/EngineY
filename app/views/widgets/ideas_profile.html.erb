@@ -1,0 +1,43 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<% widget_title = "My Ideas" %>
+<% @user = User.find(user_id) %>
+
+<% content_for :module_header do %>
+	<div class="head_left">
+		<%= image_tag('link.png', :alt=>'events', :align=>'absmiddle')%>&nbsp;&nbsp;<%= widget_title %>
+	</div>
+	<div class="head_right">
+		<div id="expand_collapse_btn">
+			<a href="javascript:widget_change_display('<%= @widget_name %>')">
+				<img id="<%= @widget_name %>_collapse_img" src="/images/collapse.png"/>
+			</a>
+		</div>	
+	</div>
+	<div style="clear:both;"></div>
+<% end %>
+
+<% content_for :module_body do %>
+
+<% end %>
+
+<% content_for :module_footer do %>
+	<div class="foot_left"></div>
+	<div class="foot_right">
+		<%= link_to 'View All', ideas_url %>
+	</div>
+	<div style="clear:both;"></div>
+<% end %>

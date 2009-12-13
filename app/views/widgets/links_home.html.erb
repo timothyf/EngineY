@@ -1,0 +1,68 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<% widget_title = "Links" %>
+<% @links = Link.find(:all, :limit=>6, :include => :user)%>
+
+<% content_for :module_header do %>
+	<div class="head_left">
+		<%= image_tag('link.png', :alt=>'events', :align=>'absmiddle')%>&nbsp;&nbsp;<%= widget_title %>
+	</div>
+	<div class="head_right">
+		<div id="expand_collapse_btn">
+			<a href="javascript:widget_change_display('<%= @widget_name %>')">
+				<img id="<%= @widget_name %>_collapse_img" src="images/collapse.png"/>
+			</a>
+		</div>	
+	</div>
+	<div style="clear:both;"></div>
+<% end %>
+
+<% content_for :module_body do %>
+	<% for link in @links %>
+		<div class="link_brief">
+			<% if link.title %>
+				<div class="link_title"><%= link_to link.title, link.url %></div>
+			<% else %>
+				<div class="link_url">
+					<a href="<%= link.url %>"><%= link.url %></a>
+				</div>
+			<% end %>
+			<div class="link_poster">
+				Posted by <%= link_to link.user.name, user_path(link.user) %> at <%= link.created_at.to_s(:basic) %>
+				<% if logged_in? && (current_user.is_admin || current_user.id == link.user.id) %>
+					<div class="edit_proj_link"><%= link_to 'Edit', edit_link_path(link) %></div>
+					<div class="edit_proj_link"><%= link_to "Delete", link_path(link), :confirm => "Are you sure", :method => :delete %></div>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+	<% if @links.length == 0 %>
+		No Links Exist!
+	<% end %>
+	<div style="clear:both;"></div>
+<% end %>
+
+<% content_for :module_footer do %>
+	<div class="foot_left">
+		<% if logged_in? %>
+			<%= link_to 'Add Link', new_link_path %>
+		<% end %>
+	</div>
+	<div class="foot_right">
+		<%= link_to 'View All', links_url %>
+	</div>
+	<div style="clear:both;"></div>
+<% end %>

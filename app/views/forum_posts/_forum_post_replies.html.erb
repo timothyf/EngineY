@@ -1,0 +1,32 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<span class="title">Replies to this discussion</span>
+<% @forum_post.replies.each do |reply| %>
+	<div class="forum_post_reply">
+		<div class="forum_post_photo">
+			<%= link_to image_tag(reply.user.profile_photo.public_filename(:small)), user_url(reply.user) %>
+		</div>
+		<div class="forum_post_text">
+			<div class="forum_post_title"><%= link_to reply.title, forum_post_path(reply) %></div>
+			<div class="forum_post_detail">Posted by <%= reply.user.name %><br/>
+			<%= reply.created_at.to_s(:event_brief) %></div>
+		</div>
+		<div class="forum_post_body">
+			<%= reply.body %>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+<% end %>

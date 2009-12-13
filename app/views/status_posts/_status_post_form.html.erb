@@ -1,0 +1,8 @@
+<form style="display:inline;" id="status_post_entry_form" name="status_post_entry_form" action="/status_posts/create" method="POST">
+	<input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>"/>
+	<input type="hidden" id="authenticity_token" name="authenticity_token" value="<%= form_authenticity_token %>" />
+	<label>What are you doing now?</label><br/>
+	<%= text_area(:status_post, :body, :cols => 60, :rows => 3 ) %>
+	<button dojoType="dijit.form.Button" onclick="post_status()">Submit</button>
+	<!-- include checkbox to send post to Twitter -->
+</form>

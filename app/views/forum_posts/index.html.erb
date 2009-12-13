@@ -1,0 +1,65 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<%= stylesheet_link_tag 'forum' %>
+
+<div id="forum_links">
+	<% if logged_in? %>
+		<div id="forum_all"><%= link_to 'Show Topics', forum_topics_path %></div>
+		<% if @forum_topic %>
+			<div id="forum_my"><%= link_to 'My Posts', user_forum_posts_path(current_user) %></div>
+			<div id="forum_add"><%= link_to 'Add a Post', new_forum_post_path(:forum_topic_id=>@forum_topic.id) %></div>
+		<% end %>
+	<% end %>
+</div>		
+<% if @forum_topic %>
+	<h1><%= @forum_topic.title %></h1>
+<% else %>
+	<h1>Posts for <%= current_user.name %></h1>
+<% end %>
+<div id="forum_table">	
+	<table id="post_table" border="1" cellpadding="2" cellspacing="0">
+		<thead>
+			<th>Posts</th>
+			<th>Views</th>
+			<th>Replies</th>
+			<th>Latest Activity</th>
+		</thead>
+		<% for forum_post in @forum_posts %>
+			<tr>
+				<td>
+					<div class="discussions_col"><%= link_to forum_post.title, forum_post_path(forum_post) %></div>
+				</td>
+				<td>
+					<div class="views_col views_count"><%= forum_post.views %></div>
+				</td>
+				<td>
+					<div class="replies_col replies_count"><%= forum_post.replies.length %></div>
+				</td>
+				<td>
+				<% if forum_post.replies && forum_post.replies.length > 0 %>
+					<div class="activity_col latest_activity"><%= forum_post.replies[forum_post.replies.length-1].created_at %></div>
+				<% else %>
+					<div class="activity_col latest_activity"><%= forum_post.created_at %></div>
+				<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+	<% if @forum_posts.length == 0 %>
+		No posts exist.
+	<% end %>
+</div>
+

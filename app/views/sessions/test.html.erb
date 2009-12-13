@@ -1,0 +1,95 @@
+
+    <h1>Mu Dojo Login Example</h1>
+    <div>
+      <button id="login">Login3</button>
+      <button id="logout">Logout</button>
+      <button id="disconnect">Disconnect</button>
+    </div>
+    <div id="user-info"></div>
+	<div id="user-status"></div>
+
+    <div id="fb-root"></div>
+    <script src="http://mu.daaku.org/m.js"></script>
+
+
+	<img
+	  id="facebook-login"
+	  style="cursor: hover;"
+	  src="http://static.ak.fbcdn.net/images/fbconnect/login-buttons/connect_white_large_long.gif">
+	<script>
+	  document.getElementById('facebook-login').onclick = function() {
+	    FB.login(function(response) {
+	      if (response.session) {
+	        alert('Thank you for logging in.');
+	      } else {
+	        alert('You need to login to use www.example.com');
+	      }
+	    });
+	  };
+	</script>
+
+
+
+    <script>
+      // initialize the library with the API key
+      //FB.init({ apiKey: '48f06bc570aaf9ed454699ec4fe416df' });
+		FB.init({ apiKey: 'c5e07a69fd9bc18de4864131b6288707' });
+
+
+      // fetch the status on load
+      FB.loginStatus(handleSessionResponse);
+
+      dojo.connect(dojo.byId('login'), 'click', function() {
+        FB.login(handleSessionResponse);
+      });
+
+      dojo.connect(dojo.byId('logout'), 'click', function() {
+        FB.logout(handleSessionResponse);
+      });
+
+      dojo.connect(dojo.byId('disconnect'), 'click', function() {
+        FB.api({ method: 'Auth.revokeAuthorization' }, function(response) {
+          clearDisplay();
+        });
+      });
+
+      // no user, clear display
+      function clearDisplay() {
+        document.getElementById('user-info').innerHTML = '';
+      }
+
+      // handle a session response from any of the auth related calls
+      function handleSessionResponse(response) {
+        // if we dont have a session, just hide the user info
+        if (!response.session) {
+          clearDisplay();
+          return;
+        }
+
+        // if we have a session, query for the user's profile picture and name
+        FB.api(
+          {
+            method: 'fql.query',
+            query: 'SELECT name, pic FROM profile WHERE id=' + FB.getSession().uid
+          },
+          function(response) {
+            var user = response[0];
+            var userInfo = document.getElementById('user-info');
+            userInfo.innerHTML = '<img src="' + user.pic + '">' + user.name;
+          }
+        );
+		
+		
+        FB.api(
+          {
+            method: 'status.get'
+          },
+          function(response) {
+            var status = response[0];
+            var user_status = document.getElementById('user-status');
+            user_status.innerHTML = status.message;
+          }
+        );
+      }
+    </script>
+

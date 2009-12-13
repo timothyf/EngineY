@@ -1,0 +1,339 @@
+
+#forum_links {
+	margin-top: 15px;
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+#forum_all {
+	float: left;
+}
+
+#forum_my {
+	float: left;	
+	margin-left: 50px;
+}
+
+#forum_add {
+	float: left;
+	margin-left: 100px;
+}
+
+#add_forum, #forum_table {
+	float: left;
+	clear: both;
+	background-color: #ffffff;
+	width: 640px;
+	padding: 25px;
+}
+
+#add_forum label {
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.add_button {
+	clear: both;
+	float: left;
+	background:#283F4B none repeat scroll 0 0;
+	color:#FFFFFF;
+}
+
+.input_field {
+	width: 650px;
+}
+
+#forum_table {
+	float: left;
+	clear: both;
+}
+
+.forum_brief {
+	border: 1px solid gray;
+	width: 170px;
+	height: 100px;
+	float: left;
+	margin: 8px;
+	text-align: center;
+}
+
+
+#main #col1 h1 {
+	float: left;
+	clear: both;
+	margin-bottom: 0px;
+	font-size: 18pt;
+	font-weight: normal;
+}
+
+.column_1 {
+	width: 502px;
+}
+
+.column_2 {
+	width: 230px;
+}
+
+.column_3 {
+	
+}
+
+#forum_name {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.member_widget_user {
+	float: left;
+	margin-left: 5px;
+}
+
+.member_widget_user a, .member_widget_user a img {
+	border: none;
+}
+
+.forum_post {
+	float: left;
+	clear: both;
+	width: 670px;
+	background-color: #cccccc;
+}
+
+.forum_post_photo {
+	float: left;
+}
+
+.forum_post_text {
+	float: left;
+	margin-left: 10px;
+	width: 500px;
+}
+
+.forum_post_title {
+	float: left;
+	font-size: 12pt;
+}
+
+.forum_post_body {
+	float: left;
+	clear: both;
+	width: 650px;
+	background-color: white;
+	padding:10px;
+}
+
+.forum_post_detail {
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+.form_field {
+	clear: both;
+	float: left;
+	margin-bottom: 15px;
+}
+
+#post_table {
+	width: 600px;
+}
+
+#post_table thead th {
+	background-color: #283F4B;
+	color: white;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: left;
+	padding-left: 10px;
+}
+
+.discussions_col {
+	float: left;
+	width: 300px;
+	text-align: left;
+	color: #283F4B;
+}
+
+.discussions_col a, .discussions_col a:visited {
+	color: #283F4B;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.replies_col, .views_col {
+	float: left;
+	width: 80px;
+	text-align: center;
+}
+
+.replies_count {
+	float: left;
+}
+
+.activity_col {
+	float: left;
+	width: 160px;
+	text-align: center;
+}
+
+.latest_activity {
+
+}
+
+.forum_post_photo img {
+	border: none;
+}
+
+.add_reply {
+	float: left;
+	clear: both;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	margin-left: 30px;
+}
+
+.add_reply .title {
+	font-size: 12pt;
+}
+
+#existing_replies {
+	float: left;
+	clear: both;
+	width: 100%;
+	margin-top: 20px;
+}
+
+#existing_replies .title {
+	font-size: 12pt;
+	float: left;
+	clear: both;
+}
+
+.a_post {
+	float: left;
+	clear: both;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.a_topic {
+	float: left;
+	clear: both;
+	border: 1px solid gray;
+	width: 590px;
+	padding: 10px;
+	margin: 4px;
+	background-color: #cccccc;
+}
+
+#topic_header {
+	float: left;
+	clear: both;
+	font-weight: bold;
+	padding: 20px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	width: 590px;
+}
+
+.topic_title {
+	float: left;
+	width: 250px;
+	clear: both;
+}
+
+.topic_title a {
+	font-size: 12pt;
+	text-decoration: none;
+	color: #8c0600;
+	font-weight: bold;
+}
+
+.topic_title a:hover {
+	text-decoration: underline;
+}
+
+.topic_desc {
+	float: left;
+	clear: both;
+	width: 250px;
+}
+
+.topic_threads {
+	float: left;
+	margin-top: -10px;
+	width: 50px;
+	text-align: right;
+	margin-left: 10px;
+}
+
+.topic_posts {
+	float: left;
+	margin-top: -10px;
+	width: 50px;
+	text-align: right;
+}
+
+.topic_last_post {
+	float: left;
+	margin-left: 25px;
+	width: 180px;
+	margin-top: -10px;
+}
+
+#topic_header .topic_threads, #topic_header .topic_posts, #topic_header .topic_last_post {
+	margin-top: 0px;
+}
+
+.topic_last_post a {
+	color: #8c0600;
+	text-decoration: none;
+}
+
+.topic_last_post a:hover {
+	text-decoration: underline;
+}
+
+#post_topic {
+	font-weight: bold;
+	font-size: 16pt;
+	float: left;
+	clear: both;
+	margin-bottom: 15px;
+}
+
+#forum_control_bar {
+	float: left;
+	clear: both;
+}
+
+.add_reply_btn {
+	margin-top: 15px;
+}
+
+.forum_post_reply {
+	float: left;
+	clear: both;
+	margin-bottom: 30px;
+	margin-top: 15px;
+	width: 670px;
+	background-color: #cccccc;
+}
+
+.forum_post_reply .forum_post_title {
+	font-size: 10pt;
+}
+
+#reply_entry label {
+	float: left;
+	clear: both;
+	margin-right: 8px;
+}
+
+#reply_entry .input_field {
+	width: 460px;
+	float: left;
+}
+
+

@@ -1,0 +1,53 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<%= stylesheet_link_tag 'photos' %>
+
+<div id="photos_links">
+	<% if logged_in? %>
+		<div id="photos_all"><%= link_to 'All Photos', photos_path %></div>
+	<% end %>
+</div>	
+<div id="edit_photo">
+	<div id="photo_pic">
+		<%= link_to image_tag(@photo.public_filename()), @photo.public_filename() %>
+	</div>
+	<div id="edit_photo_form">					
+			<label for="title">Title:</label>
+			<div class="photo_field"><%= @photo.title %></div>
+			<br/>
+	    	<label for="description">Description:</label>
+			<div class="photo_field"><%= @photo.description %></div>
+			<br/>
+	    	<label for="location">Location:</label>
+			<div class="photo_field"><%= @photo.location  %></div>
+			<br/>
+	    	<label for="tags">Tags:</label>
+			<div class="photo_field"><%= @photo.tag_list  %></div>
+	</div>
+	<% if logged_in? && (current_user.is_admin || current_user.id == @photo.user.id) %>
+		<div id="admin_controls" class="tundra">
+			<%= link_to 'Edit', edit_photo_path(@photo) %>
+			<%= link_to "Delete", photo_path(@photo), :confirm=>'Are you sure?', :method=>:delete %>
+		</div>
+	<% end %>
+	
+	<div id="photo_comments_area">
+		<%= render :partial => 'photo_comments' %>
+	</div>
+	<%= render :partial => 'photo_comment_form' %>
+	<div style="clear:both;"></div>
+</div>
+

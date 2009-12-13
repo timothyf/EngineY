@@ -1,0 +1,62 @@
+
+#main .col1 h1, #main .col1 h2 {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+#projects_links {
+	margin-top: 15px;
+	float: left;
+	clear: both;
+}
+
+#add_project, #projects_table {
+	float: left;
+	clear: both;
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+}
+
+#projects_table {
+	margin-top: 5px;
+}
+
+#projects_all {
+	float: left;
+}
+
+#projects_my {
+	float: left;	
+	margin-left: 50px;
+}
+
+#projects_add {
+	float: left;
+	margin-left: 100px;
+}
+
+.project_brief {
+	float: left;
+	clear: both;
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+.project_desc {
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+.project_name {
+	
+}
+
+.project_user {
+
+}
+
+

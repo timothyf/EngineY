@@ -1,0 +1,152 @@
+
+#messages_links {
+	float: left;
+	margin-top: 15px;
+	margin-left: 100px;
+}
+
+#messages_add {
+	float: left;
+	margin-left: 100px;
+}
+
+#add_message, #messages_table {
+	background-color: #ffffff;
+	padding: 25px;
+	width: 650px;
+	float: left;
+	clear: both;
+	margin-top: 20px;
+}
+
+#received_messages {
+	float: left;
+	clear: both;
+	margin-bottom: 20px;
+}
+
+#sent_messages {
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+#messages_table .title {
+	font-weight: bold;
+	font-size: 14pt;
+	padding: 10px;
+	width: 100%;
+}
+
+#add_message label {
+	font-size: 10pt;
+	width: 100px;
+	float: left;
+}
+
+#add_message input {
+	float: left;
+}
+
+#add_btn {
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+.add_button {
+	clear: both;
+	float: right;
+	background:#283F4B none repeat scroll 0 0;
+	color:#FFFFFF;
+}
+
+.input_field {
+	width: 300px;
+}
+
+.message_brief {
+	border: 1px solid gray;
+	width: 170px;
+	height: 100px;
+	float: left;
+	margin: 8px;
+	text-align: center;
+}
+
+.message_brief_text {
+	float: left;
+}
+
+#main .col1 h1 {
+	float: left;
+	clear: both;
+	margin-bottom: 0px;
+	margin-top: 10px;
+	font-size: 18pt;
+	font-weight: normal;
+}
+
+.form_field {
+	float: left;
+	clear: both;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+#rec_message_table, #sent_message_table {
+	width: 600px;
+}
+
+#rec_message_table thead th, #sent_message_table thead th {
+	background-color: #283F4B;
+	color: white;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	text-align: left;
+	padding-left: 10px;
+}
+
+#rec_message_table td, #sent_message_table td {
+	padding: 8px;
+}
+
+.message {
+	float: left;
+	margin-bottom: 25px;
+}
+
+.message_photo {
+	float: left;
+}
+
+.message_text {
+	float: left;
+	margin-left: 5px;
+}
+
+.message_body {
+	float: left;
+	clear: both;
+	width: 650px;
+	padding: 10px;
+	background-color: white;
+}
+
+.message_title {
+	font-weight: bold;
+	font-size: 12pt;
+	margin-bottom: 8px;
+}
+
+#message_controls {
+	float: left;
+	clear: both;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+.unread_message {
+	font-weight: bold;
+}
+

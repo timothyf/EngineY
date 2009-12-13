@@ -1,0 +1,38 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<%= stylesheet_link_tag 'job_posts' %>
+
+<div id="jobs_links">
+	<% if logged_in? %>
+		<div id="jobs_add"><%= link_to 'Add a Job Post', new_job_post_path %></div>
+	<% end %>
+</div>
+<h1>Job Posts (<%= @job_posts.length %>)</h1>
+<div id="jobs_table">
+	<% for job_post in @job_posts %>
+		<%= render :partial => 'job_post_brief', :locals=>{:job_post=>job_post} %>
+		<% if logged_in? && (current_user.is_admin || current_user.id == job_post.user.id) %>
+			<div class="job_post_controls">
+				<%= link_to 'Edit', edit_job_post_url(job_post) %>  
+				<%= link_to 'Delete', job_post, :confirm => 'Are you sure?', :method => :delete %>
+			</div>
+		<% end %>
+	<% end %>
+	<% if @job_posts.length == 0 %>
+		No job posts exist.
+	<% end %>
+</div>
+

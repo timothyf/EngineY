@@ -1,0 +1,39 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+
+<div class="add_reply">
+	<% if logged_in? %>
+		<span class="title">Add a Reply:</span>
+		<div id="reply_entry">
+			<form id="forum_post_reply_form" name="forum_post_reply_form" action="<%= forum_topic_forum_posts_url(@forum_post.forum_topic) %>" method="POST">							   
+				<input type="hidden" name="ajax_call" id="ajax_call" value="1" />
+				<%= hidden_field(:forum_post, :parent_id, :value=>@forum_post.id) %>
+				<%= hidden_field(:forum_post, :forum_topic_id, :value=>@forum_post.forum_topic.id) %>
+				<div class="form_field">
+					<label for="forum_post_title">Title:</label>
+					<%= text_field(:forum_post, :title, :class=>'input_field', :value=>"RE: #{@forum_post.title}") %>
+				</div>
+				<div class="form_field">
+					<%= text_area(:forum_post, :body, :cols => 60, :rows => 10, :class=>"mceEditor reply_edit" , :value=>'') %>
+				</div>
+				<a href="javascript:submit_forum_post_reply()">Add Reply</a>
+				<div style="clear:both;"></div>
+	  		</form>
+		</div>
+	<% else %>
+		<span class="title">You must be a member to post a reply.</span>
+	<% end %>
+</div>

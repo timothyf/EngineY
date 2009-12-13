@@ -1,0 +1,45 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<div class="user_brief">
+	<div class="user_brief_photo">
+		<% if user.profile_photo %>
+			<%= link_to image_tag(user.profile_photo.public_filename(:member), :alt=>user.name), user_url(user) %>
+		<% else %>
+			<br/><br/>No Photo
+		<% end %>
+	</div>
+	<div class="user_brief_text">
+		<span id="user_name"><%= link_to user.name, user_url(user) %></span><br/>
+		<%= user.gender %><br/>
+		<%= user.city %><% if user.state %>, <%= user.state.abbreviation %><% end %><br/>
+		<% if user.country %><%= user.country.name %><br/><% end %>
+		Joined: <%= user.activated_at.to_s(:short_text) %>
+		<% if logged_in? && current_user.requested_friends.include?(user) %>
+			<b>Requested Friend</b>
+		<% elsif logged_in? && current_user.friends.include?(user) %>
+			<b>Friend</b>
+		<% elsif logged_in? && current_user.pending_friends.include?(user) %>
+			<b>Pending Friend</b>
+		<% elsif logged_in? && user.id != current_user.id %>
+			<%= link_to 'Add Friend', 'friends/create?user_id='+current_user.id.to_s + '&friend_id=' + user.id.to_s %>
+		<% end %>
+		<!--
+		<% if logged_in? && current_user.roles.include?(Role.creator) %>
+			<br/><%= link_to 'Feature' %>
+		<% end %>
+		-->
+	</div>
+</div>

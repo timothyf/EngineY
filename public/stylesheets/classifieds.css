@@ -1,0 +1,145 @@
+
+#main .col1 h1, #main .col1 h2 {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+#classifieds_links {
+	margin-top: 15px;
+	float: left;
+	clear: both;
+}
+
+#add_classified, #classifieds_table {
+	float: left;
+	clear: both;
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+}
+
+#classifieds_table {
+	margin-top: 5px;
+}
+
+#classifieds_all {
+	float: left;
+}
+
+#classifieds_my {
+	float: left;	
+	margin-left: 50px;
+}
+
+#classifieds_add {
+	float: left;
+	margin-left: 100px;
+}
+
+.form_field {
+	clear: both;
+	float: left;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+.add_button {
+	clear: both;
+	float: right;
+	background:#283F4B none repeat scroll 0 0;
+	color:#FFFFFF;
+}
+
+.input_field {
+	width: 650px;
+	float: left;
+	width: 300px;
+}
+
+.job_brief {
+	border: 1px solid gray;
+	width: 170px;
+	height: 100px;
+	float: left;
+	margin: 8px;
+	text-align: center;
+}
+
+#job_name {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.classified {
+	float: left;
+	clear: both;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.classified_title {
+	font-size: 12pt;
+	font-weight: bold;
+	float: left;
+	clear: both;
+	margin-bottom: 3px;
+}
+
+.classified_created {
+	float: left;
+	clear: both;
+}
+
+.classified_id {
+	float: left;
+	clear: both;
+}
+
+
+
+
+
+.classified_description {
+	float: left;
+	clear: both;
+	margin-top: 10px;
+}
+
+.add_button {
+	float: left;
+	clear: both;
+}
+
+.page_title {
+	float: left;
+	clear: both;
+	font-size: 24pt;
+	margin-bottom: 10px;
+}
+
+.form_field .help_text {
+	float: left;
+	margin-top: 0px;	
+	margin-left: 20px;
+}
+
+.form_field textarea {
+	float: left;
+	clear: both;
+}
+
+#add_job .mceEditor {
+	float: left;
+	clear: both;
+}
+
+.classified_controls {
+	float: left;
+	clear: both;
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+

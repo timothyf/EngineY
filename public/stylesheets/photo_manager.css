@@ -1,0 +1,38 @@
+
+.photo_album {
+	float: left;
+}
+
+.photo_album_pic {
+	float: left;
+	margin-right: 10px;
+	width: 100px;
+	height: 100px;
+	border: 1px solid gray;
+	padding: 4px;
+}
+
+.photo_album_info {
+	float: left;
+	clear: both;	
+}
+
+#albums_and_photos {
+	float: left;
+	clear: both;
+	margin-top: 15px;
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+}
+
+#albums_table {
+	float: left;
+	clear: both;
+}
+
+#photos_table {
+	float: left;
+	clear: both;
+	margin-top: 20px;	
+}

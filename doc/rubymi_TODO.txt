@@ -1,0 +1,12 @@
+
+support mirroring of existing blog instead of RubyMI specific blog for a user
+
+RSS
+
+Video
+
+Twitter
+
+Book Reviews
+
+Book Store

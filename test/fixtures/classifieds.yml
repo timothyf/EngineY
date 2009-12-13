@@ -1,0 +1,14 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+ one:
+   title: For Sale
+   description: Item for sale
+   user_id: 1
+   classified_category_id: 1
+
+ two:
+   title: For Sale 2
+   description: Item for sale 2
+   user_id: 2
+   classified_category_id: 1
+

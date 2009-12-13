@@ -1,0 +1,14 @@
+<h1>Admin Center</h1>
+Show Pending Users (Approve, Reject)
+<br/><br/>
+Show All Users (Edit, Delete)
+<br/>
+
+<div dojoType="dojox.data.QueryReadStore" jsId="store" url="users/grid_data" requestMethod="post"></div>	
+<div dojoType="dojox.grid.data.DojoData" jsId="model" store="store" sortFields="[{attribute: 'last_name', descending: true}]" rowsPerPage="30"></div>		
+<div id="grid" jsId="grid" dojoType="dojox.grid.DataGrid" model="model" structure="layout" rowSelector="10px"><div>  
+
+<br/>
+<%= link_to 'Community Statistics', '/stats/index' %>
+<br/><br/>
+

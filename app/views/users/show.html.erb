@@ -1,0 +1,44 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<%= stylesheet_link_tag 'profile' %>
+	
+
+<div class="column_1">
+	<div id="user_photo" class="user_profile_section">
+		<% if (@user.profile_photo) %>
+			<%= image_tag(@user.profile_photo.public_filename()) %>
+		<% else %>
+			<div class="no_photo_user"></div>
+		<% end %>
+	</div>
+	<div id="user_detail" class="user_profile_section">
+		<%= render :partial => 'user_detail_widget' %>
+	</div>
+	<div id="user_friends" class="user_profile_section">
+		<%= render :partial => 'friends/friends_widget' %>
+	</div>
+	<div id="user_groups" class="user_profile_section">
+		<%= render :partial => 'groups/groups_profile' %>
+	</div>
+</div>
+<div class="column_2">
+	<div id="widgets"></div>
+	<% if @user.twitter_id && @user.display_tweets %>
+		<%= render :partial => 'tweets/display_tweets' %>
+	<% end %>
+	<%= render :partial => 'photos/photos_profile' %>
+	<%= render :partial => 'shared/wall_posts_widget', :locals=>{:parent=>@user} %>
+</div>

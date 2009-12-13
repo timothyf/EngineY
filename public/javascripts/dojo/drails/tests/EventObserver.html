@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+  <title>PrototypeCompat unit test</title>
+  <style type="text/css">
+    @import "../../../dojo/resources/dojo.css";
+    @import "../css/dijitTests.css";
+  </style>
+
+  <!-- required: the default dijit theme: -->
+  <link id="themeStyles" rel="stylesheet" href="../../../dijit/themes/tundra/tundra.css">
+
+  <!-- required: dojo.js -->
+  <script type="text/javascript" src="/javascripts/dojo/dojo/dojo.js"
+    djConfig="isDebug: true, parseOnLoad: true"></script>
+
+
+  <script type="text/javascript">
+    
+    dojo.registerModulePath("drails", "/javascripts/dojo/drails");
+    dojo.require("doh.runner");
+    dojo.require("drails.tests.ext");
+    doh.pollute();
+    
+    dojo.require("drails.common");
+    dojo.require("drails.tests.helpers");
+    
+    dojo.declare("drails.RandomValueImplementer", [drails.EventObserver], {
+      getValue: function(){ return "value" + Math.random() },
+      registerCallbacks: function(){}
+    });
+    
+    dojo.declare("drails.SameValueImplementer", [drails.EventObserver], {
+      getValue: function(){ return "same value" },
+      registerCallbacks: function(){}
+    });
+    
+    spec("drails.EventObserver", function() {      
+      before(function(){
+      });
+      
+      it("checks for an initial value", function(t){
+        var o = new drails.RandomValueImplementer("foo", function() {});
+        t.t(o.lastValue != null);
+      });
+      
+      it("it registers a callback", function(t){
+        var called = false;
+        dojo.connect(drails.RandomValueImplementer.prototype, "registerCallbacks", function(node) { called = true; t.t(node == dojo.byId("foo")) })
+        var o = new drails.RandomValueImplementer("foo", function() {});
+        t.t(called);
+      });
+      
+      it("calls a callback if the value has changed", function(t){
+        var called = false;
+        var o = new drails.RandomValueImplementer("foo", function() { called = true });
+        t.f(called);
+        o.onElementEvent();
+        t.t(called);
+      });
+      
+      it("does not call a callback if the value hasn't changed", function(t){
+        var called = false;
+        var o = new drails.SameValueImplementer("foo", function() { called = true });
+        t.f(called);
+        o.onElementEvent();
+        t.f(called);
+      });
+    });
+    
+    dojo.addOnLoad(function(){
+      doh.spec.register();
+      doh.run();
+    });
+
+  </script>
+</head>
+<body class="tundra">
+
+<form>
+  <input type="text" id="foo">
+</form>
+
+</body>
+</html>

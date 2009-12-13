@@ -1,0 +1,50 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<%= stylesheet_link_tag 'blogs' %>
+
+<div id="blogs_links">
+	<% if logged_in? %>
+		<div id="blogs_all"><%= link_to 'All Blog Posts' %></div>
+		<div id="blogs_my"><%= link_to 'My Blog', user_blog_posts_path(current_user) %></div>
+		<div id="blogs_add"><%= link_to 'Add a Blog Post', new_blog_post_path %></div>
+	<% end %>
+</div>
+<% if @user %>
+	<h2 style="width:100%;">Blog Posts for <%= @user.name %> (<%= @blog_post_count.to_s %>)</h2>
+<% else %>
+	<h1 style="width:100%;">All Blog Posts (<%= @blog_post_count.to_s %>)</h1>
+<% end %>
+
+<% if logged_in? && @user == current_user %>
+	<div id="blogs_table_header">
+		<% if @drafts_exist %>
+			<button id="show_drafts_btn" onclick="javascript:show_blog_drafts()">Show Drafts</button>
+		<% else %>
+			You currently have no drafts saved.
+		<% end %>
+	</div>
+<% end %>
+<div id="blogs_table">
+	<div class="page_controls"><%= will_paginate @blog_posts %><br/></div>
+	<% for blog_post in @blog_posts %>
+		<%= render :partial => 'blog_post_brief', :locals=>{:blog_post=>blog_post} %>
+	<% end %>
+	<div class="page_controls"><%= will_paginate @blog_posts %><br/></div>
+	<% if @blog_posts.length == 0 %>
+		No posts exist.
+	<% end %>
+</div>
+<div style="clear:both;"></div>

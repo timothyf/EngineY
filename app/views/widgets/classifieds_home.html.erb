@@ -1,0 +1,50 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<% widget_title = "Classifieds" %>
+
+<% @classifieds = Classified.find(:all, :limit=>5, :order=>'created_at DESC') %>
+
+<% content_for :module_header do %>
+	<div class="head_left">
+		<%= image_tag('clock.png', :alt=>'events', :align=>'absmiddle')%>&nbsp;&nbsp;<%= widget_title %>
+	</div>
+	<div style="clear:both;"></div>
+<% end %>
+
+<% content_for :module_body do %>
+	<% count = 0 %>
+	<% @classifieds.each do |classified | %>
+		<div class="blog_post_brief">
+			<%= link_to classified.title, classifieds_path %>
+		</div>
+	<% end %>
+	<% if @classifieds.length == 0 %>
+		No classifieds exist!
+	<% end %>
+	<div style="clear:both;"></div>
+<% end %>
+
+<% content_for :module_footer do %>
+	<div class="foot_left">
+		<% if logged_in? %>
+			<%= link_to 'Add Classified', new_classified_path %>
+		<% end %>
+	</div>
+	<div class="foot_right">
+		<%= link_to 'View All', classifieds_url %>
+	</div>
+	<div style="clear:both;"></div>
+<% end %>

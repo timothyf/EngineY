@@ -1,0 +1,28 @@
+# == Schema Information
+# Schema version: 20090206190209
+#
+# Table name: groups
+#
+#  id          :integer(4)      not null, primary key
+#  name        :string(255)
+#  description :text
+#  photo_id    :integer(4)
+#  creator_id  :integer(4)
+#  featured    :boolean(1)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+   id: 1
+   name: Test Group 1
+   description: group description
+   featured: false
+   
+two:
+   id: 2
+   name: Test Group 2
+   description: group description
+   featured: false

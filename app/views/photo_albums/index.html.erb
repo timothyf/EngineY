@@ -1,0 +1,33 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<h1>Listing photo_albums</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for photo_album in @photo_albums %>
+  <tr>
+    <td><%= link_to 'Show', photo_album %></td>
+    <td><%= link_to 'Edit', edit_photo_album_path(photo_album) %></td>
+    <td><%= link_to 'Destroy', photo_album, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New photo_album', new_photo_album_path %>

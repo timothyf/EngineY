@@ -1,0 +1,44 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<%= stylesheet_link_tag 'forum' %>
+	
+<div id="post_topic">
+	Topic: <%= link_to @forum_post.forum_topic.title, forum_topic_forum_posts_path(@forum_post.forum_topic) %>
+</div>
+<div class="forum_post">
+	<div class="forum_post_photo">
+		<% if @forum_post.user.profile_photo %>
+			<%= link_to image_tag(@forum_post.user.profile_photo.public_filename(:medium)), user_url(@forum_post.user) %>
+		<% else %>
+			<%= link_to @forum_post.user.name, user_url(@forum_post.user) %>
+		<% end %>
+	</div>
+	<div class="forum_post_text">
+		<div class="forum_post_title"><%= link_to @forum_post.title, forum_post_path(@forum_post) %></div>
+		<div class="forum_post_detail">Posted by <%= @forum_post.user.name %><br/>
+		<%= @forum_post.created_at.to_s(:event_brief) %></div>
+	</div>
+	<div class="forum_post_body">
+		<%= @forum_post.body %>
+	</div>
+	<div style="clear:both;"></div>
+</div>
+<div id="existing_replies">
+	<%= render :partial => 'forum_post_replies' %>
+</div>
+<%= render :partial => 'forum_post_reply_form' %>
+
+

@@ -1,0 +1,51 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<%= stylesheet_link_tag 'profile' %>
+
+<h1>Complete Signup with Facebook</h1>
+<div id="add_user">
+You have successfully logged in with Facebook, now to complete your registration 
+please enter the following required data:
+<% form_for(@user) do |f| -%>
+	<%= f.error_messages %>
+	<input type="hidden" id="invite_code" name="invite_code" value="<%= @invite_code %>"/>
+	<%= f.hidden_field :facebook_id, :value=>@user.facebook_id %>
+	<div id="facebook_required_fields">
+		<div class="section_title">Required Fields</div>
+		<div class="form_field">
+			<label for="login">Login:</label>
+			<%= f.text_field :login, :class=>'input_field' %>
+		</div>
+		<div class="form_field">
+			<label for="first_name">First Name:</label>
+			<%= f.text_field :first_name, :class=>'input_field' %>
+		</div>
+		<div class="form_field">
+			<label for="last_name">Last Name:</label>
+			<%= f.text_field :last_name, :class=>'input_field' %>
+		</div>
+		<div class="form_field">
+			<label for="email">Email</label>
+			<%= f.text_field :email, :class=>'input_field'  %>
+		</div>
+	</div>
+	<% if @user.id == nil %>
+		<%= submit_tag 'Signup', :id=>'login_btn' %>
+	<% else %>
+		<%= submit_tag 'Save', :id=>'login_btn' %>
+	<% end %>
+<% end -%>
+</div>

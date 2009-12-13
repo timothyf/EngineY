@@ -1,0 +1,28 @@
+<div id="received_messages">
+	<div class="title">Received Messages (<%= @received_messages.size %>)</div>
+	<table id="rec_message_table" border="1" cellpadding="0" cellspacing="0">
+		<thead>
+			<th>From</th>
+			<th>Subject</th>
+			<th>Received</th>
+			<th>Control</th>
+		</thead>
+		<tbody>
+		<% @received_messages.each do |message| %>
+			<% if message.read %>
+				<tr class="read_message">
+			<% else %>
+				<tr class="unread_message">
+			<% end %>
+				<td><%= link_to message.sender.name, user_path(message.sender) %></td>
+				<td><%= link_to message.subject, message_path(message) %></td>
+				<td><%= message.created_at %></td>
+				<td><%= link_to "Delete", message_path(message), :confirm => "Are you sure", :method => :delete %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+	<% if @received_messages.length == 0 %>
+		You have not received any messages.
+	<% end %>
+</div>

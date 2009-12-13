@@ -1,0 +1,18 @@
+
+
+development:
+  adapter: mysql
+  database: enginey_development
+  username: root
+  password:  
+  host: localhost
+
+test:
+  adapter: mysql
+  database: enginey_test
+  username: root
+  password:  
+  host: localhost
+
+
+

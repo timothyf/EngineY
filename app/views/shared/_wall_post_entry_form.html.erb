@@ -1,0 +1,32 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<div id="wall_post_entry" style="display:none;">
+	<div class="wall_post_photo">
+		<% if current_user.profile_photo %>
+			<%= image_tag(current_user.profile_photo.public_filename(:thumb)) %>
+		<% end %>
+	</div>
+	<form id="wall_post_entry_form" name="wall_post_entry_form" action="/wall_posts/create" method="POST">
+		<input type="hidden" name="<%= parent.class.to_s.downcase %>_id" value="<%= parent.id %>"/>
+		<label>Enter Comment:</label><br/>
+		<%= text_area(:wall_post, :message, :cols => 40, :rows => 10, :class=>"mceEditor" ) %>
+		<div id="wall_post_btns">
+			<a href="javascript:submit_wall_post()">Save</a>
+			<a href="javascript:cancel_wall_post()">Cancel</a>
+		</div>
+	</form>
+</div>
+

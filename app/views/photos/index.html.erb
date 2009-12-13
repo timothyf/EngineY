@@ -1,0 +1,42 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<%= stylesheet_link_tag 'photos' %>
+
+<div id="photos_links">
+	<% if logged_in? %>
+		<div id="photos_all"><%= link_to 'All Photos' %></div>
+<!--    <div id="albums_all"><%= link_to 'All Albums' %></div>
+		<div id="photos_my"><%= link_to 'My Photos', user_photos_path(current_user) %></div>
+		<div id="albums_my"><%= link_to 'My Albums', user_photo_albums_path(current_user) %></div> -->
+		<div id="photos_add"><%= link_to 'Add a photo', new_photo_path %></div>
+	<% end %>
+</div>
+<% if @user %>
+	<h1>My Photos (<%= @photos.size %>)</h1>
+<% else %>
+	<h1>All Photos (<%= @photos.size %>)</h1>
+<% end %>
+
+<div id="photos_table">
+	<% for photo in @photos %>
+		<%= render :partial => 'photo_brief', :locals=>{:photo=>photo} %>
+	<% end %>
+	<% if @photos.length == 0 %>
+		No Photos
+	<% end %>
+</div>
+
+

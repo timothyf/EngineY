@@ -1,0 +1,39 @@
+<h1>About Your Community</h1>
+<h2>The Basics</h2>
+Your community is named <i><b><%= Network.find(:first).name %></b></i>.<br/>
+It was created on <i><b><%= Network.find(:first).created_at.to_s(:event_brief) %></b></i>.<br/>
+
+<h2>About Your Users</h2>
+The community has <b><%= User.count %></b> users.<br/>
+There are <b><%= User.non_active_users.size %></b> users who have signed up but not activated their accounts.<br/>
+<b><%= User.count_with_profile_photo %></b> of your users have uploaded a profile picture.<br/>
+There are <b><%= User.male_user_count %></b> male users and <b><%= User.female_user_count %></b> female users.<br/>
+The most recent user to join the community is <i><b><%= User.newest.name %></b></i><br/>
+<b><i><%= User.most_logins.name %></i></b> is the user with the most logins on your site. He/She has logged in <b><%= User.most_logins.login_count %></b> times.<br/>
+The site owner is 
+<% User.creators.each do |admin| %>
+	<i><b><%= admin.name %></b></i>
+<% end %>.<br/>
+<% if !User.admins.empty? %>
+	The site admins are 
+	<% User.admins.each do |admin| %>
+		<i><%= admin.name %></i>
+	<% end %>.<br/>
+<% else %>
+	There are no additional site admins.<br/>
+<% end %>
+
+<h2>About Your Groups</h2>
+There are <b><%= Group.count %></b> groups.<br/>
+The group with the most users is <b><i>XX</i></b>.<br/>
+There are a total of <b><%= Membership.user_count %></b> users who have joined a group.<br/>
+
+<h2>About the Activity on Your Site</h2>
+There have been <b><%= Announcement.count %></b> announcements posted on your site.<br/>
+Users have contributed <b><%= BlogPost.count %></b> blog posts, and <b><%= ForumPost.count %></b> forum posts.<br/>
+There have been <b><%= Event.find(:all).size %></b> events created on the site.<br/>
+There have been <b><%= Photo.non_profile_photos.size %></b> photos uploaded to your site.<br/>
+The activity count for your site is at <b><%= Activity.count %></b>.<br/>
+
+<h2>The Technical Details</h2>
+Your site is powered by the <a href="http://www.enginey.com">EngineY</a> social networking framework.

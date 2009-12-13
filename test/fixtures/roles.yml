@@ -1,0 +1,34 @@
+# == Schema Information
+# Schema version: 20090206190209
+#
+# Table name: roles
+#
+#  id         :integer(4)      not null, primary key
+#  rolename   :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+   id: 1
+   rolename: creator
+
+admin:
+   id: 2
+   rolename: administrator
+
+user:
+   id: 3
+   rolename: user
+   
+group_admin:
+   id: 4
+   rolename: group_admin
+   
+contributor:
+   id: 5
+   rolename: contributor
+   
+   

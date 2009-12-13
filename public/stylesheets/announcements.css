@@ -1,0 +1,36 @@
+
+#main .col1 h1, #main .col1 h2 {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+#announcements_links {
+	margin-top: 15px;
+	float: left;
+	clear: both;
+}
+
+#add_announcement, #announcements_table {
+	float: left;
+	clear: both;
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+}
+
+#announcements_table {
+	margin-top: 5px;
+}
+
+#announcements_all {
+	float: left;
+}
+
+#announcements_add {
+	float: left;
+	margin-left: 100px;
+}
+
+

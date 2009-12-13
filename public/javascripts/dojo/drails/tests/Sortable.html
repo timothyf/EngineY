@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+  <title>PrototypeCompat unit test</title>
+
+  <style type="text/css">
+    @import "../../../dojo/drails/resources/dndDefault.css";
+  </style>
+
+  <!-- required: dojo.js -->
+  <script type="text/javascript" src="/javascripts/dojo/dojo/dojo.js"
+    djConfig="isDebug: true"></script>
+  <script type="text/javascript" src="/javascripts/prototype.js"></script>
+  <script type="text/javascript" src="/javascripts/scriptaculous.js"></script>
+
+
+  <script type="text/javascript">
+    
+    dojo.registerModulePath("drails", "/javascripts/dojo/drails");
+    dojo.require("doh.runner");
+    dojo.require("drails.tests.ext");
+    doh.pollute();
+    
+    dojo.require("drails.common");
+    dojo.require("drails.tests.helpers");
+    
+    var elementId = 'list_to_sort';
+    var elementTag = 'ul';
+    var skipDestroy = false;
+    var sortable = null;
+    
+    spec("drails.Sortable", function() {
+      var generatorHTML;
+      
+      before(function(){
+        var container = dojo.byId("test_container");
+        var generator = dojo.byId("generator");
+        generatorHTML = generatorHTML || generator.innerHTML;
+        generator.innerHTML = "";
+        if (dojo.byId("foo")) throw new Error("Generator found an ID that should not have been found");
+        container.innerHTML = generatorHTML;
+        dojo.query(elementTag, container)[0].id = elementId;
+      });
+      
+      after(function(){
+        if (!skipDestroy){
+          dojo.byId('test_container').innerHTML = "";
+          if (sortable) sortable.destroy();
+        }
+      });
+      
+      it(".create requires the dojo.dnd.Source library", function(t){
+        sortable = drails.Sortable.create(elementId);
+        t.t(dojo.dnd != null);
+      });
+      
+      it(".create requires the dojo.parser library", function(t){
+        sortable = drails.Sortable.create(elementId);
+        t.t(dojo.parser != null);
+      });
+      
+      it(".destroy destroys the sortable", function(t){
+        sortable = drails.Sortable.create(elementId);
+        sortable.destroy();
+        t.t(sortable.options == null);
+        t.t(sortable.sourceNode == null);
+        t.t(sortable.connects == null);
+        t.t(sortable.source == null);
+      });
+      
+      it("applies the dojoDndItem class to all direct descendents of the root element", function(t){
+        sortable = new drails.Sortable.create(elementId);
+        var nl = dojo.query("> *", elementId);
+        t.is(7, nl.length);
+        nl.forEach(function(node){
+          t.f(node.id == "freak");
+          t.t(dojo.hasClass(node, "dojoDndItem"));
+        });
+      });
+      
+      it("calls the onUpdate handler when the onDndDrop event occurs on the source", function(t){
+        var called = false;
+        sortable = drails.Sortable.create(elementId, { onUpdate: function() { called = true; } });
+        sortable.source.onDndDrop();
+        t.t(called);
+      });
+      
+      it("calls the onUpdate handler in the scope of the sortable", function(t){
+        var success = false;
+        sortable = drails.Sortable.create(elementId, { onUpdate: function() { success = (this == sortable); } });
+        sortable.source.onDndDrop();
+        t.t(success);
+      });
+      
+      // Note this must be the last test if we want to see the undestroyed output
+      it(".create instantiates a DnD item", function(t){
+        var sortable = drails.Sortable.create(elementId);
+        t.t(sortable.source != null);
+        skipDestroy = true;
+      });
+      
+      it(".serialize serializes the Sortable nodes", function(t){
+        //console.debug(Sortable);
+        var expected = "list_to_sort[]=1&list_to_sort[]=2&list_to_sort[]=3&list_to_sort[]=4&list_to_sort[]=5&list_to_sort[]=6&list_to_sort[]=7";
+        var actual = drails.Sortable.serialize(elementId);
+        t.is(expected, actual);
+        // Sortable.create(elementId);
+        // console.debug(Sortable.serialize(elementId));
+      });
+    });
+    
+    dojo.addOnLoad(function(){
+      doh.spec.register();
+      doh.run();
+    });
+
+  </script>
+</head>
+<body>
+
+<div id="test_container">
+</div>
+
+<div id="generator">
+  <ul>
+    <li id="item_1">Item 1</li>
+    <li id="item_2">Item 2</li>
+    <li id="item_3">Item 3</li>
+    <li id="item_4">
+      Item 4
+      <ul>
+        <li id="freak">Freak out the drails.Sortable query!</li>
+      </ul>
+    </li>
+    <li id="item_5">Item 5</li>
+    <li id="item_6">Item 6</li>
+    <li id="item_7">Item 7</li>
+  </ul>
+</div>
+
+</body>
+</html>

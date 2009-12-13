@@ -1,0 +1,1 @@
+rake railsnet:db:populate

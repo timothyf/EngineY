@@ -1,0 +1,67 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<%= stylesheet_link_tag 'groups' %>
+
+<style>
+	.gridContainer {
+		height:350px;
+		border-top:1px solid #000;
+		border-left:1px solid #000;	
+	}
+</style>
+
+<script type="text/javascript">
+	var jsonStore = new dojo.data.ItemFileReadStore({ url: "/groups/user_data?group_id=<%= @group.id %>" });
+	
+	
+
+
+</script>
+
+
+<div id="members_links">
+	<% if logged_in? %>
+		<div id="members_all"><%= link_to 'All Members', users_path %></div>
+		<div id="members_my"><%= link_to 'My Friends', user_friends_path(current_user) %></div>
+	<% end %>
+</div>
+<h1><%= @group.name %> Members (<%= @users.size %>)</h1>
+<div id="return_link"><%= link_to "Back to #{@group.name}", group_path(@group) %></div>
+
+
+<div id="users_table">
+	<% if logged_in? && current_user.is_group_admin(@group) %>
+		<div id="manage_btns">
+			<button dojoType="dijit.form.Button" id="promote_btn" onclick="handle_promote_to_admin_btn()">Promote to Administrator</button>
+			<button dojoType="dijit.form.Button" id="demote_btn" onclick="handle_demote_from_admin_btn()">Demote from Administrator</button>
+			<button dojoType="dijit.form.Button" id="remove_btn" onclick="handle_remove_from_group_btn()">Remove</button>
+		</div>
+	<% end %>
+	<div class="gridContainer">
+		<table id="gridNode" jsId="grid" dojoType="dojox.grid.DataGrid" store="jsonStore" rowSelector="20px">
+			<thead>
+				<tr>
+					<th field="id" width="30px">ID</th>
+					<th field="name" width="100px">Name</th>
+					<th field="email" width="160px">Email</th>
+					<th field="role" width="70px">Role</th>
+					<th field="created_at" width="180px">Date Joined</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+

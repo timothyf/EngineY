@@ -1,0 +1,41 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<%= stylesheet_link_tag 'photo_manager' %>
+
+<%= link_to 'Add Photo', new_photo_path %>
+<br/>
+<%= link_to 'New Album', new_photo_album_path %>
+
+<br/><br/>
+
+<div id="albums_and_photos">
+	<div id="albums_table">
+		<% @albums.each do |album| %>
+			<%= render :partial => 'photo_albums/album_brief', :locals=>{:album=>album} %>
+		<% end %>
+	</div>
+	
+	<br/><br/>
+	
+	<div id="photos_table">
+		<% @photos_outside_album.each do |photo| %>
+			<%= render :partial => 'photos/photo_brief', :locals=>{:photo=>photo} %>
+		<% end %>
+	</div>
+</div>
+
+<br/><br/>
+

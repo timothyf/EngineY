@@ -1,0 +1,15 @@
+<div class="add_comment">
+	<% if logged_in? %>
+		<span class="title">Add a Comment:</span>
+		<form id="comment_entry_form" name="comment_entry_form" action="/photos/add_comment" method="POST">
+			<input type="hidden" name="photo_id" value="<%= @photo.id %>"/>
+			<%= text_area(:comment, :comment, :cols => 60, :rows => 6) %>
+			<div id="comment_btns">
+				<a href="javascript:add_photo_comment()">Add Comment</a>
+			</div>
+		</form>
+	<% else %>
+		<span class="title">You must be a member to add a comment.</span>
+	<% end %>
+</div>
+

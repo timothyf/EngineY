@@ -1,0 +1,57 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<%= stylesheet_link_tag 'forum' %>
+
+<div id="forum_links">
+	<% if logged_in? %>
+		<div id="forum_my"><%= link_to 'My Discussions', user_forum_posts_path(current_user) %></div>
+	<% end %>
+</div>		
+<h1>Discussion Forum</h1>
+<div id="forum_table">
+	<% if logged_in? && current_user.is_admin %>
+		<button class="tundra" dojoType="dijit.form.Button" onclick="add_new_topic()">Add New Topic</button><br/><br/>
+	<% end %>
+	<div id="topic_header">
+		<div class="topic_title">Forum</div>
+		<div class="topic_threads">Threads</div>
+		<div class="topic_posts">Posts</div>
+		<div class="topic_last_post">Last Post</div>				
+	</div>
+	<% @forum_topics.each do |topic| %>
+		<div class="a_topic">
+			<div class="topic_title"><%= link_to topic.title, forum_topic_forum_posts_path(topic) %></div><br/>
+			<div class="topic_desc"><%= topic.description %></div>
+			<div class="topic_threads"><%= topic.forum_threads.length %></div>
+			<div class="topic_posts"><%= topic.forum_posts.length %></div>
+			<% if topic.forum_posts.length != 0 %>
+				<% last_post = topic.forum_posts[0] %>
+				<div class="topic_last_post">
+					<%= link_to last_post.title, forum_post_path(last_post) %><br/>
+					posted by <%= last_post.user.name %><br/>
+					<%= last_post.created_at %>
+				</div>
+			<% else %>
+				<div class="topic_last_post">No Posts</div>
+			<% end %>
+		</div>
+	<% end %>
+	<% if @forum_topics.length == 0 %>
+		No topics exist.
+	<% end %>
+</div>
+
+

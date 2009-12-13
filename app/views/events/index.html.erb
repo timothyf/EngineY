@@ -1,0 +1,33 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<%= stylesheet_link_tag 'events' %>
+
+<div id="groups_links">
+	<% if logged_in? %>
+		<div id="events_add"><%= link_to 'Add an Event', new_event_path %></div>
+	<% end %>
+</div>
+<h1>All Events (<%= @events.size %>)</h1>
+
+<div id="events_table">
+	<% if !@past_events %>
+		<div id="past_events"><%= link_to 'Show past events', '/events/full_index' %></div>
+	<% end %>
+	<% for event in @events %>
+		<%= render :partial => 'event_brief', :locals=>{:event=>event} %>
+	<% end %>
+</div>
+
