@@ -6,9 +6,6 @@ EngineY is an easy to use social network framework implemented in Ruby on Rails 
 
 To see an example of a running instance of EngineY, visit the Michigan Ruby Community at http://www.rubymi.org
 
-Getting the Code
-
-You can download an archived release of the EngineY project by visiting the Downloads tab above. However, if you want the latest EngineY code, you should get it directly from SVN. You can find details for pulling the code from SVN on the Source tab above.
 
 Installation
 
