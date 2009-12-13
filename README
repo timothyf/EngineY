@@ -11,7 +11,6 @@ Installation
 
 EngineY requires the rmagick gem. To correctly install that gem along with the correct version of Imagemagick for your platform see this FAQ:
 http://rmagick.rubyforge.org/install-faq.html
-After installing Rails and the required gems (rmagick, mysql), you should get the EngineY source code either as a Zip download or from SVN.
 Edit the config/database.yml file to configure a local database for use with EngineY.
 Run the following three commands in order:
 
@@ -23,6 +22,6 @@ User ID: admin
 Password: admin
 Getting Help/Support
 
-Any questions that you have about using EngineY or developing with EngineY should be posted to the EngineY Google Group mailing list. You can get to that via a link on the right.
+Any questions that you have about using EngineY or developing with EngineY should be posted to the EngineY Google Group http://groups.google.com/group/enginey.
 
 
