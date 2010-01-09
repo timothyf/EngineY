@@ -37,58 +37,6 @@ class ApplicationController < ActionController::Base
 
   include AuthenticatedSystem
   
-=begin
-  def set_facebook_session
-    # first, see if we already have a session
-    session_set = session_already_secured?
-    # if not, see if we can load it from the environment
-    unless session_set
-      session_set = create_facebook_session
-      if session_set
-        session[:facebook_session] = @facebook_session
-        session[:sig] = params[:session_sig]
-      else
-        session[:facebook_session] = nil
-      end
-    end
-    if session_set
-      #capture_facebook_friends_if_available! 
-      #Session.current = facebook_session
-    end
-    return session_set
-  end
-  
-  
-  def session_already_secured?
-    (@facebook_session = session[:facebook_session]) && session[:facebook_session].secured?
-  end
-  
-  
-  def create_facebook_session
-    if params[:session_key]
-      secure_with_facebook_params!
-    else
-      false
-    end
-  end
-  
-  
-  def secure_with_facebook_params!
-      @facebook_session = new_facebook_session
-      @facebook_session.secure_with!(params['session_key'], params['session_uid'], params['session_expires'])
-      @facebook_session
-  end
-  
-  
-  def new_facebook_session
-    Facebooker::Session.create(Facebooker.api_key, Facebooker.secret_key)
-  end
-  
-  
-  def facebook_session
-    session[:facebook_session]
-  end
-=end 
   
   def set_vars
      @network = Network.network

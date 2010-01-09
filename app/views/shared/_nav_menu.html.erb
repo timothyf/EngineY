@@ -42,9 +42,9 @@ limitations under the License.
 
 		<% if logged_in? && current_user.roles.include?(Role.creator) %>
 			<% if @section == 'MANAGE' %>
-				<li id="current_menu" class="nav_list_item current_menu"><%= link_to 'Manage', { :controller=>'manage'}, :class=>'nav_list_link' %></li>
+				<li id="current_menu" class="nav_list_item current_menu"><%= link_to 'Manage', { :controller=>'admin'}, :class=>'nav_list_link' %></li>
 			<% else %>
-				<li class="nav_list_item"><%= link_to 'Manage', { :controller=>'manage'}, :class=>'nav_list_link' %></li>
+				<li class="nav_list_item"><%= link_to 'Manage', { :controller=>'admin'}, :class=>'nav_list_link' %></li>
 			<% end %>
 		<% end %>
 	</ul>

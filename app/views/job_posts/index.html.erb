@@ -13,6 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
+<%= stylesheet_link_tag 'common' %>
 <%= stylesheet_link_tag 'job_posts' %>
 
 <div id="jobs_links">
@@ -21,7 +22,7 @@ limitations under the License.
 	<% end %>
 </div>
 <h1>Job Posts (<%= @job_posts.length %>)</h1>
-<div id="jobs_table">
+<div id="content_table">
 	<% for job_post in @job_posts %>
 		<%= render :partial => 'job_post_brief', :locals=>{:job_post=>job_post} %>
 		<% if logged_in? && (current_user.is_admin || current_user.id == job_post.user.id) %>

@@ -24,6 +24,11 @@
 	margin-top: 15px;
 }
 
+#events_table {
+	clear: both;
+	margin-top: 20px;
+}
+
 #add_event label {
 	clear:both;
 	margin-top: 15px;
@@ -57,12 +62,6 @@
 
 #user_control_widget {
 	width: 180px;
-}
-
-#events_table {
-	float: left;
-	clear: both;
-	margin-top: 20px;
 }
 
 .event_brief {

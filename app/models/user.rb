@@ -151,10 +151,17 @@ class User < ActiveRecord::Base
   end
 
 
+  # Checks to see if this user has a registered facebook account
   def facebook_user?
     return !facebook_id.nil? && facebook_id > 0
   end
 
+
+  # Returns an array of facebook posts for this user
+  def get_facebook_posts
+    facebook_session.user.statuses(5)
+  end
+  
   
   # Return only activities that represent status posts
   def status_activity_stream

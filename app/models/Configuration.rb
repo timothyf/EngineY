@@ -14,6 +14,43 @@
 
 class Configuration
   
+  @@config = {}
+  
+  
+  # The self.get method is not used yet..
+  def self.get
+    {
+      :use_proxy => false,
+      :proxy_host => '10.0.6.251',
+      :proxy_port => '3128',
+      :enable_self_registration => true,
+      :max_tweets => 5,
+      :theme => 'rubymi',
+      :users_label => 'Members',
+      :footer_image => 'poweredby.jpg'
+    }
+  end
+  
+  
+  # Sets the configuration (not used yet)
+  def self.set(params)
+    @@config[:use_proxy] = params[:use_proxy]
+    @@config[:proxy_host] = params[:proxy_host]
+    @@config[:proxy_port] = params[:proxy_port]
+  end
+  
+  
+  # Read configuration from a YAML file
+  def self.read
+    # read from enginey.yaml
+  end
+  
+  
+  # Write configuration to a YAML file
+  def self.write
+    # write to enginey.yaml
+  end
+  
   
   def self.USE_PROXY
     false

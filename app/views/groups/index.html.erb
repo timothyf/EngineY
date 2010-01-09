@@ -13,6 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
+<%= stylesheet_link_tag 'common' %>
 <%= stylesheet_link_tag 'groups' %>
 
 <div id="groups_links">
@@ -28,7 +29,7 @@ limitations under the License.
 	<h1>All Groups (<%= @groups.size %>)</h1>
 <% end %>
 
-<div id="groups_table">
+<div id="content_table">
 	<% for group in @groups %>
 		<%= render :partial => 'group_brief', :locals=>{:group=>group} %>
 	<% end %>

@@ -1,11 +1,4 @@
 
-h1 {
-	float: left;
-	clear: both;
-	margin-top: 20px;
-	margin-bottom: 10px;
-}
-
 #jobs_links {
 	margin-top: 15px;
 }
@@ -19,16 +12,12 @@ h1 {
 	margin-left: 100px;
 }
 
-#add_job, #jobs_table {
+#add_job {
 	float: left;
 	clear: both;
 	background-color: #ffffff;
 	width: 650px;
 	padding: 25px;
-}
-
-#jobs_table {
-	margin-top: 0px;
 }
 
 #add_job label {
@@ -39,13 +28,6 @@ h1 {
 	width: 120px;
 }
 
-.form_field {
-	clear: both;
-	float: left;
-	margin-bottom: 15px;
-	width: 100%;
-}
-
 .add_button {
 	clear: both;
 	float: right;
@@ -54,7 +36,6 @@ h1 {
 }
 
 .input_field {
-	width: 650px;
 	float: left;
 	width: 300px;
 }

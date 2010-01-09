@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :contents
+
+  map.resources :facebook_posts
+
   map.resources :ideas
 
   map.resources :invites
@@ -13,6 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :book_reviews
   map.resources :replies
   map.resources :rss_feeds
+  map.resources :networks
 
   map.resources :widgets, :collection => {:grid_data=>:get, :load=>:get, :load_profile_widget=>:get}
   map.resources :users, :collection => {:grid_data=>:get, :link_facebook_account => :get, :fb_register_all_users => :get}

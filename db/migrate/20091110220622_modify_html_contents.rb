@@ -4,6 +4,6 @@ class ModifyHtmlContents < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :forum_posts, :content_id
+    remove_column :html_contents, :content_id
   end
 end
