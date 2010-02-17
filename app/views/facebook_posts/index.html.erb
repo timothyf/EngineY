@@ -1,0 +1,18 @@
+<h1>Listing facebook_posts</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for facebook_post in @facebook_posts %>
+  <tr>
+    <td><%= link_to 'Show', facebook_post %></td>
+    <td><%= link_to 'Edit', edit_facebook_post_path(facebook_post) %></td>
+    <td><%= link_to 'Destroy', facebook_post, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New facebook_post', new_facebook_post_path %>

@@ -1,0 +1,33 @@
+.column_1 {
+	float: left;
+	width: 540px;
+}
+
+.column_2 {
+	float: left;
+	width:180px;
+}
+
+h1 {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+#content_table {
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+	float: left;
+	clear: both;
+	margin-top: 20px;
+}
+
+.form_field {
+	clear: both;
+	float: left;
+	margin-bottom: 15px;
+	width: 100%;
+}

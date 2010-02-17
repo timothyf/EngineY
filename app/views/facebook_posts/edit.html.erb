@@ -1,0 +1,12 @@
+<h1>Editing facebook_post</h1>
+
+<% form_for(@facebook_post) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @facebook_post %> |
+<%= link_to 'Back', facebook_posts_path %>

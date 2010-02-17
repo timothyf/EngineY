@@ -1,0 +1,89 @@
+
+#add_network {
+	float: left;
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+}
+
+.add_button {
+	clear: both;
+	float: right;
+	background:#283F4B none repeat scroll 0 0;
+	color:#FFFFFF;
+}
+
+.input_field {
+	width: 300px;
+}
+
+#main #col1 h1 {
+	float: left;
+	clear: both;
+	margin-bottom: 0px;
+	font-size: 18pt;
+	font-weight: normal;
+	width: 100%;
+}
+
+
+#add_network .form_field {
+	margin-bottom: 15px;	
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+#add_network .input_field {
+	width: 250px;
+}
+
+#add_network label {
+	font-size: 10pt;
+	width: 100px;
+	display: block;
+	float: left;
+	clear: both;
+	text-align: left;
+	margin-right: 15px;
+}
+
+#add_network input {
+	float: left;
+}
+
+#add_network textarea {
+	float: left;
+}
+
+.form_field {
+	width: 100%;
+}
+
+.form_field select {
+	float: left;
+}
+
+.form_field img {
+	float: left;
+	margin-right: 8px;
+}
+
+.form_field textarea {
+	float: left;
+}
+
+.group_photo_field {
+	width: 300px;
+}
+
+.section_title {
+	font-size: 10pt;
+	font-weight: bold;
+	float: left;
+	clear: both;
+	margin-top: 0px;
+	margin-bottom: 20px;
+}
+
+

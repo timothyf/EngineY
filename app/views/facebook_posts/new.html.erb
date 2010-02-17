@@ -1,0 +1,11 @@
+<h1>New facebook_post</h1>
+
+<% form_for(@facebook_post) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', facebook_posts_path %>
