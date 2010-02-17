@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091204193534) do
+ActiveRecord::Schema.define(:version => 20091229154645) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -148,6 +148,11 @@ ActiveRecord::Schema.define(:version => 20091204193534) do
     t.string   "website"
     t.string   "phone"
     t.string   "organized_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "facebook_posts", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
