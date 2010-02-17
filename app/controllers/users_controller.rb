@@ -121,6 +121,11 @@ class UsersController < ApplicationController
         @user_count = User.cached_count
         render :xml => @users 
       }
+      format.json {
+        @users = User.paginate(:all, :select=>get_users_xml_select, :page => params[:page], :conditions => "activated_at is not null", :order => @sort_field + ' ASC') 
+        @user_count = User.cached_count
+        render :json => @users.to_json
+      }
     end
   end
   
