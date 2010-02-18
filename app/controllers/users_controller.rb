@@ -153,6 +153,11 @@ class UsersController < ApplicationController
     if @user.twitter_id && @user.display_tweets
       @tweets = @user.fetch_tweets
     end
+    respond_to do |format|
+      format.html { }
+      format.xml { render :xml => @user.to_xml(:dasherize => false) }
+      format.json { render :json => @user.to_json }
+    end
   end
 
 
