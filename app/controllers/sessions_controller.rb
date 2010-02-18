@@ -74,7 +74,7 @@ end
   
   private 
   def flush_expired_sessions
-      sessions = CGI::Session::ActiveRecordStore::Session.find(:all)
+      sessions = ActiveRecord::SessionStore::Session.find(:all)
       sessions.each do |session|
         if session.updated_at < 30.minutes.ago
           session.destroy

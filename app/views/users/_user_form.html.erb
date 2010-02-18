@@ -47,6 +47,27 @@ limitations under the License.
 			<label for="password_confirmation">Confirm Password</label>
 			<%= f.password_field :password_confirmation %>
 		</div>
+		
+		
+		<% if @user.api_is_enabled? %>
+		  <div class="form_field">
+		    Your API Key: 
+		    (<%= link_to "re-generate", api_key_path, :method => :post %> | <%= link_to "disable", api_key_path, :method => :delete %>)
+		  </div>
+		  <div class="form_field">
+		    <strong><%= @user.api_key %></strong>
+		  </div>
+		<% else %>
+		  <div class="form_field">	
+		    You'll need a unique key to make calls to the API.  Remember to keep this key a secret as it can be used to access your account.
+		  </div>
+		  <div class="form_field">
+		    <%= link_to("Get a key", api_key_path, :method => :post) %>
+		  </div>
+		<% end %>		
+		
+		
+		
 	</div>
 	<div id="optional_fields">
 		<div class="section_title">User Profile</div>

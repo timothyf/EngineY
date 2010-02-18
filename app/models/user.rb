@@ -399,10 +399,12 @@ class User < ActiveRecord::Base
     remember_token_expires_at && Time.now.utc < remember_token_expires_at 
   end
   
+  
   # These create and unset the fields required for remembering users between browser closes
   def remember_me
     remember_me_for 2.weeks
   end
+  
   
   def remember_me_for(time)
     remember_me_until time.from_now.utc
@@ -414,18 +416,47 @@ class User < ActiveRecord::Base
     save(false)
   end
   
+  
   def forget_me
     self.remember_token_expires_at = nil
     self.remember_token            = nil
     save(false)
   end
   
+  
   # Returns true if the user has just been activated.
   def recently_activated?
     @activated
   end
   
+  
+  def enable_api!
+    self.generate_api_key!
+  end
+ 
+ 
+  def disable_api!
+    self.update_attribute(:api_key, "")
+  end
+ 
+ 
+  def api_is_enabled?
+    !self.api_key.empty?
+  end
+ 
+  
   protected
+  
+  def secure_digest(*args)
+    Digest::SHA1.hexdigest(args.flatten.join('--'))
+  end
+
+
+  def generate_api_key!
+    self.update_attribute(:api_key, secure_digest(Time.now, (1..10).map{ rand.to_s }))
+  end
+  
+  
   # before filter 
   def encrypt_password
     return if password.blank?
