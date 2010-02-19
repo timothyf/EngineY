@@ -24,7 +24,7 @@ class GroupsTest < ActionController::IntegrationTest
   
   
   # /groups.xml
-  def test_should_not_create_group_via_API
+  def test_should_not_create_group_via_API_XML
       get "/logout"
       post "/groups.xml", :group => {:name=>'unit test group',
                                  :description=>'my desc',
@@ -34,7 +34,7 @@ class GroupsTest < ActionController::IntegrationTest
   
   
   # /groups.xml
-  def test_should_create_group_via_API
+  def test_should_create_group_via_API_XML
       get "/logout"
       post "/groups.xml", :api_key=>'testapikey',
                           :group => {:name=>'unit test group',
@@ -45,7 +45,7 @@ class GroupsTest < ActionController::IntegrationTest
   
   
   # /groups.json
-  def test_should_create_group_via_API
+  def test_should_create_group_via_API_JSON
       get "/logout"
       post "/groups.json", :api_key=>'testapikey',
                            :group => {:name=>'unit test group',

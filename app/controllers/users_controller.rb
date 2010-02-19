@@ -211,9 +211,15 @@ class UsersController < ApplicationController
             render :template=>'sessions/signup_thankyou'
           }
           format.xml {
+            if !Configuration.REQUIRE_ACTIVATE_FOR_USER_CREATE_VIA_API
+              @user.activate
+            end
             render :xml => @user, :status => :created, :location => @user
           }
           format.json {
+            if !Configuration.REQUIRE_ACTIVATE_FOR_USER_CREATE_VIA_API
+              @user.activate
+            end
             render :json => @user.to_json, :status => :created, :location => @user
           }
         end

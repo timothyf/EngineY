@@ -6,7 +6,7 @@ require 'test_helper'
 class UsersTest < ActionController::IntegrationTest
 
   # /users.json
-  test "get all users" do
+  def test_should_get_all_users_via_API_JSON
     get "/users.json"
     assert_response :success
     users = JSON.parse(response.body) 
@@ -16,7 +16,7 @@ class UsersTest < ActionController::IntegrationTest
   
   
   # /users/1.json
-  test "get one user" do
+  def test_should_get_one_user_via_API_JSON
     get "users/1.json"
     assert_response :success
     user = JSON.parse(response.body)
@@ -25,23 +25,27 @@ class UsersTest < ActionController::IntegrationTest
   
   
   # /users.xml
-  def test_should_create_user_via_API
+  def test_should_create_user_via_API_JSON
       get "/logout"
-      post "/users.xml", :user => {:first_name => 'unit',
+      post "/users.json", :user => {:first_name => 'unit',
                                    :last_name => 'test',
                                    :twitter_id=>'uttwit',
-                                   :login => 'ut',
+                                   :login => 'ut1',
                                    :password => '12345',
                                    :password_confirmation => '12345',
                                    :email => 'ut@email.com'}
       assert_response :created
+      user = JSON.parse(response.body)
+      check_new_user(user) 
+      user = User.find_by_login('ut1')
+      assert user.active? == true, 'user should be active'
   end
   
   
   # /users.json
-  def test_should_create_user_via_API
+  def test_should_create_user_via_API_XML
       get "/logout"
-      post "/users.json", :user => {:first_name => 'unit',
+      post "/users.xml", :user => {:first_name => 'unit',
                                      :last_name => 'test',
                                      :twitter_id=>'uttwit',
                                      :login => 'ut2',
@@ -49,8 +53,8 @@ class UsersTest < ActionController::IntegrationTest
                                      :password_confirmation => '12345',
                                      :email => 'ut2@email.com'}
       assert_response :created
-      user = JSON.parse(response.body)
-      check_new_user(user) 
+      user = User.find_by_login('ut2')
+      assert user.active? == true, 'user should be active'
   end
   
   
