@@ -5,6 +5,7 @@ quentin:
   last_name: test
   email: quentin@example.com
   about_me: this is about me
+  twitter_id: qtest
   salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
   crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
   created_at: <%= 5.days.ago.to_s :db %>
@@ -19,8 +20,22 @@ aaron:
   last_name: test
   email: aaron@example.com
   about_me: this is about me
+  twitter_id: atest
   salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
   crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
   created_at: <%= 1.days.ago.to_s :db %>
   activation_code: 8f24789ae988411ccf33ab0c30fe9106fab32e9a 
-
+  
+sam:
+    id: 3
+    login: sfisher
+    first_name: sam
+    last_name: fisher
+    email: sfisher@example.com
+    about_me: this is about me
+    twitter_id: sfisher
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+    created_at: <%= 5.days.ago.to_s :db %>
+    activation_code: 8f24789ae988411ccf33ab0c30fe9106fab32e9b 
+    activated_at: <%= 5.days.ago.to_s :db %> 

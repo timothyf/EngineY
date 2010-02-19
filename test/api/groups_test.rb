@@ -41,7 +41,6 @@ class GroupsTest < ActionController::IntegrationTest
                                      :description=>'my desc',
                                      :featured=>false}
       assert_response :created
-      puts response.body
   end
   
   
@@ -53,7 +52,6 @@ class GroupsTest < ActionController::IntegrationTest
                                       :description=>'my desc',
                                       :featured=>false}
       assert_response :created
-      puts response.body
       group = JSON.parse(response.body)
       check_new_group(group) 
   end

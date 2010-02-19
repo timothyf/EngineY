@@ -25,36 +25,30 @@ class UsersTest < ActionController::IntegrationTest
   
   
   # /users.xml
-  def test_should_not_create_user_via_API
-      get "/logout"
-      post "/users.xml", :user => {:name=>'unit test user',
-                                 :description=>'my desc',
-                                 :featured=>false}
-      assert_response 401
-  end
-  
-  
-  # /users.xml
   def test_should_create_user_via_API
       get "/logout"
-      post "/users.xml", :api_key=>'testapikey',
-                          :user => {:name=>'unit test user',
-                                     :description=>'my desc',
-                                     :featured=>false}
+      post "/users.xml", :user => {:first_name => 'unit',
+                                   :last_name => 'test',
+                                   :twitter_id=>'uttwit',
+                                   :login => 'ut',
+                                   :password => '12345',
+                                   :password_confirmation => '12345',
+                                   :email => 'ut@email.com'}
       assert_response :created
-      puts response.body
   end
   
   
   # /users.json
   def test_should_create_user_via_API
       get "/logout"
-      post "/users.json", :api_key=>'testapikey',
-                           :user => {:name=>'unit test user',
-                                      :description=>'my desc',
-                                      :featured=>false}
+      post "/users.json", :user => {:first_name => 'unit',
+                                     :last_name => 'test',
+                                     :twitter_id=>'uttwit',
+                                     :login => 'ut2',
+                                     :password => '12345',
+                                     :password_confirmation => '12345',
+                                     :email => 'ut2@email.com'}
       assert_response :created
-      puts response.body
       user = JSON.parse(response.body)
       check_new_user(user) 
   end
@@ -62,14 +56,17 @@ class UsersTest < ActionController::IntegrationTest
   
   private
   def check_user(user)
-    assert user['first_name'] == 'Timothy', 'Incorrect first_name'
-    assert user['last_name'] == 'Fisher', 'Incorrect last_name'
-    assert user['twitter_id'] == 'tfisher', 'Incorrect twitter_id'
-    assert user['city'] == 'Flat Rock', 'Incorrect city'
-    assert user['receive_emails'] == true , 'Incorrect receive_emails'
-    assert user['facebook_url'] == 'http://www.facebook.com/trfisher', 'Incorrect facebook_url'
+    assert user['first_name'] == 'quentin', 'Incorrect first_name'
+    assert user['last_name'] == 'test', 'Incorrect last_name'
+    assert user['twitter_id'] == 'qtest', 'Incorrect twitter_id'
   end
   
+  
+  def check_new_user(user)
+    assert user['first_name'] == 'unit', 'Incorrect first_name'
+    assert user['last_name'] == 'test', 'Incorrect last_name'
+    assert user['twitter_id'] == 'uttwit', 'Incorrect twitter_id'  
+  end
   
   # 
   

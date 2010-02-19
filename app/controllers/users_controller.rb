@@ -213,6 +213,9 @@ class UsersController < ApplicationController
           format.xml {
             render :xml => @user, :status => :created, :location => @user
           }
+          format.json {
+            render :json => @user.to_json, :status => :created, :location => @user
+          }
         end
       else
         render :action => 'new'
