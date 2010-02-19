@@ -147,9 +147,11 @@ class GroupsController < ApplicationController
         flash[:notice] = 'Group was successfully updated.'
         format.html { redirect_to(@group) }
         format.xml  { head :ok }
+        format.json { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @group.errors.to_json, :status => :unprocessable_entity }
       end
     end
   end

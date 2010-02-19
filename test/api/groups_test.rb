@@ -3,7 +3,8 @@ require 'test_helper'
 
 # This class provides tests for the RESTful API of the Group object.
 class GroupsTest < ActionController::IntegrationTest
-    
+  
+  # GET ALL GROUPS  
   # /groups.json
   test "get all groups" do
     get "/groups.json"
@@ -14,6 +15,7 @@ class GroupsTest < ActionController::IntegrationTest
   end
   
   
+  # GET ONE GROUP
   # /groups/1.json
   test "get one group" do
     get "groups/1.json"
@@ -23,6 +25,7 @@ class GroupsTest < ActionController::IntegrationTest
   end
   
   
+  # TRY TO CREATE A GROUP
   # /groups.xml
   def test_should_not_create_group_via_API_XML
       get "/logout"
@@ -33,6 +36,7 @@ class GroupsTest < ActionController::IntegrationTest
   end
   
   
+  # CREATE A GROUP
   # /groups.xml
   def test_should_create_group_via_API_XML
       get "/logout"
@@ -44,16 +48,49 @@ class GroupsTest < ActionController::IntegrationTest
   end
   
   
+  # CREATE A GROUP
   # /groups.json
   def test_should_create_group_via_API_JSON
-      get "/logout"
-      post "/groups.json", :api_key=>'testapikey',
-                           :group => {:name=>'unit test group',
-                                      :description=>'my desc',
-                                      :featured=>false}
-      assert_response :created
-      group = JSON.parse(response.body)
-      check_new_group(group) 
+    get "/logout"
+    post "/groups.json", :api_key => 'testapikey',
+                         :group => {:name=>'unit test group',
+                                    :description=>'my desc',
+                                    :featured=>false }
+    assert_response :created
+    group = JSON.parse(response.body)
+    check_new_group(group) 
+  end
+  
+  
+  # TRY TO UPDATE A GROUP
+  def test_should_update_group_via_API_XML
+    get "/logout"
+    put "/groups/1.xml", :group => { :name=>'renamed unit test group',
+                                     :description=>'my new desc',
+                                     :featured=>false }
+    assert_response 401
+  end
+  
+  
+  # UPDATE A GROUP
+  def test_should_update_group_via_API_XML
+    get "/logout"
+    put "/groups/1.xml", :api_key => 'testapikey',
+                         :group => { :name=>'renamed unit test group',
+                                     :description=>'my new desc',
+                                     :featured=>false }
+    assert_response :success
+  end
+  
+  
+  # UPDATE A GROUP
+  def test_should_update_group_via_API_JSON
+    get "/logout"
+    put "/groups/1.json", :api_key => 'testapikey',
+                         :group => { :name=>'renamed unit test group',
+                                     :description=>'my new desc',
+                                     :featured=>false }
+    assert_response :success
   end
   
   
