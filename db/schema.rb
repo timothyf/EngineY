@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091229154645) do
+ActiveRecord::Schema.define(:version => 20100218042049) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -462,6 +462,7 @@ ActiveRecord::Schema.define(:version => 20091229154645) do
     t.boolean  "is_active",                               :default => false
     t.string   "identity_url"
     t.boolean  "receive_emails",                          :default => true
+    t.string   "api_key",                   :limit => 40, :default => ""
   end
 
   create_table "videos", :force => true do |t|

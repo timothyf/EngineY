@@ -12,6 +12,15 @@
 
 one:
    id: 1
+   view_count: 1
+   title: Test Album 1
+   description: Test Album 1 Desc
+   user_id: 1
 
 two:
    id: 2
+   view_count: 1
+   title: Test Album 2
+   description: Test Album 2 Desc
+   user_id: 1
+

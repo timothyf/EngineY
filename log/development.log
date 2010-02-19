@@ -5422,3 +5422,654 @@ ActionController::RoutingError (No route matches "/photos/0000/0272/aptana_banne
   /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
 
 Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-02-17 23:50:04) [GET]
+  Parameters: {"id"=>"31"}
+  [4;35;1mNetwork Load (0.4ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+  [4;36;1mUser Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+Rendering template within layouts/application
+Rendering users/show
+  [4;35;1mProfilePhoto Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `photos`[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.user_id = 31 AND (is_profile = 1)) LIMIT 1[0m
+  [4;35;1mState Columns (41.1ms)[0m   [0mSHOW FIELDS FROM `states`[0m
+  [4;36;1mState Load (0.3ms)[0m   [0;1mSELECT * FROM `states` WHERE (`states`.`id` = 148) [0m
+Rendered users/_user_detail_widget (52.1ms)
+  [4;35;1mUser Load (2.1ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `friendships` ON `users`.id = `friendships`.friend_id WHERE ((`friendships`.user_id = 31) AND ((status = 'pending'))) ORDER BY friendships.created_at[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` INNER JOIN `friendships` ON `users`.id = `friendships`.friend_id WHERE ((`friendships`.user_id = 31) AND ((status = 'accepted'))) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM `users` INNER JOIN `friendships` ON `users`.id = `friendships`.friend_id WHERE ((`friendships`.user_id = 31) AND ((status = 'accepted'))) [0m
+Rendered friends/_friends (3.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` INNER JOIN `friendships` ON `users`.id = `friendships`.friend_id WHERE ((`friendships`.user_id = 31) AND ((status = 'accepted'))) [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `friendships` ON `users`.id = `friendships`.friend_id WHERE ((`friendships`.user_id = 31) AND ((status = 'requested'))) ORDER BY friendships.created_at[0m
+Rendered friends/_friends_widget (36.6ms)
+  [4;36;1mGroup Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `groups`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSELECT count(*) AS count_all FROM `groups` INNER JOIN `memberships` ON `groups`.id = `memberships`.group_id WHERE ((`memberships`.user_id = 31)) [0m
+Rendered groups/_groups_profile (20.9ms)
+  [4;36;1mPhoto Load (0.7ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.user_id = 31) [0m
+  [4;35;1mPhoto Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `photos`[0m
+Rendered photos/_photos_profile (33.9ms)
+  [4;36;1mWallPost Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `wall_posts`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `wall_posts` WHERE (`wall_posts`.user_id = 31) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.user_id = 31 AND (is_profile = 1)) LIMIT 1[0m
+Rendered shared/_wall_post_entry_form (2.3ms)
+Rendered shared/_wall_posts (1.2ms)
+Rendered shared/_wall_posts_widget (18.4ms)
+  [4;35;1mNetwork Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `networks`[0m
+  [4;36;1mRole Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mRole Load (0.5ms)[0m   [0mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT `roles`.id FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE (`roles`.`id` = 11) AND ((`permissions`.user_id = 31)) LIMIT 1[0m
+Rendered shared/_nav_menu (21.2ms)
+Rendered users/_add_friend_widget (1.0ms)
+Rendered users/_user_control_widget (3.7ms)
+  [4;35;1mEvent Load (1.7ms)[0m   [0mSELECT `events`.* FROM `events` INNER JOIN `attendances` ON `events`.id = `attendances`.event_id WHERE ((`attendances`.attendee_id = 31)) [0m
+Rendered events/_events_profile (38.8ms)
+  [4;36;1mForumPost Load (0.4ms)[0m   [0;1mSELECT * FROM `forum_posts` WHERE (`forum_posts`.user_id = 31) ORDER BY created_at DESC[0m
+  [4;35;1mForumPost Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `forum_posts`[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+Rendered forum_posts/_forum_posts_profile (115.8ms)
+  [4;36;1mMessage Columns (50.5ms)[0m   [0;1mSHOW FIELDS FROM `messages`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM `messages` WHERE (`messages`.recipient_id = 31 AND (`messages`.`read` = 0)) [0m
+  [4;36;1mMessage Load (0.2ms)[0m   [0;1mSELECT * FROM `messages` WHERE (`messages`.recipient_id = 31 AND (`messages`.`read` = 0)) [0m
+Rendered messages/_unread_messages_widget (58.8ms)
+Rendered shared/_footer (3.9ms)
+Completed in 1222ms (View: 1074, DB: 115) | 200 OK [http://localhost/users/31]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:50:06) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0177/tim.png" with {:method=>:get, :canvas=>false}):
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:50:07) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0272/aptana_banner_medium.jpg" with {:method=>:get, :canvas=>false}):
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:50:07) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0283/rails_medium.png" with {:method=>:get, :canvas=>false}):
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load_profile_widget (for 127.0.0.1 at 2010-02-17 23:50:07) [GET]
+  Parameters: {"name"=>"activity_feed_profile", "authenticity_token"=>"bJQktneptk0K7FmwFvuV9occOh/JwSRXiXpcp7YnTzU=", "user_id"=>"31"}
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/activity_feed_profile
+  [4;36;1mUser Columns (2.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;36;1mActivity Load (0.6ms)[0m   [0;1mSELECT * FROM `activities` WHERE (`activities`.user_id = 31) ORDER BY created_at DESC[0m
+  [4;35;1mActivity Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `activities`[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;35;1mStatusPost Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `status_posts`[0m
+  [4;36;1mStatusPost Load (0.2ms)[0m   [0;1mSELECT * FROM `status_posts` WHERE (`status_posts`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;36;1mStatusPost Load (0.3ms)[0m   [0;1mSELECT * FROM `status_posts` WHERE (`status_posts`.`id` = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;36;1mStatusPost Load (0.3ms)[0m   [0;1mSELECT * FROM `status_posts` WHERE (`status_posts`.`id` = 4) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;36;1mStatusPost Load (0.3ms)[0m   [0;1mSELECT * FROM `status_posts` WHERE (`status_posts`.`id` = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;36;1mStatusPost Load (0.3ms)[0m   [0;1mSELECT * FROM `status_posts` WHERE (`status_posts`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;36;1mStatusPost Load (0.3ms)[0m   [0;1mSELECT * FROM `status_posts` WHERE (`status_posts`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;36;1mPhoto Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mPhoto Load (0.4ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.`id` = 283) [0m
+  [4;36;1mPhoto Load (0.2ms)[0m   [0;1mSELECT id, user_id, filename, parent_id, created_at FROM `photos` WHERE (`photos`.`id` = 283) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;36;1mProfilePhoto Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mProfilePhoto Load (0.5ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.user_id = 31 AND (is_profile = 1)) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;35;1mPhoto Load (0.4ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.`id` = 272) [0m
+  [4;36;1mPhoto Load (0.3ms)[0m   [0;1mSELECT id, user_id, filename, parent_id, created_at FROM `photos` WHERE (`photos`.`id` = 272) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.user_id = 31 AND (is_profile = 1)) LIMIT 1[0m
+DEPRECATION WARNING: formatted_activities_url() has been deprecated. Please pass format to the standard activities_url method instead.. (called from _run_erb_app47views47widgets47activity_feed_profile46html46erb_locals_include_friends_only_statuses_user_id at /Users/timothyfisher/Projects/enginey/app/views/widgets/activity_feed_profile.html.erb:52)
+DEPRECATION WARNING: formatted_activities_url() has been deprecated. Please pass format to the standard activities_url method instead.. (called from _run_erb_app47views47widgets47activity_feed_profile46html46erb_locals_include_friends_only_statuses_user_id at /Users/timothyfisher/Projects/enginey/app/views/widgets/activity_feed_profile.html.erb:53)
+Completed in 308ms (View: 286, DB: 14) | 200 OK [http://localhost/widgets/load_profile_widget?name=activity_feed_profile&user_id=31&authenticity_token=bJQktneptk0K7FmwFvuV9occOh%2FJwSRXiXpcp7YnTzU%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:50:08) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0177/tim_small.png" with {:method=>:get, :canvas=>false}):
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load_profile_widget (for 127.0.0.1 at 2010-02-17 23:50:08) [GET]
+  Parameters: {"name"=>"status_posts_profile", "authenticity_token"=>"bJQktneptk0K7FmwFvuV9occOh/JwSRXiXpcp7YnTzU=", "user_id"=>"31"}
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/status_posts_profile
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 31) LIMIT 1[0m
+Rendered status_posts/_status_post_form (14.7ms)
+  [4;35;1mStatusPost Load (27.8ms)[0m   [0mSELECT * FROM `status_posts` WHERE (`status_posts`.user_id = 31) ORDER BY created_at DESC[0m
+  [4;36;1mStatusPost Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `status_posts`[0m
+Completed in 81ms (View: 40, DB: 33) | 200 OK [http://localhost/widgets/load_profile_widget?name=status_posts_profile&user_id=31&authenticity_token=bJQktneptk0K7FmwFvuV9occOh%2FJwSRXiXpcp7YnTzU%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load_profile_widget (for 127.0.0.1 at 2010-02-17 23:50:08) [GET]
+  Parameters: {"name"=>"about_me_profile", "authenticity_token"=>"bJQktneptk0K7FmwFvuV9occOh/JwSRXiXpcp7YnTzU=", "user_id"=>"31"}
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/about_me_profile
+  [4;35;1mUser Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) LIMIT 1[0m
+Completed in 37ms (View: 22, DB: 4) | 200 OK [http://localhost/widgets/load_profile_widget?name=about_me_profile&user_id=31&authenticity_token=bJQktneptk0K7FmwFvuV9occOh%2FJwSRXiXpcp7YnTzU%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load_profile_widget (for 127.0.0.1 at 2010-02-17 23:50:08) [GET]
+  Parameters: {"name"=>"blog_posts_profile", "authenticity_token"=>"bJQktneptk0K7FmwFvuV9occOh/JwSRXiXpcp7YnTzU=", "user_id"=>"31"}
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/blog_posts_profile
+  [4;36;1mUser Columns (4.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;36;1mBlogPost Load (0.4ms)[0m   [0;1mSELECT * FROM `blog_posts` WHERE (`blog_posts`.user_id = 31) ORDER BY created_at DESC[0m
+  [4;35;1mBlogPost Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `blog_posts`[0m
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 31) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 31)) [0m
+  [4;36;1mRole Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 89ms (View: 69, DB: 10) | 200 OK [http://localhost/widgets/load_profile_widget?name=blog_posts_profile&user_id=31&authenticity_token=bJQktneptk0K7FmwFvuV9occOh%2FJwSRXiXpcp7YnTzU%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:50:09) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0177/tim_thumb.png" with {:method=>:get, :canvas=>false}):
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load_profile_widget (for 127.0.0.1 at 2010-02-17 23:50:09) [GET]
+  Parameters: {"name"=>"links_profile", "authenticity_token"=>"bJQktneptk0K7FmwFvuV9occOh/JwSRXiXpcp7YnTzU=", "user_id"=>"31"}
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/links_profile
+  [4;36;1mUser Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;36;1mLink Load (0.3ms)[0m   [0;1mSELECT * FROM `links` WHERE (`links`.user_id = 31) [0m
+Completed in 29ms (View: 16, DB: 4) | 200 OK [http://localhost/widgets/load_profile_widget?name=links_profile&user_id=31&authenticity_token=bJQktneptk0K7FmwFvuV9occOh%2FJwSRXiXpcp7YnTzU%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load_profile_widget (for 127.0.0.1 at 2010-02-17 23:50:09) [GET]
+  Parameters: {"name"=>"projects_profile", "authenticity_token"=>"bJQktneptk0K7FmwFvuV9occOh/JwSRXiXpcp7YnTzU=", "user_id"=>"31"}
+  [4;36;1mNetwork Load (0.5ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/projects_profile
+  [4;35;1mUser Columns (2.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM `projects` WHERE (`projects`.user_id = 31) [0m
+Completed in 34ms (View: 18, DB: 5) | 200 OK [http://localhost/widgets/load_profile_widget?name=projects_profile&user_id=31&authenticity_token=bJQktneptk0K7FmwFvuV9occOh%2FJwSRXiXpcp7YnTzU%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:50:09) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0283/rails_small.png" with {:method=>:get, :canvas=>false}):
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:50:09) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0272/aptana_banner_small.jpg" with {:method=>:get, :canvas=>false}):
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2010-02-17 23:50:16) [GET]
+  Parameters: {"id"=>"31"}
+  [4;35;1mNetwork Load (0.4ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+  [4;36;1mUser Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+Rendering template within layouts/application
+Rendering users/edit
+
+ActionView::TemplateError (undefined method `api_key' for #<User:0x1070e0698>) on line #38 of app/views/users/_user_form.html.erb:
+35: 			<label for="last_name">Last Name:</label>
+36: 			<%= f.text_field :last_name, :class=>'input_field' %>
+37: 		</div>
+38: 		<div class="form_field">
+39: 			<label for="email">Email</label>
+40: 			<%= f.text_field :email, :class=>'input_field'  %>
+41: 		</div>
+
+    app/models/user.rb:444:in `api_is_enabled?'
+    app/views/users/_user_form.html.erb:38
+    app/views/users/_user_form.html.erb:2
+    app/views/users/edit.html.erb:5
+    /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+    /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+    /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendered rescues/_trace (158.1ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (32.8ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (19.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090116160747)
+Migrating to CreateProfiles (20090116161501)
+Migrating to CreateMessages (20090116161755)
+Migrating to CreatePhotos (20090116162559)
+Migrating to CreateActivities (20090116165201)
+Migrating to CreateActivityTypes (20090116165337)
+Migrating to CreateRoles (20090116171953)
+Migrating to CreatePermissions (20090116172007)
+Migrating to CreateContentPages (20090116173325)
+Migrating to CreateWidgets (20090116174907)
+Migrating to CreateGroups (20090116191446)
+Migrating to CreateBlogPosts (20090116192816)
+Migrating to CreateVideos (20090119154736)
+Migrating to CreatePages (20090119155135)
+Migrating to CreateMemberships (20090119160430)
+Migrating to CreateStates (20090119171424)
+Migrating to CreateCountries (20090119171439)
+Migrating to CreateFriendships (20090120182623)
+Migrating to CreateEvents (20090122190843)
+Migrating to CreateWallPosts (20090129183023)
+Migrating to CreateForumPosts (20090129192945)
+Migrating to CreateFeeds (20090203220718)
+Migrating to CreateHtmlContents (20090205221617)
+Migrating to CreateSessions (20090206031415)
+Migrating to ModifySessions (20090206034820)
+Migrating to CreateStatusPosts (20090206174233)
+Migrating to CreateNetworks (20090206185148)
+Migrating to CreatePhotoAlbums (20090206190209)
+Migrating to CreateRssFeeds (20090209185842)
+Migrating to CreateReplies (20090209220152)
+Migrating to CreateBookReviews (20090212221022)
+Migrating to CreateJobPosts (20090212222534)
+Migrating to CreateAnnouncements (20090216173509)
+Migrating to CreateForumTopics (20090216181231)
+Migrating to CreateBugReports (20090220180912)
+Migrating to ActsAsTaggableOnMigration (20090226213342)
+Migrating to CreateBlogMirrors (20090609211245)
+Migrating to CreateAttendances (20090710182653)
+Migrating to CreateInvites (20090713185659)
+Migrating to CreateLinks (20090810193828)
+Migrating to AddEmailOptInToUser (20091012011206)
+Migrating to CreateProjects (20091013205203)
+Migrating to CreateComments (20091019212027)
+Migrating to CreateClassifieds (20091026183009)
+Migrating to CreateClassifiedCategories (20091026184522)
+Migrating to ModifyForumPosts (20091106205213)
+Migrating to ModifyHtmlContents (20091110220622)
+Migrating to ModifyPhotoAlbums (20091124145508)
+Migrating to ModifyPhotos (20091124145525)
+Migrating to ModifyInvites (20091125201654)
+Migrating to CreateIdeas (20091204193534)
+  [4;35;1mSQL (90.7ms)[0m   [0mCREATE TABLE `ideas` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `description` text, `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (10.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091204193534')[0m
+Migrating to CreateFacebookPosts (20091229154645)
+  [4;35;1mSQL (413.7ms)[0m   [0mCREATE TABLE `facebook_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (165.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091229154645')[0m
+Migrating to AddApiKeyToUsers (20100218042049)
+  [4;35;1mSQL (129.6ms)[0m   [0mALTER TABLE `users` ADD `api_key` varchar(40) DEFAULT ''[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100218042049')[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (24.4ms)[0m   [0;1mSHOW FIELDS FROM `activities`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mdescribe `activities`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `activities`[0m
+  [4;35;1mSQL (16.8ms)[0m   [0mSHOW FIELDS FROM `activity_types`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `activity_types`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW KEYS FROM `activity_types`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `announcements`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mdescribe `announcements`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `announcements`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `attendances`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mdescribe `attendances`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `attendances`[0m
+  [4;36;1mSQL (35.5ms)[0m   [0;1mSHOW FIELDS FROM `blog_mirrors`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `blog_mirrors`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `blog_mirrors`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `blog_posts`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mdescribe `blog_posts`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `blog_posts`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW FIELDS FROM `book_reviews`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `book_reviews`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `book_reviews`[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mSHOW FIELDS FROM `bug_reports`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mdescribe `bug_reports`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `bug_reports`[0m
+  [4;36;1mSQL (26.6ms)[0m   [0;1mSHOW FIELDS FROM `classified_categories`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `classified_categories`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `classified_categories`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW FIELDS FROM `classifieds`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mdescribe `classifieds`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `classifieds`[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mSHOW FIELDS FROM `comments`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `comments`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `comments`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `content_pages`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `content_pages`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `content_pages`[0m
+  [4;36;1mSQL (70.3ms)[0m   [0;1mSHOW FIELDS FROM `countries`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `countries`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `countries`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `events`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mdescribe `events`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `events`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `facebook_posts`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `facebook_posts`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `facebook_posts`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mSHOW FIELDS FROM `feeds`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `feeds`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `feeds`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `forum_posts`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `forum_posts`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `forum_posts`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mdescribe `forum_topics`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `forum_topics`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `friendships`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `friendships`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `friendships`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `groups`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mdescribe `groups`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `groups`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `html_contents`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `html_contents`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `html_contents`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `ideas`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mdescribe `ideas`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `ideas`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW FIELDS FROM `invites`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `invites`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `invites`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `job_posts`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mdescribe `job_posts`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW KEYS FROM `job_posts`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `links`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `links`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `links`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `memberships`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `memberships`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `memberships`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `messages`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `messages`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `messages`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `networks`[0m
+  [4;36;1mSQL (26.2ms)[0m   [0;1mdescribe `networks`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `networks`[0m
+  [4;36;1mSQL (36.9ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `pages`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `pages`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `permissions`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `permissions`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `permissions`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mSHOW FIELDS FROM `photo_albums`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `photo_albums`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `photo_albums`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `photos`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mdescribe `photos`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `photos`[0m
+  [4;36;1mSQL (23.2ms)[0m   [0;1mSHOW FIELDS FROM `profiles`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `profiles`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `profiles`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mdescribe `projects`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `projects`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `replies`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `replies`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `replies`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `roles`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `roles`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSHOW FIELDS FROM `rss_feeds`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mdescribe `rss_feeds`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `rss_feeds`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `sessions`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `sessions`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `sessions`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `states`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `states`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `states`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `status_posts`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `status_posts`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `status_posts`[0m
+  [4;36;1mSQL (2.9ms)[0m   [0;1mSHOW FIELDS FROM `taggings`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mdescribe `taggings`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `taggings`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW FIELDS FROM `tags`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `tags`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `tags`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (3.3ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW FIELDS FROM `videos`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mdescribe `videos`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `videos`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `wall_posts`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mdescribe `wall_posts`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW KEYS FROM `wall_posts`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `widgets`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `widgets`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `widgets`[0m
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:51:02) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0177/tim.png" with {:method=>:get, :canvas=>false}):
+  
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:51:02) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0272/aptana_banner_medium.jpg" with {:method=>:get, :canvas=>false}):
+  
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:51:03) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0283/rails_medium.png" with {:method=>:get, :canvas=>false}):
+  
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:51:03) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0177/tim_thumb.png" with {:method=>:get, :canvas=>false}):
+  
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:51:03) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0177/tim_small.png" with {:method=>:get, :canvas=>false}):
+  
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:51:03) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0283/rails_small.png" with {:method=>:get, :canvas=>false}):
+  
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:51:03) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0272/aptana_banner_small.jpg" with {:method=>:get, :canvas=>false}):
+  
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2010-02-17 23:51:06) [GET]
+  Parameters: {"id"=>"31"}
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 31) LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+Rendering template within layouts/application
+Rendering users/edit
+  [4;36;1mCountry Load (0.8ms)[0m   [0;1mSELECT * FROM `countries` [0m
+  [4;35;1mCountry Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `countries`[0m
+  [4;36;1mState Load (0.6ms)[0m   [0;1mSELECT * FROM `states` [0m
+  [4;35;1mState Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `states`[0m
+  [4;36;1mProfilePhoto Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mProfilePhoto Load (0.4ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.user_id = 31 AND (is_profile = 1)) LIMIT 1[0m
+Rendered users/_user_form (465.5ms)
+  [4;36;1mNetwork Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `networks`[0m
+  [4;35;1mRole Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT `roles`.id FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE (`roles`.`id` = 11) AND ((`permissions`.user_id = 31)) LIMIT 1[0m
+Rendered shared/_nav_menu (21.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.user_id = 31 AND (is_profile = 1)) LIMIT 1[0m
+Rendered users/_user_control_widget (4.2ms)
+Rendered shared/_footer (3.7ms)
+Completed in 632ms (View: 597, DB: 13) | 200 OK [http://localhost/users/31/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:51:07) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0177/tim_thumb.png" with {:method=>:get, :canvas=>false}):
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:51:07) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0177/tim_small.png" with {:method=>:get, :canvas=>false}):
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApiKeysController#create (for 127.0.0.1 at 2010-02-17 23:51:23) [POST]
+  Parameters: {"authenticity_token"=>"bJQktneptk0K7FmwFvuV9occOh/JwSRXiXpcp7YnTzU="}
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+  [4;35;1mUser Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 31) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2010-02-18 04:51:23', `api_key` = 'd1c9d64919ee00cd49d782eddaf17e523d151cb7' WHERE `id` = 31[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/users/31/edit
+Completed in 33ms (DB: 5) | 302 Found [http://localhost/api_key]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2010-02-17 23:51:23) [GET]
+  Parameters: {"id"=>"31"}
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+  [4;36;1mUser Columns (190.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 31) LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 31) [0m
+Rendering template within layouts/application
+Rendering users/edit
+  [4;35;1mCountry Load (0.7ms)[0m   [0mSELECT * FROM `countries` [0m
+  [4;36;1mCountry Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `countries`[0m
+  [4;35;1mState Load (0.5ms)[0m   [0mSELECT * FROM `states` [0m
+  [4;36;1mState Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `states`[0m
+  [4;35;1mProfilePhoto Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `photos`[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.user_id = 31 AND (is_profile = 1)) LIMIT 1[0m
+Rendered users/_user_form (232.7ms)
+  [4;35;1mNetwork Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `networks`[0m
+  [4;36;1mRole Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT `roles`.id FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE (`roles`.`id` = 11) AND ((`permissions`.user_id = 31)) LIMIT 1[0m
+Rendered shared/_nav_menu (16.2ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.user_id = 31 AND (is_profile = 1)) LIMIT 1[0m
+Rendered users/_user_control_widget (2.4ms)
+Rendered shared/_footer (1.0ms)
+Completed in 470ms (View: 255, DB: 201) | 200 OK [http://localhost/users/31/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:51:24) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0177/tim_thumb.png" with {:method=>:get, :canvas=>false}):
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-17 23:51:24) [GET]
+
+ActionController::RoutingError (No route matches "/photos/0000/0177/tim_small.png" with {:method=>:get, :canvas=>false}):
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)

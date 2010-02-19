@@ -2,6 +2,14 @@ require 'test_helper'
 
 class PhotoAlbumsControllerTest < ActionController::TestCase
   
+  fixtures :users
+  
+  
+  def setup
+    login_as :quentin
+  end
+  
+  
   def test_should_get_index
     get :index
     assert_response :success
@@ -17,7 +25,9 @@ class PhotoAlbumsControllerTest < ActionController::TestCase
 
   def test_should_create_photo_album
     assert_difference('PhotoAlbum.count') do
-      post :create, :photo_album => { }
+      post :create, :photo_album => {:title => 'test album',
+                                     :description => 'test album desc',
+                                     :user_id => 1}
     end
     assert_redirected_to photo_album_path(assigns(:photo_album))
   end
@@ -30,7 +40,9 @@ class PhotoAlbumsControllerTest < ActionController::TestCase
 
 
   def test_should_update_photo_album
-    put :update, :id => photo_albums(:one).id, :photo_album => { }
+    put :update, :id => photo_albums(:one).id, :photo_album => {:title => 'test album',
+                                     :description => 'test album desc',
+                                     :user_id => 1}
     assert_redirected_to photo_album_path(assigns(:photo_album))
   end
 

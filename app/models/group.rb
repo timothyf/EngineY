@@ -32,7 +32,7 @@ class Group < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
   has_many :users, :through => :memberships, :order=>'RAND()' 
   
-  belongs_to :user # the creator
+  belongs_to :creator, :class_name => 'User' # the creator
   
   has_one :profile_photo
   has_many :wall_posts, :order=>'created_at DESC'
@@ -67,7 +67,7 @@ class Group < ActiveRecord::Base
   
   class << self
     def log_activity(group)
-      Activity.create!(:item => group, :user => group.user)
+      Activity.create!(:item => group, :user => group.creator)
     end
   end
   

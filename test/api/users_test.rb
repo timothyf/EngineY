@@ -1,27 +1,66 @@
 require 'test_helper'
-require 'rest_client'
 
-# Make sure that the server is running before running this test.
+
+
 # This class provides tests for the RESTful API of the User object.
-class UsersTest < ActiveSupport::TestCase
+class UsersTest < ActionController::IntegrationTest
 
-  # http://localhost:3000/users.json
+  # /users.json
   test "get all users" do
-    result = RestClient.get 'http://localhost:3000/users.json'
-    users = JSON.parse(result)
-    assert users.size == 10
-    check_user(users[0])
+    get "/users.json"
+    assert_response :success
+    users = JSON.parse(response.body) 
+    assert users.size == 2
+    check_user(users[0]) 
   end
   
   
-  # http://localhost:3000/users/1.json
+  # /users/1.json
   test "get one user" do
-    result = RestClient.get 'http://localhost:3000/users/1.json'
-    user = JSON.parse(result)
+    get "users/1.json"
+    assert_response :success
+    user = JSON.parse(response.body)
     check_user(user) 
   end
   
   
+  # /users.xml
+  def test_should_not_create_user_via_API
+      get "/logout"
+      post "/users.xml", :user => {:name=>'unit test user',
+                                 :description=>'my desc',
+                                 :featured=>false}
+      assert_response 401
+  end
+  
+  
+  # /users.xml
+  def test_should_create_user_via_API
+      get "/logout"
+      post "/users.xml", :api_key=>'testapikey',
+                          :user => {:name=>'unit test user',
+                                     :description=>'my desc',
+                                     :featured=>false}
+      assert_response :created
+      puts response.body
+  end
+  
+  
+  # /users.json
+  def test_should_create_user_via_API
+      get "/logout"
+      post "/users.json", :api_key=>'testapikey',
+                           :user => {:name=>'unit test user',
+                                      :description=>'my desc',
+                                      :featured=>false}
+      assert_response :created
+      puts response.body
+      user = JSON.parse(response.body)
+      check_new_user(user) 
+  end
+  
+  
+  private
   def check_user(user)
     assert user['first_name'] == 'Timothy', 'Incorrect first_name'
     assert user['last_name'] == 'Fisher', 'Incorrect last_name'

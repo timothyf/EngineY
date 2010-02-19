@@ -112,6 +112,7 @@ class GroupsController < ApplicationController
   def create
     sleep 4  # required for photo upload
     @group = Group.new(params[:group])
+    @group.creator = current_user;
     respond_to do |format|
       if @group.save
         if params[:group_photo] 
@@ -121,6 +122,7 @@ class GroupsController < ApplicationController
         flash[:notice] = 'Group was successfully created.'
         format.html { redirect_to(@group) }
         format.xml  { render :xml => @group, :status => :created, :location => @group }
+        format.json { render :json => @group.to_json, :status => :created, :location => @group }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }

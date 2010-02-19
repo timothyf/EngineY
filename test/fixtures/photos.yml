@@ -27,7 +27,9 @@
 one:
   filename: MyString
   thumbnail: MyString
+  view_count: 1
 
 two:
   filename: MyString
   thumbnail: MyString
+  view_count: 1

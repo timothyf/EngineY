@@ -2,7 +2,6 @@ require 'test_helper'
 
 class GroupsControllerTest < ActionController::TestCase
   
-  include AuthenticatedTestHelper
   fixtures :users
   
   

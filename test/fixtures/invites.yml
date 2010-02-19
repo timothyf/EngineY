@@ -1,7 +1,15 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+ one:
+   message: Invite 1
+   invite_code: invite_code1
+   accepted: false
+   email: test@email.com
+   user_id: 1
+
+ two:
+   message: Invite 2
+   invite_code: invite_code2
+   accepted: true
+   email: test@email.com
+   user_id: 1

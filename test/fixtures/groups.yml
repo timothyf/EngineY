@@ -20,9 +20,12 @@ one:
    name: Test Group 1
    description: group description
    featured: false
+   creator_id: 1
    
 two:
    id: 2
    name: Test Group 2
    description: group description
    featured: false
+   creator_id: 1
+

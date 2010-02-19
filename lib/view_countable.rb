@@ -28,7 +28,7 @@ module ViewCountable
     # Make sure the user has not already viewed this item
     unless items_viewed.include?(viewed_item.id.to_s)
       add_to_viewed_items_cookie(viewed_item, items_viewed)
-      viewable.class.update_counters(viewed_item.id, {:view_count => 1}) 
+      viewed_item.class.update_counters(viewed_item.id, {:view_count => 1}) 
     end
   end
   

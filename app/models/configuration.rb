@@ -27,7 +27,8 @@ class Configuration
       :max_tweets => 5,
       :theme => 'rubymi',
       :users_label => 'Members',
-      :footer_image => 'poweredby.jpg'
+      :footer_image => 'poweredby.jpg',
+      :enable_facebook_connect => false
     }
   end
   
@@ -52,6 +53,11 @@ class Configuration
   end
   
   
+  def self.ENABLE_FACEBOOK_CONNECT
+    false
+  end
+  
+  
   def self.USE_PROXY
     false
   end
@@ -64,6 +70,11 @@ class Configuration
   
   def self.PROXY_PORT
     '3128'
+  end
+  
+  
+  def self.REQUIRE_ACTIVATE_FOR_USER_CREATE_VIA_API
+    false
   end
   
   
