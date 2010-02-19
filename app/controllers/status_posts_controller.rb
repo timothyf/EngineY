@@ -25,13 +25,24 @@ class StatusPostsController < ApplicationController
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @status_posts }
+        format.json  { render :json => @status_posts.to_json }
       end
     else
       @status_posts = StatusPost.find(:all)
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @status_posts }
+        format.json  { render :json => @status_posts.to_json }
       end
+    end
+  end
+  
+  
+  def show 
+    @status_post = StatusPost.find(params[:id])
+    respond_to do |format|
+      format.xml { render :xml => @status_post } 
+      format.json { render :json => @status_post.to_json } 
     end
   end
 
@@ -52,15 +63,17 @@ class StatusPostsController < ApplicationController
 
   def create
     @status_post = StatusPost.new(params[:status_post])
-    @status_post.user_id = params[:user_id]
+    @status_post.user_id = current_user.id
     respond_to do |format|
       if @status_post.save
         flash[:notice] = 'StatusPost was successfully created.'
         format.html { redirect_to(user_path(current_user)) }
         format.xml  { render :xml => @status_post, :status => :created, :location => @status_post }
+        format.json  { render :json => @status_post.to_json, :status => :created, :location => @status_post }
       else
         format.html { redirect_to(user_path(current_user)) }
         format.xml  { render :xml => @status_post.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @status_post.errors.to_json, :status => :unprocessable_entity }
       end
     end
   end
@@ -73,9 +86,11 @@ class StatusPostsController < ApplicationController
         flash[:notice] = 'StatusPost was successfully updated.'
         format.html { redirect_to(@status_post) }
         format.xml  { head :ok }
+        format.json { head :ok } 
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @status_post.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @status_post.errors.to_json, :status => :unprocessable_entity }
       end
     end
   end
@@ -87,6 +102,7 @@ class StatusPostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(status_posts_url) }
       format.xml  { head :ok }
+      format.json { head :ok } 
     end
   end
 end

@@ -31,6 +31,16 @@ class LinksController < ApplicationController
     respond_to do |format|
       format.html { render :partial=>'links_canvas', :layout=>true } # index.html.erb
       format.xml  { render :xml => @links }
+      format.json { render :json => @links.to_json } 
+    end
+  end
+  
+  
+  def show
+    @link = Link.find(params[:id])
+    respond_to do |format|
+      format.xml  { render :xml => @link }
+      format.json { render :json => @link.to_json } 
     end
   end
 
@@ -41,6 +51,7 @@ class LinksController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @link }
+      format.json { render :json => @link.to_json } 
     end
   end
 
@@ -58,9 +69,11 @@ class LinksController < ApplicationController
         flash[:notice] = 'Link was successfully created.'
         format.html { redirect_to(links_path) }
         format.xml  { render :xml => @link, :status => :created, :location => @link }
+        format.json {render :json => @link.to_json, :status => :created, :location => @link }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @link.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @link.errors.to_json, :status => :unprocessable_entity }
       end
     end
   end
@@ -73,9 +86,11 @@ class LinksController < ApplicationController
         flash[:notice] = 'Link was successfully updated.'
         format.html { redirect_to(links_path) }
         format.xml  { head :ok }
+        format.json { head :ok } 
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @link.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @link.errors.to_json, :status => :unprocessable_entity } 
       end
     end
   end
@@ -87,6 +102,7 @@ class LinksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(links_url) }
       format.xml  { head :ok }
+      format.json { head :ok } 
     end
   end
 end

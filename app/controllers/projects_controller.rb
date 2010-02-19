@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html { render :partial => 'projects_canvas', :layout=>true }
       format.xml  { render :xml => @projects }
+      format.json { render :json => @projects.to_json } 
     end
   end
 
@@ -30,6 +31,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html { render :template => 'projects/projects_show' }
       format.xml  { render :xml => @project }
+      format.json { render :json => @project.to_json } 
     end
   end
 
@@ -56,9 +58,11 @@ class ProjectsController < ApplicationController
         flash[:notice] = 'Projects was successfully created.'
         format.html { redirect_to(projects_path) }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
+        format.json { render :json => @project.to_json, :status => :created, :location => @project }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @project.errors.to_json, :status => :unprocessable_entity }
       end
     end
   end
@@ -71,9 +75,11 @@ class ProjectsController < ApplicationController
         flash[:notice] = 'Project was successfully updated.'
         format.html { redirect_to(projects_path) }
         format.xml  { head :ok }
+        format.json  { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @project.errors.to_json, :status => :unprocessable_entity }
       end
     end
   end
@@ -85,6 +91,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(projects_path) }
       format.xml  { head :ok }
+      format.json { head :ok }
     end
   end
   

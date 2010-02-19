@@ -8,3 +8,11 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
+
+test_dir = File.expand_path('test')
+
+Rake::TestTask.new('api_tests') do |t|
+  t.libs = [test_dir]
+  t.pattern = 'test/api/*.rb'
+  t.warning = false
+end

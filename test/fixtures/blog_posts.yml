@@ -20,9 +20,23 @@ one:
    user_id: 1
    title: Test Post
    body: Test Body
+   published: true
+   featured: false
+   summary: Blog Post Summary
+   url: http://www.blogpost.com
+   published_at:
+   guid: 12345
+   
 #
 two:
    id: 2
    user_id: 1
-   title: Test Post
-   body: Test Body
+   title: Test Post 2
+   body: Test Body 2
+   published: true
+   featured: false
+   summary: Blog Post Summary 2
+   url: http://www.blogpost2.com
+   published_at:
+   guid: 123456
+

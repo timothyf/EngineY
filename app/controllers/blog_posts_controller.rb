@@ -78,6 +78,7 @@ class BlogPostsController < ApplicationController
     respond_to do |format|
       format.html { render :template=>'blog_posts/blog_posts_list' } 
       format.xml  { render :xml => @blog_posts }
+      format.json { render :json => @blog_posts.to_json } 
     end
   end
   
@@ -102,6 +103,7 @@ class BlogPostsController < ApplicationController
     respond_to do |format|
       format.html {render :template => 'blog_posts/blog_posts_show' }
       format.xml  { render :xml => @blog_post }
+      format.json { render :json => @blog_post.to_json } 
     end
   end
 
@@ -111,6 +113,7 @@ class BlogPostsController < ApplicationController
     respond_to do |format|
       format.html { render :partial=>'blog_posts_edit', :layout=>true }
       format.xml  { render :xml => @blog_post }
+      format.json { render :json => @blog_post.to_json } 
     end
   end
 
@@ -129,9 +132,11 @@ class BlogPostsController < ApplicationController
         flash[:notice] = 'BlogPost was successfully created.'
         format.html { redirect_to(@blog_post) }
         format.xml  { render :xml => @blog_post, :status => :created, :location => @blog_post }
+        format.json  { render :json => @blog_post.to_json, :status => :created, :location => @blog_post }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @blog_post.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @blog_post.errors.to_json, :status => :unprocessable_entity }
       end
     end
   end
@@ -144,9 +149,11 @@ class BlogPostsController < ApplicationController
       if @blog_post.publish
         format.html { redirect_to(@blog_post) }
         format.xml  { head :ok }
+        format.json { head :ok } 
       else
         format.html { redirect_to(@blog_post) }
         format.xml  { render :xml => @blog_post.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @blog_post.errors.to_json, :status => :unprocessable_entity }
       end
     end
   end
@@ -159,9 +166,11 @@ class BlogPostsController < ApplicationController
         flash[:notice] = 'BlogPost was successfully updated.'
         format.html { redirect_to(@blog_post) }
         format.xml  { head :ok }
+        format.json { head :ok } 
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @blog_post.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @blog_post.errors.to_json, :status => :unprocessable_entity }
       end
     end
   end
@@ -173,6 +182,7 @@ class BlogPostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(blog_posts_url) }
       format.xml  { head :ok }
+      format.json { head :ok } 
     end
   end
 end

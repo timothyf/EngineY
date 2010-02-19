@@ -1,6 +1,7 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
  one:
+   id: 1
    message: Invite 1
    invite_code: invite_code1
    accepted: false
@@ -8,6 +9,7 @@
    user_id: 1
 
  two:
+   id: 2
    message: Invite 2
    invite_code: invite_code2
    accepted: true

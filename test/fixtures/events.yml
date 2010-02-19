@@ -26,14 +26,32 @@
 one:
    id: 1
    name: Test Event 1
-   start_time: <%= Time.now.to_s :db %>
-   end_time: <%= Time.now.to_s :db %>
-   
-   
+   start_time: <%= Time.now.advance(:months=>1).to_s :db %>
+   end_time: <%= Time.now.advance(:months=>2).to_s :db %>
+   user_id: 1
+   photo_id: 1
+   description: Test Event 1 Desc
+   event_type: Test Type
+   location: Testville, USA
+   street: Testers Rd.
+   city: TestTown
+   website: http://www.test.com
+   phone: 555-555-5555
+   organized_by: Testers of America
 
 two:
-    id: 2
-    name: Test Event 2
-    start_time: <%= Time.now.to_s :db %>
-    end_time: <%= Time.now.to_s :db %>
+   id: 2
+   name: Test Event 2
+   start_time: <%= Time.now.advance(:months=>1).to_s :db %>
+   end_time: <%= Time.now.advance(:months=>2).to_s :db %>
+   user_id: 1
+   photo_id: 1
+   description: Test Event 1 Desc
+   event_type: Test Type
+   location: Testville, USA
+   street: Testers Rd.
+   city: TestTown
+   website: http://www.test.com
+   phone: 555-555-5555
+   organized_by: Testers of America
     
