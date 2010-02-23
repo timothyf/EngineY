@@ -23,12 +23,22 @@ class FriendsController < ApplicationController
   
   # Lists all friends of the specified user
   def index
-    #type = params[:type]
     @user = User.find(params[:user_id])
-    #if type == 'friends'
+    if params[:type]
+      if params[:type] == 'requested'
+        @friends = @user.requested_friends
+      elsif params[:type] == 'pending'
+        @friends = @user.pending_friends
+      end
+    else
       @friends = @user.friends
-      @title = "My Friends"
-    #end
+    end
+    @title = "My Friends"
+    respond_to do |format|
+      format.html {  } 
+      format.xml  { render :xml => @friends }
+      format.json { render :json => @friends.to_json }
+    end
   end
   
   
@@ -37,7 +47,11 @@ class FriendsController < ApplicationController
     @user = User.find(params[:user_id])
     @friends = @user.requested_friends
     @title = "My Requested Friends"
-    render :template=>'friends/index'
+    respond_to do |format|
+      format.html { render :template=>'friends/index' } 
+      format.xml  { render :xml => @friends }
+      format.json { render :json => @friends.to_json }
+    end
   end
   
   
@@ -46,7 +60,11 @@ class FriendsController < ApplicationController
     @user = User.find(params[:user_id])
     @friends = @user.pending_friends
     @title = "My Pending Friends"
-    render :template=>'friends/index'
+    respond_to do |format|
+      format.html { render :template=>'friends/index' } 
+      format.xml  { render :xml => @friends }
+      format.json { render :json => @friends.to_json }
+    end
   end
   
   
@@ -64,28 +82,40 @@ class FriendsController < ApplicationController
   # Create a new friendship request
   def create
     @user = User.find(current_user)
-    @friend = User.find(params[:friend_id])
-    if Friendship.request(@user, @friend)
-      redirect_to user_path(@friend)
-    else
-      redirect_to user_path(current_user)
+    @friend = User.find(params[:friend_id])  
+    respond_to do |format|
+      format.html { 
+        if Friendship.request(@user, @friend)
+          redirect_to user_path(@friend)
+        else
+          redirect_to user_path(current_user)
+        end
+      }
+      format.xml { render :xml => @friend, :status => :created }
+      format.json { render :json => @friend.to_json, :status => :created }
     end
+
   end
   
   
   def update 
     @user = User.find(current_user)
     @friend = User.find(params[:id])
-    #params[:friendship1] = {:user_id => @user.id, :friend_id => @friend.id, :status => 'accepted'}
-    #params[:friendship2] = {:user_id => @friend.id, :friend_id => @user.id, :status => 'accepted'}
-    #@friendship1 = Friendship.find_by_user_id_and_friend_id(@user.id, @friend.id)
-    #@friendship2 = Friendship.find_by_user_id_and_friend_id(@friend.id, @user.id)
-    #if @friendship1.update_attributes(params[:friendship1]) && @friendship2.update_attributes(params[:friendship2])
     if Friendship.accept(@user, @friend)
-      flash[:notice] = 'Friend sucessfully accepted!'
-      redirect_to user_friends_path(current_user)
+      respond_to do |format|
+        format.html { 
+          flash[:notice] = 'Friend sucessfully accepted!'
+          redirect_to user_friends_path(current_user)
+         }
+         format.xml { render :xml => @friend, :status => :created }
+         format.json { render :json => @friend.to_json, :status => :created }
+      end
     else
-      redirect_to user_path(current_user)
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user) }
+        format.xml  { render :xml => {:error=>'unable to save'}, :status => :unprocessable_entity }
+        format.json { render :json => {:error=>'unable to save'}.to_json, :status => :unprocessable_entity }
+      end
     end
   end
   

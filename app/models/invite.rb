@@ -23,4 +23,10 @@ class Invite < ActiveRecord::Base
     newpass
   end
   
+  
+  def self.accept(invite_code) 
+    invite = Invite.find_by_invite_code(invite_code)
+    invite.update_attributes(:accepted=>true)
+  end
+  
 end

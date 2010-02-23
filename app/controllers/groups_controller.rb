@@ -126,6 +126,7 @@ class GroupsController < ApplicationController
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
+        format.json { render :json => @group.errors.to_json, :status => :unprocessable_entity }
       end
     end
   end

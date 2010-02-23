@@ -15,18 +15,35 @@ limitations under the License.
 %>
 <% widget_title = "Latest Activity" %>
 
-<% @activities = Activity.find(:all, :limit=>8, :order=>'created_at DESC', :include=>[:user, :item]) %>
+<% if logged_in? && include_friends %>
+	<% @user = User.find(current_user.id) %>
+	<% activities = @user.friends_activity_stream %>
+<% else %>
+	<% activities = Activity.find(:all, :limit=>8, :order=>'created_at DESC', :include=>[:user, :item]) %>
+<% end %>
+<% @activities = activities[0...8] %>
+
 
 <% content_for :module_header do %>
 	<div class="head_left">
 		<%= image_tag('newspaper.png', :alt=>'activities', :align=>'absmiddle')%>&nbsp;&nbsp;<%= widget_title %>
 	</div>
 	<div class="head_right">
-		<div id="expand_collapse_btn">
+		<div id="expand_collapse_btn" style="float:right;">
 			<a href="javascript:widget_change_display('<%= @widget_name %>')">
 				<img id="<%= @widget_name %>_collapse_img" src="images/collapse.png"/>
 			</a>
 		</div>	
+		<% if logged_in? %>
+			<span style="float:right;margin-right:10px;">
+				<% if include_friends %>
+					<input onclick="only_friends_activities()" type="checkbox" id="friends_checkbox" name="friends_checkbox" checked="checked"/>
+				<% else %>
+					<input onclick="only_friends_activities()" type="checkbox" id="friends_checkbox" name="friends_checkbox" />
+				<% end %>
+				<label>Only Friends</label>
+			</span>
+		<% end %>
 	</div>
 	<div style="clear:both;"></div>
 <% end %>

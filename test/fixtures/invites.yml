@@ -13,5 +13,5 @@
    message: Invite 2
    invite_code: invite_code2
    accepted: true
-   email: test@email.com
+   email: test2@email.com
    user_id: 1

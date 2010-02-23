@@ -42,7 +42,10 @@ class WidgetsController < ApplicationController
       end
       render :template=>'widgets/html_content_home', :layout => 'widget'
     else
-      render :template=>'widgets/'+ @widget_name, :layout => 'widget'
+      if params[:include_friends]
+        include_friends = true
+      end
+      render :template=>'widgets/'+ @widget_name, :locals=>{:include_friends=>include_friends}, :layout => 'widget'
     end
   end
   

@@ -176,15 +176,19 @@ class UsersController < ApplicationController
   end
 
 
+  def create_facebook_user
+    if facebook_session
+      User.create_from_fb_connect(facebook_session.user, @user.email, @user.login, @user.first_name, @user.last_name)
+      flash[:notice] = "Thanks for signing up!"
+    end
+    redirect_to '/'
+  end
+
+
   def create
     @user = User.new(params[:user])
     if @user.facebook_id
-      # create a facebook user
-      if facebook_session
-        User.create_from_fb_connect(facebook_session.user, @user.email, @user.login, @user.first_name, @user.last_name)
-        flash[:notice] = "Thanks for signing up!"
-      end
-      redirect_to '/'
+      create_facebook_user
     else
       # create just a local user
       sleep 4  # required for photo upload
@@ -192,21 +196,12 @@ class UsersController < ApplicationController
       @user.roles << Role.find_by_rolename('user')
       @user.save
       if @user.errors.empty?
-        if @invite_code
-          invite = Invite.find_by_invite_code(params[:invite_code])
-          invite.update_attributes(:accepted=>true)
+        if params[:invite_code]
+          Invite.accept(params[:invite_code]) 
         end
-        if params[:user_photo] && params[:user_photo].size != 0 
-          # remove old profile photos
-          Photo.destroy_all("user_id = " + @user.id.to_s + " AND is_profile = true")
-          profile_photo = ProfilePhoto.create!(:user_id=>@user.id, :is_profile=>true, :uploaded_data => params[:user_photo]) if params[:user_photo].size != 0 
-          @user.profile_photo = profile_photo
-        else
-          @user.set_temp_photo
-        end 
+        @user.set_photo(params[:user_photo])
         respond_to do |format|
           format.html {
-            # we do not want the user signed in until he has activated
             flash[:notice] = "Thanks for signing up!"
             render :template=>'sessions/signup_thankyou'
           }

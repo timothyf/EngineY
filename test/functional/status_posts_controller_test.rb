@@ -21,10 +21,7 @@ class StatusPostsControllerTest < ActionController::TestCase
     assert_difference('StatusPost.count') do
       post :create, :status_post => { :body => 'My new status' }
     end
-    assert_redirected_to user_path(users(:quentin))
-    assert_not_nil assigns(:status_post) 
-    assert assigns(:status_post).body == 'My new status', 'Incorrect status_post body'
-    assert assigns(:status_post).user_id == 1, 'Incorrect status_post user id' 
+    assert_response :created
   end
 
 

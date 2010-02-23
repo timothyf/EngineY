@@ -77,8 +77,15 @@ class Friendship < ActiveRecord::Base
       transaction do
         accept_one_side(user, friend)
         accept_one_side(friend, user)
+        friendship = get_friendship(user, friend)
+        if friendship
+          log_activity(friendship)
+          return true
+        else
+          return false
+        end
       end
-      log_activity(get_friendship(user, friend))
+      
     end
     
     
@@ -113,8 +120,16 @@ class Friendship < ActiveRecord::Base
     
     # Update the db with one side of an accepted friendship request.
     def accept_one_side(user, friend)
+      puts 'USER ID = ' + user.id
+      puts 'FRIEND ID = ' + friend.id
       friendship = get_friendship(user, friend)
-      friendship.update_attributes!(:status => 'accepted')
+      if friendship
+        puts 'Succes accepting one side'
+        friendship.update_attributes!(:status => 'accepted')
+      else
+        puts 'fail to accept onen side'
+        nil
+      end
     end
     
     

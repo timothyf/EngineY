@@ -64,13 +64,15 @@ class StatusPostsController < ApplicationController
   def create
     @status_post = StatusPost.new(params[:status_post])
     @status_post.user_id = current_user.id
-    respond_to do |format|
-      if @status_post.save
-        flash[:notice] = 'StatusPost was successfully created.'
-        format.html { redirect_to(user_path(current_user)) }
-        format.xml  { render :xml => @status_post, :status => :created, :location => @status_post }
-        format.json  { render :json => @status_post.to_json, :status => :created, :location => @status_post }
-      else
+    if @status_post.save
+      respond_to do |format|
+          flash[:notice] = 'StatusPost was successfully created.'
+          format.html { render :json => @status_post.to_json, :status => :created, :location => @status_post }
+          format.xml  { render :xml => @status_post, :status => :created, :location => @status_post }
+          format.json  { render :json => @status_post.to_json, :status => :created, :location => @status_post }
+      end
+    else
+      respond_to do |format|
         format.html { redirect_to(user_path(current_user)) }
         format.xml  { render :xml => @status_post.errors, :status => :unprocessable_entity }
         format.json  { render :json => @status_post.errors.to_json, :status => :unprocessable_entity }

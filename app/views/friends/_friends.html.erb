@@ -15,15 +15,26 @@ limitations under the License.
 %>
 
 <% unless @user.friends.empty? %>
-	My Friends:<br/>
-	<% @user.friends[0..5].each do |u| %>
-		<%= link_to u.login, user_path(u.id) %>
-		Since <%= u.created_at.to_s(:long) %>
-		<% if logged_in? && @user == current_user %>
-			<%= link_to '[Remove]', user_friend_path(:user_id => current_user, :id => u), :method => :delete, :confirm => 'Are you sure?' %>
-		<% end %>
+	<% @user.friends[0..5].each do |u| %>	
+		<div class="requested_friend">
+			<div class="requested_friend_photo">
+				<% if u.profile_photo %>
+					<%= link_to image_tag(u.profile_photo.public_filename(:small), :alt=>u.name), user_path(u.id) %>
+				<% else %>
+					<%= link_to 'no photo', user_path(u.id) %>
+				<% end %>
+			</div>
+			<div class="requested_friend_task">
+				<%= u.name %><br/>
+				<!-- Since <%= u.created_at.to_s(:long) %> -->
+				<% if logged_in? && @user == current_user %>
+					<%= link_to '[Remove]', user_friend_path(:user_id => current_user, :id => u), :method => :delete, :confirm => 'Are you sure?' %>
+				<% end %>
+			</div>
+		</div>
+		
 	<% end %>
-<% end %>
-<% if @user.friends.empty? %>
+	
+<% else %>
 	You have not added any friends. <%= link_to 'Find some now.', '/users' %>
 <% end %>

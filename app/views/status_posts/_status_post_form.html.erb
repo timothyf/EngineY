@@ -2,6 +2,7 @@
 	<input type="hidden" id="authenticity_token" name="authenticity_token" value="<%= form_authenticity_token %>" />
 	<label>What are you doing now?</label><br/>
 	<%= text_area(:status_post, :body, :cols => 60, :rows => 3 ) %>
-	<button dojoType="dijit.form.Button" onclick="post_status()">Submit</button>
+	<!-- <button dojoType="dijit.form.Button" onclick="post_status()">Submit</button> -->
+	<a href="javascript:post_status()">Submit</a>
 	<!-- include checkbox to send post to Twitter -->
 </form>

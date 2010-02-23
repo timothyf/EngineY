@@ -45,18 +45,25 @@ class InvitesController < ApplicationController
     @invite.invite_code = Invite.generate_invite_code
     
     # see if recipient has already been invited by this user
-    
-    
-    respond_to do |format|
-      if @invite.save
-        flash[:notice] = 'Invite was successfully created.'
-        format.html { redirect_to(@invite) }
-        format.xml  { render :xml => @invite, :status => :created, :location => @invite }
-        format.json  { render :json => @invite.to_json, :status => :created, :location => @invite }
-      else
+    if Invite.find_by_email(@invite.email)
+      respond_to do |format|
+        flash[:notice] = 'You have already invited this user.'
         format.html { render :action => "new" }
-        format.xml  { render :xml => @invite.errors, :status => :unprocessable_entity }
-        format.json  { render :json => @invite.errors.to_json, :status => :unprocessable_entity }
+        format.xml  { render :status => :unprocessable_entity }
+        format.json  { render :status => :unprocessable_entity }
+      end
+    else        
+      respond_to do |format|
+        if @invite.save
+          flash[:notice] = 'Invite was successfully created.'
+          format.html { redirect_to(@invite) }
+          format.xml  { render :xml => @invite, :status => :created, :location => @invite }
+          format.json  { render :json => @invite.to_json, :status => :created, :location => @invite }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @invite.errors, :status => :unprocessable_entity }
+          format.json  { render :json => @invite.errors.to_json, :status => :unprocessable_entity }
+        end
       end
     end
   end

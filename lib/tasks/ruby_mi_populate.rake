@@ -133,6 +133,45 @@ namespace :railsnet do
       puts ''
       
       ##########################################################################
+      puts 'Creating friendships...'
+      Friendship.destroy_all
+      
+      # FRIENDS
+      @user = User.find(1)
+      @friend = User.find(2)
+      Friendship.request(@user, @friend)
+      
+      @user = User.find(2)
+      @friend = User.find(1)
+      Friendship.accept(@user, @friend)
+      
+      @user = User.find(1)
+      @friend = User.find(3)
+      Friendship.request(@user, @friend)
+      
+      @user = User.find(3)
+      @friend = User.find(1)
+      Friendship.accept(@user, @friend)
+      
+      # REQUESTED FRIENDS
+      @user = User.find(1)
+      @friend = User.find(4)
+      Friendship.request(@user, @friend)
+      
+      @user = User.find(1)
+      @friend = User.find(5)
+      Friendship.request(@user, @friend)
+      
+      # PENDING FRIENDS
+      @user = User.find(6)
+      @friend = User.find(1)
+      Friendship.request(@user, @friend)
+      
+      @user = User.find(6)
+      @friend = User.find(1)
+      Friendship.request(@user, @friend)
+      
+      ##########################################################################
       puts 'Creating test groups...'
       Group.destroy_all
       group = Group.new(:name => 'Detroit Ruby User Group',

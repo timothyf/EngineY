@@ -28,11 +28,31 @@ class InvitesControllerTest < ActionController::TestCase
       post :create, :invite => {:message => 'Invite Message',
                                 :invite_code => '12345',
                                 :accepted => false,
-                                :email => 'test@email.com',
+                                :email => 'user@test.com',
                                 :user_id => 1}
     end
-
-    assert_redirected_to invite_path(assigns(:invite))
+    assert_redirected_to invite_path(assigns(:invite)), 'Incorrrect redirect'
+    assert_equal 'Invite was successfully created.', flash[:notice], 'Incorrect flash message'
+  end
+  
+  
+  test "should not be allowed to invite twice" do 
+    post :create, :invite => {:message => 'Invite Message',
+                              :invite_code => '12345',
+                              :accepted => false,
+                              :email => 'user@test.com',
+                              :user_id => 1}
+    assert_redirected_to invite_path(assigns(:invite)), 'Incorrrect redirect'
+    assert_equal 'Invite was successfully created.', flash[:notice], 'Incorrect flash message'
+    
+    post :create, :invite => {:message => 'Invite Message',
+                              :invite_code => '12345',
+                              :accepted => false,
+                              :email => 'user@test.com',
+                              :user_id => 1}
+    assert_response :success, 'Incorrect response'
+    assert_not_nil assigns(:invite)
+    assert_equal 'You have already invited this user.', flash[:notice], 'Incorrect flash message'
   end
 
 

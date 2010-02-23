@@ -186,25 +186,21 @@ function show_blog_drafts() {
 	}
 }
 
-function post_status() {
-//	if (dojo.byId('status_post').value.length != 0) {	
-		// send ajax request to submit status post
-		dojo.xhrPost({
-		    form: "status_post_entry_form",
-		    timeout: 3000, // give up after 3 seconds
-		    content: { authenticity_token:authenticity_token },
-			load: function (data) {status_post_saved(data);}
-		});
-		return false;
-//	}	
+function post_status(event) {
+    //event.preventDefault();
+    //event.stopPropagation();
+	dojo.xhrPost({
+	    form: "status_post_entry_form",
+	    timeout: 3000, // give up after 3 seconds
+	    content: { authenticity_token:authenticity_token },
+		load: function (data) {status_post_saved(data);}
+	});
 }
 
 // Called after new status successfully posted to server
 // now we want to refresh the activity stream and activity post widgets to reflect new content
 function status_post_saved(data) {
-	// refresh activity stream
 	refresh_profile_widget('activity_feed_profile');
-	// refresh activity post
 	refresh_profile_widget('status_posts_profile');
 }
 
@@ -218,8 +214,18 @@ function refresh_profile_widget(widget_name) {
 	});		
 }
 
+function refresh_home_widget(widget_name) {
+	dojo.xhrGet({
+		url: '/widgets/load',
+	    timeout: 10000, // give up after 3 seconds
+	    content: { name:widget_name, user_id:user_id, authenticity_token:authenticity_token },
+		error: function (data) {widget_load_error(widget_name, data);},
+		load: function (data) {widget_loaded(widget_name, data);}
+	});		
+}
+
 /*
- * Called when the Only Statuses checckbox is checked in the activity stream of a users profile page.
+ * Called when the Only Statuses checkbox is checked in the activity stream of a users profile page.
  */
 function filter_activities() {
 	var status = dojo.byId('status_checkbox').checked;
@@ -253,6 +259,25 @@ function filter_activities() {
 	}
 	else {
 		refresh_profile_widget('activity_feed_profile')
+	}
+}
+
+/*
+ * Called when the Only Friends checkbox is checked in the activity stream on the home page.
+ */
+function only_friends_activities() {
+	var include_friends = dojo.byId('friends_checkbox').checked;
+	if (include_friends == true) {
+		dojo.xhrGet({
+			url: '/widgets/load',
+		    timeout: 10000, // give up after 10 seconds
+		    content: { name:'activity_feed_home', include_friends:'true', authenticity_token:authenticity_token },
+			error: function (data) {widget_load_error('activity_feed_home', data);},
+			load: function (data) {widget_loaded('activity_feed_home', data);}
+		});	
+	}
+	else {
+		refresh_home_widget('activity_feed_home')
 	}
 }
 
