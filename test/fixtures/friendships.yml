@@ -18,22 +18,48 @@ one:
    user_id: 1
    friend_id: 2
    status: 'requested'
-#
+   
 two:
-   id: 2
+    id: 2
+    user_id: 2
+    friend_id: 1
+    status: 'pending'    
+
+three:
+   id: 3
    user_id: 1
    friend_id: 3
    status: 'pending'
    
-three:
-   id: 3
+four:
+  id: 4
+  user_id: 3
+  friend_id: 1
+  status: 'requested'
+      
+five:
+   id: 5
    user_id: 1
    friend_id: 4
    status: 'accepted'
    
-four:
-   id: 4
+six:
+  id: 6
+  user_id: 4
+  friend_id: 1
+  status: 'accepted'
+      
+seven:
+   id: 7
    user_id: 1
    friend_id: 5
    status: 'accepted'
+   
+eight:
+    id: 8
+    user_id: 5
+    friend_id: 1
+    status: 'accepted'
+    
+
    

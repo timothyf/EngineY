@@ -5,7 +5,7 @@
    message: Invite 1
    invite_code: invite_code1
    accepted: false
-   email: test@email.com
+   email: test1@email.com
    user_id: 1
 
  two:

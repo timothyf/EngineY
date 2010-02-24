@@ -10,7 +10,7 @@ class UsersTest < ActionController::IntegrationTest
     get "/users.json"
     assert_response :success
     users = JSON.parse(response.body) 
-    assert users.size == 2
+    assert users.size == 4
     check_user(users[0]) 
   end
   
