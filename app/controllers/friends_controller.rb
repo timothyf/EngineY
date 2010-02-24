@@ -91,8 +91,20 @@ class FriendsController < ApplicationController
           redirect_to user_path(current_user)
         end
       }
-      format.xml { render :xml => @friend, :status => :created }
-      format.json { render :json => @friend.to_json, :status => :created }
+      format.xml { 
+        if Friendship.request(@user, @friend)
+          render :xml => @friend, :status => :created 
+        else
+           render :xml => {:error=>'Could not create request'}, :status => :unprocessable_entity
+        end
+      }
+      format.json { 
+        if Friendship.request(@user, @friend)
+          render :json => @friend.to_json, :status => :created 
+        else
+          render :json => {:error=>'Could not create request'}.to_json, :status => :unprocessable_entity
+        end
+      }
     end
 
   end
@@ -100,7 +112,7 @@ class FriendsController < ApplicationController
   
   def update 
     @user = User.find(current_user)
-    @friend = User.find(params[:id])
+    @friend = User.find(params[:friend_id])
     if Friendship.accept(@user, @friend)
       respond_to do |format|
         format.html { 

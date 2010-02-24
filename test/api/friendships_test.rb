@@ -61,20 +61,22 @@ class FriendshipsTest < ActionController::IntegrationTest
   # ACCEPT A FRIEND REQUEST
   # /users/1/friends/update
   test "accept a friend request" do
+    get '/logout'
     # first create the request
-    post "/users/1/friends.json", :api_key => 'testapikey',
-                                  :user_id => 1,
-                                  :friend_id => 6  
+    post "/users/6/friends.json", :api_key => 'bobbyapikey',
+                                  :user_id => 6,
+                                  :friend_id => 1  
     assert_response :created
+    get '/logout'
     
     # now accept the reqeust
-    put "/users/6/friends/1.json", :api_key => 'testapikey',
-                                   :user_id => 6,
-                                   :friend_id => 1                               
+    put "/users/1/friends/6.json", :api_key => 'testapikey',
+                                   :user_id => 1,
+                                   :friend_id => 6                               
     assert_response :created
     friend = JSON.parse(response.body) 
-    assert friend['id'] == 1, 'Incorrect friend id'
-    assert friend['login'] == 'quentin', 'Incorrect friend login'
+    assert friend['id'] == 6, 'Incorrect friend id'
+    assert friend['login'] == 'bobby', 'Incorrect friend login'
   end
   
 

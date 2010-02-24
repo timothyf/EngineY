@@ -80,3 +80,5 @@ bobby:
     created_at: <%= 5.days.ago.to_s :db %>
     activation_code: 8f24789ae988411ccf33ab0c30fe9106fab32e9b 
     activated_at: <%= 5.days.ago.to_s :db %> 
+    api_key: bobbyapikey
+
