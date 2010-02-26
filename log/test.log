@@ -33197,3 +33197,1129 @@ Processing UsersController#show to json (for 127.0.0.1 at 2010-02-26 00:04:46) [
   [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
 Completed in 6ms (View: 0, DB: 2) | 200 OK [http://www.example.com/users/1.json]
   [4;36;1mSQL (0.4ms)[0m   [0;1mROLLBACK[0m
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+Unable to load content_page, underlying cause no such file to load -- content_page 
+
+ /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:158:in `require'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:265:in `require_or_load'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:224:in `depend_on'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:136:in `require_dependency'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activerecord-2.3.5/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activerecord-2.3.5/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activerecord-2.3.5/lib/active_record/fixtures.rb:865:in `each'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activerecord-2.3.5/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activerecord-2.3.5/lib/active_record/fixtures.rb:848:in `fixtures'
+/Users/timothyfisher/Projects/enginey/test/test_helper.rb:38
+./test/api/blog_posts_test.rb:1:in `require'
+./test/api/blog_posts_test.rb:1
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake/rake_test_loader.rb:5:in `load'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake/rake_test_loader.rb:5
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake/rake_test_loader.rb:5:in `each'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake/rake_test_loader.rb:5
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing BlogPostsController#index to json (for 127.0.0.1 at 2010-02-26 00:12:45) [GET]
+  Parameters: {"api_key"=>"testapikey"}
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mBlogPost Load (0.3ms)[0m   [0;1mSELECT * FROM `blog_posts` ORDER BY created_at DESC LIMIT 0, 6[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM `blog_posts` [0m
+Completed in 23ms (View: 0, DB: 123) | 200 OK [http://www.example.com/blog_posts.json]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing BlogPostsController#show to json (for 127.0.0.1 at 2010-02-26 00:12:45) [GET]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mBlogPost Load (0.3ms)[0m   [0mSELECT * FROM `blog_posts` WHERE (`blog_posts`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mBlogPost Update (0.3ms)[0m   [0mUPDATE `blog_posts` SET `views` = 1, `updated_at` = '2010-02-26 05:12:45' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 8ms (View: 0, DB: 2) | 200 OK [http://www.example.com/blog_posts/1.json]
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:45) [GET]
+Redirected to http://www.example.com/
+Completed in 6ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing BlogPostsController#create to json (for 127.0.0.1 at 2010-02-26 00:12:45) [POST]
+  Parameters: {"api_key"=>"testapikey", "blog_post"=>{"title"=>"API Test Post", "body"=>"API Test Body", "guid"=>"22222", "featured"=>"false", "published"=>"true", "url"=>"http://www.apiblogpost.com", "summary"=>"Blog Post Summary"}}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mBlogPost Create (0.2ms)[0m   [0;1mINSERT INTO `blog_posts` (`created_at`, `title`, `body`, `guid`, `published`, `featured`, `updated_at`, `url`, `views`, `user_id`, `parent_id`, `summary`, `published_at`) VALUES('2010-02-26 05:12:45', 'API Test Post', 'API Test Body', '22222', 1, 0, '2010-02-26 05:12:45', 'http://www.apiblogpost.com', 0, 1, NULL, 'Blog Post Summary', NULL)[0m
+  [4;35;1mActivity Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `activities`[0m
+  [4;36;1mActivity Create (0.3ms)[0m   [0;1mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-02-26 05:12:45', NULL, '2010-02-26 05:12:45', NULL, 1, 5, 'BlogPost')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 16ms (View: 1, DB: 3) | 201 Created [http://www.example.com/blog_posts.json]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:45) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing BlogPostsController#create to xml (for 127.0.0.1 at 2010-02-26 00:12:45) [POST]
+  Parameters: {"api_key"=>"testapikey", "blog_post"=>{"title"=>"API Test Post", "body"=>"API Test Body", "guid"=>"22222", "featured"=>"false", "published"=>"true", "url"=>"http://www.apiblogpost.com", "summary"=>"Blog Post Summary"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mBlogPost Create (0.3ms)[0m   [0mINSERT INTO `blog_posts` (`created_at`, `title`, `body`, `guid`, `published`, `featured`, `updated_at`, `url`, `views`, `user_id`, `parent_id`, `summary`, `published_at`) VALUES('2010-02-26 05:12:45', 'API Test Post', 'API Test Body', '22222', 1, 0, '2010-02-26 05:12:45', 'http://www.apiblogpost.com', 0, 1, NULL, 'Blog Post Summary', NULL)[0m
+  [4;36;1mActivity Create (0.3ms)[0m   [0;1mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-02-26 05:12:45', NULL, '2010-02-26 05:12:45', NULL, 1, 6, 'BlogPost')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 12ms (View: 2, DB: 2) | 201 Created [http://www.example.com/blog_posts.xml]
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:45) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing BlogPostsController#create to xml (for 127.0.0.1 at 2010-02-26 00:12:45) [POST]
+  Parameters: {"blog_post"=>{"title"=>"API Test Post", "body"=>"API Test Body", "guid"=>"22222", "featured"=>"false", "published"=>"true", "url"=>"http://www.apiblogpost.com", "summary"=>"Blog Post Summary"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+Filter chain halted as [:api_filter] rendered_or_redirected.
+Completed in 3ms (View: 0, DB: 1) | 401 Unauthorized [http://www.example.com/blog_posts.xml]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:45) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing BlogPostsController#update to json (for 127.0.0.1 at 2010-02-26 00:12:45) [PUT]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1", "blog_post"=>{"title"=>"API Test Post", "body"=>"API Test Body", "guid"=>"22222", "featured"=>"false", "published"=>"true", "url"=>"http://www.apiblogpost.com", "summary"=>"Blog Post Summary"}}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mBlogPost Load (0.2ms)[0m   [0mSELECT * FROM `blog_posts` WHERE (`blog_posts`.`id` = 1) [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `blog_posts` WHERE (`blog_posts`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mBlogPost Update (0.3ms)[0m   [0mUPDATE `blog_posts` SET `updated_at` = '2010-02-26 05:12:45', `guid` = '22222', `title` = 'API Test Post', `url` = 'http://www.apiblogpost.com', `body` = 'API Test Body' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 104ms (View: 0, DB: 3) | 200 OK [http://www.example.com/blog_posts/1.json]
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:45) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing BlogPostsController#update to xml (for 127.0.0.1 at 2010-02-26 00:12:45) [PUT]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1", "blog_post"=>{"title"=>"API Test Post", "body"=>"API Test Body", "guid"=>"22222", "featured"=>"false", "published"=>"true", "url"=>"http://www.apiblogpost.com", "summary"=>"Blog Post Summary"}}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mBlogPost Load (0.2ms)[0m   [0mSELECT * FROM `blog_posts` WHERE (`blog_posts`.`id` = 1) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `blog_posts` WHERE (`blog_posts`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mBlogPost Update (0.3ms)[0m   [0mUPDATE `blog_posts` SET `updated_at` = '2010-02-26 05:12:45', `guid` = '22222', `title` = 'API Test Post', `url` = 'http://www.apiblogpost.com', `body` = 'API Test Body' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 9ms (View: 0, DB: 3) | 200 OK [http://www.example.com/blog_posts/1.xml]
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing EventsController#index to json (for 127.0.0.1 at 2010-02-26 00:12:45) [GET]
+  Parameters: {"api_key"=>"testapikey"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mEvent Load (0.4ms)[0m   [0;1mSELECT * FROM `events` WHERE (start_time>now()) ORDER BY start_time ASC[0m
+Completed in 14ms (View: 0, DB: 2) | 200 OK [http://www.example.com/events.json]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing EventsController#show to json (for 127.0.0.1 at 2010-02-26 00:12:45) [GET]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mEvent Load (0.2ms)[0m   [0;1mSELECT * FROM `events` WHERE (`events`.`id` = 1) [0m
+Completed in 5ms (View: 0, DB: 2) | 200 OK [http://www.example.com/events/1.json]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:45) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing EventsController#create to json (for 127.0.0.1 at 2010-02-26 00:12:45) [POST]
+  Parameters: {"api_key"=>"testapikey", "event"=>{"name"=>"Test API Event 1", "city"=>"TestTown", "end_time"=>"2010-02-26 00:12:45", "location"=>"Testville, USA", "organized_by"=>"API Testers of America", "street"=>"Testers Rd.", "user_id"=>"1", "phone"=>"555-555-5555", "website"=>"http://www.test.com", "description"=>"Test API Event 1 Desc", "event_type"=>"API Type", "start_time"=>"2010-02-26 00:12:45"}}
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mEvent Create (0.3ms)[0m   [0;1mINSERT INTO `events` (`name`, `city`, `end_time`, `location`, `organized_by`, `created_at`, `updated_at`, `street`, `user_id`, `website`, `phone`, `photo_id`, `description`, `event_type`, `start_time`) VALUES('Test API Event 1', 'TestTown', '2010-02-26 05:12:45', 'Testville, USA', 'API Testers of America', '2010-02-26 05:12:49', '2010-02-26 05:12:49', 'Testers Rd.', 1, 'http://www.test.com', '555-555-5555', NULL, 'Test API Event 1 Desc', 'API Type', '2010-02-26 05:12:45')[0m
+  [4;35;1mActivity Create (0.2ms)[0m   [0mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-02-26 05:12:49', NULL, '2010-02-26 05:12:49', NULL, 1, 5, 'Event')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 4015ms (View: 1, DB: 3) | 201 Created [http://www.example.com/events.json]
+  [4;35;1mSQL (1.0ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:49) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing EventsController#create to xml (for 127.0.0.1 at 2010-02-26 00:12:49) [POST]
+  Parameters: {"api_key"=>"testapikey", "event"=>{"name"=>"Test API Event 1", "city"=>"TestTown", "end_time"=>"2010-02-26 00:12:49", "location"=>"Testville, USA", "organized_by"=>"API Testers of America", "street"=>"Testers Rd.", "user_id"=>"1", "phone"=>"555-555-5555", "website"=>"http://www.test.com", "description"=>"Test API Event 1 Desc", "event_type"=>"API Type", "start_time"=>"2010-02-26 00:12:49"}}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mEvent Create (0.3ms)[0m   [0;1mINSERT INTO `events` (`name`, `city`, `end_time`, `location`, `organized_by`, `created_at`, `updated_at`, `street`, `user_id`, `website`, `phone`, `photo_id`, `description`, `event_type`, `start_time`) VALUES('Test API Event 1', 'TestTown', '2010-02-26 05:12:49', 'Testville, USA', 'API Testers of America', '2010-02-26 05:12:53', '2010-02-26 05:12:53', 'Testers Rd.', 1, 'http://www.test.com', '555-555-5555', NULL, 'Test API Event 1 Desc', 'API Type', '2010-02-26 05:12:49')[0m
+  [4;35;1mActivity Create (0.2ms)[0m   [0mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-02-26 05:12:53', NULL, '2010-02-26 05:12:53', NULL, 1, 6, 'Event')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 4014ms (View: 2, DB: 2) | 201 Created [http://www.example.com/events.xml]
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:53) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing EventsController#create to xml (for 127.0.0.1 at 2010-02-26 00:12:53) [POST]
+  Parameters: {"event"=>{"name"=>"Test API Event 1", "city"=>"TestTown", "end_time"=>"2010-02-26 00:12:53", "location"=>"Testville, USA", "organized_by"=>"API Testers of America", "street"=>"Testers Rd.", "user_id"=>"1", "phone"=>"555-555-5555", "website"=>"http://www.test.com", "description"=>"Test API Event 1 Desc", "event_type"=>"API Type", "start_time"=>"2010-02-26 00:12:53"}}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+Filter chain halted as [:api_filter] rendered_or_redirected.
+Completed in 3ms (View: 0, DB: 1) | 401 Unauthorized [http://www.example.com/events.xml]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:53) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing EventsController#update to json (for 127.0.0.1 at 2010-02-26 00:12:53) [PUT]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1", "event"=>{"name"=>"Test API Event 1", "city"=>"TestTown", "end_time"=>"2010-02-26 00:12:53", "location"=>"Testville, USA", "organized_by"=>"API Testers of America", "street"=>"Testers Rd.", "user_id"=>"1", "phone"=>"555-555-5555", "website"=>"http://www.test.com", "description"=>"Test API Event 1 Desc", "event_type"=>"API Type", "start_time"=>"2010-02-26 00:12:53"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mEvent Load (0.2ms)[0m   [0;1mSELECT * FROM `events` WHERE (`events`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mEvent Update (0.3ms)[0m   [0;1mUPDATE `events` SET `updated_at` = '2010-02-26 05:12:53', `name` = 'Test API Event 1', `start_time` = '2010-02-26 05:12:53', `organized_by` = 'API Testers of America', `event_type` = 'API Type', `description` = 'Test API Event 1 Desc', `end_time` = '2010-02-26 05:12:53' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 8ms (View: 0, DB: 2) | 200 OK [http://www.example.com/events/1.json]
+  [4;36;1mSQL (0.7ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+Redirected to http://www.example.com/
+Completed in 1ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing EventsController#update to xml (for 127.0.0.1 at 2010-02-26 00:12:54) [PUT]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1", "event"=>{"name"=>"Test API Event 1", "city"=>"TestTown", "end_time"=>"2010-02-26 00:12:54", "location"=>"Testville, USA", "organized_by"=>"API Testers of America", "street"=>"Testers Rd.", "user_id"=>"1", "phone"=>"555-555-5555", "website"=>"http://www.test.com", "description"=>"Test API Event 1 Desc", "event_type"=>"API Type", "start_time"=>"2010-02-26 00:12:54"}}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mEvent Load (0.2ms)[0m   [0;1mSELECT * FROM `events` WHERE (`events`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mEvent Update (0.3ms)[0m   [0;1mUPDATE `events` SET `updated_at` = '2010-02-26 05:12:54', `name` = 'Test API Event 1', `start_time` = '2010-02-26 05:12:54', `organized_by` = 'API Testers of America', `event_type` = 'API Type', `description` = 'Test API Event 1 Desc', `end_time` = '2010-02-26 05:12:54' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 8ms (View: 0, DB: 2) | 200 OK [http://www.example.com/events/1.xml]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing ForumTopicsController#index to json (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+  Parameters: {"api_key"=>"testapikey"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mForumTopic Load (0.3ms)[0m   [0mSELECT * FROM `forum_topics` [0m
+Completed in 11ms (View: 0, DB: 2) | 200 OK [http://www.example.com/forum_topics.json]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing ForumTopicsController#show to json (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mForumTopic Load (0.2ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+Completed in 4ms (View: 0, DB: 2) | 200 OK [http://www.example.com/forum_topics/1.json]
+  [4;36;1mSQL (0.7ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing ForumTopicsController#create to json (for 127.0.0.1 at 2010-02-26 00:12:54) [POST]
+  Parameters: {"api_key"=>"testapikey", "forum_topic"=>{"title"=>"API Test Topic", "user_id"=>"1", "description"=>"Test topic desc"}}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mForumTopic Create (0.2ms)[0m   [0;1mINSERT INTO `forum_topics` (`created_at`, `title`, `updated_at`, `user_id`, `description`) VALUES('2010-02-26 05:12:54', 'API Test Topic', '2010-02-26 05:12:54', 1, 'Test topic desc')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 108ms (View: 1, DB: 2) | 201 Created [http://www.example.com/forum_topics.json]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing ForumTopicsController#create to xml (for 127.0.0.1 at 2010-02-26 00:12:54) [POST]
+  Parameters: {"api_key"=>"testapikey", "forum_topic"=>{"title"=>"API Test Topic", "user_id"=>"1", "description"=>"Test topic desc"}}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mForumTopic Create (0.2ms)[0m   [0;1mINSERT INTO `forum_topics` (`created_at`, `title`, `updated_at`, `user_id`, `description`) VALUES('2010-02-26 05:12:54', 'API Test Topic', '2010-02-26 05:12:54', 1, 'Test topic desc')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 8ms (View: 2, DB: 2) | 201 Created [http://www.example.com/forum_topics.xml]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing ForumTopicsController#create to xml (for 127.0.0.1 at 2010-02-26 00:12:54) [POST]
+  Parameters: {"forum_topic"=>{"title"=>"API Test Topic", "user_id"=>"1", "description"=>"Test topic desc"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+Filter chain halted as [:api_filter] rendered_or_redirected.
+Completed in 3ms (View: 0, DB: 1) | 401 Unauthorized [http://www.example.com/forum_topics.xml]
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing ForumTopicsController#update to json (for 127.0.0.1 at 2010-02-26 00:12:54) [PUT]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1", "forum_topic"=>{"title"=>"Updated API Test Topic", "user_id"=>"1", "description"=>"Updated Test topic desc"}}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mRole Load (0.2ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;36;1mForumTopic Load (0.2ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mForumTopic Update (0.3ms)[0m   [0;1mUPDATE `forum_topics` SET `updated_at` = '2010-02-26 05:12:54', `title` = 'Updated API Test Topic', `description` = 'Updated Test topic desc' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 7ms (View: 0, DB: 2) | 200 OK [http://www.example.com/forum_topics/1.json]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing ForumTopicsController#update to xml (for 127.0.0.1 at 2010-02-26 00:12:54) [PUT]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1", "forum_topic"=>{"title"=>"Updated API Test Topic", "user_id"=>"1", "description"=>"Updated Test topic desc"}}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;35;1mForumTopic Load (0.2ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mForumTopic Update (0.2ms)[0m   [0mUPDATE `forum_topics` SET `updated_at` = '2010-02-26 05:12:54', `title` = 'Updated API Test Topic', `description` = 'Updated Test topic desc' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 7ms (View: 0, DB: 2) | 200 OK [http://www.example.com/forum_topics/1.xml]
+  [4;35;1mSQL (0.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing FriendsController#create to json (for 127.0.0.1 at 2010-02-26 00:12:54) [POST]
+  Parameters: {"api_key"=>"bobbyapikey", "user_id"=>"6", "friend_id"=>"1"}
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'bobbyapikey') LIMIT 1[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 6) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mFriendship Load (0.2ms)[0m   [0mSELECT * FROM `friendships` WHERE (`friendships`.`user_id` = 6 AND `friendships`.`friend_id` = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mFriendship Create (0.2ms)[0m   [0mINSERT INTO `friendships` (`created_at`, `updated_at`, `user_id`, `status`, `friend_id`) VALUES('2010-02-26 05:12:54', '2010-02-26 05:12:54', 6, 'requested', 1)[0m
+  [4;36;1mFriendship Create (0.1ms)[0m   [0;1mINSERT INTO `friendships` (`created_at`, `updated_at`, `user_id`, `status`, `friend_id`) VALUES('2010-02-26 05:12:54', '2010-02-26 05:12:54', 1, 'pending', 6)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 127ms (View: 0, DB: 3) | 201 Created [http://www.example.com/users/6/friends.json]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 6) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'administrator') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed in 9ms (DB: 3) | 302 Found [http://www.example.com/logout]
+
+
+Processing FriendsController#update to json (for 127.0.0.1 at 2010-02-26 00:12:54) [PUT]
+  Parameters: {"api_key"=>"testapikey", "id"=>"6", "user_id"=>"1", "friend_id"=>"6"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 6) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mFriendship Load (0.2ms)[0m   [0;1mSELECT * FROM `friendships` WHERE (`friendships`.`user_id` = 1 AND `friendships`.`friend_id` = 6) LIMIT 1[0m
+  [4;35;1mFriendship Update (0.3ms)[0m   [0mUPDATE `friendships` SET `updated_at` = '2010-02-26 05:12:54', `status` = 'accepted' WHERE `id` = 14[0m
+  [4;36;1mFriendship Load (0.2ms)[0m   [0;1mSELECT * FROM `friendships` WHERE (`friendships`.`user_id` = 6 AND `friendships`.`friend_id` = 1) LIMIT 1[0m
+  [4;35;1mFriendship Update (0.2ms)[0m   [0mUPDATE `friendships` SET `updated_at` = '2010-02-26 05:12:54', `status` = 'accepted' WHERE `id` = 13[0m
+  [4;36;1mFriendship Load (0.2ms)[0m   [0;1mSELECT * FROM `friendships` WHERE (`friendships`.`user_id` = 1 AND `friendships`.`friend_id` = 6) LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mActivity Create (0.2ms)[0m   [0;1mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-02-26 05:12:54', NULL, '2010-02-26 05:12:54', NULL, 1, 14, 'Friendship')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 16ms (View: 0, DB: 4) | 201 Created [http://www.example.com/users/1/friends/6.json]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing FriendsController#create to json (for 127.0.0.1 at 2010-02-26 00:12:54) [POST]
+  Parameters: {"api_key"=>"testapikey", "user_id"=>"1", "friend_id"=>"6"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 6) [0m
+  [4;35;1mFriendship Load (0.2ms)[0m   [0mSELECT * FROM `friendships` WHERE (`friendships`.`user_id` = 1 AND `friendships`.`friend_id` = 6) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mFriendship Create (0.2ms)[0m   [0mINSERT INTO `friendships` (`created_at`, `updated_at`, `user_id`, `status`, `friend_id`) VALUES('2010-02-26 05:12:54', '2010-02-26 05:12:54', 1, 'requested', 6)[0m
+  [4;36;1mFriendship Create (0.1ms)[0m   [0;1mINSERT INTO `friendships` (`created_at`, `updated_at`, `user_id`, `status`, `friend_id`) VALUES('2010-02-26 05:12:54', '2010-02-26 05:12:54', 6, 'pending', 1)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 10ms (View: 0, DB: 3) | 201 Created [http://www.example.com/users/1/friends.json]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing FriendsController#index to json (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+  Parameters: {"api_key"=>"testapikey", "user_id"=>"1"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `friendships` ON `users`.id = `friendships`.friend_id WHERE ((`friendships`.user_id = 1) AND ((status = 'accepted'))) [0m
+Completed in 10ms (View: 0, DB: 2) | 200 OK [http://www.example.com/users/1/friends.json]
+  [4;35;1mSQL (0.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing FriendsController#index to json (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+  Parameters: {"api_key"=>"testapikey", "user_id"=>"1", "type"=>"pending"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `friendships` ON `users`.id = `friendships`.friend_id WHERE ((`friendships`.user_id = 1) AND ((status = 'pending'))) ORDER BY friendships.created_at[0m
+Completed in 7ms (View: 0, DB: 3) | 200 OK [http://www.example.com/users/1/friends.json?type=pending&api_key=testapikey]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing FriendsController#index to json (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+  Parameters: {"api_key"=>"testapikey", "user_id"=>"1", "type"=>"requested"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `friendships` ON `users`.id = `friendships`.friend_id WHERE ((`friendships`.user_id = 1) AND ((status = 'requested'))) ORDER BY friendships.created_at[0m
+Completed in 110ms (View: 0, DB: 3) | 200 OK [http://www.example.com/users/1/friends.json?type=requested&api_key=testapikey]
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing GroupsController#index to json (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+  Parameters: {"api_key"=>"testapikey"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mGroup Load (0.3ms)[0m   [0;1mSELECT * FROM `groups` [0m
+Completed in 12ms (View: 0, DB: 2) | 200 OK [http://www.example.com/groups.json]
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing GroupsController#show to json (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mGroup Load (0.2ms)[0m   [0;1mSELECT * FROM `groups` WHERE (`groups`.`id` = 1) [0m
+Completed in 4ms (View: 0, DB: 2) | 200 OK [http://www.example.com/groups/1.json]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:54) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing GroupsController#create to json (for 127.0.0.1 at 2010-02-26 00:12:54) [POST]
+  Parameters: {"group"=>{"name"=>"unit test group", "featured"=>"false", "description"=>"my desc"}, "api_key"=>"testapikey"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mRole Load (0.2ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mGroup Create (0.3ms)[0m   [0mINSERT INTO `groups` (`name`, `created_at`, `featured`, `announcements`, `private`, `updated_at`, `creator_id`, `description`, `photo_id`) VALUES('unit test group', '2010-02-26 05:12:58', 0, NULL, 0, '2010-02-26 05:12:58', 1, 'my desc', NULL)[0m
+  [4;36;1mActivity Create (0.2ms)[0m   [0;1mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-02-26 05:12:58', NULL, '2010-02-26 05:12:58', NULL, 1, 5, 'Group')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 4013ms (View: 1, DB: 3) | 201 Created [http://www.example.com/groups.json]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:12:58) [GET]
+Redirected to http://www.example.com/
+Completed in 1ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing GroupsController#create to xml (for 127.0.0.1 at 2010-02-26 00:12:58) [POST]
+  Parameters: {"group"=>{"name"=>"unit test group", "featured"=>"false", "description"=>"my desc"}, "api_key"=>"testapikey"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mGroup Create (0.3ms)[0m   [0;1mINSERT INTO `groups` (`name`, `created_at`, `featured`, `announcements`, `private`, `updated_at`, `creator_id`, `description`, `photo_id`) VALUES('unit test group', '2010-02-26 05:13:02', 0, NULL, 0, '2010-02-26 05:13:02', 1, 'my desc', NULL)[0m
+  [4;35;1mActivity Create (0.2ms)[0m   [0mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-02-26 05:13:02', NULL, '2010-02-26 05:13:02', NULL, 1, 6, 'Group')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 4013ms (View: 2, DB: 3) | 201 Created [http://www.example.com/groups.xml]
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:02) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing GroupsController#create to xml (for 127.0.0.1 at 2010-02-26 00:13:02) [POST]
+  Parameters: {"group"=>{"name"=>"unit test group", "featured"=>"false", "description"=>"my desc"}}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+Filter chain halted as [:api_filter] rendered_or_redirected.
+Completed in 3ms (View: 0, DB: 1) | 401 Unauthorized [http://www.example.com/groups.xml]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:02) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing GroupsController#update to json (for 127.0.0.1 at 2010-02-26 00:13:02) [PUT]
+  Parameters: {"group"=>{"name"=>"renamed unit test group", "featured"=>"false", "description"=>"my new desc"}, "api_key"=>"testapikey", "id"=>"1"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mGroup Load (0.2ms)[0m   [0;1mSELECT * FROM `groups` WHERE (`groups`.`id` = 1) [0m
+  [4;35;1mRole Load (0.2ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `groups` WHERE (`groups`.`id` = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mGroup Update (0.3ms)[0m   [0;1mUPDATE `groups` SET `updated_at` = '2010-02-26 05:13:06', `name` = 'renamed unit test group', `description` = 'my new desc' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 4009ms (View: 0, DB: 3) | 200 OK [http://www.example.com/groups/1.json]
+  [4;36;1mSQL (0.8ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:06) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing GroupsController#update to xml (for 127.0.0.1 at 2010-02-26 00:13:06) [PUT]
+  Parameters: {"group"=>{"name"=>"renamed unit test group", "featured"=>"false", "description"=>"my new desc"}, "api_key"=>"testapikey", "id"=>"1"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mGroup Load (0.2ms)[0m   [0;1mSELECT * FROM `groups` WHERE (`groups`.`id` = 1) [0m
+  [4;35;1mRole Load (0.2ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `groups` WHERE (`groups`.`id` = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mGroup Update (0.4ms)[0m   [0;1mUPDATE `groups` SET `updated_at` = '2010-02-26 05:13:10', `name` = 'renamed unit test group', `description` = 'my new desc' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 4010ms (View: 0, DB: 3) | 200 OK [http://www.example.com/groups/1.xml]
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing InvitesController#index to json (for 127.0.0.1 at 2010-02-26 00:13:10) [GET]
+  Parameters: {"api_key"=>"testapikey"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mInvite Load (0.3ms)[0m   [0mSELECT * FROM `invites` [0m
+Completed in 10ms (View: 0, DB: 2) | 200 OK [http://www.example.com/invites.json]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing InvitesController#show to json (for 127.0.0.1 at 2010-02-26 00:13:10) [GET]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mInvite Load (0.2ms)[0m   [0mSELECT * FROM `invites` WHERE (`invites`.`id` = 1) [0m
+Completed in 4ms (View: 0, DB: 2) | 200 OK [http://www.example.com/invites/1.json]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing InvitesController#create to json (for 127.0.0.1 at 2010-02-26 00:13:11) [POST]
+  Parameters: {"invite"=>{"user_id"=>"1", "accepted"=>"false", "message"=>"API Invite 1", "email"=>"test@email.com"}, "api_key"=>"testapikey"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mInvite Load (0.2ms)[0m   [0;1mSELECT * FROM `invites` WHERE (`invites`.`email` = 'test@email.com') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mInvite Create (0.2ms)[0m   [0;1mINSERT INTO `invites` (`created_at`, `updated_at`, `invite_code`, `user_id`, `message`, `accepted`, `email`) VALUES('2010-02-26 05:13:11', '2010-02-26 05:13:11', 'Ls7zjR110KShDNbh', 1, 'API Invite 1', 0, 'test@email.com')[0m
+Sent mail to test@email.com
+
+Date: Fri, 26 Feb 2010 00:13:11 -0500
+From: quentin@example.com
+To: test@email.com
+Subject: An Invitation to Join RubyMI 
+Mime-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+
+
+  	
+quentin test has invited you to join the Michigan Ruby Community 
+at <a href="http://www.rubymi.org">RubyMI.org</a>.
+<br/><br/>
+To accept this invitation, click this link:<br/>
+<a href="http://www.rubymi.org/signup?invite_code=Ls7zjR110KShDNbh">http://www.rubymi.org/signup?invite_code=Ls7zjR110KShDNbh</a>
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 13ms (View: 1, DB: 2) | 201 Created [http://www.example.com/invites.json]
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing InvitesController#create to xml (for 127.0.0.1 at 2010-02-26 00:13:11) [POST]
+  Parameters: {"invite"=>{"user_id"=>"1", "accepted"=>"false", "message"=>"API Invite 1", "email"=>"test@email.com"}, "api_key"=>"testapikey"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mInvite Load (0.2ms)[0m   [0;1mSELECT * FROM `invites` WHERE (`invites`.`email` = 'test@email.com') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mInvite Create (0.2ms)[0m   [0;1mINSERT INTO `invites` (`created_at`, `updated_at`, `invite_code`, `user_id`, `message`, `accepted`, `email`) VALUES('2010-02-26 05:13:11', '2010-02-26 05:13:11', 'VVFVajaT2TEn3Xm5', 1, 'API Invite 1', 0, 'test@email.com')[0m
+Sent mail to test@email.com
+
+Date: Fri, 26 Feb 2010 00:13:11 -0500
+From: quentin@example.com
+To: test@email.com
+Subject: An Invitation to Join RubyMI 
+Mime-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+
+
+  	
+quentin test has invited you to join the Michigan Ruby Community 
+at <a href="http://www.rubymi.org">RubyMI.org</a>.
+<br/><br/>
+To accept this invitation, click this link:<br/>
+<a href="http://www.rubymi.org/signup?invite_code=VVFVajaT2TEn3Xm5">http://www.rubymi.org/signup?invite_code=VVFVajaT2TEn3Xm5</a>
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 11ms (View: 2, DB: 2) | 201 Created [http://www.example.com/invites.xml]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing InvitesController#create to xml (for 127.0.0.1 at 2010-02-26 00:13:11) [POST]
+  Parameters: {"invite"=>{"user_id"=>"1", "accepted"=>"false", "message"=>"API Invite 1", "email"=>"test@email.com"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+Filter chain halted as [:api_filter] rendered_or_redirected.
+Completed in 3ms (View: 0, DB: 1) | 401 Unauthorized [http://www.example.com/invites.xml]
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing InvitesController#update to json (for 127.0.0.1 at 2010-02-26 00:13:11) [PUT]
+  Parameters: {"invite"=>{"user_id"=>"1", "accepted"=>"false", "message"=>"API Invite 1", "email"=>"test@email.com"}, "api_key"=>"testapikey", "id"=>"1"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mInvite Load (0.3ms)[0m   [0mSELECT * FROM `invites` WHERE (`invites`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mInvite Update (0.2ms)[0m   [0mUPDATE `invites` SET `updated_at` = '2010-02-26 05:13:11', `message` = 'API Invite 1', `email` = 'test@email.com' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 6ms (View: 0, DB: 2) | 200 OK [http://www.example.com/invites/1.json]
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing InvitesController#update to xml (for 127.0.0.1 at 2010-02-26 00:13:11) [PUT]
+  Parameters: {"invite"=>{"user_id"=>"1", "accepted"=>"false", "message"=>"API Invite 1", "email"=>"test@email.com"}, "api_key"=>"testapikey", "id"=>"1"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mInvite Load (0.2ms)[0m   [0mSELECT * FROM `invites` WHERE (`invites`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mInvite Update (0.3ms)[0m   [0mUPDATE `invites` SET `updated_at` = '2010-02-26 05:13:11', `message` = 'API Invite 1', `email` = 'test@email.com' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 6ms (View: 0, DB: 2) | 200 OK [http://www.example.com/invites/1.xml]
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing LinksController#index to json (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+  Parameters: {"api_key"=>"testapikey"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mLink Load (0.3ms)[0m   [0;1mSELECT * FROM `links` ORDER BY created_at DESC LIMIT 0, 30[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `links` [0m
+Completed in 13ms (View: 0, DB: 3) | 200 OK [http://www.example.com/links.json]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing LinksController#show to json (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mLink Load (0.2ms)[0m   [0mSELECT * FROM `links` WHERE (`links`.`id` = 1) [0m
+Completed in 4ms (View: 0, DB: 2) | 200 OK [http://www.example.com/links/1.json]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing LinksController#create to json (for 127.0.0.1 at 2010-02-26 00:13:11) [POST]
+  Parameters: {"api_key"=>"testapikey", "link"=>{"title"=>"API Link 1", "url"=>"http://www.api.com", "user_id"=>"1"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mLink Create (0.2ms)[0m   [0mINSERT INTO `links` (`created_at`, `title`, `updated_at`, `url`, `user_id`) VALUES('2010-02-26 05:13:11', 'API Link 1', '2010-02-26 05:13:11', 'http://www.api.com', 1)[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mActivity Create (0.2ms)[0m   [0mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-02-26 05:13:11', NULL, '2010-02-26 05:13:11', NULL, 1, 5, 'Link')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 9ms (View: 1, DB: 2) | 201 Created [http://www.example.com/links.json]
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 1ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing LinksController#create to xml (for 127.0.0.1 at 2010-02-26 00:13:11) [POST]
+  Parameters: {"api_key"=>"testapikey", "link"=>{"title"=>"API Link 1", "url"=>"http://www.api.com", "user_id"=>"1"}}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mLink Create (0.2ms)[0m   [0;1mINSERT INTO `links` (`created_at`, `title`, `updated_at`, `url`, `user_id`) VALUES('2010-02-26 05:13:11', 'API Link 1', '2010-02-26 05:13:11', 'http://www.api.com', 1)[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mActivity Create (0.2ms)[0m   [0;1mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-02-26 05:13:11', NULL, '2010-02-26 05:13:11', NULL, 1, 6, 'Link')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 10ms (View: 2, DB: 3) | 201 Created [http://www.example.com/links.xml]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing LinksController#create to xml (for 127.0.0.1 at 2010-02-26 00:13:11) [POST]
+  Parameters: {"link"=>{"title"=>"API Link 1", "url"=>"http://www.api.com", "user_id"=>"1"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+Filter chain halted as [:api_filter] rendered_or_redirected.
+Completed in 3ms (View: 0, DB: 1) | 401 Unauthorized [http://www.example.com/links.xml]
+  [4;35;1mSQL (0.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing LinksController#update to json (for 127.0.0.1 at 2010-02-26 00:13:11) [PUT]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1", "link"=>{"title"=>"API Link 1", "url"=>"http://www.api.com", "user_id"=>"1"}}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mLink Load (0.2ms)[0m   [0mSELECT * FROM `links` WHERE (`links`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mLink Update (0.3ms)[0m   [0mUPDATE `links` SET `updated_at` = '2010-02-26 05:13:11', `title` = 'API Link 1', `url` = 'http://www.api.com' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 6ms (View: 0, DB: 2) | 200 OK [http://www.example.com/links/1.json]
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing LinksController#update to xml (for 127.0.0.1 at 2010-02-26 00:13:11) [PUT]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1", "link"=>{"title"=>"API Link 1", "url"=>"http://www.api.com", "user_id"=>"1"}}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mLink Load (0.2ms)[0m   [0mSELECT * FROM `links` WHERE (`links`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mLink Update (0.3ms)[0m   [0mUPDATE `links` SET `updated_at` = '2010-02-26 05:13:11', `title` = 'API Link 1', `url` = 'http://www.api.com' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 6ms (View: 0, DB: 2) | 200 OK [http://www.example.com/links/1.xml]
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing ProjectsController#index to json (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+  Parameters: {"api_key"=>"testapikey"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM `projects` [0m
+Completed in 11ms (View: 0, DB: 2) | 200 OK [http://www.example.com/projects.json]
+  [4;35;1mSQL (0.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing ProjectsController#show to json (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mProject Load (0.2ms)[0m   [0;1mSELECT * FROM `projects` WHERE (`projects`.`id` = 1) [0m
+Completed in 4ms (View: 0, DB: 2) | 200 OK [http://www.example.com/projects/1.json]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing ProjectsController#create to json (for 127.0.0.1 at 2010-02-26 00:13:11) [POST]
+  Parameters: {"api_key"=>"testapikey", "project"=>{"name"=>"API Project", "url"=>"http://www.apiproject.com", "user_id"=>"1", "description"=>"API Project Desc"}}
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mProject Create (0.2ms)[0m   [0;1mINSERT INTO `projects` (`name`, `created_at`, `updated_at`, `url`, `user_id`, `description`) VALUES('API Project', '2010-02-26 05:13:11', '2010-02-26 05:13:11', 'http://www.apiproject.com', 1, 'API Project Desc')[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mActivity Create (0.3ms)[0m   [0;1mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-02-26 05:13:11', NULL, '2010-02-26 05:13:11', NULL, 1, 5, 'Project')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 11ms (View: 1, DB: 3) | 201 Created [http://www.example.com/projects.json]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing ProjectsController#create to xml (for 127.0.0.1 at 2010-02-26 00:13:11) [POST]
+  Parameters: {"api_key"=>"testapikey", "project"=>{"name"=>"API Project", "url"=>"http://www.apiproject.com", "user_id"=>"1", "description"=>"API Project Desc"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mProject Create (0.2ms)[0m   [0mINSERT INTO `projects` (`name`, `created_at`, `updated_at`, `url`, `user_id`, `description`) VALUES('API Project', '2010-02-26 05:13:11', '2010-02-26 05:13:11', 'http://www.apiproject.com', 1, 'API Project Desc')[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mActivity Create (0.2ms)[0m   [0mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-02-26 05:13:11', NULL, '2010-02-26 05:13:11', NULL, 1, 6, 'Project')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 10ms (View: 2, DB: 3) | 201 Created [http://www.example.com/projects.xml]
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+  Parameters: {"api_key"=>"testapikey"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed in 8ms (DB: 3) | 302 Found [http://www.example.com/logout]
+
+
+Processing ProjectsController#create to xml (for 127.0.0.1 at 2010-02-26 00:13:11) [POST]
+  Parameters: {"project"=>{"name"=>"API Project", "url"=>"http://www.apiproject.com", "user_id"=>"1", "description"=>"API Project Desc"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+Filter chain halted as [:api_filter] rendered_or_redirected.
+Completed in 3ms (View: 0, DB: 1) | 401 Unauthorized [http://www.example.com/projects.xml]
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing ProjectsController#update to json (for 127.0.0.1 at 2010-02-26 00:13:11) [PUT]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1", "project"=>{"name"=>"API Project", "url"=>"http://www.apiproject.com", "user_id"=>"1", "description"=>"API Project Desc"}}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mProject Load (0.2ms)[0m   [0mSELECT * FROM `projects` WHERE (`projects`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mProject Update (0.2ms)[0m   [0mUPDATE `projects` SET `updated_at` = '2010-02-26 05:13:11', `name` = 'API Project', `description` = 'API Project Desc', `url` = 'http://www.apiproject.com' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 6ms (View: 0, DB: 2) | 200 OK [http://www.example.com/projects/1.json]
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing ProjectsController#update to xml (for 127.0.0.1 at 2010-02-26 00:13:11) [PUT]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1", "project"=>{"name"=>"API Project", "url"=>"http://www.apiproject.com", "user_id"=>"1", "description"=>"API Project Desc"}}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mProject Load (0.2ms)[0m   [0mSELECT * FROM `projects` WHERE (`projects`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mProject Update (0.3ms)[0m   [0mUPDATE `projects` SET `updated_at` = '2010-02-26 05:13:11', `name` = 'API Project', `description` = 'API Project Desc', `url` = 'http://www.apiproject.com' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 6ms (View: 0, DB: 2) | 200 OK [http://www.example.com/projects/1.xml]
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing StatusPostsController#index to json (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+  Parameters: {"api_key"=>"testapikey"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mStatusPost Load (0.3ms)[0m   [0;1mSELECT * FROM `status_posts` [0m
+Completed in 11ms (View: 0, DB: 2) | 200 OK [http://www.example.com/status_posts.json]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing StatusPostsController#show to json (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mStatusPost Load (0.2ms)[0m   [0;1mSELECT * FROM `status_posts` WHERE (`status_posts`.`id` = 1) [0m
+Completed in 4ms (View: 0, DB: 2) | 200 OK [http://www.example.com/status_posts/1.json]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing StatusPostsController#create to json (for 127.0.0.1 at 2010-02-26 00:13:11) [POST]
+  Parameters: {"api_key"=>"testapikey", "status_post"=>{"body"=>"API Status Post 1"}}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mStatusPost Create (0.2ms)[0m   [0;1mINSERT INTO `status_posts` (`created_at`, `body`, `updated_at`, `user_id`) VALUES('2010-02-26 05:13:11', 'API Status Post 1', '2010-02-26 05:13:11', 1)[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mActivity Create (0.2ms)[0m   [0;1mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-02-26 05:13:11', NULL, '2010-02-26 05:13:11', NULL, 1, 5, 'StatusPost')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 11ms (View: 1, DB: 3) | 201 Created [http://www.example.com/status_posts.json]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:11) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing StatusPostsController#create to xml (for 127.0.0.1 at 2010-02-26 00:13:12) [POST]
+  Parameters: {"api_key"=>"testapikey", "status_post"=>{"body"=>"API Status Post 1"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mStatusPost Create (0.2ms)[0m   [0mINSERT INTO `status_posts` (`created_at`, `body`, `updated_at`, `user_id`) VALUES('2010-02-26 05:13:12', 'API Status Post 1', '2010-02-26 05:13:12', 1)[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mActivity Create (0.2ms)[0m   [0mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-02-26 05:13:12', NULL, '2010-02-26 05:13:12', NULL, 1, 6, 'StatusPost')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+Completed in 119ms (View: 2, DB: 2) | 201 Created [http://www.example.com/status_posts.xml]
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:12) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing StatusPostsController#create to xml (for 127.0.0.1 at 2010-02-26 00:13:12) [POST]
+  Parameters: {"status_post"=>{"body"=>"API Status Post 1"}}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+Filter chain halted as [:api_filter] rendered_or_redirected.
+Completed in 3ms (View: 0, DB: 1) | 401 Unauthorized [http://www.example.com/status_posts.xml]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:12) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing StatusPostsController#update to json (for 127.0.0.1 at 2010-02-26 00:13:12) [PUT]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1", "status_post"=>{"body"=>"API Status Post 1"}}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mStatusPost Load (0.2ms)[0m   [0;1mSELECT * FROM `status_posts` WHERE (`status_posts`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mStatusPost Update (0.2ms)[0m   [0;1mUPDATE `status_posts` SET `updated_at` = '2010-02-26 05:13:12', `body` = 'API Status Post 1' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 6ms (View: 0, DB: 2) | 200 OK [http://www.example.com/status_posts/1.json]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:12) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 1) | 302 Found [http://www.example.com/logout]
+
+
+Processing StatusPostsController#update to xml (for 127.0.0.1 at 2010-02-26 00:13:12) [PUT]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1", "status_post"=>{"body"=>"API Status Post 1"}}
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mStatusPost Load (0.2ms)[0m   [0;1mSELECT * FROM `status_posts` WHERE (`status_posts`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mStatusPost Update (0.3ms)[0m   [0;1mUPDATE `status_posts` SET `updated_at` = '2010-02-26 05:13:12', `body` = 'API Status Post 1' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 6ms (View: 0, DB: 2) | 200 OK [http://www.example.com/status_posts/1.xml]
+  [4;36;1mSQL (0.7ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:12) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing UsersController#create to json (for 127.0.0.1 at 2010-02-26 00:13:12) [POST]
+  Parameters: {"api_key"=>"testapikey", "user"=>{"password_confirmation"=>"12345", "last_name"=>"test", "twitter_id"=>"uttwit", "password"=>"12345", "login"=>"ut1", "first_name"=>"unit", "email"=>"ut@email.com"}}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'user') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'ut1') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'ut@email.com') LIMIT 1[0m
+  [4;36;1mUser Create (0.3ms)[0m   [0;1mINSERT INTO `users` (`city`, `occupation`, `flickr`, `facebook_id`, `salt`, `created_at`, `zip`, `about_me`, `activated_at`, `blog`, `display_tweets`, `yahoo_messenger_name`, `skype_name`, `facebook_url`, `company_url`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `featured`, `last_seen_at`, `password_reset_code`, `country_id`, `skills`, `show_blog_posts_on_home`, `msn_name`, `activation_code`, `api_key`, `flickr_username`, `linked_in_url`, `gtalk_name`, `posts_count`, `enabled`, `email_hash`, `sex`, `phone2`, `last_name`, `phone`, `website`, `blog_feed`, `twitter_id`, `aim_name`, `resume_url`, `login_count`, `remember_token`, `is_active`, `time_zone`, `organization`, `login`, `state_id`, `youtube_username`, `identity_url`, `email`, `first_name`, `use_gravatar`, `receive_emails`) VALUES(NULL, NULL, NULL, NULL, 'e4ed9b393cc300378b3621b0ff9e6fd7707cccec', '2010-02-26 05:13:16', NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, '846b10a35199420bbfa5a7b8ca1f00b20005d687', NULL, '2010-02-26 05:13:16', 0, NULL, NULL, NULL, NULL, 1, NULL, '545dea8447b151333b32b8439f9869fc284d7d34', '', NULL, NULL, NULL, 0, 1, NULL, NULL, NULL, 'test', NULL, NULL, NULL, 'uttwit', NULL, NULL, 0, NULL, 0, 'UTC', NULL, 'ut1', NULL, NULL, NULL, 'ut@email.com', 'unit', 0, 1)[0m
+  [4;35;1mPermission Create (0.2ms)[0m   [0mINSERT INTO `permissions` (`created_at`, `updated_at`, `role_id`, `group_id`, `user_id`) VALUES('2010-02-26 05:13:16', '2010-02-26 05:13:16', 3, NULL, 11)[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mProfilePhoto Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `photos`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 13926, '2010-02-26 05:13:16', NULL, NULL, 'image/png', 1, NULL, '2010-02-26 05:13:16', NULL, NULL, 0, 11, NULL, 'nophoto.png', 175, NULL, 175, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.4ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`thumbnail` = 'member' AND `photos`.`parent_id` = 980190973) LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 12459, '2010-02-26 05:13:16', NULL, NULL, 'image/png', NULL, 'member', '2010-02-26 05:13:16', NULL, NULL, 0, NULL, 980190973, 'nophoto_member.png', 96, NULL, 96, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`thumbnail` = 'medium' AND `photos`.`parent_id` = 980190973) LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 12359, '2010-02-26 05:13:16', NULL, NULL, 'image/png', NULL, 'medium', '2010-02-26 05:13:16', NULL, NULL, 0, NULL, 980190973, 'nophoto_medium.png', 82, NULL, 82, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.4ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`thumbnail` = 'small' AND `photos`.`parent_id` = 980190973) LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 11776, '2010-02-26 05:13:16', NULL, NULL, 'image/png', NULL, 'small', '2010-02-26 05:13:16', NULL, NULL, 0, NULL, 980190973, 'nophoto_small.png', 48, NULL, 48, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`thumbnail` = 'thumb' AND `photos`.`parent_id` = 980190973) LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 11572, '2010-02-26 05:13:16', NULL, NULL, 'image/png', NULL, 'thumb', '2010-02-26 05:13:16', NULL, NULL, 0, NULL, 980190973, 'nophoto_thumb.png', 32, NULL, 32, NULL)[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mProfilePhoto Load (0.3ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.user_id = 11 AND (is_profile = 1)) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-02-26 05:13:16', `activated_at` = '2010-02-26 05:13:16', `activation_code` = NULL WHERE `id` = 11[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mActivity Create (0.2ms)[0m   [0;1mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-02-26 05:13:16', NULL, '2010-02-26 05:13:16', NULL, 11, 11, 'User')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 4531ms (View: 1, DB: 10) | 201 Created [http://www.example.com/users.json]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'ut1') LIMIT 1[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-26 00:13:16) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 2) | 302 Found [http://www.example.com/logout]
+
+
+Processing UsersController#create to xml (for 127.0.0.1 at 2010-02-26 00:13:16) [POST]
+  Parameters: {"api_key"=>"testapikey", "user"=>{"password_confirmation"=>"12345", "last_name"=>"test", "twitter_id"=>"uttwit", "password"=>"12345", "login"=>"ut2", "first_name"=>"unit", "email"=>"ut2@email.com"}}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'user') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'ut2') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'ut2@email.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.4ms)[0m   [0mINSERT INTO `users` (`city`, `occupation`, `flickr`, `facebook_id`, `salt`, `created_at`, `zip`, `about_me`, `activated_at`, `blog`, `display_tweets`, `yahoo_messenger_name`, `skype_name`, `facebook_url`, `company_url`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `featured`, `last_seen_at`, `password_reset_code`, `country_id`, `skills`, `show_blog_posts_on_home`, `msn_name`, `activation_code`, `api_key`, `flickr_username`, `linked_in_url`, `gtalk_name`, `posts_count`, `enabled`, `email_hash`, `sex`, `phone2`, `last_name`, `phone`, `website`, `blog_feed`, `twitter_id`, `aim_name`, `resume_url`, `login_count`, `remember_token`, `is_active`, `time_zone`, `organization`, `login`, `state_id`, `youtube_username`, `identity_url`, `email`, `first_name`, `use_gravatar`, `receive_emails`) VALUES(NULL, NULL, NULL, NULL, '3885dc32add7a5ab7d6244bd1a505e39287ee78c', '2010-02-26 05:13:20', NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, '95840074228f781420aae11ce37e44d322825d1f', NULL, '2010-02-26 05:13:20', 0, NULL, NULL, NULL, NULL, 1, NULL, '0499ee6b24a3f6feea7676e837bf7c9c5b764192', '', NULL, NULL, NULL, 0, 1, NULL, NULL, NULL, 'test', NULL, NULL, NULL, 'uttwit', NULL, NULL, 0, NULL, 0, 'UTC', NULL, 'ut2', NULL, NULL, NULL, 'ut2@email.com', 'unit', 0, 1)[0m
+  [4;36;1mPermission Create (0.2ms)[0m   [0;1mINSERT INTO `permissions` (`created_at`, `updated_at`, `role_id`, `group_id`, `user_id`) VALUES('2010-02-26 05:13:20', '2010-02-26 05:13:20', 3, NULL, 12)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 13938, '2010-02-26 05:13:20', NULL, NULL, 'image/png', 1, NULL, '2010-02-26 05:13:20', NULL, NULL, 0, 12, NULL, 'nophoto.png', 175, NULL, 175, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`thumbnail` = 'member' AND `photos`.`parent_id` = 980190978) LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.9ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 12459, '2010-02-26 05:13:20', NULL, NULL, 'image/png', NULL, 'member', '2010-02-26 05:13:20', NULL, NULL, 0, NULL, 980190978, 'nophoto_member.png', 96, NULL, 96, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.4ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`thumbnail` = 'medium' AND `photos`.`parent_id` = 980190978) LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 12365, '2010-02-26 05:13:20', NULL, NULL, 'image/png', NULL, 'medium', '2010-02-26 05:13:20', NULL, NULL, 0, NULL, 980190978, 'nophoto_medium.png', 82, NULL, 82, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`thumbnail` = 'small' AND `photos`.`parent_id` = 980190978) LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 11775, '2010-02-26 05:13:21', NULL, NULL, 'image/png', NULL, 'small', '2010-02-26 05:13:21', NULL, NULL, 0, NULL, 980190978, 'nophoto_small.png', 48, NULL, 48, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`thumbnail` = 'thumb' AND `photos`.`parent_id` = 980190978) LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 11570, '2010-02-26 05:13:21', NULL, NULL, 'image/png', NULL, 'thumb', '2010-02-26 05:13:21', NULL, NULL, 0, NULL, 980190978, 'nophoto_thumb.png', 32, NULL, 32, NULL)[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mProfilePhoto Load (0.3ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.user_id = 12 AND (is_profile = 1)) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-02-26 05:13:21', `activated_at` = '2010-02-26 05:13:21', `activation_code` = NULL WHERE `id` = 12[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mActivity Create (0.2ms)[0m   [0;1mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-02-26 05:13:21', NULL, '2010-02-26 05:13:21', NULL, 12, 12, 'User')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 4289ms (View: 4, DB: 9) | 201 Created [http://www.example.com/users.xml]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'ut2') LIMIT 1[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#index to json (for 127.0.0.1 at 2010-02-26 00:13:21) [GET]
+  Parameters: {"api_key"=>"testapikey"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT first_name, last_name, login, sex, city, state_id, zip, country_id, 
+ phone, phone2, time_zone, about_me, organization, skills, occupation, featured,
+ website, blog, blog_feed, flickr, flickr_username, linked_in_url, twitter_id, aim_name,
+ gtalk_name, yahoo_messenger_name, msn_name, youtube_username, skype_name, posts_count,
+ last_seen_at, login_count, activated_at, enabled, is_active, identity_url FROM `users` WHERE (activated_at is not null) ORDER BY created_at ASC[0m
+Completed in 8ms (View: 0, DB: 3) | 200 OK [http://www.example.com/users.json]
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#show to json (for 127.0.0.1 at 2010-02-26 00:13:21) [GET]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+Completed in 6ms (View: 0, DB: 2) | 200 OK [http://www.example.com/users/1.json]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
