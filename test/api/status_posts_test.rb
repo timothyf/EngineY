@@ -7,7 +7,7 @@ class StatusPostsTest < ActionController::IntegrationTest
   # GET ALL STATUS POSTS  
   # /status_posts.json
   test "get all status_posts" do
-    get "/status_posts.json"
+    get "/status_posts.json", :api_key=>'testapikey'
     assert_response :success
     status_posts = JSON.parse(response.body) 
     assert status_posts.size == 2
@@ -18,7 +18,7 @@ class StatusPostsTest < ActionController::IntegrationTest
   # GET ONE STATUS POST
   # /status_posts/1.json
   test "get one status_post" do
-    get "status_posts/1.json"
+    get "status_posts/1.json", :api_key=>'testapikey'
     assert_response :success
     status_post = JSON.parse(response.body)
     check_status_post(status_post) 

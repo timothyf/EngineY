@@ -1,4 +1,4 @@
-#   Copyright 2009 Timothy Fisher
+#   Copyright 2009-2010 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -67,6 +67,7 @@ class ForumPostsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @forum_posts }
+      format.json { render :json => @forum_posts } 
     end
   end
 
@@ -80,6 +81,7 @@ class ForumPostsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @forum_post }
+      format.json { render :json => @forum_post } 
     end
   end
 
@@ -91,6 +93,7 @@ class ForumPostsController < ApplicationController
    respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @forum_post }
+      format.json { render :json => @forum_post } 
     end
   end
 
@@ -112,10 +115,12 @@ class ForumPostsController < ApplicationController
           flash[:notice] = 'ForumPost was successfully created.'
           format.html { redirect_to(@forum_post) }
           format.xml  { render :xml => @forum_post, :status => :created, :location => @forum_post }
+          format.json { render :json => @forum_post, :status => :created, :location => @forum_post } 
         end
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @forum_post.errors, :status => :unprocessable_entity }
+        format.json { render :json => @forum_post.errors, :status => :unprocessable_entity } 
       end
     end
   end
@@ -128,9 +133,11 @@ class ForumPostsController < ApplicationController
         flash[:notice] = 'ForumPost was successfully updated.'
         format.html { redirect_to(@forum_post) }
         format.xml  { head :ok }
+        format.json { head :ok } 
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @forum_post.errors, :status => :unprocessable_entity }
+        format.json { render :json => @forum_post.errors, :status => :unprocessable_entity } 
       end
     end
   end
@@ -142,6 +149,7 @@ class ForumPostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(forum_posts_url) }
       format.xml  { head :ok }
+      format.json { head :ok } 
     end
   end
 end

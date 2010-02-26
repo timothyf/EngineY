@@ -39,16 +39,23 @@ class ForumTopicsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @forum_topics }
+      format.json { render :json => @forum_topics.to_json } 
+    end
+  end
+  
+  
+  def show
+    @forum_topic = ForumTopic.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @forum_topic }
+      format.json { render :json => @forum_topic.to_json } 
     end
   end
 
 
   def new
     @forum_topic = ForumTopic.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @forum_topic }
-    end
   end
 
 
@@ -59,9 +66,11 @@ class ForumTopicsController < ApplicationController
         flash[:notice] = 'ForumTopic was successfully created.'
         format.html { redirect_to(@forum_topic) }
         format.xml  { render :xml => @forum_topic, :status => :created, :location => @forum_topic }
+        format.json { render :json => @forum_topic.to_json, :status => :created, :location => @forum_topic} 
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @forum_topic.errors, :status => :unprocessable_entity }
+        format.json { render :json => @forum_topic.errors.to_json, :status => :unprocessable_entity} 
       end
     end
   end
@@ -74,9 +83,11 @@ class ForumTopicsController < ApplicationController
         flash[:notice] = 'ForumTopic was successfully updated.'
         format.html { redirect_to(@forum_topic) }
         format.xml  { head :ok }
+        format.json { head :ok } 
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @forum_topic.errors, :status => :unprocessable_entity }
+        format.json { render :json => @forum_topic.errors.to_json, :status => :unprocessable_entity } 
       end
     end
   end
@@ -88,6 +99,7 @@ class ForumTopicsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(forum_topics_url) }
       format.xml  { head :ok }
+      format.json { head :ok } 
     end
   end
 end

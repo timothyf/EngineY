@@ -7,7 +7,7 @@ class LinksTest < ActionController::IntegrationTest
   # GET ALL LINKS  
   # /links.json
   test "get all links" do
-    get "/links.json"
+    get "/links.json", :api_key=>'testapikey'
     assert_response :success
     links = JSON.parse(response.body) 
     assert links.size == 2
@@ -18,7 +18,7 @@ class LinksTest < ActionController::IntegrationTest
   # GET ONE LINK
   # /links/1.json
   test "get one link" do
-    get "links/1.json"
+    get "links/1.json", :api_key=>'testapikey'
     assert_response :success
     link = JSON.parse(response.body)
     check_link(link) 

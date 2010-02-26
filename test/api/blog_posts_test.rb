@@ -7,7 +7,7 @@ class BlogPostsTest < ActionController::IntegrationTest
   # GET ALL BLOG POSTS  
   # /blog_posts.json
   test "get all blog_posts" do
-    get "/blog_posts.json"
+    get "/blog_posts.json", :api_key=>'testapikey'
     assert_response :success
     blog_posts = JSON.parse(response.body) 
     assert blog_posts.size == 2
@@ -18,7 +18,7 @@ class BlogPostsTest < ActionController::IntegrationTest
   # GET ONE BLOG POST
   # /blog_posts/1.json
   test "get one blog_post" do
-    get "blog_posts/1.json"
+    get "blog_posts/1.json", :api_key=>'testapikey'
     assert_response :success
     blog_post = JSON.parse(response.body)
     check_blog_post(blog_post) 

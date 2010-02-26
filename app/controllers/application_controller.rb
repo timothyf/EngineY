@@ -34,6 +34,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_vars, :update_session
   before_filter :set_facebook_session
   helper_method :facebook_session
+  
+  before_filter :api_filter
 
   include AuthenticatedSystem
   
@@ -42,6 +44,12 @@ class ApplicationController < ActionController::Base
      @network = Network.network
   end
   
+  
+  def api_filter
+    if params[:format] && params[:format] != 'html' 
+      logged_in? || access_denied
+    end
+  end
   
   def update_session
 #    session.model.update_attribute(:user_id, session[:user_id])

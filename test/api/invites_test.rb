@@ -7,7 +7,7 @@ class InvitesTest < ActionController::IntegrationTest
   # GET ALL INVITES  
   # /invites.json
   test "get all invites" do
-    get "/invites.json"
+    get "/invites.json", :api_key=>'testapikey'
     assert_response :success
     invites = JSON.parse(response.body) 
     assert invites.size == 2
@@ -18,7 +18,7 @@ class InvitesTest < ActionController::IntegrationTest
   # GET ONE INVITE
   # /invites/1.json
   test "get one invite" do
-    get "invites/1.json"
+    get "invites/1.json", :api_key=>'testapikey'
     assert_response :success
     invite = JSON.parse(response.body)
     check_invite(invite) 

@@ -7,7 +7,7 @@ class ProjectsTest < ActionController::IntegrationTest
   # GET ALL PROJECTS  
   # /projects.json
   test "get all projects" do
-    get "/projects.json"
+    get "/projects.json", :api_key=>'testapikey'
     assert_response :success
     projects = JSON.parse(response.body) 
     assert projects.size == 2
@@ -18,7 +18,7 @@ class ProjectsTest < ActionController::IntegrationTest
   # GET ONE PROJECT
   # /projects/1.json
   test "get one project" do
-    get "projects/1.json"
+    get "projects/1.json", :api_key=>'testapikey'
     assert_response :success
     project = JSON.parse(response.body)
     check_project(project) 
@@ -28,7 +28,7 @@ class ProjectsTest < ActionController::IntegrationTest
   # TRY TO CREATE A PROJECT
   # /projects.xml
   def test_should_not_create_project_via_API_XML
-      get "/logout"
+      get "/logout", :api_key=>'testapikey'
       post "/projects.xml", :project => {:user_id => 1,
                                      :url => 'http://www.apiproject.com',
                                      :name => 'API Project',

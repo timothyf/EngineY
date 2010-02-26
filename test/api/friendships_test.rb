@@ -7,7 +7,7 @@ class FriendshipsTest < ActionController::IntegrationTest
   # GET A USERS FRIENDS
   # /users/1/friends
   test "get a users friends" do
-    get "/users/1/friends.json"
+    get "/users/1/friends.json", :api_key=>'testapikey'
     assert_response :success
     friends = JSON.parse(response.body) 
     assert friends.size == 2, 'Incorrect number of friends expected'
@@ -18,7 +18,7 @@ class FriendshipsTest < ActionController::IntegrationTest
   # GET A USERS REQUESTED FRIENDS
   # /users/1/friends.json?type=requested
   test "get a users requested friends" do
-    get "/users/1/friends.json?type=requested"
+    get "/users/1/friends.json?type=requested&api_key=testapikey"
     assert_response :success
     friends = JSON.parse(response.body) 
     assert friends.size == 1, 'Incorrect number of friends expected'
@@ -33,7 +33,7 @@ class FriendshipsTest < ActionController::IntegrationTest
   # GET A USERS PENDING FRIENDS
   # /users/1/friends.json?type=pending
   test "get a users pending friends" do
-    get "/users/1/friends.json?type=pending"
+    get "/users/1/friends.json?type=pending&api_key=testapikey"
     assert_response :success
     friends = JSON.parse(response.body) 
     assert friends.size == 1, 'Incorrect number of friends expected'

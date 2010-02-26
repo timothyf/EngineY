@@ -7,7 +7,7 @@ class GroupsTest < ActionController::IntegrationTest
   # GET ALL GROUPS  
   # /groups.json
   test "get all groups" do
-    get "/groups.json"
+    get "/groups.json", :api_key=>'testapikey'
     assert_response :success
     groups = JSON.parse(response.body) 
     assert groups.size == 2
@@ -18,7 +18,7 @@ class GroupsTest < ActionController::IntegrationTest
   # GET ONE GROUP
   # /groups/1.json
   test "get one group" do
-    get "groups/1.json"
+    get "groups/1.json", :api_key=>'testapikey'
     assert_response :success
     group = JSON.parse(response.body)
     check_group(group) 

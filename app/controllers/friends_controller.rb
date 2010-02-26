@@ -24,10 +24,11 @@ class FriendsController < ApplicationController
   # Lists all friends of the specified user
   def index
     @user = User.find(params[:user_id])
-    if params[:type]
-      if params[:type] == 'requested'
+    type = params[:type]
+    if type
+      if type == 'requested'
         @friends = @user.requested_friends
-      elsif params[:type] == 'pending'
+      elsif type == 'pending'
         @friends = @user.pending_friends
       end
     else

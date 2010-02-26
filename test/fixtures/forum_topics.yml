@@ -2,6 +2,19 @@
 
 one:
    id: 1
+   title: Topic 1
+   user_id: 1
+   description: Test Topic number 1
 
 two:
    id: 2
+   title: Topic 2
+   user_id: 1
+   description: Test Topic number 2
+   
+three:
+   id: 3
+   title: Topic 3
+   user_id: 1
+   description: Test Topic number 3
+   

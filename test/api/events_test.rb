@@ -7,7 +7,7 @@ class EventsTest < ActionController::IntegrationTest
   # GET ALL EVENTS  
   # /events.json
   test "get all events" do
-    get "/events.json"
+    get "/events.json", :api_key=>'testapikey'
     assert_response :success
     events = JSON.parse(response.body) 
     assert events.size == 2
@@ -18,7 +18,7 @@ class EventsTest < ActionController::IntegrationTest
   # GET ONE EVENT
   # /events/1.json
   test "get one event" do
-    get "events/1.json"
+    get "events/1.json", :api_key=>'testapikey'
     assert_response :success
     event = JSON.parse(response.body)
     check_event(event) 
