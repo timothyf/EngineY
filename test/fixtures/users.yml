@@ -44,7 +44,7 @@ henry:
   id: 4
   login: henry
   first_name: henry
-  last_name: test
+  last_name: apple
   email: henry@example.com
   about_me: this is about me
   twitter_id: henryt
@@ -57,7 +57,7 @@ mitch:
     id: 5
     login: mitch
     first_name: mitch
-    last_name: fisher
+    last_name: apple
     email: mitch@example.com
     about_me: this is about me
     twitter_id: mitcht
@@ -81,4 +81,22 @@ bobby:
     activation_code: 8f24789ae988411ccf33ab0c30fe9106fab32e9b 
     activated_at: <%= 5.days.ago.to_s :db %> 
     api_key: bobbyapikey
+
+<% (7..40).each do |num| %>
+user<%= num %>:
+    id: <%= num %>
+    login: user<%= num %>
+    first_name: Test<%= num %>
+    last_name: User
+    email: user<%= num %>@test.com
+    about_me: this is about me
+    twitter_id: user<%= num %>
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+    created_at: <%= 5.days.ago.to_s :db %>
+    activation_code: 8f24789ae988411ccf33ab0c30fe9106fab32e9b 
+    activated_at: <%= 5.days.ago.to_s :db %> 
+    api_key: user<%= num %>key
+
+<% end %>
 

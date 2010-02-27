@@ -31,15 +31,6 @@ namespace :railsnet do
        'group_admin',
        'user', 
        'contributor'].each {|r| Role.create(:rolename => r) }
-
-      puts 'Populating countries...'
-      Country.destroy_all
-      Country.list.each {|c| Country.create(:abbreviation => c[0], :name => c[1]) }
-
-      puts 'Populating states...'
-      State.init_states
-      State.destroy_all
-      State.list.each {|s| State.create(:name => s[0], :abbreviation => s[1], :country_id => s[2]) }   
       
       ##########################################################################
       puts 'Creating users...'

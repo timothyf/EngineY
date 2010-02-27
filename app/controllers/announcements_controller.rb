@@ -23,16 +23,13 @@ class AnnouncementsController < ApplicationController
     respond_to do |format|
       format.html { render :template=>'announcements/announcements_list' } 
       format.xml  { render :xml => @announcements }
+      format.json { render :json => @announcements } 
     end
   end
 
 
   def new
     @announcement = Announcement.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @announcement }
-    end
   end
 
 
@@ -49,9 +46,11 @@ class AnnouncementsController < ApplicationController
         flash[:notice] = 'Announcement was successfully created.'
         format.html { redirect_to('/') }
         format.xml  { render :xml => @announcement, :status => :created, :location => @announcement }
+        format.json  { render :json => @announcement, :status => :created, :location => @announcement }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @announcement.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @announcement.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -64,9 +63,11 @@ class AnnouncementsController < ApplicationController
         flash[:notice] = 'Announcement was successfully updated.'
         format.html { redirect_to('/') }
         format.xml  { head :ok }
+        format.json { head :ok } 
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @announcement.errors, :status => :unprocessable_entity }
+        format.json { render :json => @announcement.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -78,6 +79,7 @@ class AnnouncementsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to('/') }
       format.xml  { head :ok }
+      format.json { head :ok } 
     end
   end
 end

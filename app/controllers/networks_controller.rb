@@ -12,9 +12,11 @@ class NetworksController < ApplicationController
         flash[:notice] = 'Network was successfully updated.'
         format.html { redirect_to(@network) }
         format.xml  { head :ok }
+        format.json { head :ok } 
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @network.errors, :status => :unprocessable_entity }
+        format.xml  { render :json => @network.errors, :status => :unprocessable_entity }
       end
     end
   end

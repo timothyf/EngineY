@@ -16,6 +16,42 @@ class UsersControllerTest < ActionController::TestCase
   end
 
 
+  def test_should_get_all_users
+    get :index
+    assert_response :success, 'Incorrect response type'
+    assert assigns(:user_count) == 38, 'Incorrect user count' 
+    users = assigns(:users)
+    assert_not_nil users, 'Unexpected nil users' 
+    assert users.size == 10, 'Incorrect number of users'
+    assert users[0].first_name == 'quentin', 'Incorrrect first name'
+    assert users[0].last_name == 'test', 'Incorrect last name' 
+  end
+  
+  
+  def test_get_page_2_of_users
+    get :index, :page=>2
+    assert_response :success, 'Incorrect response type' 
+    assert assigns(:user_count) == 38, 'Incorrect user count' 
+    users = assigns(:users)
+    assert_not_nil users, 'Unexpected nil users'
+    assert users.size == 10, 'Incorrect number of users'
+    assert users[0].first_name == 'Test13', 'Incorrrect first name'
+    assert users[0].last_name == 'User', 'Incorrect last name' 
+  end
+  
+  
+  def test_index_with_sort_field
+    get :index, :sort_field=>'last_name'
+    assert_response :success, 'Incorrect response type' 
+    assert assigns(:user_count) == 38, 'Incorrect user count' 
+    users = assigns(:users)
+    assert_not_nil users, 'Unexpected nil users'
+    assert users.size == 10, 'Incorrect number of users'
+    assert users[0].first_name == 'mitch', 'Incorrrect first name'
+    assert users[0].last_name == 'apple', 'Incorrect last name' 
+  end
+  
+
   def test_should_allow_signup
     assert_difference 'User.count' do
       create_user

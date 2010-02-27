@@ -117,15 +117,11 @@ class UsersController < ApplicationController
         @user_count = User.cached_count
       }
       format.xml  { 
-        #@users = User.paginate(:all, :select=>get_users_xml_select, :page => params[:page], :conditions => "activated_at is not null", :order => @sort_field + ' ASC') 
-        #@user_count = User.cached_count
-        @users = User.find(:all, :select=>get_users_xml_select, :conditions => "activated_at is not null", :order => @sort_field + ' ASC') 
+        @users = get_users_for_api
         render :xml => @users 
       }
       format.json {
-        #@users = User.paginate(:all, :select=>get_users_xml_select, :page => params[:page], :conditions => "activated_at is not null", :order => @sort_field + ' ASC') 
-        #@user_count = User.cached_count
-        @users = User.find(:all, :select=>get_users_xml_select, :conditions => "activated_at is not null", :order => @sort_field + ' ASC') 
+        @users = get_users_for_api
         render :json => @users.to_json
       }
     end
@@ -139,6 +135,49 @@ class UsersController < ApplicationController
       format.html { render :template => 'groups/manage_group_users' }
       format.xml  { render :xml => @users.to_xml(:dasherize => false) }
     end
+  end
+  
+  
+  def get_users_for_api
+    filters = get_filter
+    filter_str = build_filter_string(filters) 
+    puts 'FILTERS = ' + filter_str
+    if params[:limit]
+      offset = params[:offset] || 0
+      limit = params[:limit] 
+      @users = User.find(:all, 
+                         :select=>get_users_xml_select, 
+                         :conditions => "activated_at is not null", 
+                         :limit=>limit, 
+                         :offset=>offset, 
+                         :order => @sort_field + ' ASC') 
+    else
+      @users = User.find(:all, :select=>get_users_xml_select, :conditions => "activated_at is not null", :order => @sort_field + ' ASC') 
+    end
+    @users
+  end
+  
+  
+  def get_filter
+    attrs = User.column_names
+    filters = []
+    params.each {|key,value|
+      next if key == 'api_key'
+      if attrs.include?(key) 
+        filters << key
+      end
+     }
+     filters
+  end
+  
+  
+  def build_filter_string(filters) 
+    result = ''
+    filters.each do |filter|
+      result += ' AND ' unless result == ''
+      result += filter + "='" + params[filter] + "'" 
+    end
+    result
   end
   
   

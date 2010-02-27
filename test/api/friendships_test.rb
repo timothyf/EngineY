@@ -85,7 +85,7 @@ class FriendshipsTest < ActionController::IntegrationTest
     assert friend['id'] == 4, 'Incorrect friend id'
     assert friend['login'] == 'henry', 'Incorrect friend login'
     assert friend['first_name'] == 'henry', 'Incorrect friend first name' 
-    assert friend['last_name'] == 'test', 'Incorrect friend last name'
+    assert friend['last_name'] == 'apple', 'Incorrect friend last name'
   end
   
 end

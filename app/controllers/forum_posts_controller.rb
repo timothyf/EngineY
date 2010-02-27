@@ -51,23 +51,44 @@ class ForumPostsController < ApplicationController
   end
   
   
-  def index
-    if params[:forum_topic_id]
-      @forum_topic = ForumTopic.find(params[:forum_topic_id])
-      @forum_posts = @forum_topic.forum_threads
-    else
-      if current_user
-        # just get posts for current user
-        @forum_posts = current_user.forum_posts
-      else
-        redirect_to(forum_topics_url)
-        return
-      end
-    end
+  def index        
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @forum_posts }
-      format.json { render :json => @forum_posts } 
+      format.html {
+        if params[:forum_topic_id]
+          @forum_topic = ForumTopic.find(params[:forum_topic_id])
+          @forum_posts = @forum_topic.forum_threads
+        elsif current_user
+          # just get posts for current user
+          @forum_posts = current_user.forum_posts
+        else
+          redirect_to(forum_topics_url)
+          return
+        end
+      }
+      format.xml  { 
+        if params[:forum_topic_id]
+          @forum_topic = ForumTopic.find(params[:forum_topic_id])
+          @forum_posts = @forum_topic.forum_threads
+        elsif params[:user_id] 
+          # just get posts for current user
+          @forum_posts = current_user.forum_posts
+        else
+          @forum_posts = ForumPost.find(:all) 
+        end
+        render :xml => @forum_posts 
+      }
+      format.json { 
+        if params[:forum_topic_id]
+          @forum_topic = ForumTopic.find(params[:forum_topic_id])
+          @forum_posts = @forum_topic.forum_threads
+        elsif params[:user_id] 
+          # just get posts for current user
+          @forum_posts = current_user.forum_posts
+        else
+          @forum_posts = ForumPost.find(:all) 
+        end
+        render :json => @forum_posts 
+      } 
     end
   end
 
