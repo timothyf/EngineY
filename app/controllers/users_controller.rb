@@ -141,18 +141,25 @@ class UsersController < ApplicationController
   def get_users_for_api
     filters = get_filter
     filter_str = build_filter_string(filters) 
-    puts 'FILTERS = ' + filter_str
+    if filter_str.length > 0
+      conditions = "activated_at is not null AND " + filter_str
+    else
+      conditions = "activated_at is not null"
+    end
     if params[:limit]
       offset = params[:offset] || 0
       limit = params[:limit] 
       @users = User.find(:all, 
                          :select=>get_users_xml_select, 
-                         :conditions => "activated_at is not null", 
+                         :conditions => conditions, 
                          :limit=>limit, 
                          :offset=>offset, 
                          :order => @sort_field + ' ASC') 
     else
-      @users = User.find(:all, :select=>get_users_xml_select, :conditions => "activated_at is not null", :order => @sort_field + ' ASC') 
+      @users = User.find(:all, 
+                         :select=>get_users_xml_select, 
+                         :conditions => conditions, 
+                         :order => @sort_field + ' ASC') 
     end
     @users
   end

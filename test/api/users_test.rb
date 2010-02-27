@@ -42,16 +42,41 @@ class UsersTest < ActionController::IntegrationTest
   # GET USERS WITH FILTER
   # /users.json?api_key=testapikey&last_name=test
   def test_should_get_filtered_users_via_API_JSON
-    get "/users.json?api_key=testapikey&last_name=test"
-  #  assert_response :success
-  #  users = JSON.parse(response.body) 
-  #  assert users.size == 2, 'Incorrect number of users'
-  #  assert users[0]['first_name'] == 'quentin', 'Incorrect first_name'
-  #  assert users[0]['last_name'] == 'test', 'Incorrect last_name'
-  #  assert users[1]['first_name'] == 'aaron', 'Incorrect first_name'
-  #  assert users[1]['last_name'] == 'test', 'Incorrect last_name' 
+    get "/users.json?api_key=testapikey&last_name=fisher"
+    assert_response :success
+    users = JSON.parse(response.body) 
+    assert users.size == 2, 'Incorrect number of users'
+    assert users[0]['first_name'] == 'sam', 'Incorrect first_name'
+    assert users[0]['last_name'] == 'fisher', 'Incorrect last_name'
+    assert users[1]['first_name'] == 'bobby', 'Incorrect first_name'
+    assert users[1]['last_name'] == 'fisher', 'Incorrect last_name' 
   end
   
+  
+  # GET USERS WITH FILTER AND LIMIT
+  # /users.json?api_key=testapikey&last_name=test&limit=5
+  def test_should_get_filtered_with_limit_users_via_API_JSON
+    get "/users.json?api_key=testapikey&last_name=User&limit=5"
+    assert_response :success
+    users = JSON.parse(response.body) 
+    assert users.size == 5, 'Incorrect number of users'
+    assert users[0]['first_name'] == 'Test7', 'Incorrect first_name'
+    assert users[0]['last_name'] == 'User', 'Incorrect last_name'
+    assert users[1]['first_name'] == 'Test8', 'Incorrect first_name'
+    assert users[1]['last_name'] == 'User', 'Incorrect last_name' 
+  end 
+  
+  
+  # GET USERS WITH MULTIPLE FILTERS
+  def test_should_get_multi_filtered_users_via_API_JSON
+    get "/users.json?api_key=testapikey&last_name=User&first_name=Test7"
+    assert_response :success
+    users = JSON.parse(response.body) 
+    assert users.size == 1, 'Incorrect number of users'
+    assert users[0]['first_name'] == 'Test7', 'Incorrect first_name'
+    assert users[0]['last_name'] == 'User', 'Incorrect last_name'
+  end
+    
   
   # GET ONE USER 
   # /users/1.json
