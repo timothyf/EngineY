@@ -110,11 +110,7 @@ class BlogPostsController < ApplicationController
 
   def new
     @blog_post = BlogPost.new
-    respond_to do |format|
-      format.html { render :partial=>'blog_posts_edit', :layout=>true }
-      format.xml  { render :xml => @blog_post }
-      format.json { render :json => @blog_post.to_json } 
-    end
+    render :partial=>'blog_posts_edit', :layout=>true
   end
 
 

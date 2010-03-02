@@ -38,10 +38,6 @@ class BookReviewsController < ApplicationController
 
   def new
     @book_review = BookReview.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @book_review }
-    end
   end
 
 

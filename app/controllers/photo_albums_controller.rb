@@ -39,10 +39,6 @@ class PhotoAlbumsController < ApplicationController
 
   def new
     @photo_album = PhotoAlbum.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @photo_album }
-    end
   end
 
 

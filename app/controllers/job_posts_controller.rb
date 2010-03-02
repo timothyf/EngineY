@@ -40,10 +40,6 @@ class JobPostsController < ApplicationController
 
   def new
     @job_post = JobPost.new
-    respond_to do |format|
-      format.html { render :template => 'job_posts/new' }
-      format.xml  { render :xml => @job_post }
-    end
   end
 
 

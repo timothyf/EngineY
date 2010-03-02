@@ -28,10 +28,6 @@ class RssFeedsController < ApplicationController
 
   def new
     @rss_feed = RssFeed.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @rss_feed }
-    end
   end
 
 

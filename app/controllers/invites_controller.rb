@@ -25,11 +25,6 @@ class InvitesController < ApplicationController
 
   def new
     @invite = Invite.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @invite }
-      format.json  { render :json => @invite.to_json }
-    end
   end
 
 

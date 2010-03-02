@@ -1,3 +1,18 @@
+function add_user() {
+	var id = jQuery("#gbox_users").jqGrid('getGridParam','selrow');
+	alert('add');
+}
+
+function edit_user() {
+	alert('edit');
+}
+
+function delete_user() {
+	alert('delete');
+}
+
+
+
 /*
  * Called from application.js on a page load
  */

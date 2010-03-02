@@ -35,16 +35,11 @@ class ClassifiedsController < ApplicationController
 
   def new
     @classified = Classified.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @classified }
-    end
   end
 
 
   def edit
     @classified = Classified.find(params[:id])
-    #render :partial=>'classifieds_edit', :layout=>true
   end
 
 

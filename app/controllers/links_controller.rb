@@ -48,11 +48,6 @@ class LinksController < ApplicationController
   def new
     @section = 'LINKS' 
     @link = Link.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @link }
-      format.json { render :json => @link.to_json } 
-    end
   end
 
 

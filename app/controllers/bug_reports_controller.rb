@@ -42,10 +42,6 @@ class BugReportsController < ApplicationController
 
   def new
     @bug_report = BugReport.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @bug_report }
-    end
   end
 
 

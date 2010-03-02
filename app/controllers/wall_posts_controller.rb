@@ -31,10 +31,6 @@ class WallPostsController < ApplicationController
 
   def new
     @wall_post = WallPost.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @wall_post }
-    end
   end
 
 

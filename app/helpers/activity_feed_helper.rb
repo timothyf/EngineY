@@ -44,8 +44,11 @@ module ActivityFeedHelper
         "A new group was created, " + link_to(group.name, group_url(group)) + " <span class='activity_date'>#{group.created_at.to_s(:event_list)}</span>"
       when "BlogPost"
         blog_post = activity.item #BlogPost.find(activity.item.id, :select=>"id, title, created_at")
-        %(#{link_to(user.name, user_url(user))} posted a new blog entry, <a href="/blog_posts/#{blog_post.id}">#{blog_post.title}</a>.  <span class="activity_date">#{blog_post.created_at.to_s(:event_list)}</span>)
-      
+        if blog_post
+          %(#{link_to(user.name, user_url(user))} posted a new blog entry, <a href="/blog_posts/#{blog_post.id}">#{blog_post.title}</a>.  <span class="activity_date">#{blog_post.created_at.to_s(:event_list)}</span>)
+        else
+          %(#{link_to(user.name, user_url(user))} posted a new blog entry.) 
+        end
       when "Attendance"
         if activity.item
           attendance = activity.item #Attendance.find(activity.item.id)

@@ -49,10 +49,6 @@ class StatusPostsController < ApplicationController
 
   def new
     @status_post = StatusPost.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @status_post }
-    end
   end
 
 

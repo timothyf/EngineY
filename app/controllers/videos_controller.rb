@@ -35,10 +35,6 @@ class VideosController < ApplicationController
 
   def new
     @video = Video.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @video }
-    end
   end
 
 

@@ -38,10 +38,6 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @project }
-    end
   end
 
 

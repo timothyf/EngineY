@@ -16,10 +16,6 @@ class RepliesController < ApplicationController
 
   def new
     @reply = Reply.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @reply }
-    end
   end
 
 
