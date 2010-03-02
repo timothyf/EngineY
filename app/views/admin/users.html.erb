@@ -1,0 +1,26 @@
+<style>
+	#editmodusers {
+		width: 400px;
+	}
+</style>
+<h2 class="ic-db">Users</h2>
+<div class="pad-lr">
+	
+	<%= jqgrid("Site Users", "users", "/admin/users",
+		[
+			{ :field => "id", :label => "ID", :width => 35, :resizable => false },
+			{ :field => "login", :label => "Login", :width => 100, :editable => true },
+			{ :field => "first_name", :label => "Firstname", :width => 100, :editable => true },
+			{ :field => "last_name", :label => "Lastname", :width => 100, :editable => true },
+			{ :field => "email", :label => "Email", :editable => true, :editable => true, :editoptions=>{:size=>30}},
+			{ :field => "activated_at", :label => "Activated At", :width => 200 },
+			{ :field => "password", :label => "Password", :width => 150, :hidden => true, 
+									:editable => true, :editrules => {:edithidden=>true} },				
+			{ :field => "password_confirmation", :label => "Password Confirmation", :width => 150, :hidden => true, :editable => true, :editrules => {:edithidden=>true} },	
+		],
+		{ :height => 300, :rows_per_page => 30, :add => true, :edit => true, :inline_edit => false, :delete => true, :edit_url => "/admin/post_user_data" }
+	)%>
+
+</div>
+
+

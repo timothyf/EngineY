@@ -1,0 +1,18 @@
+<h2 class="ic-db">Events</h2>
+<div class="pad-lr">
+	<%= jqgrid("Site Events", "events", "/admin/events",
+		[
+			{ :field => "id", :label => "ID", :width => 35, :resizable => false },
+			{ :field => "name", :label => "Name", :width => 200, :editable => true },
+			{ :field => "start_time", :label => "Start Time", :width => 180, :editable => true },
+			{ :field => "end_time", :label => "End Time", :width => 180, :editable => true },
+			{ :field => "location", :label => "Location", :width => 150, :editable => true },
+			{ :field => "organizer", :label => "Organizer", :width => 150, :editable => true }
+		],
+		{ :height => 300, :rows_per_page => 30, :add => true, 
+   		  :edit => true, :inline_edit => false, 
+		  :delete => true, :edit_url => "/admin/post_group_data" }
+	)%>
+</div>
+
+
