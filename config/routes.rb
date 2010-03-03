@@ -23,6 +23,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :blog_posts, :collection => {:publish=>:get}
   map.resources :events, :collection => {:full_index=>:get}
   map.resources :stats, :collection => {:index=>:get}
+  map.resources :memberships, :collection => {:find=>:get}
   
   map.resources :photo_albums
   map.resources :status_posts
@@ -35,6 +36,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :events
   map.resources :activities
 
+  map.connect 'memberships/find', :controller=>'memberships', :action=>'find' 
   map.connect 'users/change_photo', :controller=>'users', :action=>'change_photo'
   map.connect 'groups/user_data', :controller=>'groups', :action=>'user_data'
   map.connect 'users/promote_to_group_admin', :controller=>'users', :action=>'promote_to_group_admin'

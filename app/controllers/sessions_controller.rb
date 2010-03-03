@@ -53,11 +53,35 @@ end
         current_user.remember_me unless current_user.remember_token?
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-      redirect_back_or_default('/')
-      flash[:notice] = "Logged in successfully"
+      #redirect_back_or_default('/')
+      #flash[:notice] = "Logged in successfully"
+      respond_to do |format|
+        format.html {
+          redirect_back_or_default('/')
+          flash[:notice] = "Logged in successfully"
+        }
+        format.xml  {
+          render :xml => self.current_user.to_xml(:dasherize => false)
+        }
+        format.json  {
+          render :json => self.current_user.to_json(:dasherize => false)
+        }
+      end           
     else
-      flash[:notice] = "Incorrect username or password"
-      render :action => 'new'
+      respond_to do |format|
+        format.html {
+          flash[:notice] = "Incorrect username or password"
+          render :action => 'new'
+        }
+        format.xml  {
+          data = {} 
+          render :xml => data.to_xml(:dasherize => false), :status => 403
+        }
+        format.json  {
+          data = {} 
+          render :json => data.to_json(:dasherize => false), :status => 403
+        }
+      end
     end
   end
 

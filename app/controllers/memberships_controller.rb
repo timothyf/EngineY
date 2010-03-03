@@ -19,9 +19,51 @@
 =end
 class MembershipsController < ApplicationController
   
+  
   # Show the members of a group
   def index
-    
+    puts 'IN INDEX' 
+    @memberships = Membership.find(:all) 
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @memberships }
+      format.json { render :json => @memberships }
+    end
+  end
+  
+  
+  def show
+    @membership = Membership.find(params[:id]) 
+    if @membership
+      respond_to do |format|
+        format.html
+        format.xml { render :xml => @membership } 
+        format.json { render :json => @membership } 
+      end
+    else
+      respond_to do |format|
+        format.xml { render :status => :unprocessable_entity } 
+        format.json { render :status => :unprocessable_entity } 
+      end
+    end
+  end
+  
+  
+  def find
+    @membership = Membership.find_by_user_id_and_group_id(params[:user_id], params[:group_id])
+    if @membership
+      respond_to do |format|
+        format.html
+        format.xml { render :xml => @membership }  
+        format.json { render :json => @membership } 
+      end
+    else
+      respond_to do |format|
+        format.html
+        format.xml { render :xml => '', :status => :unprocessable_entity }  
+        format.json { render :json => '', :status => :unprocessable_entity } 
+      end
+    end
   end
   
   
@@ -38,9 +80,17 @@ class MembershipsController < ApplicationController
                                      :user_id=>user.id,
                                      :role_id=>role.id})
     if @membership.save
-      redirect_to group_path(group_id)
+      respond_to do |format|
+        format.html { redirect_to group_path(group_id) }
+        format.xml { render :xml => @membership, :status => :created } 
+        format.json { render :json => @membership, :status => :created } 
+      end
     else
-      redirect_to group_path(group_id)
+      respond_to do |format|
+        format.html { redirect_to group_path(group_id) }
+        format.xml  { render :xml => @membership.errors, :status => :unprocessable_entity }
+        format.json { render :json => @membership.errors, :status => :unprocessable_entity }
+      end
     end
   end
   
@@ -48,13 +98,33 @@ class MembershipsController < ApplicationController
   # Changes a membership, typically used to change the role of a user, i.e.
   # to promote or demote a member from the group admin role.
   def update
-    render :text=>'admin = '+params[:admin]
+    @membership = Membership.find(params[:id])
+    respond_to do |format|
+      if @membership.update_attributes(params[:membership])               
+        format.html { 
+          flash[:notice] = 'Membership was successfully updated.'
+          redirect_to(@membership) 
+         }
+        format.xml  { head :ok }
+        format.json { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @membership.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @membership.errors.to_json, :status => :unprocessable_entity }
+      end
+    end
   end
   
   
   # Remove a user from a group
   def destroy
-    
+    @membership = Membership.find_by_user_id_and_group_id(params[:user_id], params[:group_id])
+    @membership.destroy
+    respond_to do |format|
+      format.html { redirect_to(groups_url) }
+      format.xml  { head :ok }
+      format.json { head :ok } 
+    end
   end
   
 end

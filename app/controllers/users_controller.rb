@@ -122,7 +122,7 @@ class UsersController < ApplicationController
       }
       format.json {
         @users = get_users_for_api
-        render :json => @users.to_json
+        render :json => @users
       }
     end
   end
@@ -134,6 +134,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { render :template => 'groups/manage_group_users' }
       format.xml  { render :xml => @users.to_xml(:dasherize => false) }
+      format.json  { render :json => @users.to_json(:dasherize => false) }
     end
   end
   
@@ -267,7 +268,17 @@ class UsersController < ApplicationController
           }
         end
       else
-        render :action => 'new'
+        respond_to do |format|
+          format.html {
+            render :action => 'new'
+          }
+          format.xml {
+            render :xml => @user.errors, :status => 'failed'
+          }
+          format.json {
+            render :json => @user.errors, :status => 'failed'
+          }  
+        end
       end
     end
   end
@@ -291,9 +302,11 @@ class UsersController < ApplicationController
         flash[:notice] = 'User was successfully updated.'
         format.html { redirect_to(@user) }
         format.xml  { head :ok }
+        format.json { head :ok } 
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @user.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -307,6 +320,17 @@ class UsersController < ApplicationController
       render :template=>'users/activate_complete'
     else
       redirect_back_or_default('/')
+    end
+  end
+  
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to('/') } 
+      format.xml { head :ok } 
+      format.json { head :ok } 
     end
   end
   

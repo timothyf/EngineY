@@ -86,10 +86,17 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @group }
-      format.json { render :json => @group.to_json } 
+    if @group
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @group }
+        format.json { render :json => @group } 
+      end
+    else
+      respond_to do |format|
+        format.xml { render :status => :unprocessable_entity } 
+        format.json { render :status => :unprocessable_entity } 
+      end
     end
   end
 
@@ -132,15 +139,13 @@ class GroupsController < ApplicationController
     sleep 4  # required for photo upload
     @group = Group.find(params[:id])
     respond_to do |format|
-      if @group.update_attributes(params[:group])
-        
+      if @group.update_attributes(params[:group])       
         if params[:group_photo] && params[:group_photo].size != 0 
           # remove old profile photos
           Photo.destroy_all("group_id = " + @group.id.to_s + " AND is_profile = true")
           profile_photo = ProfilePhoto.create!(:group_id=>@group.id, :is_profile=>true, :uploaded_data => params[:group_photo]) if params[:group_photo].size != 0 
           @group.profile_photo = profile_photo
-        end  
-        
+        end         
         flash[:notice] = 'Group was successfully updated.'
         format.html { redirect_to(@group) }
         format.xml  { head :ok }
