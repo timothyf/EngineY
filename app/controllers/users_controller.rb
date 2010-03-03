@@ -128,7 +128,7 @@ class UsersController < ApplicationController
   end
   
   
-  def display_group_members_page
+  def display_group_members_page 
     @group = Group.find(params[:group_id])
     @users = @group.users
     respond_to do |format|
