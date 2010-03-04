@@ -12,7 +12,11 @@ class UsersTest < ActionController::IntegrationTest
     assert_response :success
     users = JSON.parse(response.body) 
     assert users.size == 38, 'Incorrect number of users'
-    check_user(users[0]) 
+    user =  users[0]
+    assert user['id'] == 1, 'Incorrect user id'
+    assert user['first_name'] == 'quentin', 'Incorrect first_name'
+    assert user['last_name'] == 'test', 'Incorrect last_name'
+    assert user['twitter_id'] == 'qtest', 'Incorrect twitter_id'
   end
   
 

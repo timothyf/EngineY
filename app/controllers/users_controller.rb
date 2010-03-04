@@ -337,7 +337,7 @@ class UsersController < ApplicationController
   
   private
   def get_users_xml_select
-    'first_name, last_name, login, sex, city, state_id, zip, country_id, 
+    'id, first_name, last_name, login, sex, city, state_id, zip, country_id, 
     phone, phone2, time_zone, about_me, organization, skills, occupation, featured,
     website, blog, blog_feed, flickr, flickr_username, linked_in_url, twitter_id, aim_name,
     gtalk_name, yahoo_messenger_name, msn_name, youtube_username, skype_name, posts_count,

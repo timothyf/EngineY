@@ -35892,3 +35892,395 @@ Processing UsersController#index to json (for 127.0.0.1 at 2010-02-26 23:01:39) 
  last_seen_at, login_count, activated_at, enabled, is_active, identity_url FROM `users` WHERE (activated_at is not null) ORDER BY created_at ASC LIMIT 20, 10[0m
 Completed in 16ms (View: 0, DB: 3) | 200 OK [http://www.example.com/users.json]
   [4;35;1mSQL (0.8ms)[0m   [0mROLLBACK[0m
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+Unable to load content_page, underlying cause no such file to load -- content_page 
+
+ /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:158:in `require'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:265:in `require_or_load'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:224:in `depend_on'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:136:in `require_dependency'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activerecord-2.3.5/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activerecord-2.3.5/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activerecord-2.3.5/lib/active_record/fixtures.rb:865:in `each'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activerecord-2.3.5/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activerecord-2.3.5/lib/active_record/fixtures.rb:848:in `fixtures'
+./test_helper.rb:38
+api/users_test.rb:1:in `require'
+api/users_test.rb:1
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-03-03 21:24:46) [GET]
+  [4;36;1mNetwork Load (1.5ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Redirected to http://www.example.com/
+Completed in 345ms (DB: 526) | 302 Found [http://www.example.com/logout]
+
+
+Processing UsersController#create to json (for 127.0.0.1 at 2010-03-03 21:24:46) [POST]
+  Parameters: {"api_key"=>"testapikey", "user"=>{"password_confirmation"=>"12345", "twitter_id"=>"uttwit", "last_name"=>"test", "password"=>"12345", "login"=>"ut1", "email"=>"ut@email.com", "first_name"=>"unit"}}
+  [4;35;1mUser Load (1.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'user') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'ut1') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'ut@email.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.3ms)[0m   [0mINSERT INTO `users` (`city`, `occupation`, `flickr`, `facebook_id`, `salt`, `created_at`, `zip`, `about_me`, `activated_at`, `blog`, `display_tweets`, `yahoo_messenger_name`, `skype_name`, `facebook_url`, `company_url`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `featured`, `last_seen_at`, `password_reset_code`, `country_id`, `skills`, `show_blog_posts_on_home`, `msn_name`, `activation_code`, `api_key`, `flickr_username`, `linked_in_url`, `gtalk_name`, `posts_count`, `enabled`, `email_hash`, `sex`, `phone2`, `last_name`, `phone`, `website`, `blog_feed`, `twitter_id`, `aim_name`, `resume_url`, `login_count`, `remember_token`, `is_active`, `time_zone`, `organization`, `login`, `state_id`, `youtube_username`, `identity_url`, `email`, `first_name`, `use_gravatar`, `receive_emails`) VALUES(NULL, NULL, NULL, NULL, 'a6d4d1cfd591c922da1e58cc4d08e9c9a246afb0', '2010-03-04 02:24:50', NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, '9ffc56437bd76827b1683adb9e7ad3a7d8391365', NULL, '2010-03-04 02:24:50', 0, NULL, NULL, NULL, NULL, 1, NULL, '05c63d9160236bbf0d3080d0cc28f0ce1d46ed5f', '', NULL, NULL, NULL, 0, 1, NULL, NULL, NULL, 'test', NULL, NULL, NULL, 'uttwit', NULL, NULL, 0, NULL, 0, 'UTC', NULL, 'ut1', NULL, NULL, NULL, 'ut@email.com', 'unit', 0, 1)[0m
+  [4;36;1mPermission Create (0.2ms)[0m   [0;1mINSERT INTO `permissions` (`created_at`, `updated_at`, `role_id`, `group_id`, `user_id`) VALUES('2010-03-04 02:24:50', '2010-03-04 02:24:50', 3, NULL, 59)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mProfilePhoto Columns (89.3ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mProfilePhoto Create (0.3ms)[0m   [0;1mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 14037, '2010-03-04 02:24:51', NULL, NULL, 'image/png', 1, NULL, '2010-03-04 02:24:51', NULL, NULL, 0, 59, NULL, 'nophoto.png', 175, NULL, 175, NULL)[0m
+  [4;35;1mProfilePhoto Load (0.4ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191073 AND `photos`.`thumbnail` = 'medium') LIMIT 1[0m
+  [4;36;1mProfilePhoto Create (0.3ms)[0m   [0;1mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 12435, '2010-03-04 02:24:51', NULL, NULL, 'image/png', NULL, 'medium', '2010-03-04 02:24:51', NULL, NULL, 0, NULL, 980191073, 'nophoto_medium.png', 82, NULL, 82, NULL)[0m
+  [4;35;1mProfilePhoto Load (0.4ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191073 AND `photos`.`thumbnail` = 'small') LIMIT 1[0m
+  [4;36;1mProfilePhoto Create (0.3ms)[0m   [0;1mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 11870, '2010-03-04 02:24:51', NULL, NULL, 'image/png', NULL, 'small', '2010-03-04 02:24:51', NULL, NULL, 0, NULL, 980191073, 'nophoto_small.png', 48, NULL, 48, NULL)[0m
+  [4;35;1mProfilePhoto Load (0.4ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191073 AND `photos`.`thumbnail` = 'member') LIMIT 1[0m
+  [4;36;1mProfilePhoto Create (0.3ms)[0m   [0;1mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 12536, '2010-03-04 02:24:51', NULL, NULL, 'image/png', NULL, 'member', '2010-03-04 02:24:51', NULL, NULL, 0, NULL, 980191073, 'nophoto_member.png', 96, NULL, 96, NULL)[0m
+  [4;35;1mProfilePhoto Load (0.4ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191073 AND `photos`.`thumbnail` = 'thumb') LIMIT 1[0m
+  [4;36;1mProfilePhoto Create (0.3ms)[0m   [0;1mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 11623, '2010-03-04 02:24:52', NULL, NULL, 'image/png', NULL, 'thumb', '2010-03-04 02:24:52', NULL, NULL, 0, NULL, 980191073, 'nophoto_thumb.png', 32, NULL, 32, NULL)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.user_id = 59 AND (is_profile = 1)) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2010-03-04 02:24:52', `activated_at` = '2010-03-04 02:24:52', `activation_code` = NULL WHERE `id` = 59[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mActivity Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `activities`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mActivity Create (0.3ms)[0m   [0;1mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-03-04 02:24:52', NULL, '2010-03-04 02:24:52', NULL, 59, 59, 'User')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 5500ms (View: 1, DB: 100) | 201 Created [http://www.example.com/users.json]
+  [4;36;1mUser Load (0.9ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'ut1') LIMIT 1[0m
+  [4;35;1mSQL (10.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-03-03 21:24:52) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 13) | 302 Found [http://www.example.com/logout]
+
+
+Processing UsersController#create to xml (for 127.0.0.1 at 2010-03-03 21:24:52) [POST]
+  Parameters: {"api_key"=>"testapikey", "user"=>{"password_confirmation"=>"12345", "twitter_id"=>"uttwit", "last_name"=>"test", "password"=>"12345", "login"=>"ut2", "email"=>"ut2@email.com", "first_name"=>"unit"}}
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'user') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'ut2') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'ut2@email.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.4ms)[0m   [0mINSERT INTO `users` (`city`, `occupation`, `flickr`, `facebook_id`, `salt`, `created_at`, `zip`, `about_me`, `activated_at`, `blog`, `display_tweets`, `yahoo_messenger_name`, `skype_name`, `facebook_url`, `company_url`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `featured`, `last_seen_at`, `password_reset_code`, `country_id`, `skills`, `show_blog_posts_on_home`, `msn_name`, `activation_code`, `api_key`, `flickr_username`, `linked_in_url`, `gtalk_name`, `posts_count`, `enabled`, `email_hash`, `sex`, `phone2`, `last_name`, `phone`, `website`, `blog_feed`, `twitter_id`, `aim_name`, `resume_url`, `login_count`, `remember_token`, `is_active`, `time_zone`, `organization`, `login`, `state_id`, `youtube_username`, `identity_url`, `email`, `first_name`, `use_gravatar`, `receive_emails`) VALUES(NULL, NULL, NULL, NULL, '04898d5e8ac71d97d0f97bf65789269673537779', '2010-03-04 02:24:56', NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 'da74a6799f7a4273784ccfcea61cc1893413341b', NULL, '2010-03-04 02:24:56', 0, NULL, NULL, NULL, NULL, 1, NULL, '5fbacae9368a31acc9522fbd2fa891f34392714c', '', NULL, NULL, NULL, 0, 1, NULL, NULL, NULL, 'test', NULL, NULL, NULL, 'uttwit', NULL, NULL, 0, NULL, 0, 'UTC', NULL, 'ut2', NULL, NULL, NULL, 'ut2@email.com', 'unit', 0, 1)[0m
+  [4;36;1mPermission Create (0.2ms)[0m   [0;1mINSERT INTO `permissions` (`created_at`, `updated_at`, `role_id`, `group_id`, `user_id`) VALUES('2010-03-04 02:24:56', '2010-03-04 02:24:56', 3, NULL, 60)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 14060, '2010-03-04 02:24:56', NULL, NULL, 'image/png', 1, NULL, '2010-03-04 02:24:56', NULL, NULL, 0, 60, NULL, 'nophoto.png', 175, NULL, 175, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.4ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191078 AND `photos`.`thumbnail` = 'medium') LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 12448, '2010-03-04 02:24:56', NULL, NULL, 'image/png', NULL, 'medium', '2010-03-04 02:24:56', NULL, NULL, 0, NULL, 980191078, 'nophoto_medium.png', 82, NULL, 82, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.4ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191078 AND `photos`.`thumbnail` = 'small') LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 11834, '2010-03-04 02:24:56', NULL, NULL, 'image/png', NULL, 'small', '2010-03-04 02:24:56', NULL, NULL, 0, NULL, 980191078, 'nophoto_small.png', 48, NULL, 48, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.5ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191078 AND `photos`.`thumbnail` = 'member') LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 12539, '2010-03-04 02:24:56', NULL, NULL, 'image/png', NULL, 'member', '2010-03-04 02:24:56', NULL, NULL, 0, NULL, 980191078, 'nophoto_member.png', 96, NULL, 96, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.4ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191078 AND `photos`.`thumbnail` = 'thumb') LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 11609, '2010-03-04 02:24:56', NULL, NULL, 'image/png', NULL, 'thumb', '2010-03-04 02:24:56', NULL, NULL, 0, NULL, 980191078, 'nophoto_thumb.png', 32, NULL, 32, NULL)[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mProfilePhoto Load (0.3ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.user_id = 60 AND (is_profile = 1)) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-04 02:24:56', `activated_at` = '2010-03-04 02:24:56', `activation_code` = NULL WHERE `id` = 60[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mActivity Create (0.2ms)[0m   [0;1mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-03-04 02:24:56', NULL, '2010-03-04 02:24:56', NULL, 60, 60, 'User')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 4316ms (View: 5, DB: 9) | 201 Created [http://www.example.com/users.xml]
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'ut2') LIMIT 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#index to json (for 127.0.0.1 at 2010-03-03 21:24:56) [GET]
+  Parameters: {"api_key"=>"testapikey"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (22.1ms)[0m   [0;1mSELECT first_name, last_name, login, sex, city, state_id, zip, country_id, 
+ phone, phone2, time_zone, about_me, organization, skills, occupation, featured,
+ website, blog, blog_feed, flickr, flickr_username, linked_in_url, twitter_id, aim_name,
+ gtalk_name, yahoo_messenger_name, msn_name, youtube_username, skype_name, posts_count,
+ last_seen_at, login_count, activated_at, enabled, is_active, identity_url FROM `users` WHERE (activated_at is not null) ORDER BY created_at ASC[0m
+Completed in 72ms (View: 45, DB: 25) | 200 OK [http://www.example.com/users.json]
+  [4;35;1mSQL (8.0ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#index to json (for 127.0.0.1 at 2010-03-03 21:24:56) [GET]
+  Parameters: {"api_key"=>"testapikey", "last_name"=>"fisher"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT first_name, last_name, login, sex, city, state_id, zip, country_id, 
+ phone, phone2, time_zone, about_me, organization, skills, occupation, featured,
+ website, blog, blog_feed, flickr, flickr_username, linked_in_url, twitter_id, aim_name,
+ gtalk_name, yahoo_messenger_name, msn_name, youtube_username, skype_name, posts_count,
+ last_seen_at, login_count, activated_at, enabled, is_active, identity_url FROM `users` WHERE (activated_at is not null AND last_name='fisher') ORDER BY created_at ASC[0m
+Completed in 6ms (View: 3, DB: 10) | 200 OK [http://www.example.com/users.json?api_key=testapikey&last_name=fisher]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#index to json (for 127.0.0.1 at 2010-03-03 21:24:56) [GET]
+  Parameters: {"api_key"=>"testapikey", "last_name"=>"User", "limit"=>"5"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT first_name, last_name, login, sex, city, state_id, zip, country_id, 
+ phone, phone2, time_zone, about_me, organization, skills, occupation, featured,
+ website, blog, blog_feed, flickr, flickr_username, linked_in_url, twitter_id, aim_name,
+ gtalk_name, yahoo_messenger_name, msn_name, youtube_username, skype_name, posts_count,
+ last_seen_at, login_count, activated_at, enabled, is_active, identity_url FROM `users` WHERE (activated_at is not null AND last_name='User') ORDER BY created_at ASC LIMIT 0, 5[0m
+Completed in 9ms (View: 6, DB: 2) | 200 OK [http://www.example.com/users.json?api_key=testapikey&last_name=User&limit=5]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#index to json (for 127.0.0.1 at 2010-03-03 21:24:56) [GET]
+  Parameters: {"api_key"=>"testapikey", "last_name"=>"User", "first_name"=>"Test7"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT first_name, last_name, login, sex, city, state_id, zip, country_id, 
+ phone, phone2, time_zone, about_me, organization, skills, occupation, featured,
+ website, blog, blog_feed, flickr, flickr_username, linked_in_url, twitter_id, aim_name,
+ gtalk_name, yahoo_messenger_name, msn_name, youtube_username, skype_name, posts_count,
+ last_seen_at, login_count, activated_at, enabled, is_active, identity_url FROM `users` WHERE (activated_at is not null AND last_name='User' AND first_name='Test7') ORDER BY created_at ASC[0m
+Completed in 5ms (View: 2, DB: 2) | 200 OK [http://www.example.com/users.json?api_key=testapikey&last_name=User&first_name=Test7]
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#show to json (for 127.0.0.1 at 2010-03-03 21:24:56) [GET]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+Completed in 6ms (View: 0, DB: 2) | 200 OK [http://www.example.com/users/1.json]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#index to json (for 127.0.0.1 at 2010-03-03 21:24:56) [GET]
+  Parameters: {"api_key"=>"testapikey", "limit"=>"10"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT first_name, last_name, login, sex, city, state_id, zip, country_id, 
+ phone, phone2, time_zone, about_me, organization, skills, occupation, featured,
+ website, blog, blog_feed, flickr, flickr_username, linked_in_url, twitter_id, aim_name,
+ gtalk_name, yahoo_messenger_name, msn_name, youtube_username, skype_name, posts_count,
+ last_seen_at, login_count, activated_at, enabled, is_active, identity_url FROM `users` WHERE (activated_at is not null) ORDER BY created_at ASC LIMIT 0, 10[0m
+Completed in 16ms (View: 12, DB: 2) | 200 OK [http://www.example.com/users.json]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#index to json (for 127.0.0.1 at 2010-03-03 21:24:56) [GET]
+  Parameters: {"api_key"=>"testapikey", "limit"=>"10", "offset"=>"20"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (1.2ms)[0m   [0;1mSELECT first_name, last_name, login, sex, city, state_id, zip, country_id, 
+ phone, phone2, time_zone, about_me, organization, skills, occupation, featured,
+ website, blog, blog_feed, flickr, flickr_username, linked_in_url, twitter_id, aim_name,
+ gtalk_name, yahoo_messenger_name, msn_name, youtube_username, skype_name, posts_count,
+ last_seen_at, login_count, activated_at, enabled, is_active, identity_url FROM `users` WHERE (activated_at is not null) ORDER BY created_at ASC LIMIT 20, 10[0m
+Completed in 18ms (View: 13, DB: 3) | 200 OK [http://www.example.com/users.json]
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+Unable to load content_page, underlying cause no such file to load -- content_page 
+
+ /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:158:in `require'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:265:in `require_or_load'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:224:in `depend_on'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:136:in `require_dependency'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activerecord-2.3.5/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activerecord-2.3.5/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activerecord-2.3.5/lib/active_record/fixtures.rb:865:in `each'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activerecord-2.3.5/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/Users/timothyfisher/.gem/ruby/1.8/gems/activerecord-2.3.5/lib/active_record/fixtures.rb:848:in `fixtures'
+./test_helper.rb:38
+api/users_test.rb:1:in `require'
+api/users_test.rb:1
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-03-03 21:43:11) [GET]
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Redirected to http://www.example.com/
+Completed in 36ms (DB: 158) | 302 Found [http://www.example.com/logout]
+
+
+Processing UsersController#create to json (for 127.0.0.1 at 2010-03-03 21:43:11) [POST]
+  Parameters: {"api_key"=>"testapikey", "user"=>{"password_confirmation"=>"12345", "twitter_id"=>"uttwit", "last_name"=>"test", "password"=>"12345", "login"=>"ut1", "email"=>"ut@email.com", "first_name"=>"unit"}}
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'user') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'ut1') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'ut@email.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.4ms)[0m   [0mINSERT INTO `users` (`city`, `occupation`, `flickr`, `facebook_id`, `salt`, `created_at`, `zip`, `about_me`, `activated_at`, `blog`, `display_tweets`, `yahoo_messenger_name`, `skype_name`, `facebook_url`, `company_url`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `featured`, `last_seen_at`, `password_reset_code`, `country_id`, `skills`, `show_blog_posts_on_home`, `msn_name`, `activation_code`, `api_key`, `flickr_username`, `linked_in_url`, `gtalk_name`, `posts_count`, `enabled`, `email_hash`, `sex`, `phone2`, `last_name`, `phone`, `website`, `blog_feed`, `twitter_id`, `aim_name`, `resume_url`, `login_count`, `remember_token`, `is_active`, `time_zone`, `organization`, `login`, `state_id`, `youtube_username`, `identity_url`, `email`, `first_name`, `use_gravatar`, `receive_emails`) VALUES(NULL, NULL, NULL, NULL, 'b7a73d32d0b324aa81e4ef1f4ad6e14302589ab1', '2010-03-04 02:43:15', NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, '53b03d46be9d93071f2d73061e9510d2e52fd6e9', NULL, '2010-03-04 02:43:15', 0, NULL, NULL, NULL, NULL, 1, NULL, 'b59b3d3cc3f9f67eb12a1fa4e4ff0973929e7708', '', NULL, NULL, NULL, 0, 1, NULL, NULL, NULL, 'test', NULL, NULL, NULL, 'uttwit', NULL, NULL, 0, NULL, 0, 'UTC', NULL, 'ut1', NULL, NULL, NULL, 'ut@email.com', 'unit', 0, 1)[0m
+  [4;36;1mPermission Create (0.2ms)[0m   [0;1mINSERT INTO `permissions` (`created_at`, `updated_at`, `role_id`, `group_id`, `user_id`) VALUES('2010-03-04 02:43:15', '2010-03-04 02:43:15', 3, NULL, 61)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mProfilePhoto Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mProfilePhoto Create (0.3ms)[0m   [0;1mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 14028, '2010-03-04 02:43:15', NULL, NULL, 'image/png', 1, NULL, '2010-03-04 02:43:15', NULL, NULL, 0, 61, NULL, 'nophoto.png', 175, NULL, 175, NULL)[0m
+  [4;35;1mProfilePhoto Load (0.3ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191083 AND `photos`.`thumbnail` = 'medium') LIMIT 1[0m
+  [4;36;1mProfilePhoto Create (0.3ms)[0m   [0;1mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 12421, '2010-03-04 02:43:15', NULL, NULL, 'image/png', NULL, 'medium', '2010-03-04 02:43:15', NULL, NULL, 0, NULL, 980191083, 'nophoto_medium.png', 82, NULL, 82, NULL)[0m
+  [4;35;1mProfilePhoto Load (0.3ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191083 AND `photos`.`thumbnail` = 'small') LIMIT 1[0m
+  [4;36;1mProfilePhoto Create (0.5ms)[0m   [0;1mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 11813, '2010-03-04 02:43:15', NULL, NULL, 'image/png', NULL, 'small', '2010-03-04 02:43:15', NULL, NULL, 0, NULL, 980191083, 'nophoto_small.png', 48, NULL, 48, NULL)[0m
+  [4;35;1mProfilePhoto Load (0.6ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191083 AND `photos`.`thumbnail` = 'member') LIMIT 1[0m
+  [4;36;1mProfilePhoto Create (0.3ms)[0m   [0;1mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 12501, '2010-03-04 02:43:15', NULL, NULL, 'image/png', NULL, 'member', '2010-03-04 02:43:15', NULL, NULL, 0, NULL, 980191083, 'nophoto_member.png', 96, NULL, 96, NULL)[0m
+  [4;35;1mProfilePhoto Load (0.4ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191083 AND `photos`.`thumbnail` = 'thumb') LIMIT 1[0m
+  [4;36;1mProfilePhoto Create (0.3ms)[0m   [0;1mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 11604, '2010-03-04 02:43:15', NULL, NULL, 'image/png', NULL, 'thumb', '2010-03-04 02:43:15', NULL, NULL, 0, NULL, 980191083, 'nophoto_thumb.png', 32, NULL, 32, NULL)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.user_id = 61 AND (is_profile = 1)) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2010-03-04 02:43:15', `activated_at` = '2010-03-04 02:43:15', `activation_code` = NULL WHERE `id` = 61[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mActivity Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `activities`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mActivity Create (0.2ms)[0m   [0;1mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-03-04 02:43:15', NULL, '2010-03-04 02:43:15', NULL, 61, 61, 'User')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 4658ms (View: 1, DB: 12) | 201 Created [http://www.example.com/users.json]
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'ut1') LIMIT 1[0m
+  [4;35;1mSQL (17.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-03-03 21:43:15) [GET]
+Redirected to http://www.example.com/
+Completed in 2ms (DB: 19) | 302 Found [http://www.example.com/logout]
+
+
+Processing UsersController#create to xml (for 127.0.0.1 at 2010-03-03 21:43:16) [POST]
+  Parameters: {"api_key"=>"testapikey", "user"=>{"password_confirmation"=>"12345", "twitter_id"=>"uttwit", "last_name"=>"test", "password"=>"12345", "login"=>"ut2", "email"=>"ut2@email.com", "first_name"=>"unit"}}
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = '') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'user') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'ut2') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'ut2@email.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.4ms)[0m   [0mINSERT INTO `users` (`city`, `occupation`, `flickr`, `facebook_id`, `salt`, `created_at`, `zip`, `about_me`, `activated_at`, `blog`, `display_tweets`, `yahoo_messenger_name`, `skype_name`, `facebook_url`, `company_url`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `featured`, `last_seen_at`, `password_reset_code`, `country_id`, `skills`, `show_blog_posts_on_home`, `msn_name`, `activation_code`, `api_key`, `flickr_username`, `linked_in_url`, `gtalk_name`, `posts_count`, `enabled`, `email_hash`, `sex`, `phone2`, `last_name`, `phone`, `website`, `blog_feed`, `twitter_id`, `aim_name`, `resume_url`, `login_count`, `remember_token`, `is_active`, `time_zone`, `organization`, `login`, `state_id`, `youtube_username`, `identity_url`, `email`, `first_name`, `use_gravatar`, `receive_emails`) VALUES(NULL, NULL, NULL, NULL, 'a6524c8da57beef590c1e0a3f3e88905ac8a5b79', '2010-03-04 02:43:20', NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, '9d01110c30c9992536c264d45b7701a595b671ee', NULL, '2010-03-04 02:43:20', 0, NULL, NULL, NULL, NULL, 1, NULL, '09fad56ede02d2d6e14b0ccae0760eb350380922', '', NULL, NULL, NULL, 0, 1, NULL, NULL, NULL, 'test', NULL, NULL, NULL, 'uttwit', NULL, NULL, 0, NULL, 0, 'UTC', NULL, 'ut2', NULL, NULL, NULL, 'ut2@email.com', 'unit', 0, 1)[0m
+  [4;36;1mPermission Create (0.2ms)[0m   [0;1mINSERT INTO `permissions` (`created_at`, `updated_at`, `role_id`, `group_id`, `user_id`) VALUES('2010-03-04 02:43:20', '2010-03-04 02:43:20', 3, NULL, 62)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 14045, '2010-03-04 02:43:20', NULL, NULL, 'image/png', 1, NULL, '2010-03-04 02:43:20', NULL, NULL, 0, 62, NULL, 'nophoto.png', 175, NULL, 175, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191088 AND `photos`.`thumbnail` = 'medium') LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 12420, '2010-03-04 02:43:20', NULL, NULL, 'image/png', NULL, 'medium', '2010-03-04 02:43:20', NULL, NULL, 0, NULL, 980191088, 'nophoto_medium.png', 82, NULL, 82, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191088 AND `photos`.`thumbnail` = 'small') LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 11812, '2010-03-04 02:43:20', NULL, NULL, 'image/png', NULL, 'small', '2010-03-04 02:43:20', NULL, NULL, 0, NULL, 980191088, 'nophoto_small.png', 48, NULL, 48, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191088 AND `photos`.`thumbnail` = 'member') LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 12516, '2010-03-04 02:43:20', NULL, NULL, 'image/png', NULL, 'member', '2010-03-04 02:43:20', NULL, NULL, 0, NULL, 980191088, 'nophoto_member.png', 96, NULL, 96, NULL)[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`parent_id` = 980191088 AND `photos`.`thumbnail` = 'thumb') LIMIT 1[0m
+  [4;35;1mProfilePhoto Create (0.3ms)[0m   [0mINSERT INTO `photos` (`location`, `size`, `created_at`, `event_id`, `title`, `content_type`, `is_profile`, `thumbnail`, `updated_at`, `photo_album_id`, `group_id`, `views`, `user_id`, `parent_id`, `filename`, `height`, `description`, `width`, `view_count`) VALUES(NULL, 11606, '2010-03-04 02:43:20', NULL, NULL, 'image/png', NULL, 'thumb', '2010-03-04 02:43:20', NULL, NULL, 0, NULL, 980191088, 'nophoto_thumb.png', 32, NULL, 32, NULL)[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mProfilePhoto Load (0.3ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.user_id = 62 AND (is_profile = 1)) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-04 02:43:20', `activated_at` = '2010-03-04 02:43:20', `activation_code` = NULL WHERE `id` = 62[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mActivity Create (0.4ms)[0m   [0;1mINSERT INTO `activities` (`created_at`, `public`, `updated_at`, `action`, `user_id`, `item_id`, `item_type`) VALUES('2010-03-04 02:43:20', NULL, '2010-03-04 02:43:20', NULL, 62, 62, 'User')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+Completed in 4285ms (View: 5, DB: 9) | 201 Created [http://www.example.com/users.xml]
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'ut2') LIMIT 1[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#index to json (for 127.0.0.1 at 2010-03-03 21:43:20) [GET]
+  Parameters: {"api_key"=>"testapikey"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (1.4ms)[0m   [0;1mSELECT id, first_name, last_name, login, sex, city, state_id, zip, country_id, 
+ phone, phone2, time_zone, about_me, organization, skills, occupation, featured,
+ website, blog, blog_feed, flickr, flickr_username, linked_in_url, twitter_id, aim_name,
+ gtalk_name, yahoo_messenger_name, msn_name, youtube_username, skype_name, posts_count,
+ last_seen_at, login_count, activated_at, enabled, is_active, identity_url FROM `users` WHERE (activated_at is not null) ORDER BY created_at ASC[0m
+Completed in 50ms (View: 44, DB: 4) | 200 OK [http://www.example.com/users.json]
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#index to json (for 127.0.0.1 at 2010-03-03 21:43:20) [GET]
+  Parameters: {"api_key"=>"testapikey", "last_name"=>"fisher"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT id, first_name, last_name, login, sex, city, state_id, zip, country_id, 
+ phone, phone2, time_zone, about_me, organization, skills, occupation, featured,
+ website, blog, blog_feed, flickr, flickr_username, linked_in_url, twitter_id, aim_name,
+ gtalk_name, yahoo_messenger_name, msn_name, youtube_username, skype_name, posts_count,
+ last_seen_at, login_count, activated_at, enabled, is_active, identity_url FROM `users` WHERE (activated_at is not null AND last_name='fisher') ORDER BY created_at ASC[0m
+Completed in 6ms (View: 3, DB: 3) | 200 OK [http://www.example.com/users.json?api_key=testapikey&last_name=fisher]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#index to json (for 127.0.0.1 at 2010-03-03 21:43:20) [GET]
+  Parameters: {"api_key"=>"testapikey", "last_name"=>"User", "limit"=>"5"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT id, first_name, last_name, login, sex, city, state_id, zip, country_id, 
+ phone, phone2, time_zone, about_me, organization, skills, occupation, featured,
+ website, blog, blog_feed, flickr, flickr_username, linked_in_url, twitter_id, aim_name,
+ gtalk_name, yahoo_messenger_name, msn_name, youtube_username, skype_name, posts_count,
+ last_seen_at, login_count, activated_at, enabled, is_active, identity_url FROM `users` WHERE (activated_at is not null AND last_name='User') ORDER BY created_at ASC LIMIT 0, 5[0m
+Completed in 10ms (View: 6, DB: 2) | 200 OK [http://www.example.com/users.json?api_key=testapikey&last_name=User&limit=5]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#index to json (for 127.0.0.1 at 2010-03-03 21:43:20) [GET]
+  Parameters: {"api_key"=>"testapikey", "last_name"=>"User", "first_name"=>"Test7"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT id, first_name, last_name, login, sex, city, state_id, zip, country_id, 
+ phone, phone2, time_zone, about_me, organization, skills, occupation, featured,
+ website, blog, blog_feed, flickr, flickr_username, linked_in_url, twitter_id, aim_name,
+ gtalk_name, yahoo_messenger_name, msn_name, youtube_username, skype_name, posts_count,
+ last_seen_at, login_count, activated_at, enabled, is_active, identity_url FROM `users` WHERE (activated_at is not null AND last_name='User' AND first_name='Test7') ORDER BY created_at ASC[0m
+Completed in 5ms (View: 2, DB: 2) | 200 OK [http://www.example.com/users.json?api_key=testapikey&last_name=User&first_name=Test7]
+  [4;35;1mSQL (0.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#show to json (for 127.0.0.1 at 2010-03-03 21:43:20) [GET]
+  Parameters: {"api_key"=>"testapikey", "id"=>"1"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+Completed in 7ms (View: 0, DB: 2) | 200 OK [http://www.example.com/users/1.json]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#index to json (for 127.0.0.1 at 2010-03-03 21:43:20) [GET]
+  Parameters: {"api_key"=>"testapikey", "limit"=>"10"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT id, first_name, last_name, login, sex, city, state_id, zip, country_id, 
+ phone, phone2, time_zone, about_me, organization, skills, occupation, featured,
+ website, blog, blog_feed, flickr, flickr_username, linked_in_url, twitter_id, aim_name,
+ gtalk_name, yahoo_messenger_name, msn_name, youtube_username, skype_name, posts_count,
+ last_seen_at, login_count, activated_at, enabled, is_active, identity_url FROM `users` WHERE (activated_at is not null) ORDER BY created_at ASC LIMIT 0, 10[0m
+Completed in 16ms (View: 12, DB: 2) | 200 OK [http://www.example.com/users.json]
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing UsersController#index to json (for 127.0.0.1 at 2010-03-03 21:43:20) [GET]
+  Parameters: {"api_key"=>"testapikey", "limit"=>"10", "offset"=>"20"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`api_key` = 'testapikey') LIMIT 1[0m
+  [4;36;1mUser Load (1.2ms)[0m   [0;1mSELECT id, first_name, last_name, login, sex, city, state_id, zip, country_id, 
+ phone, phone2, time_zone, about_me, organization, skills, occupation, featured,
+ website, blog, blog_feed, flickr, flickr_username, linked_in_url, twitter_id, aim_name,
+ gtalk_name, yahoo_messenger_name, msn_name, youtube_username, skype_name, posts_count,
+ last_seen_at, login_count, activated_at, enabled, is_active, identity_url FROM `users` WHERE (activated_at is not null) ORDER BY created_at ASC LIMIT 20, 10[0m
+Completed in 17ms (View: 13, DB: 3) | 200 OK [http://www.example.com/users.json]
+  [4;35;1mSQL (28.6ms)[0m   [0mROLLBACK[0m
