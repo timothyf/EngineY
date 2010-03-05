@@ -134,6 +134,13 @@ ActiveRecord::Schema.define(:version => 20100226204420) do
     t.datetime "updated_at"
   end
 
+  create_table "domain_themes", :force => true do |t|
+    t.string "uri"
+    t.string "name"
+  end
+
+  add_index "domain_themes", ["uri"], :name => "index_domain_themes_on_uri"
+
   create_table "events", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -404,6 +411,10 @@ ActiveRecord::Schema.define(:version => 20100226204420) do
   add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
   create_table "tags", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "themes", :force => true do |t|
     t.string "name"
   end
 

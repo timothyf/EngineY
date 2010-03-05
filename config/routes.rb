@@ -94,6 +94,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :forum_topics do |forum_topic|
     forum_topic.resources :forum_posts
   end
+  
+  # admin
+  map.namespace :admin do |a|
+    a.resource :theme
+    a.resources :domain_themes
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
 

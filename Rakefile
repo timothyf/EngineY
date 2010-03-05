@@ -9,6 +9,8 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 
+require 'disguise/tasks'
+
 test_dir = File.expand_path('test')
 
 Rake::TestTask.new('api_tests') do |t|
