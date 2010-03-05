@@ -24938,3 +24938,1038 @@ Rendering widgets/announcements_home
   [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
   [4;36;1mRole Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
 Completed in 46ms (View: 29, DB: 6) | 200 OK [http://localhost/widgets/load?name=announcements_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+** acts_as_taggable_on: initialized properly.
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2010-03-04 19:50:30) [GET]
+  [4;35;1mTheme Load (0.4ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+  [4;35;1mPhoto Load (0.5ms)[0m   [0mSELECT id, parent_id, filename FROM `photos` WHERE (`photos`.`thumbnail` IS NULL AND `photos`.`is_profile` IS NULL) ORDER BY RAND() LIMIT 6[0m
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mNetwork Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `networks`[0m
+  [4;35;1mUser Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendered shared/_network_info_widget (11.3ms)
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;35;1mRole Load (0.2ms)[0m   [0mSELECT `roles`.id FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE (`roles`.`id` = 1) AND ((`permissions`.user_id = 1)) LIMIT 1[0m
+Rendered shared/_nav_menu (23.1ms)
+  [4;36;1mProfilePhoto Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mProfilePhoto Load (0.3ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.user_id = 1 AND (is_profile = 1)) LIMIT 1[0m
+Rendered users/_user_control_widget (111.2ms)
+Rendered shared/_footer (3.8ms)
+Completed in 658ms (View: 186, DB: 11) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 19:50:32) [GET]
+  Parameters: {"name"=>"links_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/links_home
+  [4;35;1mLink Load (0.5ms)[0m   [0mSELECT * FROM `links` LIMIT 6[0m
+  [4;36;1mUser Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 63ms (View: 49, DB: 4) | 200 OK [http://localhost/widgets/load?name=links_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 19:50:32) [GET]
+  Parameters: {"name"=>"forum_posts_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/forum_posts_home
+  [4;35;1mForumPost Load (0.4ms)[0m   [0mSELECT id, title, body, user_id, created_at FROM `forum_posts` ORDER BY created_at DESC LIMIT 5[0m
+  [4;36;1mForumPost Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `forum_posts`[0m
+  [4;35;1mUser Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` IN (1,3)) [0m
+Completed in 188ms (View: 173, DB: 6) | 200 OK [http://localhost/widgets/load?name=forum_posts_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 19:50:32) [GET]
+  Parameters: {"name"=>"events_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/events_home
+  [4;36;1mEvent Load (0.4ms)[0m   [0;1mSELECT id, name, start_time, end_time, location FROM `events` WHERE (start_time>now()) ORDER BY start_time ASC LIMIT 6[0m
+  [4;35;1mUser Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 30ms (View: 17, DB: 4) | 200 OK [http://localhost/widgets/load?name=events_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 19:50:32) [GET]
+  Parameters: {"name"=>"groups_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.2ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/groups_home
+  [4;36;1mGroup Load (0.3ms)[0m   [0;1mSELECT id, name FROM `groups` LIMIT 6[0m
+  [4;35;1mGroup Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `groups`[0m
+  [4;36;1mProfilePhoto Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mProfilePhoto Load (0.4ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.group_id = 1) LIMIT 1[0m
+  [4;36;1mUser Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM `users` INNER JOIN `memberships` ON `users`.id = `memberships`.user_id WHERE ((`memberships`.group_id = 1)) [0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.group_id = 2) LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM `users` INNER JOIN `memberships` ON `users`.id = `memberships`.user_id WHERE ((`memberships`.group_id = 2)) [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 236ms (View: 218, DB: 9) | 200 OK [http://localhost/widgets/load?name=groups_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 19:50:33) [GET]
+  Parameters: {"name"=>"members_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.2ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/members_home
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT id, first_name, last_name FROM `users` WHERE (activated_at is not null) ORDER BY RAND() LIMIT 8[0m
+  [4;35;1mUser Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mProfilePhoto Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mProfilePhoto Load (0.5ms)[0m   [0mSELECT `photos`.* FROM `photos` WHERE (`photos`.user_id IN (2,9,6,5,1,3,7,11) AND (is_profile = 1)) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (activated_at is not null) [0m
+Completed in 150ms (View: 135, DB: 6) | 200 OK [http://localhost/widgets/load?name=members_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 19:50:33) [GET]
+  Parameters: {"name"=>"activity_feed_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.2ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/activity_feed_home
+  [4;36;1mUser Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mActivity Load (0.4ms)[0m   [0;1mSELECT * FROM `activities` ORDER BY created_at DESC LIMIT 8[0m
+  [4;35;1mActivity Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `activities`[0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` IN (6,7,8,9,1,10,4,5)) [0m
+  [4;35;1mBlogPost Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `blog_posts`[0m
+  [4;36;1mBlogPost Load (0.4ms)[0m   [0;1mSELECT * FROM `blog_posts` WHERE (`blog_posts`.`id` IN (6,7,8,1,2,3,4,5)) [0m
+DEPRECATION WARNING: formatted_activities_url() has been deprecated. Please pass format to the standard activities_url method instead.. (called from _run_erb_app47views47widgets47activity_feed_home46html46erb_locals_include_friends at /Users/timothyfisher/Projects/enginey/app/views/widgets/activity_feed_home.html.erb:45)
+DEPRECATION WARNING: formatted_activities_url() has been deprecated. Please pass format to the standard activities_url method instead.. (called from _run_erb_app47views47widgets47activity_feed_home46html46erb_locals_include_friends at /Users/timothyfisher/Projects/enginey/app/views/widgets/activity_feed_home.html.erb:46)
+Completed in 154ms (View: 137, DB: 8) | 200 OK [http://localhost/widgets/load?name=activity_feed_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 19:50:33) [GET]
+  Parameters: {"name"=>"html_content_home1", "content_id"=>"1", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+  [4;36;1mHtmlContent Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `html_contents`[0m
+  [4;35;1mHtmlContent Load (0.2ms)[0m   [0mSELECT * FROM `html_contents` WHERE (`html_contents`.`content_id` = '1') LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/html_content_home
+  [4;36;1mUser Columns (2.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 45ms (View: 24, DB: 7) | 200 OK [http://localhost/widgets/load?name=html_content_home1&content_id=1&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 19:50:34) [GET]
+  Parameters: {"name"=>"job_posts_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.4ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.4ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/job_posts_home
+  [4;35;1mJobPost Load (0.3ms)[0m   [0mSELECT id, job_title, company FROM `job_posts` ORDER BY created_at DESC LIMIT 5[0m
+  [4;36;1mJobPost Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `job_posts`[0m
+  [4;35;1mUser Columns (2.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 66ms (View: 43, DB: 6) | 200 OK [http://localhost/widgets/load?name=job_posts_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 19:50:34) [GET]
+  Parameters: {"name"=>"blog_posts_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (1.1ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/blog_posts_home
+  [4;36;1mBlogPost Load (0.5ms)[0m   [0;1mSELECT * FROM `blog_posts` WHERE (published=true) ORDER BY created_at DESC LIMIT 3[0m
+  [4;35;1mBlogPost Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `blog_posts`[0m
+  [4;36;1mUser Columns (3.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 4) [0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 5) [0m
+  [4;36;1mUser Load (1.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 6) [0m
+Completed in 208ms (View: 179, DB: 12) | 200 OK [http://localhost/widgets/load?name=blog_posts_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 19:50:34) [GET]
+  Parameters: {"name"=>"projects_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.6ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/projects_home
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM `projects` LIMIT 6[0m
+  [4;35;1mUser Columns (3.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 43ms (View: 25, DB: 6) | 200 OK [http://localhost/widgets/load?name=projects_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (1.7ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 19:50:35) [GET]
+  Parameters: {"name"=>"photos_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/photos_home
+  [4;36;1mPhoto Load (1.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`thumbnail` IS NULL AND `photos`.`is_profile` IS NULL) ORDER BY RAND() LIMIT 6[0m
+  [4;35;1mUser Columns (11.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 153ms (View: 126, DB: 16) | 200 OK [http://localhost/widgets/load?name=photos_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 19:50:35) [GET]
+  Parameters: {"name"=>"announcements_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (1.0ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/announcements_home
+  [4;36;1mAnnouncement Load (0.3ms)[0m   [0;1mSELECT * FROM `announcements` ORDER BY created_at DESC LIMIT 4[0m
+  [4;35;1mUser Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 128ms (View: 109, DB: 6) | 200 OK [http://localhost/widgets/load?name=announcements_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#show (for 127.0.0.1 at 2010-03-04 20:04:39) [GET]
+
+NameError (uninitialized constant Admin::ThemesController):
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendered rescues/_trace (127.9ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AdminController#themes (for 127.0.0.1 at 2010-03-04 20:04:47) [GET]
+  Parameters: {"id"=>"edit"}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+  [4;35;1mUser Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+ActionController::UnknownAction (No action responded to themes. Actions: after_facebook_login_url, api_filter, application_is_installed?, application_is_not_installed_by_facebook_user, application_needs_permission, approve_user, blog_posts, capture_facebook_friends_if_available!, clear_facebook_session_information, clear_fb_cookies!, create_facebook_session, create_facebook_session_with_secret, create_new_facebook_session_and_redirect!, default_after_facebook_login_url, earliest_valid_session, ensure_application_is_installed_by_facebook_user, ensure_authenticated_to_facebook, ensure_has_create_event, ensure_has_create_listing, ensure_has_photo_upload, ensure_has_status_update, ensure_has_video_upload, events, export_member_list, facebook_parameter_conversions, facebook_params, facebook_session, facebook_session_parameters, fb_cookie_names, fb_cookie_prefix, fbml_redirect_tag, groups, has_extended_permission?, index, new_facebook_session, one_or_true, pending_users, post_event_data, post_group_data, post_user_data, redirect_to, reject_user, render_publisher_error, render_publisher_interface, render_publisher_response, request_comes_from_facebook?, request_is_facebook_ajax?, request_is_facebook_iframe?, request_is_facebook_tab?, request_is_fb_ping?, request_is_for_a_facebook_canvas?, reset_db, secure_with_cookies!, secure_with_facebook_params!, secure_with_session_secret!, secure_with_token!, session_already_secured?, set_facebook_request_format, set_facebook_session, set_vars, settings, top_redirect_to, update_session, user_has_deauthorized_application?, users, valid_session_key_in_session?, verified_facebook_params, verify_signature, wants_interface?, who_is_online, xml_http_request?, and zero_or_false):
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AdminController#themes (for 127.0.0.1 at 2010-03-04 20:08:14) [GET]
+  Parameters: {"id"=>"edit"}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+  [4;36;1mUser Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+ActionController::UnknownAction (No action responded to themes. Actions: after_facebook_login_url, api_filter, application_is_installed?, application_is_not_installed_by_facebook_user, application_needs_permission, approve_user, blog_posts, capture_facebook_friends_if_available!, clear_facebook_session_information, clear_fb_cookies!, create_facebook_session, create_facebook_session_with_secret, create_new_facebook_session_and_redirect!, default_after_facebook_login_url, earliest_valid_session, ensure_application_is_installed_by_facebook_user, ensure_authenticated_to_facebook, ensure_has_create_event, ensure_has_create_listing, ensure_has_photo_upload, ensure_has_status_update, ensure_has_video_upload, events, export_member_list, facebook_parameter_conversions, facebook_params, facebook_session, facebook_session_parameters, fb_cookie_names, fb_cookie_prefix, fbml_redirect_tag, groups, has_extended_permission?, index, new_facebook_session, one_or_true, pending_users, post_event_data, post_group_data, post_user_data, redirect_to, reject_user, render_publisher_error, render_publisher_interface, render_publisher_response, request_comes_from_facebook?, request_is_facebook_ajax?, request_is_facebook_iframe?, request_is_facebook_tab?, request_is_fb_ping?, request_is_for_a_facebook_canvas?, reset_db, secure_with_cookies!, secure_with_facebook_params!, secure_with_session_secret!, secure_with_token!, session_already_secured?, set_facebook_request_format, set_facebook_session, set_vars, settings, top_redirect_to, update_session, user_has_deauthorized_application?, users, valid_session_key_in_session?, verified_facebook_params, verify_signature, wants_interface?, who_is_online, xml_http_request?, and zero_or_false):
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AdminController#themes (for 127.0.0.1 at 2010-03-04 20:08:17) [GET]
+  Parameters: {"id"=>"edit"}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.2ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+  [4;35;1mUser Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+
+ActionController::UnknownAction (No action responded to themes. Actions: after_facebook_login_url, api_filter, application_is_installed?, application_is_not_installed_by_facebook_user, application_needs_permission, approve_user, blog_posts, capture_facebook_friends_if_available!, clear_facebook_session_information, clear_fb_cookies!, create_facebook_session, create_facebook_session_with_secret, create_new_facebook_session_and_redirect!, default_after_facebook_login_url, earliest_valid_session, ensure_application_is_installed_by_facebook_user, ensure_authenticated_to_facebook, ensure_has_create_event, ensure_has_create_listing, ensure_has_photo_upload, ensure_has_status_update, ensure_has_video_upload, events, export_member_list, facebook_parameter_conversions, facebook_params, facebook_session, facebook_session_parameters, fb_cookie_names, fb_cookie_prefix, fbml_redirect_tag, groups, has_extended_permission?, index, new_facebook_session, one_or_true, pending_users, post_event_data, post_group_data, post_user_data, redirect_to, reject_user, render_publisher_error, render_publisher_interface, render_publisher_response, request_comes_from_facebook?, request_is_facebook_ajax?, request_is_facebook_iframe?, request_is_facebook_tab?, request_is_fb_ping?, request_is_for_a_facebook_canvas?, reset_db, secure_with_cookies!, secure_with_facebook_params!, secure_with_session_secret!, secure_with_token!, session_already_secured?, set_facebook_request_format, set_facebook_session, set_vars, settings, top_redirect_to, update_session, user_has_deauthorized_application?, users, valid_session_key_in_session?, verified_facebook_params, verify_signature, wants_interface?, who_is_online, xml_http_request?, and zero_or_false):
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `initialize'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `pre_rubycocoa_new'
+  /System/Library/Frameworks/RubyCocoa.framework/Resources/ruby/osx/objc/ruby_addition.rb:110:in `new'
+
+Rendering /Users/timothyfisher/Projects/enginey/vendor/plugins/facebooker/templates/layout.erb (200)
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::ThemesController#edit (for 127.0.0.1 at 2010-03-04 20:08:37) [GET]
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mTheme Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `themes`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTheme Create (0.3ms)[0m   [0;1mINSERT INTO `themes` (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mDomainTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `domain_themes` [0m
+Rendering template within layouts/application
+Rendering admin/themes/edit
+Rendered admin/themes/_theme (189.0ms)
+  [4;35;1mNetwork Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `networks`[0m
+  [4;36;1mUser Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mRole Load (0.7ms)[0m   [0mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT `roles`.id FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE (`roles`.`id` = 1) AND ((`permissions`.user_id = 1)) LIMIT 1[0m
+Rendered shared/_nav_menu (116.1ms)
+  [4;35;1mProfilePhoto Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `photos`[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.user_id = 1 AND (is_profile = 1)) LIMIT 1[0m
+Rendered users/_user_control_widget (442.0ms)
+Rendered shared/_footer (4.0ms)
+Completed in 856ms (View: 812, DB: 14) | 200 OK [http://localhost/admin/themes/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::ThemesController#edit (for 127.0.0.1 at 2010-03-04 20:10:12) [GET]
+  [4;36;1mTheme Load (0.4ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mDomainTheme Load (0.3ms)[0m   [0mSELECT * FROM `domain_themes` [0m
+Rendering template within layouts/application
+Rendering admin/themes/edit
+Rendered admin/themes/_theme (1.8ms)
+  [4;36;1mNetwork Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `networks`[0m
+  [4;35;1mUser Columns (4.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT `roles`.id FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE (`roles`.`id` = 1) AND ((`permissions`.user_id = 1)) LIMIT 1[0m
+Rendered shared/_nav_menu (124.7ms)
+  [4;36;1mProfilePhoto Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mProfilePhoto Load (0.8ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.user_id = 1 AND (is_profile = 1)) LIMIT 1[0m
+Rendered users/_user_control_widget (114.8ms)
+Rendered shared/_footer (1.0ms)
+Completed in 281ms (View: 258, DB: 12) | 200 OK [http://localhost/admin/themes/edit]
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2010-03-04 20:41:54) [GET]
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+  [4;35;1mPhoto Load (0.5ms)[0m   [0mSELECT id, parent_id, filename FROM `photos` WHERE (`photos`.`thumbnail` IS NULL AND `photos`.`is_profile` IS NULL) ORDER BY RAND() LIMIT 6[0m
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mNetwork Columns (5.0ms)[0m   [0;1mSHOW FIELDS FROM `networks`[0m
+  [4;35;1mUser Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendered shared/_network_info_widget (14.2ms)
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT `roles`.id FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE (`roles`.`id` = 1) AND ((`permissions`.user_id = 1)) LIMIT 1[0m
+Rendered shared/_nav_menu (19.2ms)
+  [4;36;1mProfilePhoto Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mProfilePhoto Load (0.8ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.user_id = 1 AND (is_profile = 1)) LIMIT 1[0m
+Rendered users/_user_control_widget (24.0ms)
+Rendered shared/_footer (3.2ms)
+Completed in 325ms (View: 101, DB: 13) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:41:56) [GET]
+  Parameters: {"name"=>"html_content_home1", "content_id"=>"1", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.2ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+  [4;35;1mHtmlContent Columns (8.7ms)[0m   [0mSHOW FIELDS FROM `html_contents`[0m
+  [4;36;1mHtmlContent Load (1.6ms)[0m   [0;1mSELECT * FROM `html_contents` WHERE (`html_contents`.`content_id` = '1') LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/html_content_home
+  [4;35;1mUser Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 99ms (View: 68, DB: 17) | 200 OK [http://localhost/widgets/load?name=html_content_home1&content_id=1&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:41:56) [GET]
+  Parameters: {"name"=>"forum_posts_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.2ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/forum_posts_home
+  [4;36;1mForumPost Load (0.4ms)[0m   [0;1mSELECT id, title, body, user_id, created_at FROM `forum_posts` ORDER BY created_at DESC LIMIT 5[0m
+  [4;35;1mForumPost Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `forum_posts`[0m
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` IN (1,3)) [0m
+Completed in 214ms (View: 200, DB: 6) | 200 OK [http://localhost/widgets/load?name=forum_posts_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:41:57) [GET]
+  Parameters: {"name"=>"activity_feed_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.2ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/activity_feed_home
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mActivity Load (0.4ms)[0m   [0mSELECT * FROM `activities` ORDER BY created_at DESC LIMIT 8[0m
+  [4;36;1mActivity Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `activities`[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` IN (6,7,8,9,1,10,4,5)) [0m
+  [4;36;1mBlogPost Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `blog_posts`[0m
+  [4;35;1mBlogPost Load (0.9ms)[0m   [0mSELECT * FROM `blog_posts` WHERE (`blog_posts`.`id` IN (6,7,8,1,2,3,4,5)) [0m
+DEPRECATION WARNING: formatted_activities_url() has been deprecated. Please pass format to the standard activities_url method instead.. (called from _run_erb_app47views47widgets47activity_feed_home46html46erb_locals_include_friends at /Users/timothyfisher/Projects/enginey/app/views/widgets/activity_feed_home.html.erb:45)
+DEPRECATION WARNING: formatted_activities_url() has been deprecated. Please pass format to the standard activities_url method instead.. (called from _run_erb_app47views47widgets47activity_feed_home46html46erb_locals_include_friends at /Users/timothyfisher/Projects/enginey/app/views/widgets/activity_feed_home.html.erb:46)
+Completed in 72ms (View: 55, DB: 8) | 200 OK [http://localhost/widgets/load?name=activity_feed_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:41:57) [GET]
+  Parameters: {"name"=>"projects_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.2ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/projects_home
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM `projects` LIMIT 6[0m
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 32ms (View: 19, DB: 4) | 200 OK [http://localhost/widgets/load?name=projects_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:41:57) [GET]
+  Parameters: {"name"=>"groups_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.2ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/groups_home
+  [4;35;1mGroup Load (0.3ms)[0m   [0mSELECT id, name FROM `groups` LIMIT 6[0m
+  [4;36;1mGroup Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `groups`[0m
+  [4;35;1mProfilePhoto Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `photos`[0m
+  [4;36;1mProfilePhoto Load (0.4ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.group_id = 1) LIMIT 1[0m
+  [4;35;1mUser Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` INNER JOIN `memberships` ON `users`.id = `memberships`.user_id WHERE ((`memberships`.group_id = 1)) [0m
+  [4;35;1mProfilePhoto Load (0.3ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.group_id = 2) LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` INNER JOIN `memberships` ON `users`.id = `memberships`.user_id WHERE ((`memberships`.group_id = 2)) [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 246ms (View: 228, DB: 8) | 200 OK [http://localhost/widgets/load?name=groups_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:41:58) [GET]
+  Parameters: {"name"=>"announcements_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/announcements_home
+  [4;35;1mAnnouncement Load (0.3ms)[0m   [0mSELECT * FROM `announcements` ORDER BY created_at DESC LIMIT 4[0m
+  [4;36;1mUser Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.5ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 136ms (View: 119, DB: 7) | 200 OK [http://localhost/widgets/load?name=announcements_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:41:58) [GET]
+  Parameters: {"name"=>"job_posts_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/job_posts_home
+  [4;35;1mJobPost Load (0.4ms)[0m   [0mSELECT id, job_title, company FROM `job_posts` ORDER BY created_at DESC LIMIT 5[0m
+  [4;36;1mJobPost Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `job_posts`[0m
+  [4;35;1mUser Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 144ms (View: 129, DB: 6) | 200 OK [http://localhost/widgets/load?name=job_posts_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:41:58) [GET]
+  Parameters: {"name"=>"events_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/events_home
+  [4;36;1mEvent Load (0.4ms)[0m   [0;1mSELECT id, name, start_time, end_time, location FROM `events` WHERE (start_time>now()) ORDER BY start_time ASC LIMIT 6[0m
+  [4;35;1mUser Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 132ms (View: 19, DB: 5) | 200 OK [http://localhost/widgets/load?name=events_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:41:58) [GET]
+  Parameters: {"name"=>"members_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/members_home
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT id, first_name, last_name FROM `users` WHERE (activated_at is not null) ORDER BY RAND() LIMIT 8[0m
+  [4;35;1mUser Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mProfilePhoto Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mProfilePhoto Load (0.5ms)[0m   [0mSELECT `photos`.* FROM `photos` WHERE (`photos`.user_id IN (7,12,10,2,6,4,11,1) AND (is_profile = 1)) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (activated_at is not null) [0m
+Completed in 148ms (View: 132, DB: 6) | 200 OK [http://localhost/widgets/load?name=members_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:41:59) [GET]
+  Parameters: {"name"=>"links_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/links_home
+  [4;36;1mLink Load (0.3ms)[0m   [0;1mSELECT * FROM `links` LIMIT 6[0m
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 37ms (View: 20, DB: 4) | 200 OK [http://localhost/widgets/load?name=links_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:41:59) [GET]
+  Parameters: {"name"=>"blog_posts_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.4ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/blog_posts_home
+  [4;36;1mBlogPost Load (0.5ms)[0m   [0;1mSELECT * FROM `blog_posts` WHERE (published=true) ORDER BY created_at DESC LIMIT 3[0m
+  [4;35;1mBlogPost Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `blog_posts`[0m
+  [4;36;1mUser Columns (2.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.5ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 4) [0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 5) [0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 6) [0m
+Completed in 170ms (View: 151, DB: 10) | 200 OK [http://localhost/widgets/load?name=blog_posts_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:41:59) [GET]
+  Parameters: {"name"=>"photos_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/photos_home
+  [4;36;1mPhoto Load (14.2ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`thumbnail` IS NULL AND `photos`.`is_profile` IS NULL) ORDER BY RAND() LIMIT 6[0m
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (10.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 147ms (View: 109, DB: 28) | 200 OK [http://localhost/widgets/load?name=photos_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::ThemesController#edit (for 127.0.0.1 at 2010-03-04 20:42:09) [GET]
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mDomainTheme Load (0.3ms)[0m   [0mSELECT * FROM `domain_themes` [0m
+Rendering template within layouts/application
+Rendering admin/themes/edit
+Rendered admin/themes/_theme (2.6ms)
+Rendered admin/themes/_theme (1.7ms)
+  [4;36;1mNetwork Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `networks`[0m
+  [4;35;1mUser Columns (4.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT `roles`.id FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE (`roles`.`id` = 1) AND ((`permissions`.user_id = 1)) LIMIT 1[0m
+Rendered shared/_nav_menu (122.5ms)
+  [4;36;1mProfilePhoto Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mProfilePhoto Load (0.3ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.user_id = 1 AND (is_profile = 1)) LIMIT 1[0m
+Rendered users/_user_control_widget (112.7ms)
+Rendered shared/_footer (0.8ms)
+Completed in 295ms (View: 273, DB: 11) | 200 OK [http://localhost/admin/themes/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::ThemesController#update (for 127.0.0.1 at 2010-03-04 20:42:16) [PUT]
+  Parameters: {"theme"=>{"name"=>"mycompany"}, "mycompany.x"=>"142", "mycompany.y"=>"117"}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTheme Update (0.3ms)[0m   [0mUPDATE `themes` SET `name` = 'mycompany' WHERE `id` = 1[0m
+  [4;36;1mSQL (68.8ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/admin/theme/edit
+Completed in 184ms (DB: 70) | 302 Found [http://localhost/admin/theme]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::ThemesController#edit (for 127.0.0.1 at 2010-03-04 20:42:17) [GET]
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mDomainTheme Load (0.3ms)[0m   [0mSELECT * FROM `domain_themes` [0m
+Rendering template within layouts/application
+Rendering admin/themes/edit
+Rendered admin/themes/_theme (3.5ms)
+Rendered admin/themes/_theme (1.6ms)
+Rendered admin/themes/_theme (1.5ms)
+  [4;36;1mNetwork Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `networks`[0m
+  [4;35;1mUser Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT `roles`.id FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE (`roles`.`id` = 1) AND ((`permissions`.user_id = 1)) LIMIT 1[0m
+Rendered shared/_nav_menu (28.4ms)
+  [4;36;1mProfilePhoto Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mProfilePhoto Load (0.3ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.user_id = 1 AND (is_profile = 1)) LIMIT 1[0m
+Rendered users/_user_control_widget (207.7ms)
+Rendered shared/_footer (1.0ms)
+Completed in 386ms (View: 264, DB: 9) | 200 OK [http://localhost/admin/theme/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2010-03-04 20:42:30) [GET]
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+  [4;35;1mPhoto Load (0.5ms)[0m   [0mSELECT id, parent_id, filename FROM `photos` WHERE (`photos`.`thumbnail` IS NULL AND `photos`.`is_profile` IS NULL) ORDER BY RAND() LIMIT 6[0m
+Rendering template within layouts/application
+Rendering home/index
+  [4;36;1mNetwork Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `networks`[0m
+  [4;35;1mUser Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendered shared/_network_info_widget (9.9ms)
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT `roles`.id FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE (`roles`.`id` = 1) AND ((`permissions`.user_id = 1)) LIMIT 1[0m
+Rendered shared/_nav_menu (112.1ms)
+  [4;36;1mProfilePhoto Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mProfilePhoto Load (0.7ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.user_id = 1 AND (is_profile = 1)) LIMIT 1[0m
+Rendered users/_user_control_widget (24.5ms)
+Rendered shared/_footer (1.0ms)
+Completed in 279ms (View: 161, DB: 10) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:31) [GET]
+  Parameters: {"name"=>"members_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/members_home
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT id, first_name, last_name FROM `users` WHERE (activated_at is not null) ORDER BY RAND() LIMIT 8[0m
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mProfilePhoto Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `photos`[0m
+  [4;36;1mProfilePhoto Load (0.5ms)[0m   [0;1mSELECT `photos`.* FROM `photos` WHERE (`photos`.user_id IN (14,10,13,1,7,3,9,8) AND (is_profile = 1)) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (activated_at is not null) [0m
+Completed in 253ms (View: 235, DB: 7) | 200 OK [http://localhost/widgets/load?name=members_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:31) [GET]
+  Parameters: {"name"=>"blog_posts_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/blog_posts_home
+  [4;35;1mBlogPost Load (0.5ms)[0m   [0mSELECT * FROM `blog_posts` WHERE (published=true) ORDER BY created_at DESC LIMIT 3[0m
+  [4;36;1mBlogPost Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `blog_posts`[0m
+  [4;35;1mUser Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 4) [0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 5) [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 6) [0m
+Completed in 86ms (View: 67, DB: 9) | 200 OK [http://localhost/widgets/load?name=blog_posts_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:32) [GET]
+  Parameters: {"name"=>"photos_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/photos_home
+  [4;35;1mPhoto Load (1.4ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.`thumbnail` IS NULL AND `photos`.`is_profile` IS NULL) ORDER BY RAND() LIMIT 6[0m
+  [4;36;1mUser Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 239ms (View: 224, DB: 5) | 200 OK [http://localhost/widgets/load?name=photos_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:32) [GET]
+  Parameters: {"name"=>"announcements_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/announcements_home
+  [4;35;1mAnnouncement Load (0.3ms)[0m   [0mSELECT * FROM `announcements` ORDER BY created_at DESC LIMIT 4[0m
+  [4;36;1mUser Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 47ms (View: 32, DB: 6) | 200 OK [http://localhost/widgets/load?name=announcements_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:32) [GET]
+  Parameters: {"name"=>"activity_feed_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/activity_feed_home
+  [4;35;1mUser Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mActivity Load (0.7ms)[0m   [0mSELECT * FROM `activities` ORDER BY created_at DESC LIMIT 8[0m
+  [4;36;1mActivity Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `activities`[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` IN (6,7,8,9,1,10,4,5)) [0m
+  [4;36;1mBlogPost Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `blog_posts`[0m
+  [4;35;1mBlogPost Load (0.4ms)[0m   [0mSELECT * FROM `blog_posts` WHERE (`blog_posts`.`id` IN (6,7,8,1,2,3,4,5)) [0m
+DEPRECATION WARNING: formatted_activities_url() has been deprecated. Please pass format to the standard activities_url method instead.. (called from _run_erb_app47views47widgets47activity_feed_home46html46erb_locals_include_friends at /Users/timothyfisher/Projects/enginey/app/views/widgets/activity_feed_home.html.erb:45)
+DEPRECATION WARNING: formatted_activities_url() has been deprecated. Please pass format to the standard activities_url method instead.. (called from _run_erb_app47views47widgets47activity_feed_home46html46erb_locals_include_friends at /Users/timothyfisher/Projects/enginey/app/views/widgets/activity_feed_home.html.erb:46)
+Completed in 168ms (View: 149, DB: 9) | 200 OK [http://localhost/widgets/load?name=activity_feed_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:32) [GET]
+  Parameters: {"name"=>"groups_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/groups_home
+  [4;35;1mGroup Load (0.3ms)[0m   [0mSELECT id, name FROM `groups` LIMIT 6[0m
+  [4;36;1mGroup Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `groups`[0m
+  [4;35;1mProfilePhoto Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `photos`[0m
+  [4;36;1mProfilePhoto Load (0.4ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.group_id = 1) LIMIT 1[0m
+  [4;35;1mUser Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` INNER JOIN `memberships` ON `users`.id = `memberships`.user_id WHERE ((`memberships`.group_id = 1)) [0m
+  [4;35;1mProfilePhoto Load (0.3ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.group_id = 2) LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` INNER JOIN `memberships` ON `users`.id = `memberships`.user_id WHERE ((`memberships`.group_id = 2)) [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 357ms (View: 234, DB: 8) | 200 OK [http://localhost/widgets/load?name=groups_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:33) [GET]
+  Parameters: {"name"=>"events_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/events_home
+  [4;35;1mEvent Load (0.6ms)[0m   [0mSELECT id, name, start_time, end_time, location FROM `events` WHERE (start_time>now()) ORDER BY start_time ASC LIMIT 6[0m
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 153ms (View: 26, DB: 4) | 200 OK [http://localhost/widgets/load?name=events_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:33) [GET]
+  Parameters: {"name"=>"projects_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/projects_home
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM `projects` LIMIT 6[0m
+  [4;36;1mUser Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 65ms (View: 49, DB: 5) | 200 OK [http://localhost/widgets/load?name=projects_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:34) [GET]
+  Parameters: {"name"=>"forum_posts_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/forum_posts_home
+  [4;35;1mForumPost Load (0.4ms)[0m   [0mSELECT id, title, body, user_id, created_at FROM `forum_posts` ORDER BY created_at DESC LIMIT 5[0m
+  [4;36;1mForumPost Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `forum_posts`[0m
+  [4;35;1mUser Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` IN (1,3)) [0m
+Completed in 59ms (View: 44, DB: 6) | 200 OK [http://localhost/widgets/load?name=forum_posts_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:34) [GET]
+  Parameters: {"name"=>"links_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/links_home
+  [4;36;1mLink Load (0.4ms)[0m   [0;1mSELECT * FROM `links` LIMIT 6[0m
+  [4;35;1mUser Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 39ms (View: 25, DB: 4) | 200 OK [http://localhost/widgets/load?name=links_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:34) [GET]
+  Parameters: {"name"=>"html_content_home1", "content_id"=>"1", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+  [4;36;1mHtmlContent Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `html_contents`[0m
+  [4;35;1mHtmlContent Load (0.3ms)[0m   [0mSELECT * FROM `html_contents` WHERE (`html_contents`.`content_id` = '1') LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/html_content_home
+  [4;36;1mUser Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 151ms (View: 130, DB: 7) | 200 OK [http://localhost/widgets/load?name=html_content_home1&content_id=1&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:34) [GET]
+  Parameters: {"name"=>"job_posts_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/job_posts_home
+  [4;35;1mJobPost Load (0.4ms)[0m   [0mSELECT id, job_title, company FROM `job_posts` ORDER BY created_at DESC LIMIT 5[0m
+  [4;36;1mJobPost Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `job_posts`[0m
+  [4;35;1mUser Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 150ms (View: 135, DB: 6) | 200 OK [http://localhost/widgets/load?name=job_posts_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::ThemesController#update (for 127.0.0.1 at 2010-03-04 20:42:41) [PUT]
+  Parameters: {"rubymi.x"=>"144", "rubymi.y"=>"70", "theme"=>{"name"=>"rubymi"}}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mTheme Update (0.3ms)[0m   [0;1mUPDATE `themes` SET `name` = 'rubymi' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/admin/theme/edit
+Completed in 29ms (DB: 2) | 302 Found [http://localhost/admin/theme]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::ThemesController#edit (for 127.0.0.1 at 2010-03-04 20:42:42) [GET]
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mDomainTheme Load (0.2ms)[0m   [0;1mSELECT * FROM `domain_themes` [0m
+Rendering template within layouts/application
+Rendering admin/themes/edit
+Rendered admin/themes/_theme (2.0ms)
+Rendered admin/themes/_theme (1.6ms)
+Rendered admin/themes/_theme (1.5ms)
+  [4;35;1mNetwork Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `networks`[0m
+  [4;36;1mUser Columns (2.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mRole Load (0.2ms)[0m   [0mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT `roles`.id FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE (`roles`.`id` = 1) AND ((`permissions`.user_id = 1)) LIMIT 1[0m
+Rendered shared/_nav_menu (25.0ms)
+  [4;35;1mProfilePhoto Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `photos`[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.user_id = 1 AND (is_profile = 1)) LIMIT 1[0m
+Rendered users/_user_control_widget (204.9ms)
+Rendered shared/_footer (0.9ms)
+Completed in 273ms (View: 253, DB: 10) | 200 OK [http://localhost/admin/theme/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2010-03-04 20:42:48) [GET]
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+  [4;36;1mPhoto Load (0.5ms)[0m   [0;1mSELECT id, parent_id, filename FROM `photos` WHERE (`photos`.`thumbnail` IS NULL AND `photos`.`is_profile` IS NULL) ORDER BY RAND() LIMIT 6[0m
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mNetwork Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `networks`[0m
+  [4;36;1mUser Columns (3.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendered shared/_network_info_widget (11.5ms)
+  [4;36;1mRole Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT `roles`.id FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE (`roles`.`id` = 1) AND ((`permissions`.user_id = 1)) LIMIT 1[0m
+Rendered shared/_nav_menu (115.7ms)
+  [4;35;1mProfilePhoto Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `photos`[0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.user_id = 1 AND (is_profile = 1)) LIMIT 1[0m
+Rendered users/_user_control_widget (25.0ms)
+Rendered shared/_footer (0.9ms)
+Completed in 285ms (View: 163, DB: 11) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:49) [GET]
+  Parameters: {"name"=>"events_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/events_home
+  [4;36;1mEvent Load (0.4ms)[0m   [0;1mSELECT id, name, start_time, end_time, location FROM `events` WHERE (start_time>now()) ORDER BY start_time ASC LIMIT 6[0m
+  [4;35;1mUser Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 51ms (View: 32, DB: 4) | 200 OK [http://localhost/widgets/load?name=events_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:49) [GET]
+  Parameters: {"name"=>"job_posts_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/job_posts_home
+  [4;36;1mJobPost Load (0.4ms)[0m   [0;1mSELECT id, job_title, company FROM `job_posts` ORDER BY created_at DESC LIMIT 5[0m
+  [4;35;1mJobPost Columns (15.8ms)[0m   [0mSHOW FIELDS FROM `job_posts`[0m
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 158ms (View: 129, DB: 20) | 200 OK [http://localhost/widgets/load?name=job_posts_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:49) [GET]
+  Parameters: {"name"=>"forum_posts_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;35;1mTheme Load (0.3ms)[0m   [0mSELECT * FROM `themes` LIMIT 1[0m
+  [4;36;1mNetwork Load (0.3ms)[0m   [0;1mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/forum_posts_home
+  [4;35;1mForumPost Load (0.4ms)[0m   [0mSELECT id, title, body, user_id, created_at FROM `forum_posts` ORDER BY created_at DESC LIMIT 5[0m
+  [4;36;1mForumPost Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `forum_posts`[0m
+  [4;35;1mUser Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` IN (1,3)) [0m
+Completed in 163ms (View: 45, DB: 6) | 200 OK [http://localhost/widgets/load?name=forum_posts_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:50) [GET]
+  Parameters: {"name"=>"blog_posts_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/blog_posts_home
+  [4;36;1mBlogPost Load (0.5ms)[0m   [0;1mSELECT * FROM `blog_posts` WHERE (published=true) ORDER BY created_at DESC LIMIT 3[0m
+  [4;35;1mBlogPost Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `blog_posts`[0m
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 4) [0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 5) [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 6) [0m
+Completed in 179ms (View: 160, DB: 9) | 200 OK [http://localhost/widgets/load?name=blog_posts_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:50) [GET]
+  Parameters: {"name"=>"links_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.2ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/links_home
+  [4;36;1mLink Load (0.3ms)[0m   [0;1mSELECT * FROM `links` LIMIT 6[0m
+  [4;35;1mUser Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 152ms (View: 27, DB: 4) | 200 OK [http://localhost/widgets/load?name=links_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:50) [GET]
+  Parameters: {"name"=>"members_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/members_home
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT id, first_name, last_name FROM `users` WHERE (activated_at is not null) ORDER BY RAND() LIMIT 8[0m
+  [4;35;1mUser Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mProfilePhoto Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mProfilePhoto Load (0.5ms)[0m   [0mSELECT `photos`.* FROM `photos` WHERE (`photos`.user_id IN (8,14,15,6,2,9,1,3) AND (is_profile = 1)) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` WHERE (activated_at is not null) [0m
+Completed in 157ms (View: 141, DB: 6) | 200 OK [http://localhost/widgets/load?name=members_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:51) [GET]
+  Parameters: {"name"=>"activity_feed_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/activity_feed_home
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mActivity Load (0.4ms)[0m   [0;1mSELECT * FROM `activities` ORDER BY created_at DESC LIMIT 8[0m
+  [4;35;1mActivity Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `activities`[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` IN (6,7,8,9,1,10,4,5)) [0m
+  [4;35;1mBlogPost Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `blog_posts`[0m
+  [4;36;1mBlogPost Load (0.5ms)[0m   [0;1mSELECT * FROM `blog_posts` WHERE (`blog_posts`.`id` IN (6,7,8,1,2,3,4,5)) [0m
+DEPRECATION WARNING: formatted_activities_url() has been deprecated. Please pass format to the standard activities_url method instead.. (called from _run_erb_app47views47widgets47activity_feed_home46html46erb_locals_include_friends at /Users/timothyfisher/Projects/enginey/app/views/widgets/activity_feed_home.html.erb:45)
+DEPRECATION WARNING: formatted_activities_url() has been deprecated. Please pass format to the standard activities_url method instead.. (called from _run_erb_app47views47widgets47activity_feed_home46html46erb_locals_include_friends at /Users/timothyfisher/Projects/enginey/app/views/widgets/activity_feed_home.html.erb:46)
+Completed in 171ms (View: 154, DB: 8) | 200 OK [http://localhost/widgets/load?name=activity_feed_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:51) [GET]
+  Parameters: {"name"=>"projects_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/projects_home
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM `projects` LIMIT 6[0m
+  [4;35;1mUser Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 116ms (View: 51, DB: 5) | 200 OK [http://localhost/widgets/load?name=projects_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:51) [GET]
+  Parameters: {"name"=>"photos_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.5ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/photos_home
+  [4;36;1mPhoto Load (1.8ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.`thumbnail` IS NULL AND `photos`.`is_profile` IS NULL) ORDER BY RAND() LIMIT 6[0m
+  [4;35;1mUser Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 182ms (View: 161, DB: 6) | 200 OK [http://localhost/widgets/load?name=photos_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:52) [GET]
+  Parameters: {"name"=>"announcements_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/announcements_home
+  [4;36;1mAnnouncement Load (0.4ms)[0m   [0;1mSELECT * FROM `announcements` ORDER BY created_at DESC LIMIT 4[0m
+  [4;35;1mUser Columns (2.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.9ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 195ms (View: 153, DB: 7) | 200 OK [http://localhost/widgets/load?name=announcements_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:52) [GET]
+  Parameters: {"name"=>"groups_home", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/groups_home
+  [4;36;1mGroup Load (0.3ms)[0m   [0;1mSELECT id, name FROM `groups` LIMIT 6[0m
+  [4;35;1mGroup Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `groups`[0m
+  [4;36;1mProfilePhoto Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `photos`[0m
+  [4;35;1mProfilePhoto Load (0.4ms)[0m   [0mSELECT * FROM `photos` WHERE (`photos`.group_id = 1) LIMIT 1[0m
+  [4;36;1mUser Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM `users` INNER JOIN `memberships` ON `users`.id = `memberships`.user_id WHERE ((`memberships`.group_id = 1)) [0m
+  [4;36;1mProfilePhoto Load (0.3ms)[0m   [0;1mSELECT * FROM `photos` WHERE (`photos`.group_id = 2) LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM `users` INNER JOIN `memberships` ON `users`.id = `memberships`.user_id WHERE ((`memberships`.group_id = 2)) [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 371ms (View: 237, DB: 9) | 200 OK [http://localhost/widgets/load?name=groups_home&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WidgetsController#load (for 127.0.0.1 at 2010-03-04 20:42:52) [GET]
+  Parameters: {"name"=>"html_content_home1", "content_id"=>"1", "authenticity_token"=>"PF6ahRwT4rXwxJvk+SlHJBx8zqf0cNWKa9hLjgvDVys="}
+  [4;36;1mTheme Load (0.3ms)[0m   [0;1mSELECT * FROM `themes` LIMIT 1[0m
+  [4;35;1mNetwork Load (0.3ms)[0m   [0mSELECT * FROM `networks` LIMIT 1[0m
+  [4;36;1mHtmlContent Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `html_contents`[0m
+  [4;35;1mHtmlContent Load (1.2ms)[0m   [0mSELECT * FROM `html_contents` WHERE (`html_contents`.`content_id` = '1') LIMIT 1[0m
+Rendering template within layouts/widget
+Rendering widgets/html_content_home
+  [4;36;1mUser Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `permissions` ON `roles`.id = `permissions`.role_id WHERE ((`permissions`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 169ms (View: 31, DB: 8) | 200 OK [http://localhost/widgets/load?name=html_content_home1&content_id=1&authenticity_token=PF6ahRwT4rXwxJvk%2BSlHJBx8zqf0cNWKa9hLjgvDVys%3D]
