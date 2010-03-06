@@ -1,0 +1,11 @@
+<h1>New follow</h1>
+
+<% form_for(@follow) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', follows_path %>

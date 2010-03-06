@@ -1,0 +1,18 @@
+<h1>Listing follows</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @follows.each do |follow| %>
+  <tr>
+    <td><%= link_to 'Show', follow %></td>
+    <td><%= link_to 'Edit', edit_follow_path(follow) %></td>
+    <td><%= link_to 'Destroy', follow, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New follow', new_follow_path %>

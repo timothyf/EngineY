@@ -1,0 +1,329 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {	
+	background: #9AE4E8 url(../images/twitter_clone/bg.png) no-repeat fixed 0 0;
+	-x-system-font:none;
+	color:#333333;
+	font-family:'Lucida Grande',sans-serif;
+	font-size:0.75em;
+	font-size-adjust:none;
+	font-stretch:normal;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:normal;
+	text-align:center;
+	margin: 0px;
+	padding: 0px;
+}
+
+#container {
+	margin:1em auto;
+	position:relative;
+	text-align:left;
+	width:763px;
+	z-index:1;
+	height: 200px;
+}
+
+#header {
+	background: none;
+	text-align: right;
+}
+
+.top-navigation {
+	background-color:#FFFFFF;
+	display:inline-block;
+	padding:0 0.7em;
+	white-space:nowrap;
+}
+
+.top-navigation * {
+	display:inline;
+}
+
+.top-navigation > li {
+	position:relative;
+}
+
+.top-navigation > li > a {
+	border:1px solid transparent;
+	display:inline-block;
+	font-size:1.05em;
+	padding:0.5em 0.15em;
+}
+
+ul {
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+}
+
+a {
+	text-decoration: none;
+}
+
+a, #content tr.hentry:hover a, body#profile #content div.hentry:hover a, #side .stats a:hover span.stats_count, #side div.user_icon a:hover, li.verified-profile a:hover, #side .promotion .definition strong, p.list-numbers a:hover, #side div.user_icon a:hover span, #content .tabMenu li a, .translator-profile a:hover, #local_trend_locations li a, .modal-content .list-slug, .tweet-label a:hover {
+	color: #0000ff;
+}
+
+#logo img {
+	left:0;
+	margin-top:-2px;
+	position:absolute;
+}
+
+.content-bubble-arrow {
+	background-image:url(http://s.twimg.com/a/1267816830/images/arr2.gif);
+	background-position:25px 0;
+	background-repeat:no-repeat;
+	margin-top:1em;
+	padding-top:11px;
+}
+
+.columns {
+	margin-bottom:15px;
+	width:100%;
+}
+
+#content {
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-topleft:5px;
+	background-color:#FFFFFF;
+	margin-top:0;
+	width:564px;
+	word-wrap:break-word;
+}
+
+td.column {
+	padding:0;
+	vertical-align:top;
+}
+
+.wrapper {
+	padding:15px;
+}
+
+#side_base {
+	background-color:#E0FF92;
+	border-left:1px solid #87BC44;	
+	-moz-border-radius-bottomright:5px;
+	-moz-border-radius-topright:5px;
+	line-height:1.2;
+	width:199px;
+}
+
+#side {
+	margin-bottom:10px;
+	padding-top:0.5em;
+	width:198px;
+}
+
+.subpage #side {
+	margin-top:0;
+}
+
+#side div.section {
+	padding:13px;
+}
+
+#side div#profile.profile-side {
+	margin-bottom:1em !important;
+}
+
+#side div#profile.section {
+	margin-bottom:0;
+	padding-bottom:0;
+	padding-top:0.3em;
+}
+
+#side div#profile.section {
+	padding-bottom:16px;
+}
+
+#side .section-links {
+	float:right;
+	font-size:0.9em;
+	text-align:right;
+}
+
+#side .profile-side .about {
+	margin-bottom:0.6em;
+}
+
+#side ul {
+	margin:0;
+}
+
+#side .about li {
+	padding-bottom:3px;
+}
+
+#side .about .label {
+	font-weight:bold;
+}
+
+#side .stats {
+	clear:both;
+	float:none;
+	margin:0;
+	padding:0;
+	position:relative;
+}
+
+#side .stats td {
+	padding:0;
+	vertical-align:top;
+}
+
+#side .stats td .numeric {
+	-x-system-font:none;
+	font-family:Helvetica Neue,Helvetica,Arial,sans-serif;
+	font-size:13px;
+	font-size-adjust:none;
+	font-stretch:normal;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:bold;
+	line-height:normal;
+	text-decoration:none;
+}
+
+#side .stats .stats_count {
+	display:block;
+}
+
+ul.sidebar-menu li a {
+	background-image:none;
+	clear:both;
+	cursor:pointer !important;
+	display:block;
+	margin-right:-1px;
+	outline-color:-moz-use-text-color;
+	outline-style:none;
+	outline-width:medium;
+	padding:0.5em 0 0.3em 14px;
+}
+
+ul#primary_nav.sidebar-menu li a span {
+	display:inline-block;
+	width:auto;
+}
+
+ul.sidebar-menu li a span {
+	display:inline-block;
+	overflow:hidden;
+	width:150px;
+}
+
+body, ul#tabMenu li a, #side .section h1, #side .stat a, #side .stats a span.stats_count, #side div.section-header h1, #side div.user_icon a, #side div.user_icon a:hover, #side div.section-header h3.faq-header, ul.sidebar-menu li.active a, li.verified-profile a, #side .promotion a, body #content .list-header h2, p.list-numbers a, .bar h3 label, body.timeline #content h1, .list-header h2 a span, #content .tabMenu li.active a, body#direct_messages #content .tabMenu #inbox_tab a, body#inbox #content .tabMenu #inbox_tab a, body#sent #content .tabMenu #sent_tab a, body#direct_messages #content .tabMenu #inbox_tab a, body#retweets_by_others #content .tabMenu #retweets_by_others_tab a, body#retweets #content .tabMenu #retweets_tab a, body#retweeted_by_others #content .tabMenu #retweeted_by_others_tab a, body#retweeted_of_mine #content .tabMenu #retweeted_of_mine_tab a, .translator-profile a, #owners_lists h2 a {
+	color:#000000;
+}
+
+ul.sidebar-menu li.active a {
+	background-color:#EDFEFF;
+	color:#333333;
+	font-weight:bold;
+}
+
+ul#primary_nav.sidebar-menu li a span {
+	display:inline-block;
+	width:auto;
+}
+
+ul.sidebar-menu li a span.stat_count {
+	display:block;
+}
+
+ul.sidebar-menu span.stat_count {
+	-moz-border-radius-bottomleft:3px;
+	-moz-border-radius-bottomright:3px;
+	-moz-border-radius-topleft:3px;
+	-moz-border-radius-topright:3px;
+	-x-system-font:none;
+	background-color:transparent;
+	float:right;
+	font-family:Helvetica Neue,Helvetica,Arial,sans-serif;
+	font-size:12px;
+	font-size-adjust:none;
+	font-stretch:normal;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:bold;
+	line-height:normal;
+	margin-right:14px;
+	margin-top:0;
+	padding:0 0.1em;
+}
+
+#side .stats td .label {
+	font-size:0.9em;
+	text-transform:lowercase;
+}
+
+ul.sidebar-menu li.active a, ul.sidebar-menu li a:hover, #side div#custom_search.active, #side .promotion, .notify div {
+	background-color:#F4FFA6;
+}
+
+h2.sidebar-title {
+	font-size:1.05em;
+	font-weight:normal;
+	padding:0.2em 14px;
+}
+
+#side ul.sidebar-actions {
+	margin:0.2em 14px 1em;
+}
+
+.sidebar-actions.unblocked .unblock-sidebar-action, .sidebar-actions.blocked .block-sidebar-action, .sidebar-actions.blocked .report-for-spam-sidebar-action {
+	display:none;
+}
+
+.sidebar-actions.blocked .unblock-sidebar-action, .sidebar-actions.unblocked .block-sidebar-action, .sidebar-actions.unblocked .report-for-spam-sidebar-action {
+	display:block;
+}
+
+.profile-user, body#profile div.section, body#profile_favorites div.section {
+	padding:0 10px;
+}
+
+#side .stats td + td {
+	padding:0 5px;
+}
+
+#profile #side .stats td + td {
+	padding:0 8px;
+}
+
+.profile-controls {
+	background-color:#F6F6F6;
+	border:1px solid #EEEEEE;
+	margin-bottom:15px;
+	padding:7px 10px;
+	text-align:right;
+}
+
+element.style {
+	float:left;
+}
+
+ul.user-actions > li {
+	display:inline-block;
+}
+
+.profile-controls li {
+	margin:0 !important;
+	padding:0 !important;
+	text-align:left;
+}
+
+.profile-controls li {
+	position:static;
+}
+
+
+
+

@@ -1,0 +1,92 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<title>
+			<%= @network.name %>
+		</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<%= stylesheet_link_tag "twitter_clone.css" %>
+		<%= javascript_include_tag "slide_show" %>
+		<%= yield :script_content %><%= javascript_include_tag "widget" %>
+		<%= javascript_include_tag "application" %>
+		<script type="text/javascript">
+			var authenticity_token = "<%= form_authenticity_token %>";             
+		</script>
+		<%= include_tiny_mce_if_needed %>
+		<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+	</head>
+	<body>
+		<div id="container" class="subpage">
+			<div id="header">
+				<a id="logo" accesskey="1" title="Twitter / Home" href="http://twitter.com/" name="logo"><img width="155" height="36" src="http://a0.twimg.com/a/1267816830/images/twitter_logo_header.png" alt="Twitter.com" /></a>
+				<form style="display: none;" action="/sessions/destroy" id="sign_out_form" method="post">
+					<input type="hidden" value="c3b2407ad2a752080d854d294b0effbf97ac7173" name="authenticity_token" />
+				</form>
+				<ul class="top-navigation round">
+					<li><a accesskey="l" href="/login">Login</a></li>
+					<li class="signup-link"><a href="/signup">Join Twitter!</a></li>
+				</ul>
+			</div>
+			<div class="content-bubble-arrow"></div>
+			<table cellspacing="0" class="columns">
+				<tbody>
+					<tr>
+						<td class="round-left column" id="content">
+							<div class="wrapper">																
+								<div class="profile-user">
+									<div data="{lists:[]}" class="user" id="user_760262">
+										<h2 class="thumb clearfix">
+											<a href="/account/profile_image/heyyou?hreflang=en"><img width="73" height="73" border="0" valign="middle" src="http://a1.twimg.com/profile_images/22995812/tho01_bigger.jpg" id="profile-image" alt="" name="profile-image"></a>
+										</h2>
+										<div class="screen-name">
+											<h2 class="thumb clearfix">heyyou</h2>
+										</div>
+										<div class="hentry"></div>
+										<div class="profile-controls round">
+											<div class="is-relationship"></div>
+											<ul class="user-settings">
+												<li class="setting shares-setting">
+													<a class="off"></a>
+												</li>
+											</ul>
+											<ul style="text-align: right;" class="user-actions">
+												<li style="float: left;" class="follow-action">
+													<button title="" class="btn" href="/friendships/create/">Follow</button>
+												</li>
+												<li class="list-menu menu">
+													<button title="" class="btn">Lists</button>
+												</li>
+											</ul>
+										</div>
+										<div style="display: none;" class="list-tags-outer">
+											<hr>
+											<label>Your lists:</label>
+											<ul class="list-tags" id="list_tags_760262"></ul>
+										</div>
+									</div>
+								</div>
+						</td>
+						<%= render '/layouts/sidebar' %>
+					</tr>
+				</tbody>
+			</table>
+		</div><%= render '/layouts/analytics' %>
+	</body>
+</html>
