@@ -21,6 +21,7 @@ class HomeController < ApplicationController
   def install
     @network = Network.new
     @network.name = "Install"
+    render 'install', :layout => 'install' 
   end
   
   
@@ -56,19 +57,30 @@ class HomeController < ApplicationController
         user1.roles << Role.find_by_rolename('creator')
   
         # redirect to network home page (/home/index)
-        redirect_to :action=>'index'   
+        redirect_to :action => 'index'   
     else
         # redirect back to install page
-        redirect_to :action=>'install' 
+        redirect_to :action => 'install' 
     end  
   end
   
   
   # Render the network's homepage
   def index
-    @section = 'MAIN'
-    @home_widgets = Configuration.home_widgets;  
-    @photos = Photo.find(:all, :limit=>6, :select=>'id, parent_id, filename', :order=>'RAND()', :conditions => {:thumbnail => nil, :is_profile => nil})
+    if Network.find(:first) == nil
+      flash[:notice] = 'Looks like you have not created a network yet.'
+      redirect_to :action => 'install'
+    else
+      @section = 'MAIN'
+      @home_widgets = Configuration.home_widgets;  
+      @photos = Photo.find(:all, :limit=>6, :select=>'id, parent_id, filename', :order=>'RAND()', :conditions => {:thumbnail => nil, :is_profile => nil})
+    end
+  end
+  
+  
+  def privacy
+    @section = 'PRIVACY'
+
   end
   
   
@@ -78,7 +90,7 @@ class HomeController < ApplicationController
   
   
   def sponsor
-    
+    @section = 'SPONSOR'
   end
   
 end

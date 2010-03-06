@@ -15,6 +15,10 @@ limitations under the License.
 %>
 <%= stylesheet_link_tag 'install' %>
 
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <h1>This is where you will setup your network.</h1>
 
 <form id="install_form" name="install_form" action="do_install">

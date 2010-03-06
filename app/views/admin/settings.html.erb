@@ -7,4 +7,10 @@
 		<label>Network Description:</label>
 		<span><%= @network.description %></span>
 	</fieldset>
+	<fieldset>
+		<label>Site Theme:</label>
+		<span style="font-weight:bold;">Current Theme:</span>
+		<span><%= Theme.find(:first).name %></span>
+		<%= link_to 'Change Theme', '/admin/theme/edit' %>
+	</fieldset>
 </div>

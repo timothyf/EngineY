@@ -1,9 +1,5 @@
-
-h1 {
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-h2 {
+.col1 {
+	width: 860px;
 	font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -11,15 +7,14 @@ h2 {
 	float: left;
 	clear: both;
 	width: 400px;
+	margin-left: 30px;
 }
 
 #admin_user {
 	float: left;
-	width: 300px;
-}
-
-#admin_user label {
-	width: 140px;
+	padding-left: 20px;
+	margin-left: 15px;
+	border-left: 1px solid gray;
 }
 
 #widget_setup {
@@ -32,13 +27,26 @@ h2 {
 label {
 	clear: both;
 	float: left;
-	width: 100px;
+	font-weight: bold;
 	line-height: 3em;
+	color: gray;
+	font-size: 1.2em;
+}
+
+#admin_user label {
+	width: 155px;
+}
+
+#network_detail label {
+	width: 100px;
 }
 
 input {
 	float: left;
-	line-height: 3em;
+}
+
+textarea {
+	float: left;
 }
 
 #col1_area {
@@ -75,4 +83,8 @@ input {
 	clear: both;
 	margin-left: 550px;
 	margin-top: 30px;
+}
+
+.notice {
+	font-size: 12pt;
 }

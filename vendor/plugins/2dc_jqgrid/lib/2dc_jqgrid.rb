@@ -38,7 +38,9 @@ module Jqgrid
           :edit                => 'false',          
           :inline_edit         => 'false',
           :autowidth           => 'false',
-          :rownumbers          => 'false'                    
+          :rownumbers          => 'false',
+          :user_add_caption         => 'Add User',
+          :user_edit_caption        => 'Edit User'                  
         }.merge(options)
       
       # Stringify options values

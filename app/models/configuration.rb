@@ -88,12 +88,7 @@ class Configuration
   def self.MAX_TWEETS
     5
   end
-  
-  def self.THEME
-    'rubymi'
-    #'mycompany'
-  end
-  
+
   
   def self.USERS_LABEL
     'Members'
