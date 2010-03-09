@@ -44,49 +44,8 @@ limitations under the License.
 					<li class="signup-link"><a href="/signup">Join Twitter!</a></li>
 				</ul>
 			</div>
-			<div class="content-bubble-arrow"></div>
-			<table cellspacing="0" class="columns">
-				<tbody>
-					<tr>
-						<td class="round-left column" id="content">
-							<div class="wrapper">																
-								<div class="profile-user">
-									<div data="{lists:[]}" class="user" id="user_760262">
-										<h2 class="thumb clearfix">
-											<a href="/account/profile_image/heyyou?hreflang=en"><img width="73" height="73" border="0" valign="middle" src="http://a1.twimg.com/profile_images/22995812/tho01_bigger.jpg" id="profile-image" alt="" name="profile-image"></a>
-										</h2>
-										<div class="screen-name">
-											<h2 class="thumb clearfix">heyyou</h2>
-										</div>
-										<div class="hentry"></div>
-										<div class="profile-controls round">
-											<div class="is-relationship"></div>
-											<ul class="user-settings">
-												<li class="setting shares-setting">
-													<a class="off"></a>
-												</li>
-											</ul>
-											<ul style="text-align: right;" class="user-actions">
-												<li style="float: left;" class="follow-action">
-													<button title="" class="btn" href="/friendships/create/">Follow</button>
-												</li>
-												<li class="list-menu menu">
-													<button title="" class="btn">Lists</button>
-												</li>
-											</ul>
-										</div>
-										<div style="display: none;" class="list-tags-outer">
-											<hr>
-											<label>Your lists:</label>
-											<ul class="list-tags" id="list_tags_760262"></ul>
-										</div>
-									</div>
-								</div>
-						</td>
-						<%= render '/layouts/sidebar' %>
-					</tr>
-				</tbody>
-			</table>
-		</div><%= render '/layouts/analytics' %>
+			<%= yield %>
+		</div>
+		<%= render '/layouts/analytics' %>
 	</body>
 </html>

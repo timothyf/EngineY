@@ -16,20 +16,12 @@ limitations under the License.
 	<div id="thankyou_msg">
 		<div class="msg_box">
 			<b>Privacy Policy</b><br/><br/>
-			<span style="font-size:10pt;">
-			Basically, all information that you as a visitor or registered user of this
-			site choose to provide is used solely for the purposes of communicating and
-			networking with other members of the RubyMI community.
-			<br/><br/>
-			No personally identifiable information gathered on this site will be sold 
-			or shared with any third parties.
-			<br/><br/>
-			Your email address may be used by this site to communicate with you about
-			information related to this site, such as site updates, new posts, etc.
-			<br/><br/>
-			Aggregate and anonymous information about the visitors and users of this
-			site may be shared with third parties for the purposes of attracting
-			advertisers to support the site.
+			<span style="font-size:10pt;">			
+				<% if @privacy %>
+					<%= @privacy.body %>
+				<% else %>
+					No Privacy Statement Set
+				<% end %>
 			</span>
 		</div>
 	</div>

@@ -1,0 +1,19 @@
+<div class="content-bubble-arrow"></div>
+<table cellspacing="0" class="columns">
+	<tbody>
+		<tr>
+			<td class="round-left column" id="content">
+				<div class="wrapper">
+					<% if current_user && current_user.id != @user.id %>																
+						<%= render '/layouts/user_profile' %>
+					<% else %>
+						<%= render '/status_posts/status_post_form' %>
+						<h2>Home</h2>
+						<%= render '/status_posts/list' %>
+					<% end %>
+				</div>
+			</td>
+			<%= render '/layouts/sidebar' %>
+		</tr>
+	</tbody>
+</table>

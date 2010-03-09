@@ -2,15 +2,34 @@
 	<fieldset>
 		<label>Network Name:</label>
 		<span><%= @network.name %></span>
+		<%= link_to 'Edit', '/admin/network_name' %>
 	</fieldset>
 	<fieldset>
 		<label>Network Description:</label>
 		<span><%= @network.description %></span>
+		<%= link_to 'Edit', '/admin/network_description' %>
 	</fieldset>
 	<fieldset>
 		<label>Site Theme:</label>
 		<span style="font-weight:bold;">Current Theme:</span>
-		<span><%= Theme.find(:first).name %></span>
+		<% theme = Theme.find(:first) %>
+		<% if theme && theme.name != nil && theme.name != '' %>
+			<span><%= theme.name %></span>
+		<% else %>
+			<span>No theme set</span>
+		<% end %>
 		<%= link_to 'Change Theme', '/admin/theme/edit' %>
+	</fieldset>
+	<fieldset>
+		<label>Privacy Statement:</label>
+		<span class="help_text">
+			Privacy statment is displayed when user clicks the Privacy link in the page footer.
+		</span>
+		<span><%= link_to 'Edit Privacy Statement', '/admin/privacy_edit' %></span>
+	</fieldset>
+	<fieldset>
+		<label>Google Analytics:</label>
+		<span class="help_text">Code you set here will be included at the bottom of each page in your site</span>
+		<span><%= link_to 'Edit Analytics Code', '/admin/analytics_code' %></span>
 	</fieldset>
 </div>

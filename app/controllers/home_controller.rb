@@ -80,7 +80,7 @@ class HomeController < ApplicationController
   
   def privacy
     @section = 'PRIVACY'
-
+    @privacy = HtmlContent.find_by_content_id('privacy')
   end
   
   

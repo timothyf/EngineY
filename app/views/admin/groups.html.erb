@@ -9,10 +9,23 @@
 					:editable => true, :edittype => "checkbox", :editoptions => {:value => "10" }, 
 					:align => 'center' },		
 		],
-		{ :height => 300, :rows_per_page => 30, :add => true, 
+		{ :height => 200, :rows_per_page => 30, :add => true, 
    		  :edit => true, :inline_edit => false, 
-		  :delete => true, :edit_url => "/admin/post_group_data" }
+		  :delete => true, 
+		  :edit_url => "/admin/post_group_data",
+		  :master_details => true, :details_url => "/admin/group_users", :details_caption => "Users" }
 	)%>
 </div>
 
+<h2 class="ic-db">Group Users</h2>
+<%=jqgrid("Users", "groups_details", "/admin/group_users",
+	[
+		{ :field => "id", :label => "ID", :width => 35, :align => 'center', :resizable => false },
+		{ :field => "login", :label => "Login", :width => 90 },
+		{ :field => "first_name", :label => "First Name", :width => 90 },
+		{ :field => "last_name", :label => "Last Name", :width => 90 },
+		{ :field => "email", :label => "Email", :width => 130 }
+	]
+)%>
+</div>
 

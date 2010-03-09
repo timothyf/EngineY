@@ -2,14 +2,14 @@
 
 development:
   adapter: mysql
-  database: railsnet_development
+  database: enginey_development
   username: root
   password:  
   host: localhost
 
 test:
   adapter: mysql
-  database: railsnet_test
+  database: enginey_test
   username: root
   password:  
   host: localhost

@@ -20,6 +20,10 @@ body {
 	padding: 0px;
 }
 
+img {
+	border: none;
+}
+
 #container {
 	margin:1em auto;
 	position:relative;
@@ -322,6 +326,38 @@ ul.user-actions > li {
 
 .profile-controls li {
 	position:static;
+}
+
+#status_post_list {
+	
+}
+
+.status_post {
+	float: left;
+	clear: both;
+	border-bottom:1px solid #EEEEEE;
+	line-height:16px;
+	padding:10px 0 8px;
+}
+
+.post_user_img {
+	float: left;
+	height:50px;
+	width:50px;
+	left:0;
+	margin:0 10px 0 0;
+}
+
+.post_user_txt {
+	float: left;
+}
+
+.post_user_name {
+	font-weight: bold;
+}
+
+.post_body {
+	
 }
 
 

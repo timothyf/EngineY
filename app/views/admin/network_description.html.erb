@@ -1,0 +1,6 @@
+<h2>Edit Network Description</h2>
+<form action="/admin/save_network">
+	<input type="hidden" name="id" value="<%= @network.id %>" />
+	<textarea id="network_desc" name="network_description" rows="20" cols="70"><%= @network.description %></textarea><br/>
+	<input type="submit" value="Save" />
+</form>

@@ -16,19 +16,21 @@ class AdminController < ApplicationController
   
   before_filter :login_required
   
-  # Display the admin home page
+  # Display the Dashboard tab of the Admin page.
   def index
     @stats
     @page = 'dashboard'
   end
   
   
+  # Display the Settings tab of the Admin page.
   def settings
     @page = 'settings'
     @network = Network.find(:first) 
   end
   
   
+  # Display the Users tab of the Admin page.
   def users
     @page = 'users'
     users = User.find(:all) do
@@ -47,12 +49,37 @@ class AdminController < ApplicationController
       format.html
       format.json { render :json => users.to_jqgrid_json([:id,:login, :first_name,:last_name,
                                                           :email,:activated_at, 
-                                                          :password, :password_confirmation], 
+                                                          :password, :password_confirmation, :admin_flag], 
                                                          params[:page], params[:rows], users.total_entries) }
     end 
   end
   
   
+  def admin_users
+    @page = 'users'
+    admins = User.find(:all, :conditions => ['role_id = ? OR role_id = ?', Role.creator.id, Role.admin.id], :joins => :permissions) do
+      if params[:_search] == "true"
+        login =~ "%#{params[:login]}%" if params[:login].present?
+        first_name =~ "%#{params[:first_name]}%" if params[:first_name].present?
+        last_name  =~ "%#{params[:last_name]}%" if params[:last_name].present?                
+        email     =~ "%#{params[:email]}%" if params[:email].present?   
+        activated_at =~ "%#{params[:activated_at]}%" if params[:activated_at].present?     
+      end
+      paginate :page => params[:page], :per_page => params[:rows]      
+      order_by "#{params[:sidx]} #{params[:sord]}"
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => admins.to_jqgrid_json([:id,:login, :first_name,:last_name,
+                                                          :email,:activated_at, 
+                                                          :password, :password_confirmation], 
+                                                         params[:page], params[:rows], admins.total_entries) }
+    end 
+  end
+  
+  
+  # Display the Groups tab of the Admin page.
   def groups
     @page = 'groups'
     groups = Group.find(:all) do
@@ -75,6 +102,24 @@ class AdminController < ApplicationController
   end
   
   
+  def group_users
+    if params[:id].present?
+      users = Group.find(params[:id]).users.find(:all) do
+        paginate :page => params[:page], :per_page => params[:rows]      
+        order_by "#{params[:sidx]} #{params[:sord]}"        
+      end
+      total_entries = users.total_entries
+    else
+      group_users = []
+      total_entries = 0
+    end
+    respond_to do |format|
+      format.json { render :json => users.to_jqgrid_json([:id, :login, :first_name, :last_name, :email], params[:page], params[:rows], total_entries) }
+    end
+  end
+
+  
+  # Display the Events tab of the Admin page.
   def events
     @page = 'events'
     events = Event.find(:all) do
@@ -97,6 +142,7 @@ class AdminController < ApplicationController
   end
   
       
+  # Display the Blog Posts tab of the Admin page.
   def blog_posts
     @page = 'blog_posts'
     blog_posts = BlogPost.find(:all) do
@@ -121,6 +167,78 @@ class AdminController < ApplicationController
   end
   
   
+  def network_name
+    @network = Network.find(:first)
+  end
+  
+  
+  def network_description
+    @network = Network.find(:first)
+  end
+  
+  
+  def privacy_edit
+    if HtmlContent.find_by_content_id('privacy')
+      @privacy = HtmlContent.find_by_content_id('privacy')
+    else
+      @privacy = HtmlContent.new
+    end
+  end
+  
+  
+  def save_privacy
+    if params[:id] && params[:id] != ''
+      privacy = HtmlContent.find(params[:id])
+      privacy.update_attributes(:body => params[:privacy_text]) 
+    else
+      privacy = HtmlContent.new
+      privacy.body = params[:privacy_text]
+      privacy.content_id = 'privacy'
+      privacy.save
+    end    
+    redirect_to :action => 'settings' 
+  end
+  
+  
+  # Used to display the current Analytics code
+  def analytics_code
+    if HtmlContent.find_by_content_id('analytics')
+      @analytics = HtmlContent.find_by_content_id('analytics')
+    else
+      @analytics = HtmlContent.new
+    end
+  end
+  
+  
+  # Used to save the analytics code
+  def save_analytics
+    if params[:id] && params[:id] != ''
+      analytics = HtmlContent.find(params[:id])
+      analytics.update_attributes(:body => params[:analytics_text]) 
+    else
+      analytics = HtmlContent.new
+      analytics.body = params[:analytics_text]
+      analytics.content_id = 'analytics'
+      analytics.save
+    end    
+    redirect_to :action => 'settings' 
+  end
+  
+  
+  # Used to save the network name or description
+  def save_network
+    network = Network.find(params[:id]) 
+    if params[:network_name]
+      network.update_attributes(:name => params[:network_name]) 
+    end
+    if params[:network_description]
+      network.update_attributes(:description => params[:network_description]) 
+    end  
+    redirect_to :action => 'settings' 
+  end
+  
+  
+  # This method is called when the admin user Edits and saves a user via the Ajax form
   def post_user_data
     if params[:oper] == "del"
       User.find(params[:id]).destroy
@@ -135,13 +253,18 @@ class AdminController < ApplicationController
         user = User.create(user_params)
         user.activate
       else
-        User.find(params[:id]).update_attributes(user_params)
+        user = User.find(params[:id])
+        user.update_attributes(user_params)
+      end
+      if params[:admin_flag] == 'on'
+        user.make_site_admin
       end
     end
     render :nothing => true
   end
   
   
+  # This method is called when the admin user Edits and saves a group via the Ajax form
   def post_group_data
     if params[:oper] == "del"
       Group.find(params[:id]).destroy
@@ -163,6 +286,7 @@ class AdminController < ApplicationController
   end
   
  
+  # This method is called when the admin user Edits and saves an event via the Ajax form
   def post_event_data
     if params[:oper] == "del"
       Event.find(params[:id]).destroy
@@ -182,6 +306,7 @@ class AdminController < ApplicationController
   end
   
   
+  # Get the member list in a variety of formats
   def export_member_list
     format = params[:format]
     if format == 'pdf'

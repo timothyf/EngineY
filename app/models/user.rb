@@ -366,6 +366,11 @@ class User < ActiveRecord::Base
   end
   
   
+  def make_site_admin
+    Permission.create(:user_id=>self.id, :role_id=>Role.find_by_rolename('administrator').id)
+  end
+  
+  
   def make_group_admin(group_id)
     Permission.create(:user_id=>self.id, :role_id=>Role.find_by_rolename('group_admin').id, :group_id=>group_id)
   end

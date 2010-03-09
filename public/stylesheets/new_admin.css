@@ -388,6 +388,14 @@ a.a-dark {
 	display: block;
 }
 
+#settings fieldset .help_text {
+	font-size: 10pt;
+	color: gray;
+	display: block;
+	margin-bottom: 5px;
+	margin-top: -3px;
+}
+
 #quick_tasks ul {
 	margin: 0px;
 	padding: 0px;
