@@ -55,12 +55,6 @@ class Group < ActiveRecord::Base
   end
   
   
-  # Return the group that has the most users
-  def self.most_users
-    
-  end
-  
-  
   def log_activity
     Group.log_activity(self)
   end

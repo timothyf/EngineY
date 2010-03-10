@@ -46,15 +46,6 @@ class Network < ActiveRecord::Base
        'group_admin',
        'user', 
        'contributor'].each {|r| Role.create(:rolename => r) }
-     
-      # Create Countries
-      Country.destroy_all
-      Country.list.each {|c| Country.create(:abbreviation => c[0], :name => c[1]) }
-      
-      # Create States
-      State.init_states
-      State.destroy_all
-      State.list.each {|s| State.create(:name => s[0], :abbreviation => s[1], :country_id => s[2]) } 
-  end
+   end
   
 end

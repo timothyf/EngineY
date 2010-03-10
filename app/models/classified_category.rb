@@ -16,6 +16,6 @@ class ClassifiedCategory < ActiveRecord::Base
   
   has_many :classifieds
   
-
+  validates_presence_of :name
 
 end

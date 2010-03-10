@@ -17,10 +17,16 @@ one:
   id: 1
   user_id: 1
   group_id: 1
-  role_id: <%= Role.find_by_rolename('group_admin').id %>
-   
-two:
+  role_id: 4 
+  
+two: 
   id: 2
+  user_id: 1
+  group_id: 2
+  role_id: 3
+
+three:
+  id: 3
   user_id: 4
   group_id: 1
-  role_id: <%= Role.find_by_rolename('user').id %>
+  role_id: 3

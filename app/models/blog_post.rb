@@ -65,7 +65,7 @@ class BlogPost < ActiveRecord::Base
 
   
   def short_form
-    "Replace this text with short version of post body."
+    body[0..39] 
   end
   
   

@@ -25,11 +25,64 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  filename: MyString
-  thumbnail: MyString
-  view_count: 1
+  id: 1
+  user_id: 1
+  group_id:
+  event_id:
+  title: 'Test Photo 1'
+  description: 'This is a photo for testing'
+  location:
+  parent_id:
+  filename: test.jpg
+  thumbnail:
+  views:
+  view_count:
+  photo_album_id:
 
 two:
-  filename: MyString
-  thumbnail: MyString
-  view_count: 1
+  id: 2
+  user_id: 1
+  group_id:
+  event_id:
+  title: 'Test Photo 2'
+  description: 'This is a photo for testing'
+  location:
+  parent_id:
+  filename: test.jpg
+  thumbnail:
+  views:
+  view_count:
+  photo_album_id:
+  
+profile_one:
+  id: 3
+  user_id: 1
+  group_id:
+  event_id:
+  title: 'Test Photo 3'
+  description: 'This is a photo for testing'
+  location:
+  parent_id:
+  filename: test.jpg
+  thumbnail:
+  is_profile: true
+  views:
+  view_count:
+  photo_album_id:
+
+profile_two:
+  id: 4
+  user_id: 1
+  group_id:
+  event_id:
+  title: 'Test Photo 4'
+  description: 'This is a photo for testing'
+  location:
+  parent_id:
+  filename: test.jpg
+  thumbnail:
+  is_profile: true
+  views:
+  view_count:
+  photo_album_id:
+

@@ -5,6 +5,7 @@ require 'test_help'
 class ActiveSupport::TestCase
   
   include AuthenticatedTestHelper
+  include ActionController::TestProcess
   
   # Transactional fixtures accelerate your tests by wrapping each test method
   # in a transaction that's rolled back on completion.  This ensures that the
@@ -39,4 +40,11 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 
+  def photo_fixtures
+    photos = Photo.find(:all)
+    photos.each do |photo|
+      photo.uploaded_data = fixture_file_upload(photo.filename, 'image/jpeg')
+      photo.save!
+    end
+  end
 end

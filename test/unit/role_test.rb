@@ -1,8 +1,20 @@
 require 'test_helper'
 
 class RoleTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+
+
+  def test_get_creator
+    role = Role.creator
+    assert role.rolename == 'creator', 'Incorrect role name'
+    assert role.id == 1
   end
+  
+  
+  def test_get_admin
+    role = Role.admin
+    assert role.rolename == 'administrator', 'Incorrect role name'
+    assert role.id == 2
+  end
+  
+  
 end

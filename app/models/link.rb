@@ -20,7 +20,7 @@ class Link < ActiveRecord::Base
   belongs_to :user
   
   
-  validates_presence_of     :title, :url
+  validates_presence_of  :title, :url
   validates_length_of :title, :maximum=>200
 
 end

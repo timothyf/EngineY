@@ -9,11 +9,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100306050247) do
+ActiveRecord::Schema.define(:version => 20100309211720) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
-    t.boolean  "public"
+    t.boolean  "public",     :default => true
     t.integer  "item_id"
     t.string   "item_type"
     t.string   "action"

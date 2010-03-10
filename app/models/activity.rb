@@ -43,6 +43,8 @@ class Activity < ActiveRecord::Base
   end
   
   
+  # This method returns the activity stream as an array of text messages
+  # It is currently not used.
   def self.activity_stream
     stream = []
     activities = find(:all, :order => 'created_at DESC')

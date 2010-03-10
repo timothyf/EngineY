@@ -1,7 +1,50 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-   id: 1
-#
+  id: 1
+  title: Bug 1
+  browser: Firefox
+  user_id:
+  description: This is a bug 1.
+  module:
+  resolved:
+  comment:
+  resolution_date:
+  priority:
+
 two:
-   id: 2
+  id: 2
+  title: Bug 2
+  browser: Firefox
+  user_id:
+  description: This is a bug 2.
+  module:
+  resolved:
+  comment:
+  resolution_date:
+  priority:
+   
+invalid_title:
+  id: 3
+  title:
+  browser: Firefox
+  user_id:
+  description: This is a bug 3.
+  module:
+  resolved:
+  comment:
+  resolution_date:
+  priority:
+
+invalid_desc:
+  id: 4
+  title: Bug 4
+  browser: Firefox
+  user_id:
+  description:
+  module:
+  resolved:
+  comment:
+  resolution_date:
+  priority:
+ 

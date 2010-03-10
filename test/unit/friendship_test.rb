@@ -2,7 +2,6 @@ require 'test_helper'
 
 class FriendshipTest < ActiveSupport::TestCase
   
-  fixtures :friendships
   
   def test_exists
     assert Friendship.exists?(users(:aaron), users(:quentin))
