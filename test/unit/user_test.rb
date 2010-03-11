@@ -5,6 +5,14 @@ class UserTest < ActiveSupport::TestCase
   fixtures :users
 
 
+  def test_get_admins_and_creators
+    admins = User.admins_and_creators
+    assert admins.size == 2, 'Incorrect number of admins and creators'
+    assert admins[0].id == 1
+    assert admins[1].id == 6
+  end
+  
+
   def test_name
     assert users(:quentin).name == 'quentin test' 
   end

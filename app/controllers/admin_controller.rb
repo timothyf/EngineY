@@ -32,22 +32,26 @@ class AdminController < ApplicationController
   
   # Display the Users tab of the Admin page.
   def users
-    @page = 'users'
-    users = User.find(:all) do
-      if params[:_search] == "true"
-        login =~ "%#{params[:login]}%" if params[:login].present?
-        first_name =~ "%#{params[:first_name]}%" if params[:first_name].present?
-        last_name  =~ "%#{params[:last_name]}%" if params[:last_name].present?                
-        email     =~ "%#{params[:email]}%" if params[:email].present?   
-        activated_at =~ "%#{params[:activated_at]}%" if params[:activated_at].present?     
-      end
-      paginate :page => params[:page], :per_page => params[:rows]      
-      order_by "#{params[:sidx]} #{params[:sord]}"
-    end
-
     respond_to do |format|
-      format.html
-      format.json { render :json => users.to_jqgrid_json([:id,:login, :first_name,:last_name,
+      format.html {
+        @users = User.find(:all)
+        @admins = User.admins_and_creators
+      }
+      format.json { 
+        @page = 'users'
+        users = User.find(:all) do
+          if params[:_search] == "true"
+            login =~ "%#{params[:login]}%" if params[:login].present?
+            first_name =~ "%#{params[:first_name]}%" if params[:first_name].present?
+            last_name  =~ "%#{params[:last_name]}%" if params[:last_name].present?                
+            email     =~ "%#{params[:email]}%" if params[:email].present?   
+            activated_at =~ "%#{params[:activated_at]}%" if params[:activated_at].present?     
+          end
+          paginate :page => params[:page], :per_page => params[:rows]      
+          order_by "#{params[:sidx]} #{params[:sord]}"
+        end
+        
+        render :json => users.to_jqgrid_json([:id,:login, :first_name,:last_name,
                                                           :email,:activated_at, 
                                                           :password, :password_confirmation, :admin_flag], 
                                                          params[:page], params[:rows], users.total_entries) }
@@ -56,22 +60,27 @@ class AdminController < ApplicationController
   
   
   def admin_users
-    @page = 'users'
-    admins = User.find(:all, :conditions => ['role_id = ? OR role_id = ?', Role.creator.id, Role.admin.id], :joins => :permissions) do
-      if params[:_search] == "true"
-        login =~ "%#{params[:login]}%" if params[:login].present?
-        first_name =~ "%#{params[:first_name]}%" if params[:first_name].present?
-        last_name  =~ "%#{params[:last_name]}%" if params[:last_name].present?                
-        email     =~ "%#{params[:email]}%" if params[:email].present?   
-        activated_at =~ "%#{params[:activated_at]}%" if params[:activated_at].present?     
-      end
-      paginate :page => params[:page], :per_page => params[:rows]      
-      order_by "#{params[:sidx]} #{params[:sord]}"
-    end
+
 
     respond_to do |format|
-      format.html
-      format.json { render :json => admins.to_jqgrid_json([:id,:login, :first_name,:last_name,
+      format.html {
+        
+      }
+      format.json { 
+        @page = 'users'
+        admins = User.find(:all, :conditions => ['role_id = ? OR role_id = ?', Role.creator.id, Role.admin.id], :joins => :permissions) do
+          if params[:_search] == "true"
+            login =~ "%#{params[:login]}%" if params[:login].present?
+            first_name =~ "%#{params[:first_name]}%" if params[:first_name].present?
+            last_name  =~ "%#{params[:last_name]}%" if params[:last_name].present?                
+            email     =~ "%#{params[:email]}%" if params[:email].present?   
+            activated_at =~ "%#{params[:activated_at]}%" if params[:activated_at].present?     
+          end
+          paginate :page => params[:page], :per_page => params[:rows]      
+          order_by "#{params[:sidx]} #{params[:sord]}"
+        end
+        
+        render :json => admins.to_jqgrid_json([:id,:login, :first_name,:last_name,
                                                           :email,:activated_at, 
                                                           :password, :password_confirmation], 
                                                          params[:page], params[:rows], admins.total_entries) }
@@ -164,6 +173,38 @@ class AdminController < ApplicationController
                                                          params[:page], params[:rows], 
                                                          blog_posts.total_entries) }
     end
+  end
+  
+  
+  def user_new
+    @user = User.new
+    render 'user_form'
+  end
+  
+  def user_edit
+    @user = User.find(params[:id])
+    render 'user_form'
+  end
+  
+  
+  def user_activate
+    @user = User.find(params[:id])
+    @user.activate
+    redirect_to '/admin/users'
+  end
+  
+  
+  def user_delete
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to '/admin/users'
+  end
+  
+  
+  def user_promote
+    @user = User.find(params[:id])
+    @user.make_site_admin
+    redirect_to '/admin/users'
   end
   
   

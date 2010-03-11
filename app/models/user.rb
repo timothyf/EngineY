@@ -332,7 +332,7 @@ class User < ActiveRecord::Base
   
   
   def self.admins_and_creators
-    User.admins && User.creators
+    User.admins + User.creators
   end
  
   

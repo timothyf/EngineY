@@ -300,7 +300,13 @@ class UsersController < ApplicationController
         end  
         
         flash[:notice] = 'User was successfully updated.'
-        format.html { redirect_to(@user) }
+        format.html { 
+          if params['admin_page']
+            redirect_to('/admin/users')
+          else
+            redirect_to(@user) 
+          end         
+        }
         format.xml  { head :ok }
         format.json { head :ok } 
       else

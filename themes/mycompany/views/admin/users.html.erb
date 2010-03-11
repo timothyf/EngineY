@@ -1,0 +1,77 @@
+<style>
+	table#admins th, table#admins td, table#users th, table#users td {
+		text-align: left;
+	}
+	
+	#content {
+		width: 900px;
+	}
+	
+	
+	
+	
+</style>
+
+<h2 class="ic-db">Admins</h2>
+<table id="admins">
+	<thead>
+		<th width="50px">ID</th>
+		<th width="70px">Login</th>
+		<th width="90px">First Name</th>
+		<th width="90px">Last Name</th>
+		<th width="150px">Email</th>
+		<th width="240px">Activated At</th>
+		<th width="380px">Actions</th>
+	</thead>
+	<tbody>
+		<% @admins.each do |admin| %>
+			<tr>
+				<td><%= admin.id %></td>
+				<td><%= admin.login %></td>
+				<td><%= admin.first_name %></td>
+				<td><%= admin.last_name %></td>
+				<td><%= admin.email %></td>
+				<td><%= admin.activated_at %></td>
+				<td>
+					<%= link_to 'Edit', '/admin/user_edit?id=' + admin.id.to_s %> | 
+					<%= link_to 'Delete', '/admin/user_delete?id=' + admin.id.to_s, :confirm => 'Are you sure you want to delete this user?' %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+<h2 class="ic-db">Users</h2>
+<%= link_to 'Add User', '/admin/user_new' %>
+<table id="users">
+	<thead>
+		<th width="50px">ID</th>
+		<th width="70px">Login</th>
+		<th width="90px">First Name</th>
+		<th width="90px">Last Name</th>
+		<th width="150px">Email</th>
+		<th width="240px">Activated At</th>
+		<th width="380px">Actions</th>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.id %></td>
+				<td><%= user.login %></td>
+				<td><%= user.first_name %></td>
+				<td><%= user.last_name %></td>
+				<td><%= user.email %></td>
+				<td><%= user.activated_at %></td>
+				<td>
+					<%= link_to 'Edit', '/admin/user_edit?id=' + user.id.to_s %> |
+					<%= link_to 'Delete', '/admin/user_delete?id=' + user.id.to_s, :confirm => 'Are you sure you want to delete this user?' %> |
+					<%= link_to 'Activate', '/admin/user_activate?id=' + user.id.to_s, :confirm => 'Are you sure you want to activate this user?' %> |
+					<%= link_to 'Make Admin', '/admin/user_promote?id=' + user.id.to_s, :confirm => 'Are you sure you want to make this user a Site Admin?' %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+

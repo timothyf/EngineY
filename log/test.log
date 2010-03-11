@@ -36284,3 +36284,632 @@ Processing UsersController#index to json (for 127.0.0.1 at 2010-03-03 21:43:20) 
  last_seen_at, login_count, activated_at, enabled, is_active, identity_url FROM `users` WHERE (activated_at is not null) ORDER BY created_at ASC LIMIT 20, 10[0m
 Completed in 17ms (View: 13, DB: 3) | 200 OK [http://www.example.com/users.json]
   [4;35;1mSQL (28.6ms)[0m   [0mROLLBACK[0m
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'administrator') LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'quentin' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quire') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quire@example.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.5ms)[0m   [0mINSERT INTO `users` (`city`, `occupation`, `flickr`, `facebook_id`, `salt`, `created_at`, `zip`, `about_me`, `activated_at`, `blog`, `display_tweets`, `yahoo_messenger_name`, `skype_name`, `facebook_url`, `company_url`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `featured`, `last_seen_at`, `password_reset_code`, `country_id`, `skills`, `show_blog_posts_on_home`, `msn_name`, `activation_code`, `api_key`, `flickr_username`, `linked_in_url`, `gtalk_name`, `posts_count`, `enabled`, `email_hash`, `sex`, `phone2`, `last_name`, `phone`, `website`, `blog_feed`, `twitter_id`, `aim_name`, `resume_url`, `login_count`, `remember_token`, `is_active`, `time_zone`, `organization`, `login`, `state_id`, `youtube_username`, `identity_url`, `email`, `first_name`, `use_gravatar`, `receive_emails`) VALUES(NULL, NULL, NULL, NULL, '97d0f9062d524df9140c2bdad0abcb32c93c6500', '2010-03-11 04:21:40', NULL, 'this is about me', NULL, NULL, 0, NULL, NULL, NULL, NULL, 'ff2ea52c55fed40dcb89130262f415fd5bc1c7bc', NULL, '2010-03-11 04:21:40', 0, NULL, NULL, NULL, NULL, 1, NULL, 'dc96c4d111b59ceb4219299ef52e96680064858b', '', NULL, NULL, NULL, 0, 1, NULL, NULL, NULL, 'user', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 'UTC', NULL, 'quire', NULL, NULL, NULL, 'quire@example.com', 'test', 0, 1)[0m
+Sent mail to quire@example.com
+
+Date: Wed, 10 Mar 2010 23:21:40 -0500
+From: admin@rubymi.org
+To: quire@example.com
+Subject: [RubyMI] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+
+Your account has been created.
+
+  Username: quire
+  Password: quire
+
+Visit this url to activate your account:
+
+  http://www.rubymi.org/activate/dc96c4d111b59ceb4219299ef52e96680064858b
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+Sent mail to bobby@example.com
+
+Date: Wed, 10 Mar 2010 23:21:40 -0500
+From: admin@rubymi.org
+To: bobby@example.com
+Subject: [RubyMI] New User Signup
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+
+A new user has signed up on RubyMI:
+
+quire
+
+  http://www.rubymi.org
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quire') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quire@example.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.4ms)[0m   [0mINSERT INTO `users` (`city`, `occupation`, `flickr`, `facebook_id`, `salt`, `created_at`, `zip`, `about_me`, `activated_at`, `blog`, `display_tweets`, `yahoo_messenger_name`, `skype_name`, `facebook_url`, `company_url`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `featured`, `last_seen_at`, `password_reset_code`, `country_id`, `skills`, `show_blog_posts_on_home`, `msn_name`, `activation_code`, `api_key`, `flickr_username`, `linked_in_url`, `gtalk_name`, `posts_count`, `enabled`, `email_hash`, `sex`, `phone2`, `last_name`, `phone`, `website`, `blog_feed`, `twitter_id`, `aim_name`, `resume_url`, `login_count`, `remember_token`, `is_active`, `time_zone`, `organization`, `login`, `state_id`, `youtube_username`, `identity_url`, `email`, `first_name`, `use_gravatar`, `receive_emails`) VALUES(NULL, NULL, NULL, NULL, '97d0f9062d524df9140c2bdad0abcb32c93c6500', '2010-03-11 04:21:40', NULL, 'this is about me', NULL, NULL, 0, NULL, NULL, NULL, NULL, 'ff2ea52c55fed40dcb89130262f415fd5bc1c7bc', NULL, '2010-03-11 04:21:40', 0, NULL, NULL, NULL, NULL, 1, NULL, 'd908390c28a925e305164a14963c7b2ec5a9be72', '', NULL, NULL, NULL, 0, 1, NULL, NULL, NULL, 'user', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 'UTC', NULL, 'quire', NULL, NULL, NULL, 'quire@example.com', 'test', 0, 1)[0m
+Sent mail to quire@example.com
+
+Date: Wed, 10 Mar 2010 23:21:40 -0500
+From: admin@rubymi.org
+To: quire@example.com
+Subject: [RubyMI] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+
+Your account has been created.
+
+  Username: quire
+  Password: quire
+
+Visit this url to activate your account:
+
+  http://www.rubymi.org/activate/d908390c28a925e305164a14963c7b2ec5a9be72
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+Sent mail to bobby@example.com
+
+Date: Wed, 10 Mar 2010 23:21:40 -0500
+From: admin@rubymi.org
+To: bobby@example.com
+Subject: [RubyMI] New User Signup
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+
+A new user has signed up on RubyMI:
+
+quire
+
+  http://www.rubymi.org
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 42) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quentin2' AND `users`.id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quentin@example.com' AND `users`.id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2010-03-11 04:21:40', `login` = 'quentin2' WHERE `id` = 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'quentin2' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (4.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-11 04:21:40', `remember_token_expires_at` = '2010-03-25 03:21:40', `remember_token` = 'c2963c1a34da19d4183107ada79ffec8341c4648' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (4.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-11 04:21:40', `remember_token_expires_at` = '2010-03-18 03:21:40', `remember_token` = '26c34ebb3c223ea0ee31f3f6c42eb0f829b7cbae' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (13.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-11 04:21:40', `remember_token_expires_at` = '2010-03-18 03:21:40', `remember_token` = '26c34ebb3c223ea0ee31f3f6c42eb0f829b7cbae' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quire') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`email` IS NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK TO SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`login` IS NULL) LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quire@example.com') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK TO SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quire') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quire@example.com') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK TO SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quire') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quire@example.com') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK TO SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quentin' AND `users`.id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quentin@example.com' AND `users`.id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-11 04:21:40', `crypted_password` = '4b6dd603c64f03bc2f676658e287094878df9603' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (login = 'quentin' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2010-03-11 04:21:40', `remember_token_expires_at` = '2010-03-25 03:21:40', `remember_token` = 'c2963c1a34da19d4183107ada79ffec8341c4648' WHERE `id` = 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2010-03-11 04:21:40', `remember_token_expires_at` = '2010-03-25 03:21:40', `remember_token` = 'c2963c1a34da19d4183107ada79ffec8341c4648' WHERE `id` = 1[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-11 04:21:40', `remember_token_expires_at` = NULL, `remember_token` = NULL WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mROLLBACK[0m
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'administrator') LIMIT 1[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'quentin' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quire') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quire@example.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.4ms)[0m   [0mINSERT INTO `users` (`city`, `occupation`, `flickr`, `facebook_id`, `salt`, `created_at`, `zip`, `about_me`, `activated_at`, `blog`, `display_tweets`, `yahoo_messenger_name`, `skype_name`, `facebook_url`, `company_url`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `featured`, `last_seen_at`, `password_reset_code`, `country_id`, `skills`, `show_blog_posts_on_home`, `msn_name`, `activation_code`, `api_key`, `flickr_username`, `linked_in_url`, `gtalk_name`, `posts_count`, `enabled`, `email_hash`, `sex`, `phone2`, `last_name`, `phone`, `website`, `blog_feed`, `twitter_id`, `aim_name`, `resume_url`, `login_count`, `remember_token`, `is_active`, `time_zone`, `organization`, `login`, `state_id`, `youtube_username`, `identity_url`, `email`, `first_name`, `use_gravatar`, `receive_emails`) VALUES(NULL, NULL, NULL, NULL, 'cd943236372f88d4a65b9e4e7db96f7eb35bb803', '2010-03-11 04:22:08', NULL, 'this is about me', NULL, NULL, 0, NULL, NULL, NULL, NULL, '0930e598afa79f94acc3dff156c43fd5f3bf42f1', NULL, '2010-03-11 04:22:08', 0, NULL, NULL, NULL, NULL, 1, NULL, '9e10e8cad4e736b8b39795ef6afab269c112c467', '', NULL, NULL, NULL, 0, 1, NULL, NULL, NULL, 'user', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 'UTC', NULL, 'quire', NULL, NULL, NULL, 'quire@example.com', 'test', 0, 1)[0m
+Sent mail to quire@example.com
+
+Date: Wed, 10 Mar 2010 23:22:08 -0500
+From: admin@rubymi.org
+To: quire@example.com
+Subject: [RubyMI] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+
+Your account has been created.
+
+  Username: quire
+  Password: quire
+
+Visit this url to activate your account:
+
+  http://www.rubymi.org/activate/9e10e8cad4e736b8b39795ef6afab269c112c467
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+Sent mail to quentin@example.com,bobby@example.com
+
+Date: Wed, 10 Mar 2010 23:22:08 -0500
+From: admin@rubymi.org
+To: quentin@example.com, bobby@example.com
+Subject: [RubyMI] New User Signup
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+
+A new user has signed up on RubyMI:
+
+quire
+
+  http://www.rubymi.org
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quire') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quire@example.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.3ms)[0m   [0mINSERT INTO `users` (`city`, `occupation`, `flickr`, `facebook_id`, `salt`, `created_at`, `zip`, `about_me`, `activated_at`, `blog`, `display_tweets`, `yahoo_messenger_name`, `skype_name`, `facebook_url`, `company_url`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `featured`, `last_seen_at`, `password_reset_code`, `country_id`, `skills`, `show_blog_posts_on_home`, `msn_name`, `activation_code`, `api_key`, `flickr_username`, `linked_in_url`, `gtalk_name`, `posts_count`, `enabled`, `email_hash`, `sex`, `phone2`, `last_name`, `phone`, `website`, `blog_feed`, `twitter_id`, `aim_name`, `resume_url`, `login_count`, `remember_token`, `is_active`, `time_zone`, `organization`, `login`, `state_id`, `youtube_username`, `identity_url`, `email`, `first_name`, `use_gravatar`, `receive_emails`) VALUES(NULL, NULL, NULL, NULL, 'cd943236372f88d4a65b9e4e7db96f7eb35bb803', '2010-03-11 04:22:08', NULL, 'this is about me', NULL, NULL, 0, NULL, NULL, NULL, NULL, '0930e598afa79f94acc3dff156c43fd5f3bf42f1', NULL, '2010-03-11 04:22:08', 0, NULL, NULL, NULL, NULL, 1, NULL, '9d8445b4ba46bd8ee62550180110811bfd251dc8', '', NULL, NULL, NULL, 0, 1, NULL, NULL, NULL, 'user', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 'UTC', NULL, 'quire', NULL, NULL, NULL, 'quire@example.com', 'test', 0, 1)[0m
+Sent mail to quire@example.com
+
+Date: Wed, 10 Mar 2010 23:22:08 -0500
+From: admin@rubymi.org
+To: quire@example.com
+Subject: [RubyMI] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+
+Your account has been created.
+
+  Username: quire
+  Password: quire
+
+Visit this url to activate your account:
+
+  http://www.rubymi.org/activate/9d8445b4ba46bd8ee62550180110811bfd251dc8
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+Sent mail to quentin@example.com,bobby@example.com
+
+Date: Wed, 10 Mar 2010 23:22:08 -0500
+From: admin@rubymi.org
+To: quentin@example.com, bobby@example.com
+Subject: [RubyMI] New User Signup
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+
+A new user has signed up on RubyMI:
+
+quire
+
+  http://www.rubymi.org
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 44) [0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quentin2' AND `users`.id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quentin@example.com' AND `users`.id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2010-03-11 04:22:08', `login` = 'quentin2' WHERE `id` = 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'quentin2' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-11 04:22:08', `remember_token_expires_at` = '2010-03-25 03:22:08', `remember_token` = 'aa592138bde433495281cd97b22c8312b097f87a' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-11 04:22:08', `remember_token_expires_at` = '2010-03-18 03:22:08', `remember_token` = 'e99ecb99946525160799ef1c4786fe0a104026cd' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.4ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-11 04:22:08', `remember_token_expires_at` = '2010-03-18 03:22:08', `remember_token` = 'e99ecb99946525160799ef1c4786fe0a104026cd' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quire') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`email` IS NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK TO SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`login` IS NULL) LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quire@example.com') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK TO SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quire') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quire@example.com') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK TO SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quire') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quire@example.com') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK TO SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quentin' AND `users`.id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quentin@example.com' AND `users`.id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-11 04:22:08', `crypted_password` = '4b6dd603c64f03bc2f676658e287094878df9603' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (login = 'quentin' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2010-03-11 04:22:08', `remember_token_expires_at` = '2010-03-25 03:22:08', `remember_token` = 'aa592138bde433495281cd97b22c8312b097f87a' WHERE `id` = 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2010-03-11 04:22:08', `remember_token_expires_at` = '2010-03-25 03:22:08', `remember_token` = 'aa592138bde433495281cd97b22c8312b097f87a' WHERE `id` = 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-11 04:22:08', `remember_token_expires_at` = NULL, `remember_token` = NULL WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+** acts_as_taggable_on: initialized properly.
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'administrator') LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT * FROM `roles` WHERE (`roles`.`rolename` = 'creator') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'quentin' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quire') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quire@example.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.3ms)[0m   [0mINSERT INTO `users` (`city`, `occupation`, `flickr`, `facebook_id`, `salt`, `created_at`, `zip`, `about_me`, `activated_at`, `blog`, `display_tweets`, `yahoo_messenger_name`, `skype_name`, `facebook_url`, `company_url`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `featured`, `last_seen_at`, `password_reset_code`, `country_id`, `skills`, `show_blog_posts_on_home`, `msn_name`, `activation_code`, `api_key`, `flickr_username`, `linked_in_url`, `gtalk_name`, `posts_count`, `enabled`, `email_hash`, `sex`, `phone2`, `last_name`, `phone`, `website`, `blog_feed`, `twitter_id`, `aim_name`, `resume_url`, `login_count`, `remember_token`, `is_active`, `time_zone`, `organization`, `login`, `state_id`, `youtube_username`, `identity_url`, `email`, `first_name`, `use_gravatar`, `receive_emails`) VALUES(NULL, NULL, NULL, NULL, 'eb380c04a87fd27aa428553fe7d08cf02adf9cc7', '2010-03-11 04:23:00', NULL, 'this is about me', NULL, NULL, 0, NULL, NULL, NULL, NULL, 'edf962d4f6d9ca8bce63e6a77b9d7c5004cfd337', NULL, '2010-03-11 04:23:00', 0, NULL, NULL, NULL, NULL, 1, NULL, '42fb6d89be4068e351c8329dc2b6dccf49b1f4a9', '', NULL, NULL, NULL, 0, 1, NULL, NULL, NULL, 'user', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 'UTC', NULL, 'quire', NULL, NULL, NULL, 'quire@example.com', 'test', 0, 1)[0m
+Sent mail to quire@example.com
+
+Date: Wed, 10 Mar 2010 23:23:00 -0500
+From: admin@rubymi.org
+To: quire@example.com
+Subject: [RubyMI] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+
+Your account has been created.
+
+  Username: quire
+  Password: quire
+
+Visit this url to activate your account:
+
+  http://www.rubymi.org/activate/42fb6d89be4068e351c8329dc2b6dccf49b1f4a9
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+Sent mail to quentin@example.com,bobby@example.com
+
+Date: Wed, 10 Mar 2010 23:23:00 -0500
+From: admin@rubymi.org
+To: quentin@example.com, bobby@example.com
+Subject: [RubyMI] New User Signup
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+
+A new user has signed up on RubyMI:
+
+quire
+
+  http://www.rubymi.org
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (15.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quire') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quire@example.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.3ms)[0m   [0mINSERT INTO `users` (`city`, `occupation`, `flickr`, `facebook_id`, `salt`, `created_at`, `zip`, `about_me`, `activated_at`, `blog`, `display_tweets`, `yahoo_messenger_name`, `skype_name`, `facebook_url`, `company_url`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `featured`, `last_seen_at`, `password_reset_code`, `country_id`, `skills`, `show_blog_posts_on_home`, `msn_name`, `activation_code`, `api_key`, `flickr_username`, `linked_in_url`, `gtalk_name`, `posts_count`, `enabled`, `email_hash`, `sex`, `phone2`, `last_name`, `phone`, `website`, `blog_feed`, `twitter_id`, `aim_name`, `resume_url`, `login_count`, `remember_token`, `is_active`, `time_zone`, `organization`, `login`, `state_id`, `youtube_username`, `identity_url`, `email`, `first_name`, `use_gravatar`, `receive_emails`) VALUES(NULL, NULL, NULL, NULL, 'eb380c04a87fd27aa428553fe7d08cf02adf9cc7', '2010-03-11 04:23:00', NULL, 'this is about me', NULL, NULL, 0, NULL, NULL, NULL, NULL, 'edf962d4f6d9ca8bce63e6a77b9d7c5004cfd337', NULL, '2010-03-11 04:23:00', 0, NULL, NULL, NULL, NULL, 1, NULL, 'ca2681b3db5dc79ed756716a30d48da044301f2a', '', NULL, NULL, NULL, 0, 1, NULL, NULL, NULL, 'user', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 'UTC', NULL, 'quire', NULL, NULL, NULL, 'quire@example.com', 'test', 0, 1)[0m
+Sent mail to quire@example.com
+
+Date: Wed, 10 Mar 2010 23:23:00 -0500
+From: admin@rubymi.org
+To: quire@example.com
+Subject: [RubyMI] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+
+Your account has been created.
+
+  Username: quire
+  Password: quire
+
+Visit this url to activate your account:
+
+  http://www.rubymi.org/activate/ca2681b3db5dc79ed756716a30d48da044301f2a
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+Sent mail to quentin@example.com,bobby@example.com
+
+Date: Wed, 10 Mar 2010 23:23:00 -0500
+From: admin@rubymi.org
+To: quentin@example.com, bobby@example.com
+Subject: [RubyMI] New User Signup
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+
+A new user has signed up on RubyMI:
+
+quire
+
+  http://www.rubymi.org
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 46) [0m
+  [4;36;1mSQL (15.7ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quentin2' AND `users`.id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quentin@example.com' AND `users`.id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2010-03-11 04:23:00', `login` = 'quentin2' WHERE `id` = 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'quentin2' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-11 04:23:00', `remember_token_expires_at` = '2010-03-25 03:23:00', `remember_token` = '0bb69991dca1cfcc98a97079581a2ea1334a8ea5' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-11 04:23:00', `remember_token_expires_at` = '2010-03-18 03:23:00', `remember_token` = 'cc998fbb8fadd5cabc18b4009d9817938b8529e8' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-11 04:23:00', `remember_token_expires_at` = '2010-03-18 03:23:00', `remember_token` = 'cc998fbb8fadd5cabc18b4009d9817938b8529e8' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quire') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`email` IS NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK TO SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`login` IS NULL) LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quire@example.com') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK TO SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quire') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quire@example.com') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK TO SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quire') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quire@example.com') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK TO SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'quentin' AND `users`.id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'quentin@example.com' AND `users`.id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.1ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-11 04:23:00', `crypted_password` = '4b6dd603c64f03bc2f676658e287094878df9603' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (login = 'quentin' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2010-03-11 04:23:00', `remember_token_expires_at` = '2010-03-25 03:23:00', `remember_token` = '0bb69991dca1cfcc98a97079581a2ea1334a8ea5' WHERE `id` = 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2010-03-11 04:23:00', `remember_token_expires_at` = '2010-03-25 03:23:00', `remember_token` = '0bb69991dca1cfcc98a97079581a2ea1334a8ea5' WHERE `id` = 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2010-03-11 04:23:00', `remember_token_expires_at` = NULL, `remember_token` = NULL WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 2) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.* FROM `users` INNER JOIN `permissions` ON permissions.user_id = users.id WHERE (role_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m

@@ -15,6 +15,9 @@ limitations under the License.
 %>
 <% form_for(@user, :html => { :multipart => true }) do |f| -%>
 	<%= f.error_messages %>
+	<% if defined? admin_page %>
+		<input type="hidden" name="admin_page" value="1" />
+	<% end %>
 	<% if @user.id == nil %>
 		<div id="signup_help">
 			After signing up, you will receive a confirmation email.  Follow the activation link in the email to
