@@ -24,8 +24,11 @@ module ActivityFeedHelper
         event = activity.item #Event.find(activity.item.id)
         %(#{link_to(user.name, user_url(user))} added a new event - <a href="/events/#{event.id}">#{event.name}</a>  <span class="activity_date">#{event.created_at.to_s(:event_list)}</span>)
       when "User"
-        %(#{link_to(user.name, user_url(user))} joined.  <span class="activity_date">#{user.created_at.to_s(:event_list)}</span>)
-      
+        if user
+          %(#{link_to(user.name, user_url(user))} joined.  <span class="activity_date">#{user.created_at.to_s(:event_list)}</span>)
+        else
+          %(A former user joined.)          
+        end
     when "Photo"
       if activity.action == 'destroy'
         %(#{link_to(user.name, user_url(user))} deleted a photo.  <span class="activity_date">#{activity.created_at.to_s(:event_list)}</span>)

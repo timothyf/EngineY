@@ -18,11 +18,11 @@ limitations under the License.
 
 <div id="members_links">
 	<% if logged_in? %>
-		<div id="members_all"><%= link_to "All #{Configuration.USERS_LABEL}", users_path %></div>
+		<div id="members_all"><%= link_to "All Members", users_path %></div>
 		<div id="members_my"><%= link_to 'My Friends', user_friends_path(current_user) %></div>
 	<% end %>
 </div>
-<h1>All <%= Configuration.USERS_LABEL %> (<%= @user_count %>)</h1>
+<h1>All Members (<%= @user_count %>)</h1>
 
 <div id="users_table_header">
 	<div id="sort">

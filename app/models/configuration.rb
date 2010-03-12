@@ -25,9 +25,6 @@ class Configuration
       :proxy_port => '3128',
       :enable_self_registration => true,
       :max_tweets => 5,
-      :theme => 'rubymi',
-      :users_label => 'Members',
-      :footer_image => 'poweredby.jpg',
       :enable_facebook_connect => false
     }
   end
@@ -87,33 +84,6 @@ class Configuration
   # The maximum number of tweets to fetch per user
   def self.MAX_TWEETS
     5
-  end
-
-  
-  def self.USERS_LABEL
-    'Members'
-    #'Employees'
-  end
-  
-  
-  def self.FOOTER_IMAGE
-    'poweredby.jpg'
-    #'poweredby2.jpg'
-  end
-  
-  
-  # These are the items displayed in the top navigation bar
-  @@nav_menu_items = nil
-  def self.nav_menu_items
-    @@nav_menu_items ||= [
-      {'name'=>'members','title'=>self.USERS_LABEL, 'index_url'=>'users'},
-      {'name'=>'blogs','title'=>'Blogs', 'index_url'=>'blog_posts'},
-      {'name'=>'groups','title'=>'Groups', 'index_url'=>'groups'},
-      {'name'=>'events','title'=>'Events', 'index_url'=>'events'},
-      {'name'=>'photos','title'=>'Photos', 'index_url'=>'photo_manager'},
-      #{'name'=>'classifieds','title'=>'Classifieds', 'index_url'=>'classifieds'},
-      {'name'=>'forum','title'=>'Forum', 'index_url'=>'forum_topics'}
-    ]
   end
   
   
