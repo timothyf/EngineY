@@ -3,6 +3,7 @@ quentin:
   login: quentin
   first_name: quentin
   last_name: test
+  sex: M
   email: quentin@example.com
   about_me: this is about me
   twitter_id: qtest
@@ -73,6 +74,7 @@ bobby:
     first_name: bobby
     last_name: fisher
     email: bobby@example.com
+    sex: F
     about_me: this is about me
     twitter_id: bobbyf
     salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd

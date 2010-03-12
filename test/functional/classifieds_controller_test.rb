@@ -2,6 +2,12 @@ require 'test_helper'
 
 class ClassifiedsControllerTest < ActionController::TestCase
   
+  
+  def setup
+    login_as :quentin
+  end
+  
+  
   test "should get index" do
     get :index
     assert_response :success
@@ -17,7 +23,8 @@ class ClassifiedsControllerTest < ActionController::TestCase
 
   test "should create classified" do
     assert_difference('Classified.count') do
-      post :create, :classified => { }
+      post :create, :classified => { :title => 'Test Classified',
+                                     :user_id => 1 }
     end
     assert_redirected_to classifieds_path
   end
@@ -36,7 +43,8 @@ class ClassifiedsControllerTest < ActionController::TestCase
 
 
   test "should update classified" do
-    put :update, :id => classifieds(:one).id, :classified => { }
+    put :update, :id => classifieds(:one).id, :classified => { :title => 'Test Updated Classified',
+                                                               :user_id => 1 }
     assert_redirected_to classified_path(assigns(:classified))
   end
 

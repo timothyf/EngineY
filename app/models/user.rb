@@ -186,6 +186,7 @@ class User < ActiveRecord::Base
   end
   
   
+  # Returns an array of friends + self
   def get_friends_ids    
     user_ids = self.friends.map do |friend|
       friend.id

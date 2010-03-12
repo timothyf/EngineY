@@ -28,4 +28,51 @@ two:
   item_type: BlogPost
   action: 
   
+three:
+  id: 3
+  user_id: 1
+  item_id: 1
+  item_type: StatusPost
+  action: 
 
+four:
+  id: 4
+  user_id: 1
+  item_id: 2
+  item_type: StatusPost
+  action: 
+  
+five:
+  id: 5
+  user_id: 3
+  item_id: 2
+  item_type: BlogPost
+  action: 
+
+six:
+  id: 6
+  user_id: 3
+  item_id: 1
+  item_type: ForumPost
+  action: 
+
+seven:
+  id: 7
+  user_id: 4
+  item_id: 1
+  item_type: Photo
+  action: create
+
+eight:
+  id: 8
+  user_id: 5
+  item_id: 2
+  item_type: Photo
+  action: create
+
+nine:
+  id: 9
+  user_id: 5
+  item_id: 2
+  item_type: StatusPost
+  action:

@@ -1,7 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+one:
+  id: 1
+  follower_id: 1
+  followee_id: 3
+
+two:
+  id: 2
+  follower_id: 3
+  followee_id: 5

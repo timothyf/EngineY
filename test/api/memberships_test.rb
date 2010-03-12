@@ -12,8 +12,8 @@ class MembershipsTest < ActionController::IntegrationTest
     get "memberships/2.json", :api_key=>'testapikey'
     assert_response :success
     membership = JSON.parse(response.body)
-    assert membership['user_id'] == 4, 'Incorrect user id'
-    assert membership['group_id'] == 1, 'Incorrect group id' 
+    assert membership['user_id'] == 1, 'Incorrect user id'
+    assert membership['group_id'] == 2, 'Incorrect group id' 
   end
   
   
@@ -62,7 +62,7 @@ class MembershipsTest < ActionController::IntegrationTest
     get "memberships/find.json?api_key=testapikey&user_id=4&group_id=1"
     membership = JSON.parse(response.body)
     membership_id = membership['id']
-    assert membership_id == 2, 'Incorrect membership id'
+    assert membership_id == 3, 'Incorrect membership id'
     assert membership['role_id'] == Role.find_by_rolename('user').id, 'Incorrect role id'
     
     # promote user to group admin

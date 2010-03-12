@@ -5,7 +5,7 @@ class BlogPostTest < ActiveSupport::TestCase
 
   def test_should_not_log_activity_unpublished
     post = create_post_unpublished
-    assert post, 'Failed to create announcement' 
+    assert post, 'Failed to create blog post' 
     act = Activity.find_by_item_id_and_item_type(post.id, 'BlogPost')
     assert act == nil, 'Should have not logged activity' 
   end
@@ -13,10 +13,10 @@ class BlogPostTest < ActiveSupport::TestCase
   
   def test_should_log_activity_after_create_published
     post = create_post_published
-    assert post, 'Failed to create announcement' 
+    assert post, 'Failed to create blog post' 
     act = Activity.find_by_item_id_and_item_type(post.id, 'BlogPost')
     assert act, 'Failed to log activity' 
-    assert act.user_id == post.user_id, 'Incorrecty user id'
+    assert act.user_id == post.user_id, 'Incorrect user id'
     assert act.public == true, 'Should be public'
     assert act.item_id == post.id, 'Incorrect item id'
     assert act.item_type == 'BlogPost', 'Incorrect item_type'
