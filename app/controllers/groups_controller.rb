@@ -123,7 +123,13 @@ class GroupsController < ApplicationController
           @group.profile_photo = ProfilePhoto.create!(:is_profile=>true, :uploaded_data => params[:group_photo]) if params[:group_photo].size != 0 
         end               
         flash[:notice] = 'Group was successfully created.'
-        format.html { redirect_to(@group) }
+        format.html { 
+          if params['admin_page']
+            redirect_to('/admin/groups')
+          else
+            redirect_to(@group) 
+          end
+        }
         format.xml  { render :xml => @group, :status => :created, :location => @group }
         format.json { render :json => @group.to_json, :status => :created, :location => @group }
       else
@@ -147,7 +153,13 @@ class GroupsController < ApplicationController
           @group.profile_photo = profile_photo
         end         
         flash[:notice] = 'Group was successfully updated.'
-        format.html { redirect_to(@group) }
+        format.html { 
+          if params['admin_page']
+            redirect_to('/admin/groups')
+          else
+            redirect_to(@group) 
+          end
+        }
         format.xml  { head :ok }
         format.json { head :ok }
       else

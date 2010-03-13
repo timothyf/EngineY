@@ -52,17 +52,10 @@ class WallPostsController < ApplicationController
     respond_to do |format|
       if @wall_post.save
         flash[:notice] = 'WallPost was successfully created.'
-        if params[:group_id]
-          @parent = Group.find(params[:group_id])
-        elsif params[:event_id]
-          @parent = Event.find(params[:event_id])
-        else
-          # TODO send email notification to recipient user
-          
-          @user = User.find(params[:user_id])
-          @parent = @user
-        end
-        format.html { render :partial => 'shared/wall_posts', :locals=>{:parent=>@parent}, :layout=>false }
+        set_parent
+        format.html { 
+          render :partial => 'shared/wall_posts', :locals=>{:parent=>@parent}, :layout=>false 
+        }
       else
         format.html { render :action => "new" }
       end
@@ -87,6 +80,18 @@ class WallPostsController < ApplicationController
 
   def destroy
     @wall_post = WallPost.find(params[:id])
+    set_parent
+    @wall_post.destroy
+    respond_to do |format|
+      format.html { render :partial => 'shared/wall_posts', :locals=>{:parent=>@parent}, :layout=>false }
+      format.xml  { head :ok }
+    end
+  end
+  
+  
+  private
+  
+  def set_parent
     if @wall_post.group_id
       @parent = Group.find(@wall_post.group_id)
     elsif @wall_post.event_id
@@ -94,12 +99,8 @@ class WallPostsController < ApplicationController
     else
       @user = User.find(@wall_post.user_id)
       @parent = @user
-    end
-    
-    @wall_post.destroy
-    respond_to do |format|
-      format.html { render :partial => 'shared/wall_posts', :locals=>{:parent=>@parent}, :layout=>false }
-      format.xml  { head :ok }
-    end
+    end  
   end
+  
+  
 end

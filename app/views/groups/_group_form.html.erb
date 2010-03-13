@@ -15,6 +15,9 @@ limitations under the License.
 %>
 <% form_for(@group, :html => { :multipart => true }) do |f| -%>		
 	<%= f.error_messages %>
+	<% if defined? admin_page %>
+		<input type="hidden" name="admin_page" value="1" />
+	<% end %>
 	<div class="section_title">Group Information</div>
 	<div class="form_field">
     	<label for="name">Name:</label>
@@ -34,7 +37,7 @@ limitations under the License.
 	<% if @show_full %>
 		<div class="form_field">
 	    	<label for="description">Announcements:</label>
-			<%= f.text_area :announcements, :cols=>40, :rows=>10 %>
+			<%= f.text_area :announcements, :cols=>40, :rows=>10, :class=>"mceEditor" %>
 		</div>
 	<% end %>
 	<div class="form_field">

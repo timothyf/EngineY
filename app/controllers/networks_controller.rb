@@ -8,9 +8,11 @@ class NetworksController < ApplicationController
   def update
     @network = Network.find(params[:id])
     respond_to do |format|
-      if @network.update_attributes(params[:network])
-        flash[:notice] = 'Network was successfully updated.'
-        format.html { redirect_to(@network) }
+      if @network.update_attributes(params[:network])       
+        format.html { 
+          flash[:notice] = 'Network was successfully updated.'
+          redirect_to(@network) 
+         }
         format.xml  { head :ok }
         format.json { head :ok } 
       else

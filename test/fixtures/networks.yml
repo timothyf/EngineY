@@ -16,8 +16,8 @@
 
 one:
   id: 1
-  name: 'Test Network'
-  
-#
-# two:
-#   column: value
+  name: Test Network
+  organization: TestCo
+  website: www.testers.com
+  description: This is our network
+

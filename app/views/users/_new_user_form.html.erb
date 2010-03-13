@@ -15,7 +15,9 @@ limitations under the License.
 %>
 <% form_for(@user, :html => { :multipart => true }) do |f| -%>
 	<%= f.error_messages %>
-	<input type="hidden" id="invite_code" name="invite_code" value="<%= @invite_code %>"/>
+	<% if @invite_code %>
+		<input type="hidden" id="invite_code" name="invite_code" value="<%= @invite_code %>"/>
+	<% end %>
 	<% if @user.id == nil %>
 		<div id="signup_help">
 			After signing up, you will receive a confirmation email.  Follow the activation link in the email to

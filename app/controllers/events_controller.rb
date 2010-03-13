@@ -96,7 +96,13 @@ class EventsController < ApplicationController
         end   
         Event.reset_cache
         flash[:notice] = 'Event was successfully created.'
-        format.html { redirect_to(@event) }
+        format.html { 
+          if params['admin_page']
+            redirect_to('/admin/events')
+          else
+            redirect_to(@event) 
+          end  
+        }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
         format.json { render :json => @event.to_json, :status => :created, :location => @event } 
       else
@@ -113,7 +119,13 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update_attributes(params[:event])
         flash[:notice] = 'Event was successfully updated.'
-        format.html { redirect_to(@event) }
+        format.html { 
+          if params['admin_page']
+            redirect_to('/admin/events')
+          else
+            redirect_to(@event) 
+          end  
+        }
         format.xml  { head :ok }
         format.json { head :ok } 
       else

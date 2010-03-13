@@ -13,7 +13,18 @@
 #   limitations under the License.
 
 class AdminController < ApplicationController
-  
+ 
+  uses_tiny_mce :options => {
+                              :theme => 'advanced',
+                              :theme_advanced_toolbar_location => "top",
+                              :theme_advanced_toolbar_align => "left",
+                              :theme_advanced_resizing => true,
+                              :theme_advanced_resize_horizontal => false,
+                              :theme_advanced_buttons1 => "forecolor,backcolor,bullist,numlist,separator,outdent,indent,separator,undo,redo,separator,link,unlink,anchor,image,cleanup,help,code",
+                              :theme_advanced_buttons2 => "",
+                              :theme_advanced_buttons3 => ""
+                            }
+                            
   before_filter :login_required
   
   # Display the Dashboard tab of the Admin page.
@@ -32,13 +43,13 @@ class AdminController < ApplicationController
   
   # Display the Users tab of the Admin page.
   def users
+    @page = 'users'
     respond_to do |format|
       format.html {
         @users = User.find(:all)
         @admins = User.admins_and_creators
       }
       format.json { 
-        @page = 'users'
         users = User.find(:all) do
           if params[:_search] == "true"
             login =~ "%#{params[:login]}%" if params[:login].present?
@@ -60,12 +71,8 @@ class AdminController < ApplicationController
   
   
   def admin_users
-
-
     respond_to do |format|
-      format.html {
-        
-      }
+      format.html {}
       format.json { 
         @page = 'users'
         admins = User.find(:all, :conditions => ['role_id = ? OR role_id = ?', Role.creator.id, Role.admin.id], :joins => :permissions) do
@@ -91,19 +98,21 @@ class AdminController < ApplicationController
   # Display the Groups tab of the Admin page.
   def groups
     @page = 'groups'
-    groups = Group.find(:all) do
-      if params[:_search] == "true"
-        name =~ "%#{params[:name]}%" if params[:name].present?
-        featured =~ "%#{params[:featured]}%" if params[:featured].present?   
-        creator_id =~ "%#{params[:creator_id]}%" if params[:creator_id].present? 
-      end
-      paginate :page => params[:page], :per_page => params[:rows]      
-      order_by "#{params[:sidx]} #{params[:sord]}"
-    end
-
     respond_to do |format|
-      format.html
-      format.json { render :json => groups.to_jqgrid_json([:id,:name, :creator_id, :featured ], 
+      format.html {
+        @groups = Group.find(:all)
+      }
+      format.json { 
+        groups = Group.find(:all) do
+          if params[:_search] == "true"
+            name =~ "%#{params[:name]}%" if params[:name].present?
+            featured =~ "%#{params[:featured]}%" if params[:featured].present?   
+            creator_id =~ "%#{params[:creator_id]}%" if params[:creator_id].present? 
+          end
+          paginate :page => params[:page], :per_page => params[:rows]      
+          order_by "#{params[:sidx]} #{params[:sord]}"
+        end 
+        render :json => groups.to_jqgrid_json([:id,:name, :creator_id, :featured ], 
                                                          params[:page], 
                                                          params[:rows], 
                                                          groups.total_entries) }
@@ -123,6 +132,7 @@ class AdminController < ApplicationController
       total_entries = 0
     end
     respond_to do |format|
+      format.html {}
       format.json { render :json => users.to_jqgrid_json([:id, :login, :first_name, :last_name, :email], params[:page], params[:rows], total_entries) }
     end
   end
@@ -131,21 +141,23 @@ class AdminController < ApplicationController
   # Display the Events tab of the Admin page.
   def events
     @page = 'events'
-    events = Event.find(:all) do
-      if params[:_search] == "true"
-        name =~ "%#{params[:name]}%" if params[:name].present?
-        start_time =~ "%#{params[:start_time]}%" if params[:start_time].present?    
-        end_time =~ "%#{params[:end_time]}%" if params[:end_time].present?   
-        location =~ "%#{params[:location]}%" if params[:location].present?   
-        organizer =~ "%#{params[:organizer]}%" if params[:organizer].present?     
-      end
-      paginate :page => params[:page], :per_page => params[:rows]      
-      order_by "#{params[:sidx]} #{params[:sord]}"
-    end
-
     respond_to do |format|
-      format.html
-      format.json { render :json => events.to_jqgrid_json([:id, :name, :start_time, :end_time, :location, :organizer ], 
+      format.html {
+        @events = Event.find(:all)
+      }
+      format.json { 
+        events = Event.find(:all) do
+          if params[:_search] == "true"
+            name =~ "%#{params[:name]}%" if params[:name].present?
+            start_time =~ "%#{params[:start_time]}%" if params[:start_time].present?    
+            end_time =~ "%#{params[:end_time]}%" if params[:end_time].present?   
+            location =~ "%#{params[:location]}%" if params[:location].present?   
+            organizer =~ "%#{params[:organizer]}%" if params[:organizer].present?     
+          end
+          paginate :page => params[:page], :per_page => params[:rows]      
+          order_by "#{params[:sidx]} #{params[:sord]}"
+        end
+        render :json => events.to_jqgrid_json([:id, :name, :start_time, :end_time, :location, :organizer ], 
                                                          params[:page], params[:rows], events.total_entries) }
     end
   end
@@ -154,20 +166,23 @@ class AdminController < ApplicationController
   # Display the Blog Posts tab of the Admin page.
   def blog_posts
     @page = 'blog_posts'
-    blog_posts = BlogPost.find(:all) do
-      if params[:_search] == "true"
-        user_id     =~ "%#{params[:user_id]}%"    if params[:user_id].present?
-        title       =~ "%#{params[:title]}%"      if params[:title].present?    
-        parent_id   =~ "%#{params[:parent_id]}%"  if params[:parent_id].present?   
-        published    =~ "%#{params[:published]}%"   if params[:published].present?   
-        featured   =~ "%#{params[:featured]}%"  if params[:featured].present?     
-      end
-      paginate :page => params[:page], :per_page => params[:rows]      
-      order_by "#{params[:sidx]} #{params[:sord]}"
-    end
     respond_to do |format|
-      format.html
-      format.json { render :json => blog_posts.to_jqgrid_json([:id, :user_id, 
+      format.html {
+        @blog_posts = BlogPost.find(:all)
+      }
+      format.json { 
+        blog_posts = BlogPost.find(:all) do
+          if params[:_search] == "true"
+            user_id     =~ "%#{params[:user_id]}%"    if params[:user_id].present?
+            title       =~ "%#{params[:title]}%"      if params[:title].present?    
+            parent_id   =~ "%#{params[:parent_id]}%"  if params[:parent_id].present?   
+            published    =~ "%#{params[:published]}%"   if params[:published].present?   
+            featured   =~ "%#{params[:featured]}%"  if params[:featured].present?     
+          end
+          paginate :page => params[:page], :per_page => params[:rows]      
+          order_by "#{params[:sidx]} #{params[:sord]}"
+        end
+        render :json => blog_posts.to_jqgrid_json([:id, :user_id, 
                                                           :title, :parent_id, 
                                                           :published, :featured ], 
                                                          params[:page], params[:rows], 
@@ -176,10 +191,42 @@ class AdminController < ApplicationController
   end
   
   
+  def blog_post_edit
+    @blog_post = BlogPost.find(params[:id])
+    render 'blog_post_form'
+  end
+  
+  
+  def group_new
+    @group = Group.new
+    render 'group_form'
+  end
+  
+  
+  def group_edit
+    @group = Group.find(params[:id])
+    @show_full = true
+    render 'group_form'
+  end
+  
+  
+  def event_new
+    @event = Event.new
+    render 'event_form'
+  end
+  
+  
+  def event_edit
+    @event = Event.find(params[:id])
+    render 'event_form'
+  end
+  
+  
   def user_new
     @user = User.new
     render 'user_form'
   end
+  
   
   def user_edit
     @user = User.find(params[:id])

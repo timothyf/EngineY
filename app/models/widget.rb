@@ -36,5 +36,4 @@ class Widget < ActiveRecord::Base
   
   has_one :html_content
   
-  
 end

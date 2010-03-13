@@ -1,31 +1,40 @@
+<style>
+	table#groups th, table#groups td {
+		text-align: left;
+	}
+	
+	#content {
+		width: 900px;
+	}	
+</style>
+
 <h2 class="ic-db">Groups</h2>
-<div class="pad-lr">
-	<%= jqgrid("Site Groups", "groups", "/admin/groups",
-		[
-			{ :field => "id", :label => "ID", :width => 35, :resizable => false, :align => 'center' },
-			{ :field => "name", :label => "Name", :width => 200, :editable => true },
-			{ :field => "creator_id", :label => "Creator ID", :width => 75, :align => 'center' },
-			{ :field => "featured", :label => "Featured", :width => 100, 
-					:editable => true, :edittype => "checkbox", :editoptions => {:value => "10" }, 
-					:align => 'center' },		
-		],
-		{ :height => 200, :rows_per_page => 30, :add => true, 
-   		  :edit => true, :inline_edit => false, 
-		  :delete => true, 
-		  :edit_url => "/admin/post_group_data",
-		  :master_details => true, :details_url => "/admin/group_users", :details_caption => "Users" }
-	)%>
-</div>
+<%= link_to 'Add Group', '/admin/group_new' %>
+<table id="groups">
+	<thead>
+		<th width="50px">ID</th>
+		<th width="170px">Name</th>
+		<th width="70px">Creator ID</th>
+		<th width="70px">Featured</th>
+		<th width="300px">Actions</th>
+	</thead>
+	<tbody>
+		<% @groups.each do |group| %>
+			<tr>
+				<td><%= group.id %></td>
+				<td><%= group.name %></td>
+				<td><%= group.creator_id %></td>
+				<td><%= group.featured %></td>
+				<td>
+					<%= link_to 'Edit', '/admin/group_edit?id=' + group.id.to_s %> |
+					<%= link_to 'Delete', '/admin/group_delete?id=' + group.id.to_s, :confirm => 'Are you sure you want to delete this group?' %> |
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
 
 <h2 class="ic-db">Group Users</h2>
-<%=jqgrid("Users", "groups_details", "/admin/group_users",
-	[
-		{ :field => "id", :label => "ID", :width => 35, :align => 'center', :resizable => false },
-		{ :field => "login", :label => "Login", :width => 90 },
-		{ :field => "first_name", :label => "First Name", :width => 90 },
-		{ :field => "last_name", :label => "Last Name", :width => 90 },
-		{ :field => "email", :label => "Email", :width => 130 }
-	]
-)%>
-</div>
+
 

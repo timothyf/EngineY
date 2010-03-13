@@ -46,7 +46,6 @@ class HomeController < ApplicationController
                      :email=>params[:email],
                      :password=>params[:password],
                      :password_confirmation=>params[:password_confirmation]
-               
     if network.valid? && user1.valid?
         network.save
         network.init_network()     
