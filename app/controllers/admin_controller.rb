@@ -29,7 +29,6 @@ class AdminController < ApplicationController
   
   # Display the Dashboard tab of the Admin page.
   def index
-    @stats
     @page = 'dashboard'
   end
   
