@@ -1,0 +1,66 @@
+body {
+	background: none;
+	background-color: white;
+}
+
+#main {
+	background: none;
+	background-color: white;
+}
+
+#content {
+	background: none;
+}
+
+#content #header {
+	border: none;
+	height: 60px;
+}
+
+#content #header #masthead {
+	height: 10px;
+}
+
+#footer {
+	background-color: white !important;
+	color: black;
+	float:left;
+	font-size:0.95em;
+	padding:7px;
+	width:941px;
+}
+
+#footer a, #footer a:visited {
+	color: black;
+}
+
+#footer img {
+	border: none;
+	background-color: white;
+}
+
+.column_2 {
+	float:left;
+	padding:0 30px;
+	width:430px;
+}
+
+.nav_list_link {
+	color: black;
+}
+
+.nav_list_link:visited {
+	color: black;
+}
+
+#nav_list #current_menu a, #nav_list_right #current_menu a {
+	color: black;
+}
+
+.current_menu {
+	background-color: #BED6E3;
+}
+
+.widget_content {
+	padding-bottom: 12px;
+}

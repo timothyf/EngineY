@@ -5,9 +5,9 @@ class CreateActivityTypes < ActiveRecord::Migration
       t.timestamps
     end
     
-    ActivityType.create :name=>'PHOTO'
-    ActivityType.create :name=>'BLOG'
-    ActivityType.create :name=>'FRIEND'
+    ActivityType.create :name => 'PHOTO'
+    ActivityType.create :name => 'BLOG'
+    ActivityType.create :name => 'FRIEND'
   end
 
   def self.down

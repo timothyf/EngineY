@@ -76,3 +76,121 @@ nine:
   item_id: 2
   item_type: StatusPost
   action:
+  
+friendship_act:
+  id: 10
+  user_id: 1
+  item_id: 5
+  item_type: Friendship
+  action: 
+  
+event_act:
+  id: 11
+  user_id: 1
+  item_id: 1
+  item_type: Event
+  action:
+  
+user_act:
+  id: 12
+  user_id: 1
+  item_id: 1
+  item_type: User
+  action:
+
+photo_act:
+  id: 13
+  user_id: 1
+  item_id: 1
+  item_type: Photo
+  action:
+
+group_act:
+  id: 14
+  user_id: 1
+  item_id: 1
+  item_type: Group
+  action:
+  
+blog_post_act:
+  id: 15
+  user_id: 1
+  item_id: 1
+  item_type: BlogPost
+  action:
+  
+attendance_act:
+  id: 16
+  user_id: 1
+  item_id: 1
+  item_type: Attendance
+  action:
+
+membership_act:
+  id: 17
+  user_id: 1
+  item_id: 1
+  item_type: Membership
+  action:
+
+forum_post_act:
+  id: 18
+  user_id: 1
+  item_id: 1
+  item_type: ForumPost
+  action:
+
+job_post_act:
+  id: 19
+  user_id: 1
+  item_id: 1
+  item_type: JobPost
+  action:
+
+book_review_act:
+  id: 20
+  user_id: 1
+  item_id: 1
+  item_type: BookReview
+  action:
+
+status_post_act:
+  id: 21
+  user_id: 1
+  item_id: 1
+  item_type: StatusPost
+  action:
+
+link_act:
+  id: 22
+  user_id: 1
+  item_id: 1
+  item_type: Link
+  action:
+
+project_act:
+  id: 23
+  user_id: 1
+  item_id: 1
+  item_type: Project
+  action:
+
+announcement_act:
+  id: 24
+  user_id: 1
+  item_id: 1
+  item_type: Announcement
+  action:
+
+classified_act:
+  id: 25
+  user_id: 1
+  item_id: 1
+  item_type: Classified
+  action:
+
+
+
+
+
+

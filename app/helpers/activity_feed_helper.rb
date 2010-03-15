@@ -76,7 +76,7 @@ module ActivityFeedHelper
         end
       when "BookReview"
         book_review = activity.item #BookReview.find(activity.item.id)
-        %(#{user.name} posted a new review for #{book_review.title}.  <span class="activity_date">#{book_review.created_at.to_s(:event_list)}</span>)       
+        %(#{user.name} posted a new review for #{book_review.name}.  <span class="activity_date">#{book_review.created_at.to_s(:event_list)}</span>)       
     when "StatusPost"
       status_post = activity.item #StatusPost.find(activity.item.id)
       %(#{link_to(user.name, user_url(user))} #{EngineyUtil.linkify(status_post.body)} <span class="activity_date">#{status_post.created_at.to_s(:event_list)}</span>)

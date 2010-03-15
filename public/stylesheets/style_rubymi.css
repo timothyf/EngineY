@@ -3,6 +3,10 @@
 	background: #BED6E3 url(/images/xg-v3.gif) repeat-y;
 }
 
+#header {
+	background-image: url(/images/rubymi_header2.jpg);
+}
+
 #footer {
 	background-color:#3F484B !important;
 	background-color:#aa2f2f !important;

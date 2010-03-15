@@ -1,0 +1,123 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title><%= @network.name %></title>
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<%= stylesheet_link_tag 'style' %>
+	<%= stylesheet_link_tag "themes/thewall/style.css" %>
+	
+	<%= stylesheet_link_tag '../javascripts/dojo/dijit/themes/tundra/tundra.css' %>
+	<%= stylesheet_link_tag '../javascripts/dojo/dojox/grid/resources/Grid.css' %>
+	<%= stylesheet_link_tag '../javascripts/dojo/dojox/grid/resources/tundraGrid.css' %>
+	
+	
+
+	<script type="text/javascript" src="/javascripts/dojo/release/dojo/dojo/dojo.js" djConfig="isDebug:false, parseOnLoad: true"></script>
+	<script type="text/javascript" src="/javascripts/dojo/release/dojo/dojo/mydojo.js"></script>
+
+	
+	<script type="text/javascript">
+		<% if @home_widgets && @home_widgets.length > 0 %>
+			var home_widgets = eval('<%= @home_widgets %>');
+		<% else %>
+			var home_widgets = [];
+		<% end %>
+		<% if @profile_widgets && @profile_widgets.length > 0 %>
+			var profile_widgets = eval('<%= @profile_widgets %>');
+			var user_id = <%= @user.id %>;
+		<% else %>
+			var profile_widgets = [];
+			var user_id = 0;
+		<% end %>
+
+
+	</script>
+    
+	<%= javascript_include_tag "slide_show" %>
+	
+	<%= yield :script_content %>
+	
+	<%= javascript_include_tag "widget" %>
+	<%= javascript_include_tag "application" %>
+	
+    <script type="text/javascript">  	
+		var authenticity_token = "<%= form_authenticity_token %>";				
+    </script>
+
+	
+	<%= include_tiny_mce_if_needed %>
+	
+	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+	
+</head>
+
+<body>
+<%= fb_connect_javascript_tag %>
+<%= init_fb_connect('XFBML', :js => :dojo) %> 
+	<div id="content">
+		<div id="header">
+			<div id="masthead"></div>
+			<%= render :partial => 'shared/nav_menu' %>
+		</div>
+		<div id="main">
+			<div class="col1">
+				<%= yield  %>
+			</div>
+			<div class="col2">
+				<!-- TODO: Needs to be refactored to move this content into page templates -->
+				<% if @section == 'MAIN' %>
+					<%= render :partial => 'users/user_control_widget' %>
+					<!-- place holder for AJAX widgets -->
+					<div id="right_side_widgets"></div>
+				<% elsif @section == 'MY PAGE' || (@section == 'MEMBERS' && @user != nil)%>
+					<!-- On a user page -->
+					<%= render :partial => 'users/add_friend_widget' %>
+					<%= render :partial => 'users/user_control_widget' %>
+					<%= render :partial => 'events/events_profile' %>
+					<%= render :partial => 'forum_posts/forum_posts_profile' %>
+					<% if current_user == @user %>
+						<%= render :partial => 'messages/unread_messages_widget' %>
+					<% end %>
+					<div id="right_side_widgets"></div>
+				<% else %>
+					<%= render :partial => 'users/user_control_widget' %>
+				<% end %>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		<div id="footer">
+			<%= render :partial => 'shared/footer' %>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3428872-7");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+
+</html>
+

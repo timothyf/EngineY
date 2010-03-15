@@ -1,0 +1,308 @@
+.column_1 {
+	float: left;
+	width: 180px;
+}
+
+.column_2 {
+	float: left;
+	width:540px;
+}
+
+.user_profile_section {
+	background-color: #FFFFFF;
+	width: 180px;
+}
+
+#main .col1 h1 {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+#user_photo {
+	background-color: #000000;
+	text-align: center;
+}
+
+#user_detail {
+	margin-top: 5px;
+	line-height: 1.5em;
+}
+
+#user_friends {
+	margin-top: 5px;
+}
+
+#user_groups {
+	height: 100px;
+	margin-top: 5px;
+}
+
+#user_discussions {
+	height: 100px;
+	margin-top: 5px;
+}
+
+#profile_name {
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+#members_all {
+	float: left;
+}
+
+#members_my {
+	float: left;
+	margin-left: 25px;
+}
+
+#settings_title {
+	font-size: 14pt;
+	font-weight: bold;
+	padding-top: 20px;
+	padding-bottom: 15px;
+	background-color: #bed6e3;
+	text-align: left;
+	padding-left: 30px;
+}
+
+#users_table_header {
+	margin-top: 20px;	
+	background-color: white;
+	float: left;
+	clear: both;
+	width: 675px;
+	padding: 2px;
+}
+
+#search {
+	float: left;
+	margin-left: 2px;
+}
+
+#search button {
+	background-color: darkblue;
+	color: white;
+	width: 125px;
+}
+
+#sort {
+	float: right;
+	font-size: 10pt;
+	margin-right: 15px;
+}
+
+#users_table {
+	float: left;
+	clear: both;
+	margin-top: 2px;
+}
+
+.user_brief {
+	width: 230px;
+	height: 100px;
+	float: left;
+	margin: 8px;
+	text-align: center;
+}
+
+.user_brief_photo {
+	float: left;
+}
+
+.user_brief_photo img {
+	border: 1px solid #cccccc;
+}
+
+.user_brief_text {
+	float: left;
+	margin-left: 10px;
+	line-height: 1.5em;
+	text-align: left;
+	width: 120px;
+}
+
+#users_table {
+	background-color: #ffffff;
+	width: 630px;
+	padding: 25px;
+}
+
+#user_name {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.user_page_title {
+	font-size: 16pt;
+	display: block;
+	margin-bottom: 15px;
+}
+
+#add_user {
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+	float: left;
+	margin-top: 15px;
+	clear: both;
+}
+
+#edit_user {
+	background-color: #ffffff;
+	width: 650px;
+	padding: 25px;
+	float: left;
+	margin-top: 15px;
+}
+
+#add_user label, #edit_user label {
+	clear:both;
+	margin-top: 8px;
+	font-size: 10pt;
+	width: 120px;
+	display: block;
+	float: left;
+}
+
+#add_user input, #edit_user input {
+	margin-top: 8px;
+	float: left;
+}
+
+#add_user .form_field input {
+	float: left;
+	margin-left: 15px;
+	width: 200px;	
+	background:#F8F8F8 none repeat scroll 0 0;
+	border:1px solid #CCCCCC;
+	color:#777777;
+	font-weight:bold;
+	padding:5px;	
+}
+
+#add_user .form_field select {
+	float: left;
+	margin-left: 15px;
+	width: 180px;	
+	background:#F8F8F8 none repeat scroll 0 0;
+	border:1px solid #CCCCCC;
+	color:#777777;
+	font-weight:bold;
+	padding:5px;	
+}
+
+#add_user .form_field textarea {
+	float: left;
+	margin-left: 15px;
+	background:#F8F8F8 none repeat scroll 0 0;
+	border:1px solid #CCCCCC;
+	color:#777777;
+	font-weight:bold;
+	padding:5px;	
+}
+
+.add_button {
+	clear: both;
+	float: right;
+}
+
+#add_user .add_button {
+	margin-left: 400px;
+	width: 80px;
+	padding: 3px;
+}
+
+.edit_link {
+	margin-left: 125px;
+}
+
+.edit_col {
+	width: 750px;
+	float: left;
+}
+
+.form_field {
+	width: 100%;
+}
+
+.form_field select {
+	float: left;
+}
+
+.form_field img {
+	float: left;
+}
+
+.form_field textarea {
+	float: left;
+}
+
+.requested_friend {
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+.requested_friend_photo {
+	float: left;
+}
+
+.requested_friend_task {
+	float: left;
+	margin-top: 15px;
+	margin-left: 15px;
+}
+
+.user_group {
+	float: left;
+	padding: 5px;
+}
+
+.photo_display {
+	height: 85px;
+	line-height: 85px;
+	display: inline;
+	float: none;
+}
+
+.photo_display a {
+	font-size:65px;
+}
+
+.photo_display a img {
+	height: auto;
+	vertical-align: bottom;
+}
+
+#signup_help {
+	float: right;
+	width: 180px;
+	margin-right: 50px;
+	margin-top: 100px;
+	border: 1px solid #777777;
+	padding: 8px;
+	background-color: #F8F8F8;
+}
+
+#optional_fields .form_field input {
+	width: 320px;
+}
+
+#optional_fields #display_tweets {
+	width:20px;
+	text-align:right;
+	float:left;
+	padding-top:10px;
+	margin-left:8px;
+}
+
+#display_tweets_label {
+	width:120px;
+	margin-left:1px;
+	margin-top:11px;
+	float:left;
+}
+

@@ -76,6 +76,7 @@ function widget_loaded(widget_name, data) {
 function create_widget_node(widget_name, col_num) {
 	var newdiv = document.createElement('div');
 	newdiv.setAttribute('id', widget_name);
+	newdiv.className = 'widget_content';
 	newdiv.appendChild(document.createTextNode('Loading...'));
 	if (col_num == '1') {
 		dojo.byId('left_side_widgets').appendChild(newdiv);

@@ -14,8 +14,8 @@ http://rmagick.rubyforge.org/install-faq.html
 Edit the config/database.yml file to configure a local database for use with EngineY.
 Run the following three commands in order:
 
-ruby db:create:all
-ruby db:migrate
+rake db:create:all
+rake db:migrate
 rake railsnet:db:mycompany_populate
 This will create the database with the correct schema and populate it with data for a sample site. This will allow you to run the application and have a look around. You will be able to login with the following id and password:
 User ID: admin

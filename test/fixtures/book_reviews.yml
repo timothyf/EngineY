@@ -1,7 +1,25 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-   id: 1
-#
+  id: 1
+  name: Review of Test 1
+  release_date: <%= Time.now %>
+  publisher: O'Reilly
+  website: www.amazon.com/testbook
+  buy_link: www.amazon.com/testbook/buy
+  review: This is a very good book.
+  user_id: 1
+  image_url: www.images.com/test.png
+  featured: false
+
 two:
-   id: 2
+  id: 2
+  name: Review of Test 2
+  release_date: <%= Time.now %>
+  publisher: Manning
+  website: www.amazon.com/testbook2
+  buy_link: www.amazon.com/testbook2/buy
+  review: This is a very good book.
+  user_id: 3
+  image_url: www.images.com/test2.png
+  featured: false

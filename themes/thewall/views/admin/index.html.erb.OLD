@@ -13,13 +13,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<div id="network_info_home" class="widget_content">
-	<div class="module">
-		<div class="module_body">
-			<%= @network.description %><br/>
-			<% if logged_in? %>
-				<span id="invite_link"><%= link_to "Invite a friend to #{@network.name}", new_invite_path %></span>
-			<% end %>
-		</div>
-	</div>
+<%= stylesheet_link_tag 'common' %>
+<%= stylesheet_link_tag 'admin' %>
+
+<h1>Admin Center</h1>
+
+<div id="content_table">
+	<ul>
+		<li><%= link_to 'Edit Network Info', edit_network_url(Network.find(:first)) %></li>
+		<li>Show Pending Users (Approve, Reject)</li>
+		<li>Show All Users (Edit, Delete)</li>
+		<li><%= link_to 'Community Statistics', '/stats/index' %></li>
+	</ul>
 </div>
+

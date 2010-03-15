@@ -13,13 +13,12 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<div id="network_info_home" class="widget_content">
-	<div class="module">
-		<div class="module_body">
-			<%= @network.description %><br/>
-			<% if logged_in? %>
-				<span id="invite_link"><%= link_to "Invite a friend to #{@network.name}", new_invite_path %></span>
-			<% end %>
-		</div>
+
+	<div id="copyright">
+		Copyright 2009 <%= link_to 'Timothy Fisher', 'http://blog.timothyfisher.com' %>
 	</div>
-</div>
+	<div id="foot_right">
+		<%= link_to 'Privacy', {:controller=>'home', :action=>'privacy'}, :id=>'privacy_link' %>
+		&nbsp;&nbsp;
+		<%= link_to 'Powered by EngineY', 'http://www.enginey.com' %>
+	</div>

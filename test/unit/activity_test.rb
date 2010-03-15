@@ -4,7 +4,8 @@ class ActivityTest < ActiveSupport::TestCase
 
   def test_global_feed
     result = Activity.global_feed
-    assert result.size == 9, 'Incorrect activities length'
+    # global feed size limit is 10
+    assert result.size == 10, 'Incorrect activities length'
     assert result[0].item_type == 'BlogPost', 'Incorrect item type'
     assert result[0].item_id == 1, 'Incorrrect item id' 
     assert result[1].item_type == 'BlogPost', 'Incorrect item type'

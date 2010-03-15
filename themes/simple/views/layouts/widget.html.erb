@@ -13,13 +13,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<div id="network_info_home" class="widget_content">
-	<div class="module">
-		<div class="module_body">
-			<%= @network.description %><br/>
-			<% if logged_in? %>
-				<span id="invite_link"><%= link_to "Invite a friend to #{@network.name}", new_invite_path %></span>
-			<% end %>
-		</div>
+<div class="module">
+	<div class="module_head" id="<%= @widget_name %>_head">
+		<%= yield :module_header %>
+	</div>
+	<div class="module_body" id="<%= @widget_name %>_body">
+		<%= yield :module_body %>
+	</div>
+	<div class="module_foot" id="<%= @widget_name %>_foot">
+		<%= yield :module_footer %>
 	</div>
 </div>

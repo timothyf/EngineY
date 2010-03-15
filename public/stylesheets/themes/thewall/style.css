@@ -1,0 +1,279 @@
+body {
+	margin: 0;
+	margin-bottom: 0;
+	padding: 0;
+	background: none;
+	background-color: white;
+	font-family:"Lucida Grande","Lucida Sans Unicode",Arial,clean,sans-serif;
+	font-size: 8pt;
+	color: #333;
+}  
+/* ------------------
+	Header
+*/
+#header { 	
+	width: 100%;
+	background-image: none;
+	background-color: #3D3D3D;
+}
+
+#header_content {
+	background-image: none;
+	color: #283F4B;
+	margin: auto;
+	width: 960px;
+	height: 164px;
+
+}
+
+#header #masthead {
+	height:110px;
+}
+
+#header #logo {
+	font-size: 30px;
+	color: white;
+	padding: 40px;
+	padding-bottom: 0;
+	font-weight: 700;
+	font-family: Helvetica, Arial, Verdana;
+	text-shadow: #222222 4px 2px 5px;
+	letter-spacing: 20px;
+}
+
+#header #tagline {
+	padding-top:10px;
+	padding-left: 40px;
+	font-size: 12px;
+	color:gray;
+	height:15px;
+	letter-spacing: 3px;
+}
+
+
+
+/* ------------------
+	Navigation
+*/
+#header .navigation {
+	display: block;
+	margin-top: 1.5em;
+	float: left;
+	width: 100%;
+}
+
+#header .navigation ul li {
+	float:left;
+	font-weight:bold;
+	margin:0 0 0 3px;
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	font-size:1em;
+	margin-bottom:0.4em;
+	padding: 0px;
+	height: 28px;
+}
+
+#header .navigation ul li a {
+	color: white;
+}
+
+#header .navigation ul li a:visited {
+	color: white;
+}
+
+#header .navigation ul li a:hover {
+    background-color:#FFFFFF;
+    color:#222222 !important;
+}
+
+#header .navigation ul .current_menu {
+	background-color: #FFFFFF;
+}
+
+#header .navigation ul li.current_menu a{
+	color: #222222;
+}
+
+#header .navigation ul li a {
+	font-size: 1.00506em;
+	display:block;
+	font-size: 10pt;
+	padding:0 6px;
+	padding-top: 6px;
+	text-decoration:none;
+	color:#333333;
+	height: 28px;
+}
+
+#header .navigation ul li a:hover {
+	background-color:#FFFFFF;
+	color:#222222 !important;
+}
+
+#header .current_menu {
+	background-color: inherit;
+}
+
+
+
+/* ------------------
+	Content
+*/
+#content {
+	background-image: none;
+	margin: auto;
+	width: 960px;
+}
+
+#main {
+	margin-top: 40px;
+	background: inherit;
+	width:960px;
+}
+
+
+
+/* ------------------
+	Footer
+*/
+#footer {
+	height:100%;
+	display:block;
+	width: 100%;
+	background-color: #222222;
+	padding:0;
+	margin:0;
+	float:none;
+}
+
+#footer_content {
+	margin: auto;
+	width:960px;
+	background-color: inherit;
+	color:#FFFFFF;
+	font-size:0.95em;
+}
+
+#footer img {
+	border: none;
+}
+
+#footer div.navigation {
+	float:left;
+	width: 300px;
+	padding-right:20px;
+}
+
+#footer div.navigation li{
+	min-height: 0;
+}
+
+
+#footer div.posts {
+	float:left;
+	width: 300px;
+	padding-right:20px;
+}
+
+#footer div.enginey {
+	float:left;
+	width: 300px;
+	padding-right:20px;
+}
+
+
+#footer ul{
+	padding: 0;
+}
+
+#footer li{
+	list-style-type:none;
+	padding: 0;
+	margin: 0;
+	border-top: 1px solid #333333;
+	padding: 4px;
+	min-height: 30px;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+#footer li a, #footer li a:visited {
+	text-decoration: none;
+	color: #888F96;
+	font-weight: normal;
+	font-size: 11px;
+}
+
+#footer div.navigation a, #footer div.navigation a:visited {
+	font-size:13px;
+}
+
+#footer li a:hover {
+	color: white;
+}
+
+#footer ul {
+	border-bottom: 1px solid #333333;
+}
+
+#footer li a img {
+	width:25px;
+	height:25px;
+	float: left;
+	margin-right: 4px;
+	border: 1px solid #666666;
+}
+
+#footer .current_menu {
+	background-color: #000000;
+}
+
+#footer div.navigation li.current_menu a {
+	color:white;
+}
+
+
+/* ------------------
+	Module
+*/
+.module {
+        margin-bottom: 10px;
+        display: block;
+        position: relative;
+        background-color: #BED6E3;
+}
+
+.module_head, .module_body, .module_foot {
+        display: block;
+        background-color:#FFFFFF;
+        position: relative;
+        clear: left;
+}
+
+.module_head {
+        border-top:1px solid #9FAAAF;
+        background-color:#FFFFFF;
+        color:#333333;
+        margin-bottom:1px;
+        padding:3px 5px;
+        font-weight: bold;
+        font-size: 8pt;
+        font-family:"Lucida Grande",Georgia,"Times New Roman",Times,serif;
+        text-align: left;
+}
+
+.module_body {
+        padding: 5px;
+        margin-bottom: 0.1em;
+}
+
+
+.col2 {
+	float: right;
+	margin-left: 10px;
+	width: 183px;
+}
+
+

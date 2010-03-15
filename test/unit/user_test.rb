@@ -24,7 +24,7 @@ class UserTest < ActiveSupport::TestCase
   
   def test_get_status_activity_stream
     activities = users(:quentin).status_activity_stream
-    assert activities.length == 2, 'Incorrect number of activities'
+    assert activities.length == 3, 'Incorrect number of activities'
     assert activities[0].id == 3, 'Incorrect activity'
     assert activities[1].id == 4, 'Incorrect activity'
   end
@@ -32,20 +32,20 @@ class UserTest < ActiveSupport::TestCase
   
   def test_get_friends_activity_stream
     activities = users(:quentin).friends_activity_stream
-    assert activities.length == 7, 'Incorrect number of activities'
+    assert activities.length == 22, 'Incorrect number of activities'
     assert activities[0].id == 1, 'Incorrect activity'
     assert activities[1].id == 2, 'Incorrect activity'
     assert activities[2].id == 3, 'Incorrect activity'
     assert activities[3].id == 4, 'Incorrect activity'
-    assert activities[4].id == 7, 'Incorrect activity'
-    assert activities[5].id == 8, 'Incorrect activity'
-    assert activities[6].id == 9, 'Incorrect activity'
+    assert activities[4].id == 8, 'Incorrect activity'
+    assert activities[5].id == 9, 'Incorrect activity'
+    assert activities[6].id == 10, 'Incorrect activity'
   end
   
   
   def test_get_friends_status_activity_stream
     acts = users(:quentin).friends_status_activity_stream
-    assert acts.length == 3, 'Incorrect number of activities'
+    assert acts.length == 4, 'Incorrect number of activities'
     assert acts[0].id == 3, 'Incorrect activity'
     assert acts[1].id == 4, 'Incorrect activity'
     assert acts[2].id == 9, 'Incorrect activity'
@@ -55,7 +55,7 @@ class UserTest < ActiveSupport::TestCase
   def test_get_friends_ids
     ids = users(:quentin).get_friends_ids
     assert ids.length == 3, 'Incorrect number of friends'
-    assert ids[0] == 4, 'Incorrect user id'
+    assert ids[0] == 8, 'Incorrect user id'
     assert ids[1] == 5, 'Incorrect user id'
     assert ids[2] == 1, 'Incorrect user id'
   end

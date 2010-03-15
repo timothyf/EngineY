@@ -13,37 +13,39 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<div class="module" id="user_control_widget">
-	<div class="module_body user_section">
-		<% if !logged_in? %>
-			Welcome to <%= @network.name %><br/>
-			<% if Configuration.ENABLE_SELF_REGISTRATION %>
-			<span id="sign_up"><%= link_to 'Sign Up', signup_url %></span><br/>
-			or 
+<div id="user_control_home" class="widget_content">
+	<div class="module" id="user_control_widget">
+		<div class="module_body user_section">
+			<% if !logged_in? %>
+				Welcome to <%= @network.name %><br/>
+				<% if Configuration.ENABLE_SELF_REGISTRATION %>
+				<span id="sign_up"><%= link_to 'Sign Up', signup_url %></span><br/>
+				or 
+				<% end %>
+				<span id="sign_in"><%= link_to 'Sign In', login_url %></span><br/>
+			<% else %>
+				<span id="user_name"><%= current_user.first_name %> <%= current_user.last_name %></span>
+				<div style="clear:both;float:left;margin-top:8px;">
+					<div style="float:left;margin-left:8px;">
+						<% if current_user.profile_photo %>
+							<%= link_to image_tag(current_user.profile_photo.public_filename(:small), :alt=>current_user.name), user_url(current_user) %>
+						<% else %>
+							<%= link_to current_user.name, user_url(current_user) %>
+						<% end %>
+					</div>
+					<div style="float:left;margin-left:25px;margin-top:-4px;">
+						<% if facebook_session %>
+							<span id="sign_out"><%= fb_logout_link 'Sign Out', logout_path %></span><br/>
+						<% else %>
+							<span id="sign_out"><%= link_to 'Sign Out', logout_path %></span><br/>
+						<% end %>
+						<%= link_to 'Inbox', user_messages_path(current_user) %><br/>
+						<%= link_to 'Friends', user_friends_path(current_user) %><br/>
+						<%= link_to 'Edit Profile', edit_user_path(current_user) %><br/>
+					</div>
+				</div>
+				<div style="clear:both;"></div>
 			<% end %>
-			<span id="sign_in"><%= link_to 'Sign In', login_url %></span><br/>
-		<% else %>
-			<span id="user_name"><%= current_user.first_name %> <%= current_user.last_name %></span>
-			<div style="clear:both;float:left;margin-top:8px;">
-				<div style="float:left;margin-left:8px;">
-					<% if current_user.profile_photo %>
-						<%= link_to image_tag(current_user.profile_photo.public_filename(:small), :alt=>current_user.name), user_url(current_user) %>
-					<% else %>
-						<%= link_to current_user.name, user_url(current_user) %>
-					<% end %>
-				</div>
-				<div style="float:left;margin-left:25px;margin-top:-4px;">
-					<% if facebook_session %>
-						<span id="sign_out"><%= fb_logout_link 'Sign Out', logout_path %></span><br/>
-					<% else %>
-						<span id="sign_out"><%= link_to 'Sign Out', logout_path %></span><br/>
-					<% end %>
-					<%= link_to 'Inbox', user_messages_path(current_user) %><br/>
-					<%= link_to 'Friends', user_friends_path(current_user) %><br/>
-					<%= link_to 'Edit Profile', edit_user_path(current_user) %><br/>
-				</div>
-			</div>
-			<div style="clear:both;"></div>
-		<% end %>
+		</div>
 	</div>
 </div>
