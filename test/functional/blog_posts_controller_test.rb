@@ -55,7 +55,6 @@ class BlogPostsControllerTest < ActionController::TestCase
     assert_difference('BlogPost.count', -1) do
       delete :destroy, :id => blog_posts(:one).id
     end
-
     assert_redirected_to blog_posts_path
   end
 end

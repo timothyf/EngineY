@@ -24,7 +24,7 @@ one:
   id: 1
   name: 'Test Widget 1'
   title: 'Test Widget 1'
-#
+
 two:
   id: 2
   name: 'Test Widget 2'

@@ -28,13 +28,15 @@ class FriendsController < ApplicationController
     if type
       if type == 'requested'
         @friends = @user.requested_friends
+        @title = 'My Requested Friends'
       elsif type == 'pending'
         @friends = @user.pending_friends
+        @title = 'My Pending Friends'
       end
     else
+      @title = 'My Friends'
       @friends = @user.friends
     end
-    @title = "My Friends"
     respond_to do |format|
       format.html {  } 
       format.xml  { render :xml => @friends }
@@ -71,12 +73,6 @@ class FriendsController < ApplicationController
   
   def show
     redirect_to user_path(params[:id])
-  end
-  
-  
-  def new
-    @friendship1 = Friendship.new
-    @friendship2 = Friendship.new
   end
   
   

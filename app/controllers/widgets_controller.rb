@@ -73,11 +73,6 @@ class WidgetsController < ApplicationController
       format.xml { render :partial => 'widgets/griddata.xml.builder', :layout=>false }
     end
   end
-  
-  
-  # Get settings for a particular widget
-  def get_settings  
-    render :json=>''
-  end
+
 
 end

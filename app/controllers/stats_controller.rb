@@ -1,2 +1,0 @@
-class StatsController < ApplicationController
-end

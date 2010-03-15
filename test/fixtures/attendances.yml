@@ -1,7 +1,25 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+one:
+  id: 1
+  attendee_id: 1 
+  event_id: 1
+  status: 
+
+two:
+  id: 2
+  attendee_id: 3 
+  event_id: 1
+  status:
+
+three:
+  id: 3
+  attendee_id: 5 
+  event_id: 2
+  status:
+
+four:
+  id: 4
+  attendee_id: 6 
+  event_id: 2
+  status:

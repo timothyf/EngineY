@@ -14,15 +14,12 @@
 
 class ProfilePhotosController < ApplicationController
   
-  def new
-    @photo = ProfilePhoto.new
-  end
-  
-  
+  before_filter :login_required, :only => [:create]
+    
+    
   def create
     # remove old profile photos
     ProfilePhoto.delete_all("user_id = " + current_user.id.to_s + " AND is_profile = true")
-
     # save new photo
     @photo = ProfilePhoto.new(params[:profile_photo])
     @photo.user_id = current_user.id;

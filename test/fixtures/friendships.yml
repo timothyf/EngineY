@@ -16,12 +16,12 @@
 one:
    id: 1
    user_id: 1
-   friend_id: 2
+   friend_id: 7
    status: 'requested'
    
 two:
     id: 2
-    user_id: 2
+    user_id: 7
     friend_id: 1
     status: 'pending'    
 
@@ -40,12 +40,12 @@ four:
 five:
    id: 5
    user_id: 1
-   friend_id: 4
+   friend_id: 8
    status: 'accepted'
    
 six:
   id: 6
-  user_id: 4
+  user_id: 8
   friend_id: 1
   status: 'accepted'
       

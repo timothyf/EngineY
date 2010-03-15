@@ -20,23 +20,10 @@
 class MembershipsController < ApplicationController
   
   
-  # Show the members of a group
-  def index
-    puts 'IN INDEX' 
-    @memberships = Membership.find(:all) 
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml => @memberships }
-      format.json { render :json => @memberships }
-    end
-  end
-  
-  
   def show
     @membership = Membership.find(params[:id]) 
     if @membership
       respond_to do |format|
-        format.html
         format.xml { render :xml => @membership } 
         format.json { render :json => @membership } 
       end
