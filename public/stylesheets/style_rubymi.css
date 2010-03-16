@@ -20,12 +20,9 @@ body {
 }
 
 #footer {
-	background-color:#3F484B !important;
-	background-color:#aa2f2f !important;
 	background-color:#8c0600 !important;
 	color:#FFFFFF;
 	float:left;
-	font-size:0.95em;
 	padding:7px;
 	width:941px;
 }
@@ -34,22 +31,23 @@ body {
 	border: none;
 }
 
-.nav_list_link {
+#nav_list .nav_list_item a, #nav_list_right .nav_list_item a:visited {
 	color: white;
-}
-
-.nav_list_link:visited {
-	color: white;
-}
-
-#nav_list #current_menu a, #nav_list_right #current_menu a {
-	color: black;
 }
 
 .current_menu {
 	background-color: #BED6E3;
 }
 
+.widget_content {
+	padding-bottom: 0px;
+}
+
+.column_2 {
+	float: left;
+	padding:0 5px;
+	width:490px;
+}
 
 
 
