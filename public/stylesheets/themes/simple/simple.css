@@ -45,6 +45,10 @@ body {
 	width:430px;
 }
 
+.profile .column_2 {
+	width: 490px;
+}
+
 .nav_list_link {
 	color: black;
 }
