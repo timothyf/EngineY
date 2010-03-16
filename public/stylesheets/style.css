@@ -2,7 +2,6 @@ body {
 	margin: 0;
 	margin-bottom: 25px;
 	padding: 0;
-	background: url(/images/rubymi_bg2.gif);
 	font-family:"Lucida Grande","Lucida Sans Unicode",Arial,clean,sans-serif;
 	font-size: 8pt;
 	color: #333;
@@ -15,16 +14,15 @@ a, a:visited {
 #content {
 	margin: auto;
 	width: 955px;
-	background: url(/images/xg-v3.gif) repeat-y;
 }
 
 #header {
 	color: #283F4B;
-	height: 164px;
+	height: 60px;
 }
 
 #header #masthead {
-	height: 120px;
+	height: 10px;
 }
 
 #header #navigation {
@@ -39,7 +37,6 @@ a, a:visited {
 }
 
 #main {
-	background: #BED6E3 url(/images/xg-v2.gif) repeat-y;
 	min-height:400px;
 	padding:10px 0 10px 10px;
 	width:945px;
