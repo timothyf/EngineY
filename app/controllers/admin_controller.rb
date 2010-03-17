@@ -190,6 +190,18 @@ class AdminController < ApplicationController
   end
   
   
+  # Display the Forums tab of the Admin page.
+  def forums
+    @page = 'forums'
+    respond_to do |format|
+      format.html {
+        @forum_topics = ForumTopic.find(:all)
+        @forum_posts = ForumPost.find(:all)
+      }
+    end
+  end
+  
+  
   def blog_post_edit
     @blog_post = BlogPost.find(params[:id])
     render 'blog_post_form'

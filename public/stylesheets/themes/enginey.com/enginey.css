@@ -1,0 +1,13 @@
+#footer {
+	background-color: white !important;
+	color: black;
+	float:left;
+	padding:7px;
+	width:941px;
+}
+
+#footer a, #footer a:visited {
+	color: black;
+}
+
+

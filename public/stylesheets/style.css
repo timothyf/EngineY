@@ -75,7 +75,6 @@ a, a:visited {
 	margin-bottom: 10px;
 	display: block;
 	position: relative;
-	background-color: #BED6E3;
 }
 
 .module_head, .module_body, .module_foot {
@@ -105,10 +104,25 @@ a, a:visited {
 .module_foot {
 	padding: 3px 5px;
 	text-align: right;
+	border-top: 1px solid #BED6E3
 }
 
 .module_foot a, .module_foot a:visited {
 	color: #283F4B;
+}
+
+.module_foot .foot_left {
+	float: left;
+	margin-left: 5px;
+}
+
+.module_foot .foot_right {
+	float: right;
+	margin-right:5px;
+}
+
+.module_foot a, .module_foot a img, .module_body a img {
+	border: none;
 }
 
 .col1 {
@@ -396,20 +410,6 @@ a, a:visited {
 	color: gray;
 }
 
-.module_body a img {
-	border: 0;
-}
-
-.module_foot .foot_left {
-	float: left;
-	margin-left: 5px;
-}
-
-.module_foot .foot_right {
-	float: right;
-	margin-right:5px;
-}
-
 .photo_display {
 	float: left;
 	padding: 5px;
@@ -619,10 +619,6 @@ a, a:visited {
 
 .link_poster {
 	font-style: italic;	
-}
-
-.module_foot a, .module_foot a img {
-	border: none;
 }
 
 .project_name a, .announcement_name a {

@@ -1,11 +1,24 @@
 class FollowsController < ApplicationController
 
+  before_filter :login_required, :except => [:index, :show]
+
+
   def index
-    @follows = Follow.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @follows }
-      format.json { render :json => @follows }
+    user = User.find(params[:user_id])
+    if params[:type] == 'followers'
+      @follows = user.followers
+      respond_to do |format|
+        format.html {  } 
+        format.xml  { render :xml => @follows }
+        format.json { render :json => @follows }
+      end
+    elsif params[:type] == 'followees'
+      @follows = user.followees
+      respond_to do |format|
+        format.html {  } 
+        format.xml  { render :xml => @follows }
+        format.json { render :json => @follows }
+      end
     end
   end
 
@@ -20,18 +33,11 @@ class FollowsController < ApplicationController
   end
 
 
-  def new
-    @follow = Follow.new
-  end
-
-
-  def edit
-    @follow = Follow.find(params[:id])
-  end
-
-
   def create
     @follow = Follow.new(params[:follow])
+    followee_id = params[:followee_id] 
+    @follow = Follow.new(:follower_id => current_user.id,
+                         :followee_id => followee_id)
     respond_to do |format|
       if @follow.save
         flash[:notice] = 'Follow was successfully created.'
@@ -73,4 +79,6 @@ class FollowsController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  
 end

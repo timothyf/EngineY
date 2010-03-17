@@ -1,1 +1,2 @@
-Put information about your theme here
+This template is intended to duplicate a Twitter look-and-feel.
+It is still incomplete and not functional.

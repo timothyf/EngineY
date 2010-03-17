@@ -41,6 +41,9 @@ class User < ActiveRecord::Base
   has_many :pending_friends, :through => :friendships, :source => :friend, :conditions => "status = 'pending'", :order=>"friendships.created_at"
   has_many :friendships, :dependent => :destroy
   
+  has_many :followers, :class_name => 'Follow', :foreign_key => 'followee_id', :order => 'created_at DESC'
+  has_many :followees, :class_name => 'Follow', :foreign_key => 'follower_id', :order => 'created_at DESC'
+  
   belongs_to :state
   belongs_to :country
   has_one :profile_photo, :conditions => [ 'is_profile = ?', true ], :dependent => :destroy
@@ -102,6 +105,13 @@ class User < ActiveRecord::Base
       return self.status_posts[0]
     end
     nil
+  end
+  
+  
+  # Creates a follows relationship between this user and someone he wishes to follow
+  def follow(followee_id)
+    Follow.create(:follower_id => id,
+                  :followee_id => followee_id)
   end
   
   

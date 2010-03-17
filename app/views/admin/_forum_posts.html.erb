@@ -1,0 +1,48 @@
+<style>
+	table#forum_posts th, table#forum_posts td {
+		text-align: left;
+	}
+	
+	table#forum_posts th.center_col, table#forum_posts td.center_col {
+		text-align: center;
+	}
+	
+	#content {
+		width: 900px;
+	}	
+</style>
+
+<h2 class="ic-db">Forum Posts</h2>
+<table id="forum_posts">
+	<thead>
+		<th width="30px">ID</th>
+		<th width="170px">Title</th>
+		<th width="50px" class="center_col">Parent ID</th>
+		<th width="50px" class="center_col">Topic ID</th>
+		<th width="50px" class="center_col">User ID</th>
+		<th width="50px">Featured</th>
+		<th width="120px">Created</th>
+		<th width="120px">Updated</th>
+		<th width="50px">Views</th>
+		<th width="200px">Actions</th>
+	</thead>
+	<tbody>
+		<% @forum_posts.each do |post| %>
+			<tr>
+				<td><%= post.id %></td>
+				<td><%= post.title %></td>
+				<td class="center_col"><%= post.parent_id %></td>
+				<td class="center_col"><%= post.forum_topic_id %></td>
+				<td class="center_col"><%= post.user_id %></td>
+				<td><%= post.featured %></td>
+				<td><%= post.created_at.to_s(:basic) %></td>
+				<td><%= post.updated_at.to_s(:basic) %></td>
+				<td class="center_col"><%= post.views %></td>
+				<td>
+					<%= link_to 'Edit', '/admin/forum_post_edit?id=' + post.id.to_s %> |
+					<%= link_to 'Delete', '/admin/forum_post_delete?id=' + post.id.to_s, :confirm => 'Are you sure you want to delete this forum post?' %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -1,18 +1,41 @@
+<style>
+	table#events th, table#events td {
+		text-align: left;
+	}
+	
+	#content {
+		width: 900px;
+	}	
+</style>
+
 <h2 class="ic-db">Events</h2>
-<div class="pad-lr">
-	<%= jqgrid("Site Events", "events", "/admin/events",
-		[
-			{ :field => "id", :label => "ID", :width => 35, :resizable => false },
-			{ :field => "name", :label => "Name", :width => 200, :editable => true },
-			{ :field => "start_time", :label => "Start Time", :width => 180, :editable => true },
-			{ :field => "end_time", :label => "End Time", :width => 180, :editable => true },
-			{ :field => "location", :label => "Location", :width => 150, :editable => true },
-			{ :field => "organizer", :label => "Organizer", :width => 150, :editable => true }
-		],
-		{ :height => 300, :rows_per_page => 30, :add => true, 
-   		  :edit => true, :inline_edit => false, 
-		  :delete => true, :edit_url => "/admin/post_group_data" }
-	)%>
-</div>
+<%= link_to 'Add Event', '/admin/event_new' %>
+<table id="events">
+	<thead>
+		<th width="50px">ID</th>
+		<th width="190px">Name</th>
+		<th width="150px">Start Time</th>
+		<th width="150px">End Time</th>
+		<th width="150px">Location</th>
+		<th width="100px">Organizer</th>
+		<th width="200px">Actions</th>
+	</thead>
+	<tbody>
+		<% @events.each do |event| %>
+			<tr>
+				<td><%= event.id %></td>
+				<td><%= event.name %></td>
+				<td><%= event.start_time.to_s(:basic) %></td>
+				<td><%= event.end_time.to_s(:basic) %></td>
+				<td><%= event.location %></td>
+				<td><%= event.organized_by %></td>
+				<td>
+					<%= link_to 'Edit', '/admin/event_edit?id=' + event.id.to_s %> |
+					<%= link_to 'Delete', '/admin/event_delete?id=' + event.id.to_s, :confirm => 'Are you sure you want to delete this event?' %> |
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
 
 

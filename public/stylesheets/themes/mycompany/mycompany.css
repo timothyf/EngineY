@@ -19,6 +19,10 @@ body {
 	background: #BED6E3 url(/images/xg-v3.gif) repeat-y;
 }
 
+#header #masthead {
+	height: 120px;
+}
+
 #footer {
 	background-color:#669999 !important;
 	color:#FFFFFF;
@@ -44,10 +48,27 @@ body {
 	color: black;
 }
 
+#nav_list .nav_list_item a, #nav_list_right .nav_list_item a:visited {
+	color: white;
+}
+
 .current_menu {
 	background-color: #BED6E3;
 }
 
+.widget_content {
+	padding-bottom: 0px;
+}
+
+.column_2 {
+	float: left;
+	padding:0 5px;
+	width:490px;
+}
+
+.profile .column_2 {
+	width: 540px;
+}
 
 
 

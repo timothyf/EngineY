@@ -1,11 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  
   map.resources :follows
-
   map.resources :contents
   map.resources :facebook_posts
   map.resources :ideas
   map.resources :invites
-
   map.resources :classifieds
   map.resources :projects
   map.resources :links
@@ -66,6 +65,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |user|
     user.resources :activities
     user.resources :friends
+    user.resources :follows
     user.resources :announcements
     user.resources :book_reviews
     user.resources :groups

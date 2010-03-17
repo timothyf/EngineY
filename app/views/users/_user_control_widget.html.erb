@@ -43,6 +43,11 @@ limitations under the License.
 						<%= link_to 'Friends', user_friends_path(current_user) %><br/>
 						<%= link_to 'Edit Profile', edit_user_path(current_user) %><br/>
 					</div>
+					<% if current_user.is_admin %>
+						<div style="float:left;clear:both;width: 100%;padding-top: 5px;">
+							Current Theme: <%= link_to Theme.find(:first).name, '/admin/settings' %>
+						</div>
+					<% end %>
 				</div>
 				<div style="clear:both;"></div>
 			<% end %>

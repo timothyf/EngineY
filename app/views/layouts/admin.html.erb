@@ -12,6 +12,8 @@
 		<%= jqgrid_stylesheets %> 
 		<%= jqgrid_javascripts %>
 		
+		<%= include_tiny_mce_if_needed %>
+		
 	</head>
 	<body>
 		<div class="push"></div>
@@ -35,11 +37,13 @@
 					</div>
 					<%= yield %>
 				</div>
-				<div id="sidebar">
-					<%= render '/admin/quick_stats' %><br/><br/>
-					<%= render '/admin/quick_tasks' %><br/><br/><br/><br/>
-					<%= render '/admin/twitter_widget' %>
-				</div>
+				<% if @page == 'dashboard' %>
+					<div id="sidebar">
+						<%= render '/admin/quick_stats' %><br/><br/>
+						<%= render '/admin/quick_tasks' %><br/><br/><br/><br/>
+						<%= render '/admin/twitter_widget' %>
+					</div>
+				<% end %>
 			</div>
 		</div>
 	</body>
