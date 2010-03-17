@@ -2,17 +2,15 @@ require 'test_helper'
 
 class FollowsControllerTest < ActionController::TestCase
   
+  def setup
+    login_as :quentin
+  end
+  
   
   test "should get index" do
-    get :index
+    get :index, :user_id => 1, :type => 'followers'
     assert_response :success
     assert_not_nil assigns(:follows)
-  end
-
-
-  test "should get new" do
-    get :new
-    assert_response :success
   end
 
 
@@ -30,12 +28,6 @@ class FollowsControllerTest < ActionController::TestCase
   end
 
 
-  test "should get edit" do
-    get :edit, :id => follows(:one).to_param
-    assert_response :success
-  end
-
-
   test "should update follow" do
     put :update, :id => follows(:one).to_param, :follow => { }
     assert_redirected_to follow_path(assigns(:follow))
@@ -48,4 +40,6 @@ class FollowsControllerTest < ActionController::TestCase
     end
     assert_redirected_to follows_path
   end
+  
+  
 end

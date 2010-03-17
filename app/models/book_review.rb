@@ -14,17 +14,12 @@
 
 class BookReview < ActiveRecord::Base
   
+  include Streamable 
+  acts_as_streamable
+  
   acts_as_taggable_on :tags
   
   belongs_to :user
-  
-  
-  after_create :log_activity
-  
-  
-  def log_activity
-    Activity.create!(:item => self, :user => self.user)
-  end
 
   
 end

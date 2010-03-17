@@ -50,7 +50,7 @@ class AdminController < ApplicationController
       }
       format.json { 
         users = User.find(:all) do
-          if params[:_search] == "true"
+          if contains_search(params)
             login =~ "%#{params[:login]}%" if params[:login].present?
             first_name =~ "%#{params[:first_name]}%" if params[:first_name].present?
             last_name  =~ "%#{params[:last_name]}%" if params[:last_name].present?                
@@ -75,7 +75,7 @@ class AdminController < ApplicationController
       format.json { 
         @page = 'users'
         admins = User.find(:all, :conditions => ['role_id = ? OR role_id = ?', Role.creator.id, Role.admin.id], :joins => :permissions) do
-          if params[:_search] == "true"
+          if contains_search(params)
             login =~ "%#{params[:login]}%" if params[:login].present?
             first_name =~ "%#{params[:first_name]}%" if params[:first_name].present?
             last_name  =~ "%#{params[:last_name]}%" if params[:last_name].present?                
@@ -103,7 +103,7 @@ class AdminController < ApplicationController
       }
       format.json { 
         groups = Group.find(:all) do
-          if params[:_search] == "true"
+          if contains_search(params)
             name =~ "%#{params[:name]}%" if params[:name].present?
             featured =~ "%#{params[:featured]}%" if params[:featured].present?   
             creator_id =~ "%#{params[:creator_id]}%" if params[:creator_id].present? 
@@ -146,7 +146,7 @@ class AdminController < ApplicationController
       }
       format.json { 
         events = Event.find(:all) do
-          if params[:_search] == "true"
+          if contains_search(params)
             name =~ "%#{params[:name]}%" if params[:name].present?
             start_time =~ "%#{params[:start_time]}%" if params[:start_time].present?    
             end_time =~ "%#{params[:end_time]}%" if params[:end_time].present?   
@@ -171,7 +171,7 @@ class AdminController < ApplicationController
       }
       format.json { 
         blog_posts = BlogPost.find(:all) do
-          if params[:_search] == "true"
+          if contains_search(params)
             user_id     =~ "%#{params[:user_id]}%"    if params[:user_id].present?
             title       =~ "%#{params[:title]}%"      if params[:title].present?    
             parent_id   =~ "%#{params[:parent_id]}%"  if params[:parent_id].present?   
@@ -445,5 +445,11 @@ class AdminController < ApplicationController
     # clear activation code (prevents user from showing up as pending user)
     # send out rejection notification
   end
+  
+  private
+  def contains_search(params)
+    params[:_search] == "true"
+  end
+  
   
 end

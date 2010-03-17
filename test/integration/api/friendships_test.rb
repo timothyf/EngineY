@@ -26,10 +26,10 @@ class FriendshipsTest < ActionController::IntegrationTest
     friends = JSON.parse(response.body) 
     assert friends.size == 1, 'Incorrect number of friends expected'
     
-    assert friends[0]['id'] == 2, 'Incorrect friend id'
-    assert friends[0]['login'] == 'aaron', 'Incorrect friend login'
-    assert friends[0]['first_name'] == 'aaron', 'Incorrect friend first name' 
-    assert friends[0]['last_name'] == 'test', 'Incorrect friend last name'
+    assert friends[0]['id'] == 7, 'Incorrect friend id'
+    assert friends[0]['login'] == 'user7', 'Incorrect friend login'
+    assert friends[0]['first_name'] == 'Test7', 'Incorrect friend first name' 
+    assert friends[0]['last_name'] == 'User', 'Incorrect friend last name'
   end
   
   

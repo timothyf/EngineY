@@ -26,12 +26,13 @@
 #
 
 class Membership < ActiveRecord::Base
-  include Streamable
+  
+  include Streamable 
+  acts_as_streamable
+  
   belongs_to :user
   belongs_to :group
   belongs_to :role
-  
-  after_create :log_activity
 
 
   # Returns a count of the number of users that are in groups

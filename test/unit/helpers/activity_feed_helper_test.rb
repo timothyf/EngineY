@@ -28,7 +28,7 @@ class ActivityFeedHelperTest < ActionView::TestCase
   def test_photo_activity
     message = activity_feed_message(activities(:photo_act))
     assert_not_nil message
-    assert message.include?('<a href="/users/1">quentin test</a> uploaded a photo - <a href="/photos/1"><img alt="Test_small"')
+    assert message.include?('<a href="http://test.host/users/1">quentin test</a> uploaded a photo - <a href="/photos/1"><img alt="Test_small"')
   end
   
   

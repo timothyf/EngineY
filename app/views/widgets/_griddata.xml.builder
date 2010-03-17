@@ -1,7 +1,7 @@
 xml.instruct! :xml, :version=>"1.0", :encoding=>"UTF-8"
 xml.rows do
   xml.page params[:page]
-    xml.total_pages (@widgets.size.to_i / params[:rows].to_i)
+    xml.total_pages(@widgets.size.to_i / params[:rows].to_i)
   xml.records{@widgets.size}
   @widgets.each do |w|
     xml.row :id=>w.id do

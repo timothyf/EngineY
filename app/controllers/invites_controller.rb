@@ -34,20 +34,19 @@ class InvitesController < ApplicationController
 
 
   def create
-    @invite = Invite.new(params[:invite])
-    @invite.user = current_user
-    @invite.accepted = false
-    @invite.invite_code = Invite.generate_invite_code
-    
-    # see if recipient has already been invited by this user
+    @invite = Invite.new(params[:invite])   
     if Invite.find_by_email(@invite.email)
+      # recipient has already been invited by this user
       respond_to do |format|
         flash[:notice] = 'You have already invited this user.'
         format.html { render :action => "new" }
         format.xml  { render :status => :unprocessable_entity }
         format.json  { render :status => :unprocessable_entity }
       end
-    else        
+    else    
+      @invite.user = current_user
+      @invite.accepted = false
+      @invite.invite_code = Invite.generate_invite_code    
       respond_to do |format|
         if @invite.save
           flash[:notice] = 'Invite was successfully created.'

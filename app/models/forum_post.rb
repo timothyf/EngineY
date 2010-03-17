@@ -23,15 +23,15 @@
 #
 
 class ForumPost < ActiveRecord::Base
-  include Streamable
+  
+  include Streamable 
+  acts_as_streamable
     
   acts_as_taggable_on :tags
   
   belongs_to :user  
   belongs_to :forum_topic
   has_many :replies, :class_name => 'ForumPost', :foreign_key =>'parent_id'
-  
-  after_create :log_activity
   
   
   def short_form

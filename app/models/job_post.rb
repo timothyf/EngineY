@@ -13,6 +13,7 @@
 #   limitations under the License.
 
 class JobPost < ActiveRecord::Base
+  
   include Streamable 
   acts_as_streamable
   

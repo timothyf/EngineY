@@ -56,13 +56,8 @@ class Group < ActiveRecord::Base
   
   
   def log_activity
-    Group.log_activity(self)
+    Activity.create!(:item => self, :user => self.creator)
   end
-  
-  class << self
-    def log_activity(group)
-      Activity.create!(:item => group, :user => group.creator)
-    end
-  end
+    
   
 end
