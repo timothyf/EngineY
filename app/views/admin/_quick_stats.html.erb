@@ -3,7 +3,9 @@
 	<p>
 		Community Name <i><b><%= Network.find(:first).name %></b></i><br/>
 		Created on <i><b><%= Network.find(:first).created_at.to_s(:event_brief) %></b></i>
-		Current Theme <i><b><%= Theme.find(:first).name %></b></i>
+		<% if Theme.find(:first) %>
+			Current Theme <i><b><%= Theme.find(:first).name %></b></i>
+		<% end %>
 	</p>
 	<p>
 		Users: <strong><%= User.count %></strong><br>

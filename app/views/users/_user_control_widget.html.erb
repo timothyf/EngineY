@@ -45,7 +45,9 @@ limitations under the License.
 					</div>
 					<% if current_user.is_admin %>
 						<div style="float:left;clear:both;width: 100%;padding-top: 5px;">
-							Current Theme: <%= link_to Theme.find(:first).name, '/admin/settings' %>
+							<% if Theme.find(:first) %>
+								Current Theme: <%= link_to Theme.find(:first).name, '/admin/settings' %>
+							<% end %>
 						</div>
 					<% end %>
 				</div>

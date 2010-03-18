@@ -1,4 +1,10 @@
 
+#production:
+#    adapter: mysql
+#    database: enginey_production
+#    username: timothyf
+#    password: 
+#    host: db.fisherfamily.com
 
 development:
   adapter: mysql
