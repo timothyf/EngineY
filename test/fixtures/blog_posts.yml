@@ -27,7 +27,6 @@ one:
    published_at:
    guid: 12345
    
-#
 two:
    id: 2
    user_id: 1
@@ -39,4 +38,17 @@ two:
    url: http://www.blogpost2.com
    published_at:
    guid: 123456
+
+three:
+    id: 3
+    user_id: 1
+    title: Test Post 3
+    body: Test Body 3
+    published: false
+    featured: false
+    summary: Blog Post Summary 3
+    url: http://www.blogpost3.com
+    published_at:
+    guid: 123456
+   
 

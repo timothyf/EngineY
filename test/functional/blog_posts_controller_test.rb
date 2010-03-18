@@ -15,6 +15,8 @@ class BlogPostsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:blog_posts)
+    assert_not_nil assigns(:blog_post_count)
+    assert assigns(:blog_post_count) == 2, 'Incorrect blog post count, should not include unpublished'
   end
 
 

@@ -73,7 +73,7 @@ class BlogPostsController < ApplicationController
     else
       # show paginated view of all blog posts
       @blog_posts = BlogPost.paginate(:all, :page => params[:page], :order => 'created_at DESC') 
-      @blog_post_count = BlogPost.count
+      @blog_post_count = BlogPost.count(:conditions => "published = true")
     end
     respond_to do |format|
       format.html { render :template=>'blog_posts/blog_posts_list' } 
