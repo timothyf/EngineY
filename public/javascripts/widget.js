@@ -90,15 +90,18 @@ Widget = function(name, content_id, col_num, type) {
 	this.content_id = content_id;
 	this.type = type;
 	this.col_num = col_num;
+	this.retry_count = 0;
 	
-	
-	this.load = function(){
-		if (this.content_id) {
-			this.name = this.name + this.content_id;
+	this.load = function() {
+		if (this.retry_count == 0) {
+			if (this.content_id) {
+				this.name = this.name + this.content_id;
+			}
+
+			// create a DOM node to hold the returned content before requesting it
+			// this will help hold its place on the page
+			this.create_widget_node();
 		}
-		// create a DOM node to hold the returned content before requesting it
-		// this will help hold its place on the page
-		this.create_widget_node();
 		var url;
 		var content;
 		if (this.type == 'home') {
@@ -123,7 +126,14 @@ Widget = function(name, content_id, col_num, type) {
 			content: content,
 			error: (function(widget_obj){
 				return function(data){
-					widget_load_error(widget_obj.name, data);
+					widget_obj.retry_count += 1;
+					if (widget_obj.retry_count > 1 ) {
+						widget_load_error(widget_obj.name, data);
+					}
+					else {
+						// try reloading
+						widget_obj.load();
+					}
 				}
 			})(this),
 			load: (function(widget_obj){
@@ -164,5 +174,6 @@ Widget = function(name, content_id, col_num, type) {
 		dojo.byId(widget_name).innerHTML = '<div class="cant_load">Did not load widget:<br/><i>' + widget_name + '</i><br/>Try refreshing the page</div>';
 		// add code to retry widget load
 	}
+	
 };
 

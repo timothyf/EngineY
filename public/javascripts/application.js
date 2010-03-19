@@ -187,16 +187,16 @@ function status_post_saved(data) {
 	refresh_profile_widget('status_posts_profile');
 }
 
-function get_profile_widget(content) {
+function get_widget(content, url, widget_name) {
 	dojo.xhrGet({
-		url: '/widgets/load_profile_widget',
+		url: url,
 	    timeout: 10000, // give up after 10 seconds
 		content: content,
 		error: function (data) {
-			widget_load_error('activity_feed_profile', data);
+			widget_load_error(widget_name, data);
 		},
 		load: function (data) {
-			widget_loaded('activity_feed_profile', data);
+			widget_loaded(widget_name, data);
 		}
 	});
 }
@@ -209,15 +209,15 @@ function filter_activities() {
 	var include_friends = dojo.byId('friends_checkbox').checked;
 	if (status == true && include_friends == true) {
 		content = { name:'activity_feed_profile', only_statuses:'true', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token };
-		get_profile_widget(content);
+		get_widget(content, '/widgets/load_profile_widget', 'activity_feed_profile');
 	}
 	else if (status == true) {
 		content = { name:'activity_feed_profile', only_statuses:'true', user_id:user_id, authenticity_token:authenticity_token };
-		get_profile_widget(content);
+		get_widget(content, '/widgets/load_profile_widget', 'activity_feed_profile');
 	}
 	else if (include_friends == true) {
 		content = { name:'activity_feed_profile', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token };
-		get_profile_widget(content);
+		get_widget(content, '/widgets/load_profile_widget', 'activity_feed_profile');
 	}
 	else {
 		refresh_profile_widget('activity_feed_profile')
@@ -230,13 +230,8 @@ function filter_activities() {
 function only_friends_activities() {
 	var include_friends = dojo.byId('friends_checkbox').checked;
 	if (include_friends == true) {
-		dojo.xhrGet({
-			url: '/widgets/load',
-		    timeout: 10000, // give up after 10 seconds
-		    content: { name:'activity_feed_home', include_friends:'true', authenticity_token:authenticity_token },
-			error: function (data) {widget_load_error('activity_feed_home', data);},
-			load: function (data) {widget_loaded('activity_feed_home', data);}
-		});	
+		content = { name:'activity_feed_home', include_friends:'true', authenticity_token:authenticity_token };
+		get_widget(content, '/widgets/load', 'activity_feed_home');
 	}
 	else {
 		refresh_home_widget('activity_feed_home')
@@ -251,15 +246,15 @@ function friends_activities() {
 	var include_friends = dojo.byId('friends_checkbox').checked;
 	if (status == true && include_friends == true) {
 		content = { name:'activity_feed_profile', only_statuses:'true', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token };
-		get_profile_widget(content);
+		get_widget(content, '/widgets/load_profile_widget', 'activity_feed_profile');
 	}
 	else if (include_friends == true) {
 		content = { name:'activity_feed_profile', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token };
-		get_profile_widget(content);
+		get_widget(content, '/widgets/load_profile_widget', 'activity_feed_profile');
 	}
 	else if (status == true) {
 		content = { name:'activity_feed_profile', only_statuses:'true', user_id:user_id, authenticity_token:authenticity_token };
-		get_profile_widget(content);	
+		get_widget(content, '/widgets/load_profile_widget', 'activity_feed_profile');	
 	}
 	else {
 		refresh_profile_widget('activity_feed_profile')
