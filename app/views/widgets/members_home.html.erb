@@ -46,7 +46,7 @@ limitations under the License.
 			<% if user.profile_photo %>
 				<%= link_to image_tag(user.profile_photo.public_filename(:small), :alt=>user.name), user_url(user) %>
 			<% else %>
-				<%= link_to '<div class="no_photo_user_widget"></div>', user_url(user) %>
+				<%= link_to '<div class="no_photo_user_widget">No Photo</div>', user_url(user) %>
 			<% end %>
 		</div>
 		<% if count%4 == 0 && count != @users.length %>

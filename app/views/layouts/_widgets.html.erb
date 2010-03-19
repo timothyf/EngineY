@@ -1,0 +1,11 @@
+<script type="text/javascript">
+	<% if @home_widgets && @home_widgets.length > 0 %>
+		var widgets = init_widgets('<%= @home_widgets %>', 'home');
+	<% elsif @profile_widgets && @profile_widgets.length > 0 %>
+		var widgets = init_widgets('<%= @profile_widgets %>', 'profile');
+		var user_id = <%= @user.id %>;
+	<% else %>
+		var widgets = [];
+		var user_id = 0;
+	<% end %>
+</script>

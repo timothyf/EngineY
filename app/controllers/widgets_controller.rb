@@ -45,6 +45,9 @@ class WidgetsController < ApplicationController
       if params[:include_friends]
         include_friends = true
       end
+      if params[:only_statuses]
+        only_statuses = true
+      end
       render :template=>'widgets/'+ @widget_name, :locals=>{:include_friends=>include_friends}, :layout => 'widget'
     end
   end
@@ -56,14 +59,24 @@ class WidgetsController < ApplicationController
     # get name of widget to load
     @widget_name = params[:name]
     user_id = params[:user_id]
-    if params[:include_friends]
-      include_friends = true
+    content_id = params[:content_id]  # HTML widgets also pass a content_id which is used to identify content in the db 
+    if content_id
+      @content = HtmlContent.find_by_content_id(content_id)
+      if !@content
+        # create content
+        HtmlContent.create(:title=>'New Content', :body=>'Add Some Content', :content_id=>content_id)
+        @content = HtmlContent.find_by_content_id(content_id)
+      end
+      render :template=>'widgets/html_content_home', :layout => 'widget'
+    else
+      if params[:include_friends]
+        include_friends = true
+      end
+      if params[:only_statuses]
+        only_statuses = true
+      end
+      render :template=>'widgets/' + @widget_name, :locals=>{:include_friends=>include_friends, :only_statuses=>only_statuses, :user_id=>user_id}, :layout => 'widget'
     end
-    if params[:only_statuses]
-      only_statuses = true
-    end
-    # render widget
-    render :template=>'widgets/' + @widget_name, :locals=>{:include_friends=>include_friends, :only_statuses=>only_statuses, :user_id=>user_id}, :layout => 'widget'
   end
 
 

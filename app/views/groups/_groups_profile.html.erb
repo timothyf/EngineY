@@ -31,7 +31,11 @@ limitations under the License.
 		<% unless @user.groups.empty? %>
 			<% @user.groups.each do |group| %>
 				<div class="user_group">
-					<%= link_to image_tag(group.profile_photo.public_filename(:small)), group_path(group.id) %>
+					<% if group.profile_photo %>
+						<%= link_to image_tag(group.profile_photo.public_filename(:small)), group_path(group.id) %>
+					<% else %>
+						<%= link_to 'No Photo', group_path(group.id) %>
+					<% end %>
 				</div>
 			<% end %>
 		<% end %>

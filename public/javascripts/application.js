@@ -1,18 +1,3 @@
-/*
-Copyright 2009 Timothy Fisher
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
- */
 
 dojo.addOnLoad(site_init);
 
@@ -26,8 +11,6 @@ function site_init() {
 		page_init();
 	}
 }
-
-
 
 function $(id) {
 	return document.getElementById(id);	
@@ -204,24 +187,18 @@ function status_post_saved(data) {
 	refresh_profile_widget('status_posts_profile');
 }
 
-function refresh_profile_widget(widget_name) {
+function get_profile_widget(content) {
 	dojo.xhrGet({
 		url: '/widgets/load_profile_widget',
-	    timeout: 10000, // give up after 3 seconds
-	    content: { name:widget_name, user_id:user_id, authenticity_token:authenticity_token },
-		error: function (data) {widget_load_error(widget_name, data);},
-		load: function (data) {widget_loaded(widget_name, data);}
-	});		
-}
-
-function refresh_home_widget(widget_name) {
-	dojo.xhrGet({
-		url: '/widgets/load',
-	    timeout: 10000, // give up after 3 seconds
-	    content: { name:widget_name, user_id:user_id, authenticity_token:authenticity_token },
-		error: function (data) {widget_load_error(widget_name, data);},
-		load: function (data) {widget_loaded(widget_name, data);}
-	});		
+	    timeout: 10000, // give up after 10 seconds
+		content: content,
+		error: function (data) {
+			widget_load_error('activity_feed_profile', data);
+		},
+		load: function (data) {
+			widget_loaded('activity_feed_profile', data);
+		}
+	});
 }
 
 /*
@@ -231,31 +208,16 @@ function filter_activities() {
 	var status = dojo.byId('status_checkbox').checked;
 	var include_friends = dojo.byId('friends_checkbox').checked;
 	if (status == true && include_friends == true) {
-		dojo.xhrGet({
-			url: '/widgets/load_profile_widget',
-		    timeout: 10000, // give up after 10 seconds
-		    content: { name:'activity_feed_profile', only_statuses:'true', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token },
-			error: function (data) {widget_load_error('activity_feed_profile', data);},
-			load: function (data) {widget_loaded('activity_feed_profile', data);}
-		});	
+		content = { name:'activity_feed_profile', only_statuses:'true', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token };
+		get_profile_widget(content);
 	}
 	else if (status == true) {
-		dojo.xhrGet({
-			url: '/widgets/load_profile_widget',
-		    timeout: 10000, // give up after 10 seconds
-		    content: { name:'activity_feed_profile', only_statuses:'true', user_id:user_id, authenticity_token:authenticity_token },
-			error: function (data) {widget_load_error('activity_feed_profile', data);},
-			load: function (data) {widget_loaded('activity_feed_profile', data);}
-		});	
+		content = { name:'activity_feed_profile', only_statuses:'true', user_id:user_id, authenticity_token:authenticity_token };
+		get_profile_widget(content);
 	}
 	else if (include_friends == true) {
-		dojo.xhrGet({
-			url: '/widgets/load_profile_widget',
-		    timeout: 10000, // give up after 10 seconds
-		    content: { name:'activity_feed_profile', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token },
-			error: function (data) {widget_load_error('activity_feed_profile', data);},
-			load: function (data) {widget_loaded('activity_feed_profile', data);}
-		});	
+		content = { name:'activity_feed_profile', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token };
+		get_profile_widget(content);
 	}
 	else {
 		refresh_profile_widget('activity_feed_profile')
@@ -288,31 +250,16 @@ function friends_activities() {
 	var status = dojo.byId('status_checkbox').checked;
 	var include_friends = dojo.byId('friends_checkbox').checked;
 	if (status == true && include_friends == true) {
-		dojo.xhrGet({
-			url: '/widgets/load_profile_widget',
-		    timeout: 10000, // give up after 10 seconds
-		    content: { name:'activity_feed_profile', only_statuses:'true', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token },
-			error: function (data) {widget_load_error('activity_feed_profile', data);},
-			load: function (data) {widget_loaded('activity_feed_profile', data);}
-		});	
+		content = { name:'activity_feed_profile', only_statuses:'true', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token };
+		get_profile_widget(content);
 	}
 	else if (include_friends == true) {
-		dojo.xhrGet({
-			url: '/widgets/load_profile_widget',
-		    timeout: 10000, // give up after 10 seconds
-		    content: { name:'activity_feed_profile', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token },
-			error: function (data) {widget_load_error('activity_feed_profile', data);},
-			load: function (data) {widget_loaded('activity_feed_profile', data);}
-		});	
+		content = { name:'activity_feed_profile', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token };
+		get_profile_widget(content);
 	}
 	else if (status == true) {
-		dojo.xhrGet({
-			url: '/widgets/load_profile_widget',
-		    timeout: 10000, // give up after 10 seconds
-		    content: { name:'activity_feed_profile', only_statuses:'true', user_id:user_id, authenticity_token:authenticity_token },
-			error: function (data) {widget_load_error('activity_feed_profile', data);},
-			load: function (data) {widget_loaded('activity_feed_profile', data);}
-		});	
+		content = { name:'activity_feed_profile', only_statuses:'true', user_id:user_id, authenticity_token:authenticity_token };
+		get_profile_widget(content);	
 	}
 	else {
 		refresh_profile_widget('activity_feed_profile')
