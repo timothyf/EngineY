@@ -4,7 +4,7 @@ function init_widgets(json, type) {
 	var widgets = [];
 	for (i=0; i<widgets_js.length; i++) {
 		var widg = widgets_js[i];
-		widgets.push(new Widget(widg.name, widg.content_id, widg.col_num, type));
+		widgets.push(new Widget(widg.widget_name, widg.content_id, widg.col_num, type));
 	}
 	return widgets;
 }
@@ -127,7 +127,7 @@ Widget = function(name, content_id, col_num, type) {
 			error: (function(widget_obj){
 				return function(data){
 					widget_obj.retry_count += 1;
-					if (widget_obj.retry_count > 1 ) {
+					if (widget_obj.retry_count > 2 ) {
 						widget_load_error(widget_obj.name, data);
 					}
 					else {

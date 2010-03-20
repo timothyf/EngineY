@@ -30,7 +30,7 @@ limitations under the License.
 						<% if current_user.profile_photo %>
 							<%= link_to image_tag(current_user.profile_photo.public_filename(:small), :alt=>current_user.name), user_url(current_user) %>
 						<% else %>
-							<%= link_to current_user.name, user_url(current_user) %>
+							<%= link_to '<div class="no_photo_user_widget"></div>', user_url(current_user) %>
 						<% end %>
 					</div>
 					<div style="float:left;margin-left:25px;margin-top:-4px;">

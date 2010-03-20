@@ -227,6 +227,11 @@
 	width: 100%;
 }
 
+#required_fields .form_field {
+	clear: both;
+	float: left;
+}
+
 .form_field select {
 	float: left;
 }

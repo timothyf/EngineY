@@ -78,8 +78,8 @@ namespace :railsnet do
                     :password=>'jsmith',
                     :password_confirmation=>'jsmith'
       user.save
-      user.set_temp_photo()
-      user.save
+      #user.set_temp_photo()
+      #user.save
       user.activate
       user.make_group_admin(1)
       #user.roles << Role.find_by_rolename('user')
@@ -97,8 +97,8 @@ namespace :railsnet do
                     :password=>'pedwards',
                     :password_confirmation=>'pedwards'
       user2.save
-      user2.set_temp_photo
-      user2.save
+      #user2.set_temp_photo
+      #user2.save
       user2.activate
       #user2.make_group_admin(1)
       
@@ -117,8 +117,8 @@ namespace :railsnet do
                       :password=>'testuser',
                       :password_confirmation=>'testuser'
         user3.save
-        user3.set_temp_photo
-        user3.save
+        #user3.set_temp_photo
+        #user3.save
         user3.activate
       end
       puts ''
@@ -360,6 +360,58 @@ namespace :railsnet do
       puts 'Closing file streams...'
       GROUP_PHOTO_1.close
       GROUP_PHOTO_2.close
+      
+      ##########################################################################
+      # Create Widgets   
+      puts 'Creating widgets...'
+      Widget.create(:name => 'members_home')
+      Widget.create(:name => 'groups_home')
+      Widget.create(:name => 'events_home')
+      Widget.create(:name => 'announcements_home')
+      Widget.create(:name => 'activity_feed_home')
+      Widget.create(:name => 'blog_posts_home')
+      Widget.create(:name => 'links_home')
+      Widget.create(:name => 'projects_home')
+      Widget.create(:name => 'job_posts_home')
+      Widget.create(:name => 'forum_posts_home')
+      Widget.create(:name => 'photos_home')
+      Widget.create(:name => 'html_content_home')
+      
+      Widget.create(:name => 'status_posts_profile')
+      Widget.create(:name => 'about_me_profile')
+      Widget.create(:name => 'blog_posts_profile')
+      Widget.create(:name => 'activity_feed_profile')
+      Widget.create(:name => 'links_profile')
+      Widget.create(:name => 'projects_profile')
+
+      ##########################################################################
+      # Create Pages
+      puts 'Creating pages...'
+      Page.create(:title => 'home')
+      Page.create(:title => 'profile')
+      
+      ##########################################################################
+      # Create Layouts
+      puts 'Creating layouts...'
+      WidgetLayout.create(:widget_id => 1, :page_id => 1, :col_num => 1)
+      WidgetLayout.create(:widget_id => 2, :page_id => 1, :col_num => 1)
+      WidgetLayout.create(:widget_id => 3, :page_id => 1, :col_num => 1)
+      WidgetLayout.create(:widget_id => 4, :page_id => 1, :col_num => 2)
+      WidgetLayout.create(:widget_id => 5, :page_id => 1, :col_num => 2)
+      WidgetLayout.create(:widget_id => 6, :page_id => 1, :col_num => 2)
+      WidgetLayout.create(:widget_id => 7, :page_id => 1, :col_num => 2)
+      WidgetLayout.create(:widget_id => 8, :page_id => 1, :col_num => 2)
+      WidgetLayout.create(:widget_id => 9, :page_id => 1, :col_num => 3)
+      WidgetLayout.create(:widget_id => 10, :page_id => 1, :col_num => 3)
+      WidgetLayout.create(:widget_id => 11, :page_id => 1, :col_num => 3)
+      #WidgetLayout.create(:widget_id => 12, :page_id => 1, :col_num => 3)
+      
+      WidgetLayout.create(:widget_id => 13, :page_id => 2, :col_num => 2)
+      WidgetLayout.create(:widget_id => 14, :page_id => 2, :col_num => 2)
+      WidgetLayout.create(:widget_id => 15, :page_id => 2, :col_num => 2)
+      WidgetLayout.create(:widget_id => 16, :page_id => 2, :col_num => 2)
+      WidgetLayout.create(:widget_id => 17, :page_id => 2, :col_num => 3)
+      WidgetLayout.create(:widget_id => 18, :page_id => 2, :col_num => 3)
       
       puts 'Database population done!'
     end

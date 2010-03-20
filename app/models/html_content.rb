@@ -27,6 +27,6 @@
 
 class HtmlContent < ActiveRecord::Base
   
-  belongs_to :widget
+  has_many :widgets
   
 end

@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :widget_layouts
+
+  map.resources :layouts
+
   
   map.resources :follows
   map.resources :contents

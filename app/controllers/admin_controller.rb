@@ -40,6 +40,13 @@ class AdminController < ApplicationController
   end
   
   
+  def pages
+    @widgets = Widget.find(:all)
+    @layouts = WidgetLayout.find(:all)
+    @pages = Page.find(:all) 
+  end
+  
+  
   # Display the Users tab of the Admin page.
   def users
     @page = 'users'
@@ -199,6 +206,12 @@ class AdminController < ApplicationController
         @forum_posts = ForumPost.find(:all)
       }
     end
+  end
+  
+  
+  def forum_topic_new
+    @forum_topic = ForumTopic.new
+    render 'forum_topic_form'
   end
   
   

@@ -1,0 +1,18 @@
+<h1>Listing widget_layouts</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @widget_layouts.each do |widget_layout| %>
+  <tr>
+    <td><%= link_to 'Show', widget_layout %></td>
+    <td><%= link_to 'Edit', edit_widget_layout_path(widget_layout) %></td>
+    <td><%= link_to 'Destroy', widget_layout, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New widget_layout', new_widget_layout_path %>

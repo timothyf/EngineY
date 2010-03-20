@@ -317,6 +317,13 @@ a, a:visited {
 .no_photo_user_widget {
 	width: 48px;
 	height: 48px;
+	background-image: url(../images/nophoto_small.png);
+}
+
+.no_photo_member {
+	width: 96px;
+	height: 96px;
+	background-image: url(../images/nophoto_member.png);
 }
 
 .user_widget_user {
@@ -749,5 +756,9 @@ a, a:visited {
 	margin-left: 20px;
 	font-size: 10pt;
 	margin-top: 5px;
+}
+
+.api_key_text {
+	width: 300px;
 }
 

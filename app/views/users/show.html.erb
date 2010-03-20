@@ -21,7 +21,7 @@ limitations under the License.
 			<% if (@user.profile_photo) %>
 				<%= image_tag(@user.profile_photo.public_filename()) %>
 			<% else %>
-				<div class="no_photo_user"></div>
+				<div class="no_photo_member"></div>
 			<% end %>
 		</div>
 		<div id="user_detail" class="user_profile_section">

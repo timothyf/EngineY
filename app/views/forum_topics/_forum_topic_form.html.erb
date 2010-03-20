@@ -13,6 +13,21 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<label>Title</label>
-
-<label>Description</label>
+<% form_for(@forum_topic) do |f| -%>		
+	<%= f.error_messages %>
+	<% if defined? admin_page %>
+		<input type="hidden" name="admin_page" value="1" />
+	<% end %>
+	<div class="section_title">Forum Topic</div>
+	<div class="form_field">
+    	<label for="name">Title:</label>
+		<%= f.text_field :title, :class=>'input_field' %>
+	</div>
+	<div class="form_field">
+    	<label for="description">Description:</label>
+		<%= f.text_area :description, :cols=>40, :rows=>10, :class=>"mceEditor" %>
+	</div>
+	<div class="form_field">
+    	<%= f.submit "Save Topic", :class=>'add_button' %>
+  	</div>
+<% end %>

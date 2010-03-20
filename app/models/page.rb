@@ -24,6 +24,10 @@
 
 class Page < ActiveRecord::Base
   
+  has_many :widget_layouts
+  has_many :widgets, :through => :widget_layouts
+  
+  
   def before_create
     @attributes['permalink'] = title.downcase.gsub(/\s+/, '_').gsub(/[^a-zA-Z0-9_]+/, '')
   end

@@ -21,7 +21,7 @@ limitations under the License.
 				<% if u.profile_photo %>
 					<%= link_to image_tag(u.profile_photo.public_filename(:small), :alt=>u.name), user_path(u.id) %>
 				<% else %>
-					<%= link_to 'no photo', user_path(u.id) %>
+					<%= link_to '<div class="no_photo_user_widget"></div>', user_path(u.id) %>
 				<% end %>
 			</div>
 			<div class="requested_friend_task">

@@ -64,7 +64,13 @@ class ForumTopicsController < ApplicationController
     respond_to do |format|
       if @forum_topic.save
         flash[:notice] = 'ForumTopic was successfully created.'
-        format.html { redirect_to(@forum_topic) }
+        format.html { 
+          if params['admin_page']
+            redirect_to('/admin/forums')
+          else
+            redirect_to(@forum_topic) 
+          end
+         }
         format.xml  { render :xml => @forum_topic, :status => :created, :location => @forum_topic }
         format.json { render :json => @forum_topic.to_json, :status => :created, :location => @forum_topic} 
       else

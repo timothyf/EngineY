@@ -29,6 +29,11 @@
 	<% else %>
 		<li><a href="/admin/forums">Forums</a></li>
 	<% end %>
+	<% if @page == 'pages' %>
+		<li><a href="/admin/pages" class="active">Pages</a></li>
+	<% else %>
+		<li><a href="/admin/pages">Pages</a></li>
+	<% end %>
 	<% if @page == 'settings' %>
 		<li><a href="/admin/settings" class="active">Settings</a></li>
 	<% else %>

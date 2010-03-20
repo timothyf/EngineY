@@ -87,43 +87,4 @@ class Configuration
   end
   
   
-  # These are the widgets displayed on the home page
-  # For each column, the widgets are displayed in the order in which they are listed
-  @@home_widgets = nil
-  def self.home_widgets
-    @@home_widgets ||= [{'name'=>'members_home','col_num'=>'1'},
-                        {'name'=>'groups_home','col_num'=>'1'},
-                        {'name'=>'events_home','col_num'=>'1'},
-                        #{'name'=>'photos_home','col_num'=>'1'},
-                        {'name'=>'announcements_home','col_num'=>'2'},
-                        {'name'=>'activity_feed_home','col_num'=>'2'},
-                        {'name'=>'blog_posts_home','col_num'=>'2'},
-                        {'name'=>'links_home','col_num'=>'2'},
-                        {'name'=>'projects_home','col_num'=>'2'},
-                        #{'name'=>'html_content_home','col_num'=>'2','content_id'=>'2'},
-                        {'name'=>'job_posts_home','col_num'=>'3'},
-                        #{'name'=>'classifieds_home','col_num'=>'3'},
-                        {'name'=>'forum_posts_home','col_num'=>'3'},
-                        {'name'=>'photos_home','col_num'=>'3'},
-                        #{'name'=>'sponsors_home','col_num'=>'3'},
-                        {'name'=>'html_content_home','col_num'=>'3','content_id'=>'1'}
-                        ].to_json
-  end
-  
-  
-  # These are the widgets displayed on a user's profile page
-  # For each column, the widgets are displayed in the order in which they are listed
-  @@profile_widgets = nil
-  def self.profile_widgets
-    @@profile_widgets ||= [{'name'=>'status_posts_profile','col_num'=>'2'},
-                           {'name'=>'about_me_profile','col_num'=>'2'},
-                           {'name'=>'blog_posts_profile','col_num'=>'2'},
-                           {'name'=>'activity_feed_profile','col_num'=>'2'},
-                           {'name'=>'links_profile','col_num'=>'3'},
-                           {'name'=>'projects_profile','col_num'=>'3'}
-                         #  {'name'=>'classifieds_profile','col_num'=>'3'}
-                          ].to_json 
-  end
-  
-  
 end

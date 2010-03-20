@@ -130,7 +130,6 @@ class User < ActiveRecord::Base
                               :email => email,
                               :facebook_id => fb_user.uid.to_i,
                               :activated_at => Time.now.utc) 
-    new_facebooker.set_temp_photo   # set profile photo
     new_facebooker.save(false)  # save without validations since no password is used
     new_facebooker.register_user_to_fb
     log_activity(new_facebooker)
@@ -308,20 +307,18 @@ class User < ActiveRecord::Base
       self.profile_photo = ProfilePhoto.create!(:user_id=>id, 
                                                 :is_profile=>true, 
                                                 :uploaded_data => photo) 
-    else
-      set_temp_photo
     end 
   end
   
   
-  def set_temp_photo
-     my_profile_photo = ProfilePhoto.create :is_profile => true, 
-                         :temp_path => File.new(RAILS_ROOT + "/public/images/nophoto.png"), 
-                         :filename => 'nophoto.png', 
-                         :content_type => 'image/png',
-                         :user => self
-     self.profile_photo = my_profile_photo             
-  end
+#  def set_temp_photo
+#     my_profile_photo = ProfilePhoto.create :is_profile => true, 
+#                         :temp_path => File.new(RAILS_ROOT + "/public/images/nophoto.png"), 
+#                         :filename => 'nophoto.png', 
+#                         :content_type => 'image/png',
+#                         :user => self
+#     self.profile_photo = my_profile_photo             
+#  end
   
   
   # Return the site creator

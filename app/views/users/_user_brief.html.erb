@@ -18,7 +18,7 @@ limitations under the License.
 		<% if user.profile_photo %>
 			<%= link_to image_tag(user.profile_photo.public_filename(:member), :alt=>user.name), user_url(user) %>
 		<% else %>
-			<br/><br/>No Photo
+			<div class="no_photo_member"></div>
 		<% end %>
 	</div>
 	<div class="user_brief_text">

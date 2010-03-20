@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100309211720) do
+ActiveRecord::Schema.define(:version => 20100319210113) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -17,12 +17,6 @@ ActiveRecord::Schema.define(:version => 20100309211720) do
     t.integer  "item_id"
     t.string   "item_type"
     t.string   "action"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "activity_types", :force => true do |t|
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -219,10 +213,8 @@ ActiveRecord::Schema.define(:version => 20100309211720) do
   create_table "html_contents", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.integer  "widget_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "content_id"
   end
 
   create_table "ideas", :force => true do |t|
@@ -253,6 +245,15 @@ ActiveRecord::Schema.define(:version => 20100309211720) do
     t.text     "description"
     t.boolean  "featured"
     t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "layouts", :force => true do |t|
+    t.integer  "page_id"
+    t.integer  "widget_id"
+    t.integer  "col_num"
+    t.integer  "row_num"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -498,19 +499,23 @@ ActiveRecord::Schema.define(:version => 20100309211720) do
     t.datetime "updated_at"
   end
 
+  create_table "widget_layouts", :force => true do |t|
+    t.integer  "page_id"
+    t.integer  "widget_id"
+    t.integer  "col_num"
+    t.integer  "row_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "widgets", :force => true do |t|
     t.string   "name"
     t.string   "title"
-    t.text     "body"
     t.boolean  "active"
-    t.integer  "page_order"
-    t.string   "path"
-    t.string   "index_url"
-    t.integer  "col_num"
-    t.boolean  "menu_item"
     t.boolean  "protected"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "html_content_id"
   end
 
 end

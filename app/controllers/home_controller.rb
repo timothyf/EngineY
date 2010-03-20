@@ -71,7 +71,7 @@ class HomeController < ApplicationController
       redirect_to :action => 'install'
     else
       @section = 'MAIN'
-      @home_widgets = Configuration.home_widgets;  
+      @page_name = 'home' 
       @photos = Photo.find(:all, :limit=>6, :select=>'id, parent_id, filename', :order=>'RAND()', :conditions => {:thumbnail => nil, :is_profile => nil})
     end
   end

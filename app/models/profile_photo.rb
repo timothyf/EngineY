@@ -46,6 +46,7 @@ class ProfilePhoto < Photo
   
   has_attachment :content_type => :image, 
                  :storage => :file_system, 
+                 #:storage => :s3,
                  :max_size => 50.megabyte,
                  :resize_to => '175x175',
                  :thumbnails => { :thumb => '32x32>', 

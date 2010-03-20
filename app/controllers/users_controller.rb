@@ -192,18 +192,19 @@ class UsersController < ApplicationController
   # Called to display a user page, including the 'My Page' page.
   # Most content loaded onto the page as AJAX widgets
   def show   
-    if (current_user && (current_user.id.to_s == params[:id].to_s))
-      @section = 'MY PAGE'
-    else 
-      @section = 'MEMBERS'
-    end
-    @profile_widgets = Configuration.profile_widgets; 
     @user = User.find(params[:id])
-    if @user.twitter_id && @user.display_tweets
-      @tweets = @user.fetch_tweets
-    end
     respond_to do |format|
-      format.html { }
+      format.html { 
+        if (current_user && (current_user.id.to_s == params[:id].to_s))
+          @section = 'MY PAGE'
+        else 
+          @section = 'MEMBERS'
+        end
+        @page_name = 'profile'
+        if @user.twitter_id && @user.display_tweets
+          @tweets = @user.fetch_tweets
+        end
+      }
       format.xml { render :xml => @user.to_xml(:dasherize => false) }
       format.json { render :json => @user.to_json }
     end
