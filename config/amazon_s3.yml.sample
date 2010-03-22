@@ -1,0 +1,14 @@
+development:
+bucket_name: enginey_development
+access_key_id: xxxxxxx
+secret_access_key: xxxxxxxxxxxx
+
+test:
+bucket_name: enginey_test
+access_key_id: xxxxxx
+secret_access_key: xxxxxxxxxxxx
+
+production:
+bucket_name: enginey_production
+access_key_id: xxxxxx
+secret_access_key: xxxxxxxxxxxx
