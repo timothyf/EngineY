@@ -30,16 +30,16 @@ limitations under the License.
 	</div>
 	<div class="head_right">
 		<div id="expand_collapse_btn" style="float:right;">
-			<a href="javascript:widget_change_display('<%= @widget_name %>')">
+			<a href="javascript:widget_change_display('<%= @layout.id %>')">
 				<img id="<%= @widget_name %>_collapse_img" src="images/collapse.png"/>
 			</a>
 		</div>	
 		<% if logged_in? %>
 			<span style="float:right;margin-right:10px;">
 				<% if include_friends %>
-					<input onclick="only_friends_activities()" type="checkbox" id="friends_checkbox" name="friends_checkbox" checked="checked"/>
+					<input onclick="only_friends_activities(<%= @layout.id %>)" type="checkbox" id="friends_checkbox" name="friends_checkbox" checked="checked"/>
 				<% else %>
-					<input onclick="only_friends_activities()" type="checkbox" id="friends_checkbox" name="friends_checkbox" />
+					<input onclick="only_friends_activities(<%= @layout.id %>)" type="checkbox" id="friends_checkbox" name="friends_checkbox" />
 				<% end %>
 				<label>Only Friends</label>
 			</span>

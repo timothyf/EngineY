@@ -22,11 +22,7 @@ limitations under the License.
 		<%= image_tag('calendar.png', :alt=>'events', :align=>'absmiddle')%>&nbsp;&nbsp;<%= widget_title %>
 	</div>
 	<div class="head_right">
-		<div id="expand_collapse_btn">
-			<a href="javascript:widget_change_display('<%= @widget_name %>')">
-				<img id="<%= @widget_name %>_collapse_img" src="images/collapse.png"/>
-			</a>
-		</div>	
+		<%= show_expand_collapse_btn %>	
 	</div>
 	<div style="clear:both;"></div>
 <% end %>

@@ -33,21 +33,21 @@ limitations under the License.
 	</div>
 	<div class="head_right">
 		<div id="expand_collapse_btn" style="float:right;">
-			<a href="javascript:widget_change_display('<%= @widget_name %>')">
+			<a href="javascript:widget_change_display('<%= @layout.id %>')">
 				<img id="<%= @widget_name %>_collapse_img" src="/images/collapse.png"/>
 			</a>
 		</div>	
 		<span style="float:right;margin-right:10px;">
 			<% if only_statuses %>
-				<input onclick="filter_activities()" type="checkbox" id="status_checkbox" name="status_checkbox" checked="checked" />
+				<input onclick="filter_activities(<%= @layout.id %>)" type="checkbox" id="status_checkbox" name="status_checkbox" checked="checked" />
 			<% else %>
-				<input onclick="filter_activities()" type="checkbox" id="status_checkbox" name="status_checkbox" />
+				<input onclick="filter_activities(<%= @layout.id %>)" type="checkbox" id="status_checkbox" name="status_checkbox" />
 			<% end %>
 			<label>Show only statuses</label>
 			<% if include_friends %>
-				<input onclick="friends_activities()" type="checkbox" id="friends_checkbox" name="friends_checkbox" checked="checked"/>
+				<input onclick="filter_activities(<%= @layout.id %>)" type="checkbox" id="friends_checkbox" name="friends_checkbox" checked="checked"/>
 			<% else %>
-				<input onclick="friends_activities()" type="checkbox" id="friends_checkbox" name="friends_checkbox" />
+				<input onclick="filter_activities(<%= @layout.id %>)" type="checkbox" id="friends_checkbox" name="friends_checkbox" />
 			<% end %>
 			<label>Include Friends</label>
 		</span>

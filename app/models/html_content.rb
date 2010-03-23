@@ -27,6 +27,6 @@
 
 class HtmlContent < ActiveRecord::Base
   
-  has_many :widgets
+  has_many :widget_layouts
   
 end

@@ -11,6 +11,7 @@
 <script type="text/javascript">
 	<% if @page_name == 'home' && layouts && layouts.length > 0 %>
 		var widgets = init_widgets('<%= layouts.to_json(:methods => :widget_name) %>', 'home');
+		var user_id = null;
 	<% elsif @page_name == 'profile' && layouts && layouts.length > 0 %>
 		var widgets = init_widgets('<%= layouts.to_json(:methods => :widget_name) %>', 'profile');
 		var user_id = <%= @user.id %>;

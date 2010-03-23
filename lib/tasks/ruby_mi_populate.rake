@@ -361,34 +361,41 @@ namespace :railsnet do
       GROUP_PHOTO_1.close
       GROUP_PHOTO_2.close
       
+      
+      ##########################################################################
+      # Create HTML Contents   
+      puts 'Creating managed content...'
+      HtmlContent.create(:title => 'sample_content',
+                         :body => 'This is an example of <b>managed content</b>.');
+      
       ##########################################################################
       # Create Widgets   
       puts 'Creating widgets...'
-      Widget.create(:name => 'members_home')
-      Widget.create(:name => 'groups_home')
-      Widget.create(:name => 'events_home')
-      Widget.create(:name => 'announcements_home')
-      Widget.create(:name => 'activity_feed_home')
-      Widget.create(:name => 'blog_posts_home')
-      Widget.create(:name => 'links_home')
-      Widget.create(:name => 'projects_home')
-      Widget.create(:name => 'job_posts_home')
-      Widget.create(:name => 'forum_posts_home')
-      Widget.create(:name => 'photos_home')
-      Widget.create(:name => 'html_content_home')
+      Widget.create(:name => 'members_home', :description => 'Display some members', :profile => false)
+      Widget.create(:name => 'groups_home', :description => 'Display some groups', :profile => false)
+      Widget.create(:name => 'events_home', :description => 'Display upcoming events', :profile => false)
+      Widget.create(:name => 'announcements_home', :description => 'Display recent announcements', :profile => false)
+      Widget.create(:name => 'activity_feed_home', :description => 'Display recent activities', :profile => false)
+      Widget.create(:name => 'blog_posts_home', :description => 'Display recent blog posts', :profile => false)
+      Widget.create(:name => 'links_home', :description => 'Display some links', :profile => false)
+      Widget.create(:name => 'projects_home', :description => 'Display some projects', :profile => false)
+      Widget.create(:name => 'job_posts_home', :description => 'Display recent job posts', :profile => false)
+      Widget.create(:name => 'forum_posts_home', :description => 'Display recent forum posts', :profile => false)
+      Widget.create(:name => 'photos_home', :description => 'Slide show of photos', :profile => false)
+      Widget.create(:name => 'html_content_home', :description => 'Managed Content Widget', :profile => false)
       
-      Widget.create(:name => 'status_posts_profile')
-      Widget.create(:name => 'about_me_profile')
-      Widget.create(:name => 'blog_posts_profile')
-      Widget.create(:name => 'activity_feed_profile')
-      Widget.create(:name => 'links_profile')
-      Widget.create(:name => 'projects_profile')
+      Widget.create(:name => 'status_posts_profile', :description => 'Display users status posts', :profile => true)
+      Widget.create(:name => 'about_me_profile', :description => 'Display users bio', :profile => true)
+      Widget.create(:name => 'blog_posts_profile', :description => 'Display users blog posts', :profile => true)
+      Widget.create(:name => 'activity_feed_profile', :description => 'Display users activities', :profile => true)
+      Widget.create(:name => 'links_profile', :description => 'Display users links', :profile => true)
+      Widget.create(:name => 'projects_profile', :description => 'Display users projects', :profile => true)
 
       ##########################################################################
       # Create Pages
       puts 'Creating pages...'
-      Page.create(:title => 'home')
-      Page.create(:title => 'profile')
+      Page.create(:title => 'home', :name => 'RubyMI Home')
+      Page.create(:title => 'profile', :name => 'User Profile')
       
       ##########################################################################
       # Create Layouts
@@ -404,7 +411,7 @@ namespace :railsnet do
       WidgetLayout.create(:widget_id => 9, :page_id => 1, :col_num => 3)
       WidgetLayout.create(:widget_id => 10, :page_id => 1, :col_num => 3)
       WidgetLayout.create(:widget_id => 11, :page_id => 1, :col_num => 3)
-      #WidgetLayout.create(:widget_id => 12, :page_id => 1, :col_num => 3)
+      WidgetLayout.create(:widget_id => 12, :page_id => 1, :col_num => 3, :html_content_id => 1)
       
       WidgetLayout.create(:widget_id => 13, :page_id => 2, :col_num => 2)
       WidgetLayout.create(:widget_id => 14, :page_id => 2, :col_num => 2)

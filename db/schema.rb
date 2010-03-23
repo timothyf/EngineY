@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100319210113) do
+ActiveRecord::Schema.define(:version => 20100322161553) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -296,9 +296,9 @@ ActiveRecord::Schema.define(:version => 20100319210113) do
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.string   "permalink"
-    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "permissions", :force => true do |t|
@@ -506,6 +506,7 @@ ActiveRecord::Schema.define(:version => 20100319210113) do
     t.integer  "row_num"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "html_content_id"
   end
 
   create_table "widgets", :force => true do |t|
@@ -515,7 +516,8 @@ ActiveRecord::Schema.define(:version => 20100319210113) do
     t.boolean  "protected"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "html_content_id"
+    t.text     "description"
+    t.boolean  "profile"
   end
 
 end

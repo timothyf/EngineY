@@ -1,85 +1,38 @@
 class WidgetLayoutsController < ApplicationController
-  # GET /widget_layouts
-  # GET /widget_layouts.xml
-  def index
-    @widget_layouts = WidgetLayout.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @widget_layouts }
+  # Called via an AJAX method to load a widget into a page
+  # This method returns a chunk of HTML which is then displayed in the
+  # appropriate position on the page using JavaScript.
+  # The views/widgets directory contains the template files that are used
+  # to define the widget views.  
+  # A template file that contains the text 'home' is a widget displayed on the home page.  
+  # A template file that contains the text 'profile' is a widget displayed on the profile page.
+  def load
+    layout_id = params[:layout_id]
+    if layout_id
+      @layout = WidgetLayout.find(layout_id) 
+      @widget_name = @layout.widget.name  
+    else
+      @widget_name = params[:name]
+      widget = Widget.find_by_name(@widget_name)
+      @layout = WidgetLayout.find_by_widget_id(widget.id)
     end
-  end
-
-  # GET /widget_layouts/1
-  # GET /widget_layouts/1.xml
-  def show
-    @widget_layout = WidgetLayout.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @widget_layout }
+    if @widget_name == 'status_posts_profile'
+      activity_widget = Widget.find_by_name('activity_feed_profile')
+      @activity_profile_layout_id = WidgetLayout.find_by_widget_id(activity_widget.id).id
     end
-  end
-
-  # GET /widget_layouts/new
-  # GET /widget_layouts/new.xml
-  def new
-    @widget_layout = WidgetLayout.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @widget_layout }
+    if @widget_name == 'html_content_home'
+      @content = HtmlContent.find(@layout.html_content_id)
     end
-  end
-
-  # GET /widget_layouts/1/edit
-  def edit
-    @widget_layout = WidgetLayout.find(params[:id])
-  end
-
-  # POST /widget_layouts
-  # POST /widget_layouts.xml
-  def create
-    @widget_layout = WidgetLayout.new(params[:widget_layout])
-
-    respond_to do |format|
-      if @widget_layout.save
-        flash[:notice] = 'WidgetLayout was successfully created.'
-        format.html { redirect_to(@widget_layout) }
-        format.xml  { render :xml => @widget_layout, :status => :created, :location => @widget_layout }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @widget_layout.errors, :status => :unprocessable_entity }
-      end
+    user_id = params[:user_id]
+    if params[:include_friends] && params[:include_friends] == 'true'
+      include_friends = true
     end
-  end
-
-  # PUT /widget_layouts/1
-  # PUT /widget_layouts/1.xml
-  def update
-    @widget_layout = WidgetLayout.find(params[:id])
-
-    respond_to do |format|
-      if @widget_layout.update_attributes(params[:widget_layout])
-        flash[:notice] = 'WidgetLayout was successfully updated.'
-        format.html { redirect_to(@widget_layout) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @widget_layout.errors, :status => :unprocessable_entity }
-      end
+    if params[:only_statuses] && params[:only_statuses] == 'true'
+      only_statuses = true
     end
-  end
 
-  # DELETE /widget_layouts/1
-  # DELETE /widget_layouts/1.xml
-  def destroy
-    @widget_layout = WidgetLayout.find(params[:id])
-    @widget_layout.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(widget_layouts_url) }
-      format.xml  { head :ok }
-    end
+    render :template=>'widgets/'+ @widget_name, :locals=>{:include_friends=>include_friends, :only_statuses=>only_statuses, :user_id=>user_id}, :layout => 'widget'
   end
+  
 end

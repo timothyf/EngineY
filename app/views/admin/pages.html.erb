@@ -1,5 +1,7 @@
 <style>
-	table#pages th, table#pages td {
+	table#pages th, table#pages td, table#widgets th, table#widgets td, 
+	table#layouts th, table#layouts td,
+	table#contents th, table#contents td {
 		text-align: left;
 	}
 	
@@ -9,10 +11,11 @@
 </style>
 
 <h2 class="ic-db">Pages</h2>
+<%= link_to 'Add Page', '/admin/page_new' %>
 <table id="pages">
 	<thead>
 		<th width="50px">ID</th>
-		<th width="170px">Title</th>
+		<th width="140px">Title</th>
 		<th width="300px">Actions</th>
 	</thead>
 	<tbody>
@@ -31,7 +34,82 @@
 
 
 <h2 class="ic-db">Widgets</h2>
-
+<%= link_to 'Add Widget', '/admin/widget_new' %>
+<table id="widgets">
+	<thead>
+		<th width="50px">ID</th>
+		<th width="160px">Name</th>
+		<th width="100px">Title</th>
+		<th width="300px">Actions</th>
+	</thead>
+	<tbody>
+		<% @widgets.each do |widget| %>
+			<tr>
+				<td><%= widget.id %></td>
+				<td><%= widget.name %></td>
+				<td><%= widget.title %></td>
+				<td>
+					<%= link_to 'Edit', '/admin/widget_edit?id=' + widget.id.to_s %> |
+					<%= link_to 'Delete', '/admin/widget_delete?id=' + widget.id.to_s, :confirm => 'Are you sure you want to delete this widget?' %> |
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
 
 <h2 class="ic-db">Layouts</h2>
+Layouts place widgets into specific positions on a page.  Selecting all the layouts for a particular
+page will determine the content for that page.<br/><br/>
+<%= link_to 'Add Layout', '/admin/layout_new' %>
+<table id="layouts">
+	<thead>
+		<th width="50px">ID</th>
+		<th width="100px">Page Title</th>
+		<th width="140px">Widget Name</th>
+		<th width="70px">Col Num</th>
+		<th width="70px">Row Num</th>
+		<th width="75px">HTML Content ID</th>
+		<th width="300px">Actions</th>
+	</thead>
+	<tbody>
+		<% @layouts.each do |layout| %>
+			<tr>
+				<td><%= layout.id %></td>
+				<td><%= layout.page.title %></td>
+				<td><%= layout.widget.name %></td>
+				<td><%= layout.col_num %></td>
+				<td><%= layout.row_num %></td>
+				<td><%= layout.html_content_id %></td>
+				<td>
+					<%= link_to 'Edit', '/admin/layout_edit?id=' + layout.id.to_s %> |
+					<%= link_to 'Delete', '/admin/layout_delete?id=' + layout.id.to_s, :confirm => 'Are you sure you want to delete this layout?' %> |
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
 
+<h2 class="ic-db">Contents</h2>
+<%= link_to 'Add Content', '/admin/content_new' %>
+<table id="contents">
+	<thead>
+		<th width="50px">ID</th>
+		<th width="100px">Title</th>
+		<th width="300px">Actions</th>
+	</thead>
+	<tbody>
+		<% @html_contents.each do |content| %>
+			<tr>
+				<td><%= content.id %></td>
+				<td><%= content.title %></td>
+				<td>
+					<%= link_to 'Edit', '/admin/content_edit?id=' + content.id.to_s %> |
+					<%= link_to 'Delete', '/admin/content_delete?id=' + content.id.to_s, :confirm => 'Are you sure you want to delete this content?' %> |
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<% if @html_contents.length == 0 %>
+	No HTML Contents have been created.
+<% end %>

@@ -1,9 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :widget_layouts
-
-  map.resources :layouts
-
-  
   map.resources :follows
   map.resources :contents
   map.resources :facebook_posts
@@ -22,7 +17,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :networks
   map.resource :api_key
 
-  map.resources :widgets, :collection => {:grid_data=>:get, :load=>:get, :load_profile_widget=>:get}
+  map.resources :widget_layouts, :collection => {:load => :get}
+  map.resources :widgets, :collection => {:grid_data=>:get, :load=>:get}
   map.resources :users, :collection => {:grid_data=>:get, :link_facebook_account => :get, :fb_register_all_users => :get}
   map.resources :forum_posts, :collection => {:grid_data=>:get}
   map.resources :blog_posts, :collection => {:publish=>:get}
@@ -48,7 +44,6 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'wall_posts/delete', :controller=>'wall_posts', :action=>'destroy'
   
   
-  map.resources :pages
   map.resources :videos
   map.resources :blogs
   map.resources :blog_posts
@@ -106,6 +101,8 @@ ActionController::Routing::Routes.draw do |map|
     a.resource :theme
     a.resources :domain_themes
   end
+  
+  map.connect 'pages/show/:title', :controller => 'pages', :action => 'show'
 
   # The priority is based upon order of creation: first created -> highest priority.
 

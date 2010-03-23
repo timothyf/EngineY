@@ -170,95 +170,47 @@ function show_blog_drafts() {
 }
 
 function post_status(event) {
-    //event.preventDefault();
-    //event.stopPropagation();
+	activity_layout_id = dojo.byId('status_post_entry_form').activity_layout_id.value;
+	layout_id = dojo.byId('status_post_entry_form').layout_id.value;
 	dojo.xhrPost({
 	    form: "status_post_entry_form",
 	    timeout: 3000, // give up after 3 seconds
 	    content: { authenticity_token:authenticity_token },
-		load: function (data) {status_post_saved(data);}
+		load: function (data) {status_post_saved(data, layout_id, activity_layout_id);}
 	});
 }
 
 // Called after new status successfully posted to server
 // now we want to refresh the activity stream and activity post widgets to reflect new content
-function status_post_saved(data) {
-	refresh_profile_widget('activity_feed_profile');
-	refresh_profile_widget('status_posts_profile');
-}
-
-function get_widget(content, url, widget_name) {
-	dojo.xhrGet({
-		url: url,
-	    timeout: 10000, // give up after 10 seconds
-		content: content,
-		error: function (data) {
-			widget_load_error(widget_name, data);
-		},
-		load: function (data) {
-			widget_loaded(widget_name, data);
-		}
-	});
+function status_post_saved(data, layout_id, activity_layout_id) {
+	find_layout_by_id(layout_id).load();
+	find_layout_by_id(activity_layout_id).load();
 }
 
 /*
  * Called when the Only Statuses checkbox is checked in the activity stream of a users profile page.
  */
-function filter_activities() {
+function filter_activities(layout_id) {
 	var status = dojo.byId('status_checkbox').checked;
 	var include_friends = dojo.byId('friends_checkbox').checked;
-	if (status == true && include_friends == true) {
-		content = { name:'activity_feed_profile', only_statuses:'true', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token };
-		get_widget(content, '/widgets/load_profile_widget', 'activity_feed_profile');
-	}
-	else if (status == true) {
-		content = { name:'activity_feed_profile', only_statuses:'true', user_id:user_id, authenticity_token:authenticity_token };
-		get_widget(content, '/widgets/load_profile_widget', 'activity_feed_profile');
-	}
-	else if (include_friends == true) {
-		content = { name:'activity_feed_profile', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token };
-		get_widget(content, '/widgets/load_profile_widget', 'activity_feed_profile');
-	}
-	else {
-		refresh_profile_widget('activity_feed_profile')
-	}
+	
+	var only_statuses = (status == true ? 'true':'false')
+	var include_friends = (include_friends == true ? 'true':'false')
+	
+	var layout = find_layout_by_id(layout_id);
+	layout.properties = {only_statuses:only_statuses, include_friends:include_friends};
+	layout.load();
 }
 
 /*
  * Called when the Only Friends checkbox is checked in the activity stream on the home page.
  */
-function only_friends_activities() {
-	var include_friends = dojo.byId('friends_checkbox').checked;
-	if (include_friends == true) {
-		content = { name:'activity_feed_home', include_friends:'true', authenticity_token:authenticity_token };
-		get_widget(content, '/widgets/load', 'activity_feed_home');
-	}
-	else {
-		refresh_home_widget('activity_feed_home')
-	}
-}
-
-/*
- * Called when the Include Friends checkbox is checked in the activity stream of a user's profile page.
- */
-function friends_activities() {
-	var status = dojo.byId('status_checkbox').checked;
-	var include_friends = dojo.byId('friends_checkbox').checked;
-	if (status == true && include_friends == true) {
-		content = { name:'activity_feed_profile', only_statuses:'true', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token };
-		get_widget(content, '/widgets/load_profile_widget', 'activity_feed_profile');
-	}
-	else if (include_friends == true) {
-		content = { name:'activity_feed_profile', include_friends:'true', user_id:user_id, authenticity_token:authenticity_token };
-		get_widget(content, '/widgets/load_profile_widget', 'activity_feed_profile');
-	}
-	else if (status == true) {
-		content = { name:'activity_feed_profile', only_statuses:'true', user_id:user_id, authenticity_token:authenticity_token };
-		get_widget(content, '/widgets/load_profile_widget', 'activity_feed_profile');	
-	}
-	else {
-		refresh_profile_widget('activity_feed_profile')
-	}
+function only_friends_activities(layout_id) {
+	var include_friends = dojo.byId('friends_checkbox').checked;	
+	var include_friends = (include_friends == true ? 'true':'false')	
+	var layout = find_layout_by_id(layout_id);
+	layout.properties = {include_friends:include_friends};
+	layout.load();
 }
 
 function add_new_topic() {

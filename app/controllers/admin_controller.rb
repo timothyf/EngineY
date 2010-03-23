@@ -44,6 +44,7 @@ class AdminController < ApplicationController
     @widgets = Widget.find(:all)
     @layouts = WidgetLayout.find(:all)
     @pages = Page.find(:all) 
+    @html_contents = HtmlContent.find(:all) 
   end
   
   

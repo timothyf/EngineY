@@ -34,7 +34,6 @@
 
 class Widget < ActiveRecord::Base
   
-  belongs_to :html_content
   has_many  :widget_layouts
   
 end

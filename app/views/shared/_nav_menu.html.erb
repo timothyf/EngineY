@@ -36,7 +36,7 @@ end
 			<li class="nav_list_item"><%= link_to 'Main', root_url, :class=>'nav_list_link' %></li>
 		<% end %>
 		<% if logged_in? %>
-			<% if @section == 'MY PAGE' %>
+			<% if @section == 'profile' %>
 				<li id="current_menu" class="nav_list_item current_menu"><%= link_to 'My Page', user_path(current_user), :class=>'nav_list_link' %></li>
 			<% else %>
 				<% if (current_user) %>

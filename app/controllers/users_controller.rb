@@ -196,7 +196,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { 
         if (current_user && (current_user.id.to_s == params[:id].to_s))
-          @section = 'MY PAGE'
+          @section = 'profile'
         else 
           @section = 'MEMBERS'
         end
