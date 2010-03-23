@@ -11,7 +11,7 @@ Currently the www.rubymi.org site is running on Dreamhost which is not an ideal 
 frequent outages.  I apologize in advance for that.  
 
 
-Installation
+== Installation
 
 EngineY requires the rmagick gem. To correctly install that gem along with the correct version of Imagemagick for your platform see this FAQ:
 http://rmagick.rubyforge.org/install-faq.html
