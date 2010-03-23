@@ -1,13 +1,14 @@
 == Welcome to EngineY
-EngineY is an easy to use social network framework implemented in Ruby on Rails that is easy to customize and deploy as your own powerful and feature packed social media site. Empower users with their own blogs. Enhance collaboration with forums, groups and events. Let your users post Twitter-like status messages. Track all the activity on your site with a live activity stream. Build a custom client to access all of your social data using EngineY's RESTful API.
+While originally designed to be a social networking framework allowing users to easily build a social network site, EngineY has become something much greater.  It now has full Content Management capabilities and features similar to a full portal, such as the popular Java Portals like Liferay.  
+
+EngineY is implemented in Ruby on Rails and is easy to customize and deploy as your own powerful and feature packed social media site. Empower users with their own blogs. Enhance collaboration with forums, groups and events. Let your users post Twitter-like status messages. Track all the activity on your site with a live activity stream. Build a custom client to access all of your social data using EngineY's RESTful API.
 
 
 == Getting Started
 
 To see an example of a running instance of EngineY, visit the Michigan Ruby Community at http://www.rubymi.org
 Currently the www.rubymi.org site is running on Dreamhost which is not an ideal host for Rails apps and thus has
-frequent outages.  I apologize in advance for that.  Unfortunately the EngineY development budget is on a shoestring
-right now.
+frequent outages.  I apologize in advance for that.  
 
 
 Installation
