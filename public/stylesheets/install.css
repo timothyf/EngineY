@@ -88,3 +88,18 @@ textarea {
 .notice {
 	font-size: 12pt;
 }
+
+#sample_data {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+}
+
+#sample_data label {
+	float: left;
+}
+
+#sample_data input {
+	float: left;
+	margin-top: 13px;
+}

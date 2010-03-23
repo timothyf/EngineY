@@ -15,7 +15,9 @@ limitations under the License.
 %>
 <% widget_title = "Photos" %>
 
-<% @photos = Photo.find(:all, :limit=>6, :order=>'RAND()', :conditions => {:thumbnail => nil, :is_profile => nil}) %>
+<% @photos = Photo.find(:all, :limit=>6, 
+						:order => Photo.connection.adapter_name == 'PostgreSQL' ? 'RANDOM()' : 'RAND()',
+						:conditions => {:thumbnail => nil, :is_profile => nil}) %>
 
 <% content_for :module_header do %>
 	<div class="head_left">

@@ -75,7 +75,11 @@ page will determine the content for that page.<br/><br/>
 		<% @layouts.each do |layout| %>
 			<tr>
 				<td><%= layout.id %></td>
-				<td><%= layout.page.title %></td>
+				<% if layout.page %>
+					<td><%= layout.page.title %></td>
+				<% else %>
+					<td>null</td>
+				<% end %>
 				<td><%= layout.widget.name %></td>
 				<td><%= layout.col_num %></td>
 				<td><%= layout.row_num %></td>

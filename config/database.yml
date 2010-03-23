@@ -6,6 +6,7 @@
 #    password: 
 #    host: db.fisherfamily.com
 
+# MYSQL
 development:
   adapter: mysql
   database: enginey_development
@@ -19,6 +20,23 @@ test:
   username: root
   password:  
   host: localhost
+  
 
+# POSTGRES
+#development:
+#  adapter: postgresql
+#  database: enginey_development
+#  username: postgres
+#  password: postgres
+#  host: localhost
+#  encoding: UTF8
+
+#test:
+#  adapter: postgresql
+#  database: enginey_test
+#  username: postgres
+#  password: postgres
+#  host: localhost
+#  encoding: UTF8
 
 

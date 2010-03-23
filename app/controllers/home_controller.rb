@@ -50,10 +50,15 @@ class HomeController < ApplicationController
         network.save
         network.init_network()     
         user1.save     
-        user1.set_temp_photo
-        user1.save
         user1.activate
         user1.roles << Role.find_by_rolename('creator')
+        
+        if params[:sample_data_input]
+          network.create_sample_users(10)
+          network.create_sample_groups
+          network.create_sample_layouts
+        end
+        
   
         # redirect to network home page (/home/index)
         redirect_to :action => 'index'   
@@ -72,7 +77,10 @@ class HomeController < ApplicationController
     else
       @section = 'MAIN'
       @page_name = 'home' 
-      @photos = Photo.find(:all, :limit=>6, :select=>'id, parent_id, filename', :order=>'RAND()', :conditions => {:thumbnail => nil, :is_profile => nil})
+      @photos = Photo.find(:all, :limit=>6, 
+                           :select=>'id, parent_id, filename', 
+                           :order => Photo.connection.adapter_name == 'PostgreSQL' ? 'RANDOM()' : 'RAND()',
+                           :conditions => {:thumbnail => nil, :is_profile => nil})
     end
   end
   

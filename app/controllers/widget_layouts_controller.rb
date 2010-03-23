@@ -31,8 +31,59 @@ class WidgetLayoutsController < ApplicationController
     if params[:only_statuses] && params[:only_statuses] == 'true'
       only_statuses = true
     end
-
     render :template=>'widgets/'+ @widget_name, :locals=>{:include_friends=>include_friends, :only_statuses=>only_statuses, :user_id=>user_id}, :layout => 'widget'
+  end
+  
+  
+  def create
+    @widget_layout = WidgetLayout.new(params[:widget_layout])
+    respond_to do |format|
+      if @widget_layout.save
+        flash[:notice] = 'WidgetLayout was successfully created.'
+        format.html { 
+          if params['admin_page']
+            redirect_to('/admin/pages')
+          else
+            redirect_to(@widget_layout) 
+          end  
+        }
+        format.xml  { render :xml => @widget_layout, :status => :created, :location => @widget_layout }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @widget_layout.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+
+  def update
+    @widget_layout = WidgetLayout.find(params[:id])
+    respond_to do |format|
+      if @widget_layout.update_attributes(params[:widget_layout])
+        flash[:notice] = 'WidgetLayout was successfully updated.'
+        format.html { 
+          if params['admin_page']
+            redirect_to('/admin/pages')
+          else
+            redirect_to(@widget_layout) 
+          end  
+         }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @widget_layout.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+
+  def destroy
+    @widget_layout = WidgetLayout.find(params[:id])
+    @widget_layout.destroy
+    respond_to do |format|
+      format.html { redirect_to(widget_layouts_url) }
+      format.xml  { head :ok }
+    end
   end
   
 end

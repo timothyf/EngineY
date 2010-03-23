@@ -210,6 +210,37 @@ class AdminController < ApplicationController
   end
   
   
+  def content_new
+    @html_content = HtmlContent.new
+    render 'html_content_form'
+  end
+  
+  
+  def content_edit
+    @html_content = HtmlContent.find(params[:id])
+    render 'html_content_form'
+  end
+  
+  
+  def layout_new
+    @widget_layout = WidgetLayout.new
+    render 'widget_layout_form'
+  end
+  
+  
+  def layout_edit
+    @widget_layout = WidgetLayout.find(params[:id])
+    render 'widget_layout_form'
+  end
+  
+  
+  def layout_delete
+    @layout = WidgetLayout.find(params[:id])
+    @layout.destroy
+    redirect_to '/admin/pages'
+  end
+  
+  
   def forum_topic_new
     @forum_topic = ForumTopic.new
     render 'forum_topic_form'

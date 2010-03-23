@@ -38,7 +38,7 @@
 class Event < ActiveRecord::Base
   
   has_many :attendances, :dependent => :destroy
-  has_many :attendees, :through => :attendances, :order=>'RAND()' 
+  has_many :attendees, :through => :attendances, :order => Event.connection.adapter_name == 'PostgreSQL' ? 'RANDOM()' : 'RAND()'
   
   has_one     :profile_photo
   belongs_to  :user  # the creator

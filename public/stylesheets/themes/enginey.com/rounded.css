@@ -1,0 +1,34 @@
+/* set the image to use and establish the lower-right position */
+.cssbox, .cssbox_body, .cssbox_head, .cssbox_head h4{
+  background: transparent url(../../../images/enginey.com/img.php.png) no-repeat bottom right}
+  
+.cssbox{
+/* intended total box width - padding-right(next) */
+  width:335px; /* IE Win = width - padding */
+  width: 320px; 
+/* the gap on the right edge of the image (not content padding) */
+  padding-right:15px; /* use to position the box */
+  margin:20px auto}
+
+/* set the top-right image */
+.cssbox_head{background-position:top right;
+/* pull the right image over on top of border */
+  margin-right:-15px; 
+/* right-image-gap + right-inside padding */
+  padding-right:40px}
+
+/* set the top-left image */
+.cssbox_head h4{
+  background-position:top left;
+  margin:0; /* reset main site styles*/ 
+  border:0; /* ditto */
+/* padding-left = image gap + interior padding ... no padding-right */
+  padding:0px 0 15px 40px; 
+  height:auto !important;
+  height:1%} /* IE Holly Hack */
+
+/* set the lower-left corner image */
+.cssbox_body{
+  background-position:bottom left;
+  margin-right:25px; /* interior-padding right */ 
+  padding:15px 0 15px 40px} /* mirror .cssbox_head right/left */

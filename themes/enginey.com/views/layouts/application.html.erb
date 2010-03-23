@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        	
+<html> 
+<head> 
+	<title>EngineY - Social Framework</title> 
+	<%= stylesheet_link_tag "themes/enginey.com/rounded.css" %>
+	<%= stylesheet_link_tag "themes/enginey.com/style.css" %>
+
+	<script type="text/javascript" src="/javascripts/dojo/release/dojo/dojo/dojo.js" djConfig="isDebug:false, parseOnLoad: true"></script>
+	<script type="text/javascript" src="/javascripts/dojo/release/dojo/dojo/mydojo.js"></script>
+	<%= javascript_include_tag "widget" %>
+	<%= render 'layouts/widgets' %>
+	<%= javascript_include_tag "application" %>
+    <script type="text/javascript">  	
+		var authenticity_token = "<%= form_authenticity_token %>";				
+    </script>
+</head> 
+ 
+<body> 
+<div id="wrapper"> 
+	<div id="header"> 
+		<%= render '/layouts/nav_menu' %>
+		<div id="logo"></div> 
+	</div> 
+	<div id="content"> 
+		<div id="left"> 
+			<%= yield %>
+			<div id="left_side_widgets"></div>
+		</div> 
+		<div id="widgets"></div>
+	</div> 
+	<div id="footer"> 
+		<a href="http://www.rubyonrails.com"><%= image_tag 'enginey.com/rails_powered.gif' %></a> 
+	</div> 
+	<div style="clear:both;"></div> 
+</div> 
+ 
+</body> 
+</html>

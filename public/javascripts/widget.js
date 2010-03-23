@@ -34,7 +34,13 @@ function widget_change_display(layout_id) {
 	layout.change_display();
 }
 
-
+/*
+ * Render a particular Widget Layout
+ * Useful for themes that want to render specific widgets
+ */
+function render_layout(layout_id) {
+	
+}
 
 /*
  * Layout Class

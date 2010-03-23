@@ -30,7 +30,8 @@
 class Group < ActiveRecord::Base
   
   has_many :memberships, :dependent => :destroy
-  has_many :users, :through => :memberships, :order=>'RAND()' 
+  has_many :users, :through => :memberships, 
+                                :order => Group.connection.adapter_name == 'PostgreSQL' ? 'RANDOM()' : 'RAND()' 
   
   belongs_to :creator, :class_name => 'User' # the creator
   

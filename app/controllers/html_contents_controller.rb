@@ -45,7 +45,13 @@ class HtmlContentsController < ApplicationController
     respond_to do |format|
       if @html_content.save
         flash[:notice] = 'HtmlContent was successfully created.'
-        format.html { redirect_to(@html_content) }
+        format.html { 
+          if params['admin_page']
+            redirect_to('/admin/pages')
+          else
+            redirect_to(@html_content) 
+          end  
+        }
         format.xml  { render :xml => @html_content, :status => :created, :location => @html_content }
       else
         format.html { render :action => "new" }
@@ -60,7 +66,13 @@ class HtmlContentsController < ApplicationController
     respond_to do |format|
       if @html_content.update_attributes(params[:html_content])
         flash[:notice] = 'HtmlContent was successfully updated.'
-        format.html { redirect_to('/') }
+        format.html { 
+          if params['admin_page']
+            redirect_to('/admin/pages')
+          else
+            redirect_to('/') 
+          end  
+         }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

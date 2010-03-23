@@ -1,0 +1,288 @@
+a:visited {
+	color: blue;
+}
+
+body {
+	text-align: center;
+	width: 100%;
+	background-color: gray;
+	margin-top: 0px;
+	padding-top: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#wrapper {
+	width: 960px;
+	margin: auto;
+	background-color: white;
+	text-align: left;
+}
+
+#content {
+	float: left;
+	clear: both;
+	width: 960px;
+}
+
+#left {
+	float: left;
+	clear: both;
+}
+
+#nav {
+	float: left;
+	width: 250px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 10px;
+}
+
+#main {
+	float: left;
+	padding-bottom: 20px;
+	width: 670px;
+}
+
+#footer {
+	float: left;
+	clear: both;
+	margin-left: 40px;
+	margin-top: 30px;
+	width: 960px;
+}
+
+#footer img {
+	float: right;
+	margin-right: 50px;
+}
+
+.screen_img img, #footer img {
+	border: none;
+}
+
+#nav ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+#nav ul li {
+	line-height: 2em;
+}
+
+#nav .nav_block ul {
+	list-style-type: circle;
+}
+
+#nav .nav_block ul li {
+	line-height: 1.2em;
+	padding-left: 5px;
+	margin-left: 20px;
+	font-style: italic;
+}
+
+#main ul {
+	float: left;
+}
+
+#main_txt {
+	margin-right: 100px;
+	margin-top: 20px;
+	line-height: 1.3em;
+}
+
+.nav_block {
+	width: 165px;
+	padding-left: 15px;
+	margin-bottom: 15px;
+	color: #333333;
+}
+
+.nb_title {
+	font-weight: bold;
+	line-height: 1.5em;
+	color: #5b86b3;
+}
+
+.nb_body {
+	font-style: italic;
+}
+
+.keyword {
+	color: blue;
+	font-weight: bold;
+}
+
+.team_member {
+	margin-top: 20px;
+	width: 600px;
+}
+
+.team_image {
+	float: left;
+	width: 100px;
+}
+
+.team_text {
+	float: left;
+	width: 425px;
+}
+
+.member_name {
+	font-weight: bold;
+	float: left;
+	line-height: 1.5em;
+}
+
+.member_bio {
+	float: left;
+	clear: both;
+	width: 425px;
+}
+
+.doc-main, .contribute-main {
+	margin-top: 50px;
+}
+
+#header {
+	float: left;
+	clear: both;
+	height: 195px;
+	width: 960px;
+}
+
+#logo {
+	height: 165px;
+	background: url(../../../images/enginey.com/enginey_hdr.jpg);
+	
+}
+
+#page_links {
+	height: 30px;
+	text-align: left;
+	margin-left: 20px;
+}
+
+#page_links a {
+	margin-right: 10px;
+	font-size: 10pt;
+}
+
+.features_list .title {
+	font-weight: bold;
+	font-size: 14pt;
+}
+
+.section {
+	float: left;
+	margin-left: 20px;
+	color: white;
+}
+
+#about {
+	width: 500px;
+}
+
+.about_content {
+	text-align: left;
+	line-height: 1.3em;
+}
+
+#about a {
+	color: white;
+	font-weight: bold;
+}
+
+#features {
+	float: right;
+	margin-right: 20px;
+	text-align: left;
+}
+
+#getit_btn {
+	width: 100px;
+	height: 40px;
+	margin-left: 150px;
+	font-weight: bold;
+	color: blue;
+}
+
+#screen_images {
+	float: left;
+	clear: both;
+	margin-left: 50px;
+	width: 500px;
+	height: 175px;
+}
+
+.screen_img {
+	float: left;
+	width: 210px;
+	margin-right: 30px;
+}
+
+#more_content {
+	float: left;
+	clear: both;
+	margin-left: 40px;
+	margin-top: 20px;
+	text-align: left;
+}
+
+#more_content .title {
+	font-weight: bold;
+	text-decoration: underline;
+	margin-bottom: 6px;
+	color: gray;
+}
+
+#more_content a {
+	font-size: 10pt;
+}
+
+#more_content img {
+	border: none;
+}
+
+.features_title {
+	font-weight: bold;
+	text-align: center;
+	font-size: 16pt;
+	margin-top: 20px;
+	text-align: center;
+}
+
+#features_list {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+#features_list li {
+	clear: both;
+	padding: 6px;
+	font-weight: bold;
+}
+
+#features_list li img {
+	float: left;
+	clear: both;
+}
+
+#features_list a {
+	color: white;
+}
+
+.feature_txt {
+	float:left;
+	margin-top:15px;
+	margin-left: 20px;
+}
+
+#twitter_link img {
+	border: none;
+}
+
+.module_head {
+	display: none;
+}

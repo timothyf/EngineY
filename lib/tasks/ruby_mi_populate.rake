@@ -19,18 +19,14 @@ namespace :railsnet do
       # Start data creation
       puts 'Create network...'
       Network.destroy_all
-      Network.create(:name => NETWORK_NAME,
+      network = Network.create(:name => NETWORK_NAME,
                      :organization => 'Ruby Enthusiasts of Michigan',
                      :website => 'http://www.rubymi.org',
                      :description => 'Welcome to the Ruby Enthusiasts of Michigan website.  This site serves as a hub for all of the Ruby related activities and events that happen in and around Michigan.')
     
+      
       puts 'Populating roles...'
-      Role.destroy_all
-      ['creator', 
-       'administrator', 
-       'group_admin',
-       'user', 
-       'contributor'].each {|r| Role.create(:rolename => r) } 
+      network.init_network() 
       
       ##########################################################################
       puts 'Creating users...'
@@ -55,7 +51,7 @@ namespace :railsnet do
                     :password_confirmation=>'admin'
       user1.save
       
-     photo = ProfilePhoto.create(:is_profile => true, 
+      photo = ProfilePhoto.create(:is_profile => true, 
                          :temp_path => File.new(RAILS_ROOT + "/public/images/tim.png"), 
                          :filename => 'tim.png', 
                          :content_type => 'image/png',
@@ -72,7 +68,7 @@ namespace :railsnet do
                     :country_id=>1,
                     :zip=>'48134',
                     :login=>'jsmith', 
-                    :email=>'timothyf@gmail.com',
+                    :email=>'john@gmail.com',
                     :city=>'Flat Rock',
                     :activated_at=>'2009-01-01',
                     :password=>'jsmith',
@@ -91,7 +87,7 @@ namespace :railsnet do
                     :country_id=>1,
                     :zip=>'48134',
                     :login=>'pedwards', 
-                    :email=>'timothyf@gmail.com',
+                    :email=>'paul@gmail.com',
                     :city=>'Flat Rock',
                     :activated_at=>'2009-01-01',
                     :password=>'pedwards',
@@ -102,25 +98,7 @@ namespace :railsnet do
       user2.activate
       #user2.make_group_admin(1)
       
-      (1..NUMBER_OF_TEST_USERS).each do |number|
-        print '.'
-        user3 = User.new :first_name=>"Test#{number}",
-                      :last_name=>"User#{number}",
-                      :sex=>'M',
-                      :state_id=>state_id,
-                      :country_id=>1,
-                      :zip=>'48134',
-                      :login=>"testuser#{number}", 
-                      :email=>'timothyf@gmail.com',
-                      :city=>'Flat Rock',
-                      :activated_at=>'2009-01-01',
-                      :password=>'testuser',
-                      :password_confirmation=>'testuser'
-        user3.save
-        #user3.set_temp_photo
-        #user3.save
-        user3.activate
-      end
+      network.create_sample_users(NUMBER_OF_TEST_USERS)
       puts ''
       
       ##########################################################################

@@ -16,7 +16,7 @@ limitations under the License.
 <% @users = User.find(:all, :limit=>8, 
 					  :select=>"id, first_name, last_name", 
 					  :conditions => "activated_at is not null", 
-					  :order=>'RAND()',
+					  :order => User.connection.adapter_name == 'PostgreSQL' ? 'RANDOM()' : 'RAND()',
 					  :include=>:profile_photo) %>
 
 <% @users_count = User.cached_count %>
