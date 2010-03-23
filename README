@@ -5,6 +5,9 @@ EngineY is an easy to use social network framework implemented in Ruby on Rails 
 == Getting Started
 
 To see an example of a running instance of EngineY, visit the Michigan Ruby Community at http://www.rubymi.org
+Currently the www.rubymi.org site is running on Dreamhost which is not an ideal host for Rails apps and thus has
+frequent outages.  I apologize in advance for that.  Unfortunately the EngineY development budget is on a shoestring
+right now.
 
 
 Installation
@@ -16,10 +19,13 @@ Run the following three commands in order:
 
 rake db:create:all
 rake db:migrate
-rake railsnet:db:mycompany_populate
+rake railsnet:db:ruby_mi_populate
 This will create the database with the correct schema and populate it with data for a sample site. This will allow you to run the application and have a look around. You will be able to login with the following id and password:
 User ID: admin
 Password: admin
+
+After logging in as the Admin, you can go to the 'Manage' tab and click on the 'Settings' tab.  From that page, you can set a theme for your site.  For example, try setting the RubyMI theme to see an example of what a Ruby community site might look like.
+
 Getting Help/Support
 
 Any questions that you have about using EngineY or developing with EngineY should be posted to the EngineY Google Group http://groups.google.com/group/enginey.
