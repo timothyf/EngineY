@@ -55,45 +55,32 @@ limitations under the License.
 </head>
 
 <body>
-<%= fb_connect_javascript_tag %>
-<%= init_fb_connect('XFBML', :js => :dojo) %> 
-	<div id="content">
-		<div id="header">
-			<div id="masthead"></div>
-			<%= render :partial => 'shared/nav_menu' %>
-		</div>
-		<div id="main">
-			<div class="col1">
-				<%= yield  %>
+	<%= fb_connect_javascript_tag %>
+	<%= init_fb_connect('XFBML', :js => :dojo) %> 
+		<div id="content">
+			<div id="header">
+				<div id="masthead"></div>
+				<%= render :partial => 'shared/nav_menu' %>
 			</div>
-			<div class="col2">
-				<!-- TODO: Needs to be refactored to move this content into page templates -->
-				<% if @section == 'MAIN' %>
-					<%= render :partial => 'users/user_control_widget' %>
-					<!-- place holder for AJAX widgets -->
-					<div id="right_side_widgets"></div>
-				<% elsif @section == 'MY PAGE' || (@section == 'MEMBERS' && @user != nil)%>
-					<!-- On a user page -->
-					<%= render :partial => 'users/add_friend_widget' %>
-					<%= render :partial => 'users/user_control_widget' %>
-					<%= render :partial => 'events/events_profile' %>
-					<%= render :partial => 'forum_posts/forum_posts_profile' %>
-					<% if current_user == @user %>
-						<%= render :partial => 'messages/unread_messages_widget' %>
-					<% end %>
-					<div id="right_side_widgets"></div>
+			<div id="main">
+				<% if @section == 'MAIN' || @section == 'profile' || (@section == 'MEMBERS' && @user != nil)%>
+					<%= yield %>
 				<% else %>
-					<%= render :partial => 'users/user_control_widget' %>
+					<div class="col1">
+						<%= yield  %>
+					</div>
+					<div class="col2">
+						<%= render :partial => 'users/user_control_widget' %>
+					</div>
+					<div style="clear:both;"></div>
 				<% end %>
+			</div>
+			<div id="footer">
+				<%= render :partial => 'shared/footer' %>
 			</div>
 			<div style="clear:both;"></div>
 		</div>
-		<div id="footer">
-			<%= render :partial => 'shared/footer' %>
-		</div>
-		<div style="clear:both;"></div>
-	</div>
-	<%= render '/layouts/analytics' %>
+		<%= render '/layouts/analytics' %>
 </body>
 
 </html>

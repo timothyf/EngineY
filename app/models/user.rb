@@ -291,7 +291,7 @@ class User < ActiveRecord::Base
   def self.count_with_profile_photo
     Photo.find(:all, 
                :select=>'id, filename, user_id', 
-               :conditions=>"is_profile=1 AND user_id is NOT NULL AND filename != 'nophoto.png'").size
+               :conditions=>"is_profile=true AND user_id is NOT NULL AND filename != 'nophoto.png'").size
   end
   
   

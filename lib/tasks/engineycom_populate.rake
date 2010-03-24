@@ -46,14 +46,6 @@ namespace :railsnet do
                     :password=>'admin',
                     :password_confirmation=>'admin'
       user1.save
-      
-      photo = ProfilePhoto.create(:is_profile => true, 
-                         :temp_path => File.new(RAILS_ROOT + "/public/images/tim.png"), 
-                         :filename => 'tim.png', 
-                         :content_type => 'image/png',
-                         :user => user1)
-      user1.profile_photo = photo
-      user1.save
       user1.activate
       user1.roles << Role.find_by_rolename('creator')
 
@@ -78,7 +70,83 @@ data using EngineY's <b>RESTful API</b>.<br/><br/>
 <br/><br/> 
 <a href='http://www.rubymi.org'>See it live...</a> 
 </div> 
-</div> ");
+</div> ")
+
+      HtmlContent.create(:title => 'enginey_screenshots',
+                         :body =>
+"<div id='screen_images'> 
+<div class='screen_img'> 
+<a href='images/ss1.jpg'>
+<img src='/images/enginey.com/ss1-tb.jpg'/>
+</a> 
+</div> 
+<div class='screen_img'> 
+<a href='images/ss2.jpg'>
+<img src='/images/enginey.com/ss2-tb.jpg'/>
+</a> 
+</div> 
+</div>
+")
+    
+      HtmlContent.create(:title => 'enginey_morecontent',
+                         :body =>  
+"<div id='more_content'> 
+<div class='title'>HELP US GROW...</div> 
+<a href='http://digg.com/programming/EngineY'>Digg this page</a> , 
+<a href='http://delicious.com/save?jump=yes&url=http%3A%2F%2Fwww.enginey.com'>bookmark it on Del.icio.us</a>, or 
+<a href='http://clicktotweet.com/t6nL6'>Tweet It!</a> 
+<br/><br/> 
+<a href='http://twitter.com/engineyfw'>
+<img src='/images/enginey.com/twitter6.png'/>
+</a> 
+</div> 
+")
+
+      HtmlContent.create(:title => 'enginey_features',
+                         :body =>
+"<div id='features' class='section cssbox'> 
+<div class='cssbox_head'> 
+<h4 style='text-align:center;padding-top:10px;'><span class='features_title'>Features</span></h4> 
+</div> 
+<div class='cssbox_body'> 
+<ul id='features_list'> 
+<li> 
+<img src='/images/enginey.com/user.png' />
+<div class='feature_txt'>User profiles</div> 
+</li> 
+<li> 
+<img src='/images/enginey.com/events.png' />
+<div class='feature_txt'>Events</div> 
+</li> 
+<li> 
+<img src='/images/enginey.com/blogs.png' />
+<div class='feature_txt'>Blogs</div> 
+</li> 
+<li> 
+<img src='/images/enginey.com/private_msgs.png' />
+<div class='feature_txt'>Private Messages</div> 
+</li> 
+<li> 
+<img src='/images/enginey.com/photos.png' />
+<div class='feature_txt'>Photos</div> 
+</li> 
+<li> 
+<img src='/images/enginey.com/forums.png' />
+<div class='feature_txt'>Forums</div> 
+</li> 
+<li> 
+<img src='/images/enginey.com/activity.png' />
+<div class='feature_txt'>Activity Stream</div> 
+</li> 
+<li> 
+<img src='/images/enginey.com/facebook.png' />
+<div class='feature_txt'>Facebook Connect</div> 
+</li> 
+<li><a href='features.html'>and much more...</a></li> 
+</ul> 
+</div> 
+</div> 
+")
       
       
       ##########################################################################
@@ -90,12 +158,15 @@ data using EngineY's <b>RESTful API</b>.<br/><br/>
       ##########################################################################
       # Create Pages
       puts 'Creating pages...'
-      Page.create(:title => 'home', :name => 'RubyMI Home')
+      Page.create(:title => 'home', :name => 'EngineY Home')
       
       ##########################################################################
       # Create Layouts
       puts 'Creating layouts...'
       WidgetLayout.create(:widget_id => 1, :page_id => 1, :col_num => 1, :row_num => 1, :html_content_id => 1)
+      WidgetLayout.create(:widget_id => 1, :page_id => 1, :col_num => 1, :row_num => 2, :html_content_id => 2)
+      WidgetLayout.create(:widget_id => 1, :page_id => 1, :col_num => 1, :row_num => 3, :html_content_id => 3)
+      WidgetLayout.create(:widget_id => 1, :page_id => 1, :col_num => 2, :row_num => 1, :html_content_id => 4)
       
       puts 'Database population done!'
     end
