@@ -36,7 +36,7 @@ limitations under the License.
 			</div>
 		</div>
 		<div class="column_2">
-			<div id="widgets"></div>
+			<div id="col_2_widgets"></div>
 			<% if @user.twitter_id && @user.display_tweets %>
 				<%= render :partial => 'tweets/display_tweets' %>
 			<% end %>
@@ -53,6 +53,6 @@ limitations under the License.
 	<% if current_user == @user %>
 		<%= render :partial => 'messages/unread_messages_widget' %>
 	<% end %>
-	<div id="right_side_widgets"></div>
+	<div id="col_3_widgets"></div>
 </div>
 <div style="clear:both;"></div>

@@ -148,6 +148,23 @@ data using EngineY's <b>RESTful API</b>.<br/><br/>
 </div> 
 ")
       
+      HtmlContent.create(:title => 'features_side',
+                         :body => "")
+                         
+      HtmlContent.create(:title => 'features_main',
+                         :body => "")          
+                         
+      HtmlContent.create(:title => 'documentation_side',
+                         :body => "")
+                         
+      HtmlContent.create(:title => 'documentation_main',
+                         :body => "")    
+                         
+      HtmlContent.create(:title => 'team_side',
+                         :body => "")
+                         
+      HtmlContent.create(:title => 'team_main',
+                         :body => "")    
       
       ##########################################################################
       # Create Widgets   
@@ -159,15 +176,32 @@ data using EngineY's <b>RESTful API</b>.<br/><br/>
       # Create Pages
       puts 'Creating pages...'
       Page.create(:title => 'home', :name => 'EngineY Home')
+      Page.create(:title => 'features', :name => 'Features')
+      Page.create(:title => 'documentation', :name => 'Documentation')
+      Page.create(:title => 'team', :name => 'Team')
       
       ##########################################################################
       # Create Layouts
       puts 'Creating layouts...'
+      # home
       WidgetLayout.create(:widget_id => 1, :page_id => 1, :col_num => 1, :row_num => 1, :html_content_id => 1)
       WidgetLayout.create(:widget_id => 1, :page_id => 1, :col_num => 1, :row_num => 2, :html_content_id => 2)
       WidgetLayout.create(:widget_id => 1, :page_id => 1, :col_num => 1, :row_num => 3, :html_content_id => 3)
       WidgetLayout.create(:widget_id => 1, :page_id => 1, :col_num => 2, :row_num => 1, :html_content_id => 4)
       
+      #features
+      WidgetLayout.create(:widget_id => 1, :page_id => 2, :col_num => 1, :row_num => 1, :html_content_id => 5)
+      WidgetLayout.create(:widget_id => 1, :page_id => 2, :col_num => 2, :row_num => 1, :html_content_id => 6)
+            
+      #documentation
+      WidgetLayout.create(:widget_id => 1, :page_id => 3, :col_num => 1, :row_num => 1, :html_content_id => 7)
+      WidgetLayout.create(:widget_id => 1, :page_id => 3, :col_num => 2, :row_num => 1, :html_content_id => 8)
+
+      #team
+      WidgetLayout.create(:widget_id => 1, :page_id => 4, :col_num => 1, :row_num => 1, :html_content_id => 9)
+      WidgetLayout.create(:widget_id => 1, :page_id => 4, :col_num => 2, :row_num => 1, :html_content_id => 10)
+       
+                   
       puts 'Database population done!'
     end
   end

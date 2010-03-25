@@ -1,0 +1,20 @@
+
+#add_content, #add_layout {
+	background-color:#FFFFFF;
+	clear:both;
+	float:left;
+	padding:25px;
+	width:650px;
+}
+
+.form_content_body {
+	margin-top: 30px;
+}
+
+#add_layout label {
+	width: 100px;
+}
+
+#add_layout input {
+	width: 40px;
+}

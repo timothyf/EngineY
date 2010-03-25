@@ -41,10 +41,10 @@ limitations under the License.
 	      <div class="notice"><%= flash[:notice] %></div>
 	    <% end %>
 		<%= render :partial => 'shared/network_info_widget' %>
-		<div id="left_side_widgets"></div>
+		<div id="col_1_widgets"></div>
 	</div>
 	<div class="column_2">
-		<div id="widgets"></div>
+		<div id="col_2_widgets"></div>
 		<!-- display HTML widgets
 		<% if @html_contents %>
 			<% @html_contents.each do |html_content| %>
@@ -57,6 +57,6 @@ limitations under the License.
 <div class="col2">
 	<%= render :partial => 'users/user_control_widget' %>
 	<!-- place holder for AJAX widgets -->
-	<div id="right_side_widgets"></div>
+	<div id="col_3_widgets"></div>
 </div>
 <div style="clear:both;"></div>

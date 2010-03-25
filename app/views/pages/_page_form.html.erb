@@ -1,4 +1,4 @@
-<% form_for(@html_content) do |f| -%>			
+<% form_for(@page) do |f| -%>			
 	<%= f.error_messages %>
 	<% if defined? admin_page %>
 		<input type="hidden" name="admin_page" value="1" />
@@ -7,10 +7,13 @@
     	<label for="title">Title:</label><br/>
 		<%= f.text_field :title, :class=>'input_field' %>
 	</div>
-	<div class="form_field form_content_body">
-    	<label for="body">Body:</label>
-		<span class="help_text">maximum 5000 characters</span><br/>
-		<%= f.text_area :body, :cols=>70, :rows=>15 %>
+	<div class="form_field">
+    	<label for="permalink">Permalink:</label><br/>
+		<%= f.text_field :permalink, :class=>'input_field' %>
+	</div>
+	<div class="form_field">
+    	<label for="name">Name:</label><br/>
+		<%= f.text_field :name, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
     	<%= f.submit "Save", :class=>'add_button' %>

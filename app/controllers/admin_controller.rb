@@ -210,6 +210,25 @@ class AdminController < ApplicationController
   end
   
   
+  def page_new
+    @page = Page.new
+    render 'page_form'
+  end
+  
+  
+  def page_edit
+    @page = Page.find(params[:id])
+    render 'page_form'
+  end
+  
+  
+  def page_delete
+    @page = Page.find(params[:id])
+    @page.destroy
+    redirect_to '/admin/pages'
+  end
+  
+  
   def content_new
     @html_content = HtmlContent.new
     render 'html_content_form'

@@ -1,8 +1,17 @@
+<div>
 <div id="page_links"> 
-	<a href="index.html">Home</a> 
-	<a href="features.html">Features</a>	
-	<a href="documentation.html">Documentation</a> 
+	<a href="/">Home</a> 
+	<a href="/pages/show/features">Features</a>	
+	<a href="/pages/show/documentation">Documentation</a> 
 	<a href="http://groups.google.com/group/enginey">Google Group</a> 
 	<a href="http://code.google.com/p/enginey/">Google Code Site</a> 
-	<a href="team.html">Development Team</a> 
+	<a href="http://github.com/timothyf/enginey">GitHub Project</a> 
+	<a href="/pages/show/team">Development Team</a> 
 </div> 
+<% if current_user && current_user.is_admin %>
+	<div id="admin_link">
+		<a href="/admin">Admin</a>
+	</div>
+<% end %>
+</div>
+<div style="clear:both;"></div>

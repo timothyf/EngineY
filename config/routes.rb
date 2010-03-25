@@ -103,6 +103,8 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.connect 'pages/show/:title', :controller => 'pages', :action => 'show'
+  
+  map.resources :pages
 
   # The priority is based upon order of creation: first created -> highest priority.
 

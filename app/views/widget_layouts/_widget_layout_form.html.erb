@@ -4,24 +4,26 @@
 		<input type="hidden" name="admin_page" value="1" />
 	<% end %>
 	<div class="form_field">
-    	<label for="page_id">Page ID:</label><br/>
+    	<label for="page_id">Page ID:</label>
 		<%= f.text_field :page_id, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
-    	<label for="widget_id">Widget ID:</label><br/>
+    	<label for="widget_id">Widget ID:</label>
 		<%= f.text_field :widget_id, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
-    	<label for="col_num">Col #:</label><br/>
+    	<label for="col_num">Col #:</label>
 		<%= f.text_field :col_num, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
-    	<label for="row_num">Row #:</label><br/>
+    	<label for="row_num">Row #:</label>
 		<%= f.text_field :row_num, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
-    	<label for="content_id">HTML Content ID:</label><br/>
+    	<label for="content_id">HTML Content ID:</label>
 		<%= f.text_field :html_content_id, :class=>'input_field' %>
 	</div>
-    <%= f.submit "Save", :class=>'add_button' %>&nbsp;&nbsp;
+	<div class="form_field">
+    	<%= f.submit "Save", :class=>'add_button' %>
+	</div>
 <% end %>

@@ -26,6 +26,7 @@
 				<td>
 					<%= link_to 'Edit', '/admin/page_edit?id=' + page.id.to_s %> |
 					<%= link_to 'Delete', '/admin/page_delete?id=' + page.id.to_s, :confirm => 'Are you sure you want to delete this page?' %> |
+					<%= link_to 'View', "/pages/show/#{page.title}" %>
 				</td>
 			</tr>
 		<% end %>

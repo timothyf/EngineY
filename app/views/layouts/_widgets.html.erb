@@ -9,14 +9,15 @@
 <% end %>
 
 <script type="text/javascript">
-	<% if @page_name == 'home' && layouts && layouts.length > 0 %>
-		var widgets = init_widgets('<%= layouts.to_json(:methods => :widget_name) %>', 'home');
-		var user_id = null;
-	<% elsif @page_name == 'profile' && layouts && layouts.length > 0 %>
-		var widgets = init_widgets('<%= layouts.to_json(:methods => :widget_name) %>', 'profile');
-		var user_id = <%= @user.id %>;
+	<% if layouts && layouts.length > 0 %>
+		var widgets = init_widgets('<%= layouts.to_json(:methods => :widget_name) %>');
 	<% else %>
 		var widgets = [];
-		var user_id = 0;
+	<% end %>
+	
+	<% if @user %>
+		var user_id = <%= @user.id %>;
+	<% else %>
+		var user_id = null;
 	<% end %>
 </script>

@@ -1,5 +1,5 @@
 
-function init_widgets(json, type) {
+function init_widgets(json) {
 	var layouts_js = eval(json);
 	var widgets = [];
 	for (i=0; i<layouts_js.length; i++) {
@@ -32,14 +32,6 @@ function find_layout_by_id(id) {
 function widget_change_display(layout_id) {
 	var layout = find_layout_by_id(layout_id);
 	layout.change_display();
-}
-
-/*
- * Render a particular Widget Layout
- * Useful for themes that want to render specific widgets
- */
-function render_layout(layout_id) {
-	
 }
 
 /*
@@ -120,15 +112,18 @@ Layout = function(id, name, content_id, col_num, properties) {
 		var newdiv = document.createElement('div');
 		newdiv.setAttribute('id', 'layout_' + this.id);
 		newdiv.className = 'widget_content';
-		newdiv.appendChild(document.createTextNode('Loading...'));
+		loadingSpan = document.createElement('span');
+		loadingSpan.className = 'loading_span';
+		loadingSpan.appendChild(document.createTextNode('Loading...'));
+		newdiv.appendChild(loadingSpan);
 		if (this.col_num == '1') {
-			dojo.byId('left_side_widgets').appendChild(newdiv);
+			dojo.byId('col_1_widgets').appendChild(newdiv);
 		}
 		else if (this.col_num == '2') {
-			dojo.byId('widgets').appendChild(newdiv);
+			dojo.byId('col_2_widgets').appendChild(newdiv);
 		}
 		else if (this.col_num == '3') {
-			dojo.byId('right_side_widgets').appendChild(newdiv);
+			dojo.byId('col_3_widgets').appendChild(newdiv);
 		}
 	}
 	

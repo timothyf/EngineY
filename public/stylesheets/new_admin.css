@@ -446,3 +446,12 @@ a.a-dark {
 	margin-bottom: 10px;
 	font-size: 11pt;
 }
+
+label {
+	float: left;
+	width: 150px;
+}
+
+input {
+	float: left;
+}

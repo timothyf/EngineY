@@ -53,7 +53,8 @@ body {
 
 #footer img {
 	float: right;
-	margin-right: 50px;
+	margin-right: 100px;
+	margin-bottom: 20px;
 }
 
 .screen_img img, #footer img {
@@ -285,4 +286,77 @@ body {
 
 .module_head {
 	display: none;
+}
+
+#page_home .module_body {
+	float: left;
+	clear: both;
+}
+
+#page_home .module_foot {
+	float: left;
+	clear: both;
+}
+
+#page_home .module_foot .foot_left {
+	padding-left: 20px;
+}
+
+#page_home #col_1_widgets {
+	float: left;
+}
+
+#page_home #col_2_widgets {
+	float: right;
+}
+
+#page_features #col_1_widgets, #page_documentation #col_1_widgets, #page_team #col_1_widgets {
+	float: left;
+	width: 260px;
+}
+
+#page_features #col_2_widgets, #page_documentation #col_2_widgets, #page_team #col_2_widgets {
+	float: left;
+	width: 540px;
+}
+
+.loading_span {
+	display: none;
+}
+
+.form_field .help_text {
+	display: block;
+	margin-top: 5px;
+	font-size: 8pt;
+	float: left;
+	margin-left: 15px;
+}
+
+.form_field {
+	margin-bottom: 8px;
+	float: left;
+	clear: both;
+}
+
+label {
+	float: left;
+	width: 150px;
+}
+
+input {
+	float: left;
+}
+
+#page_links {
+	float: left;
+	width: 650px;
+}
+
+#admin_link {
+	float: right;
+}
+
+#admin_link a {
+	font-size:10pt;
+	margin-right: 20px;
 }

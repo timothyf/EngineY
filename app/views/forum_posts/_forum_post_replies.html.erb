@@ -17,7 +17,11 @@ limitations under the License.
 <% @forum_post.replies.each do |reply| %>
 	<div class="forum_post_reply">
 		<div class="forum_post_photo">
-			<%= link_to image_tag(reply.user.profile_photo.public_filename(:small)), user_url(reply.user) %>
+			<% if reply.user.profile_photo %>
+				<%= link_to image_tag(reply.user.profile_photo.public_filename(:small)), user_url(reply.user) %>
+			<% else %>
+				<%= link_to '<div class="no_photo_user_widget"></div>', user_url(reply.user) %>
+			<% end %>
 		</div>
 		<div class="forum_post_text">
 			<div class="forum_post_title"><%= link_to reply.title, forum_post_path(reply) %></div>
