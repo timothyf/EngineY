@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100322161553) do
+ActiveRecord::Schema.define(:version => 20100326174110) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -41,6 +41,22 @@ ActiveRecord::Schema.define(:version => 20100322161553) do
   create_table "blog_mirrors", :force => true do |t|
     t.string   "url"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blog_post_topics", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "parent_id"
+    t.boolean  "default"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blog_post_topics_blog_posts", :id => false, :force => true do |t|
+    t.integer  "blog_post_id"
+    t.integer  "blog_post_topic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

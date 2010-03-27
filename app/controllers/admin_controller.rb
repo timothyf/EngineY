@@ -40,7 +40,14 @@ class AdminController < ApplicationController
   end
   
   
+  def photos
+    @page = 'photos'
+    @photos = Photo.find(:all) 
+  end
+  
+  
   def pages
+    @page = 'pages'
     @widgets = Widget.find(:all)
     @layouts = WidgetLayout.find(:all)
     @pages = Page.find(:all) 

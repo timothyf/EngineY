@@ -39,6 +39,11 @@ class BlogPostsController < ApplicationController
     end 
   end
 
+
+  def get_all_topics
+    @blog_post_topics = current_user.blog_post_topics
+  end
+
   
   # This action should be called from a CRON job to update any external blogs
   def update_external_blogs
@@ -99,7 +104,7 @@ class BlogPostsController < ApplicationController
 
   def show
     @blog_post = BlogPost.find(params[:id])
-    @blog_post.update_attributes(:views=>@blog_post.views+1)
+    @blog_post.update_attribute('views', @blog_post.views+1)
     respond_to do |format|
       format.html {render :template => 'blog_posts/blog_posts_show' }
       format.xml  { render :xml => @blog_post }
@@ -110,12 +115,14 @@ class BlogPostsController < ApplicationController
 
   def new
     @blog_post = BlogPost.new
+    get_all_topics
     render :partial=>'blog_posts_edit', :layout=>true
   end
 
 
   def edit
     @blog_post = BlogPost.find(params[:id])
+    get_all_topics
     render :partial=>'blog_posts_edit', :layout=>true
   end
 
@@ -123,8 +130,10 @@ class BlogPostsController < ApplicationController
   def create
     @blog_post = BlogPost.new(params[:blog_post])
     @blog_post.user = current_user;
+    get_all_topics
     respond_to do |format|
       if @blog_post.save
+        @blog_post.update_blog_post_topics
         flash[:notice] = 'BlogPost was successfully created.'
         format.html { redirect_to(@blog_post) }
         format.xml  { render :xml => @blog_post, :status => :created, :location => @blog_post }
@@ -157,8 +166,10 @@ class BlogPostsController < ApplicationController
 
   def update
     @blog_post = BlogPost.find(params[:id])
+    get_all_topics
     respond_to do |format|
       if @blog_post.update_attributes(params[:blog_post])
+        @blog_post.update_blog_post_topics
         flash[:notice] = 'BlogPost was successfully updated.'
         format.html { redirect_to(@blog_post) }
         format.xml  { head :ok }

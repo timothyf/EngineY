@@ -11,20 +11,6 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
-
-# == Schema Information
-# Schema version: 20090206190209
-#
-# Table name: blog_posts
-#
-#  id         :integer(4)      not null, primary key
-#  user_id    :integer(4)
-#  title      :string(255)
-#  body       :text
-#  published  :boolean(1)
-#  featured   :boolean(1)
-#  created_at :datetime
-#  updated_at :datetime
 #
 
 class BlogPost < ActiveRecord::Base
@@ -33,13 +19,19 @@ class BlogPost < ActiveRecord::Base
   acts_as_commentable
   acts_as_taggable_on :tags
   
+  has_and_belongs_to_many :blog_post_topics
+  
   belongs_to :user 
   has_many :replies, :as => :item
   
   validates_length_of :title, :maximum=>200
   validates_length_of :body,  :maximum=>5000
   
+  attr_accessor :blog_post_topic_list
+  
   after_create :log_activity_if_published
+  
+  #after_save :update_blog_post_topics
   
   cattr_reader :per_page
   @@per_page = 6
@@ -75,6 +67,12 @@ class BlogPost < ActiveRecord::Base
     end
   end
   
+  
+  def update_blog_post_topics
+    blog_post_topics.delete_all
+    selected_blog_post_topics = blog_post_topic_list.nil? ? [] : blog_post_topic_list.keys.collect{|id| BlogPostTopic.find_by_id(id)}
+    selected_blog_post_topics.each {|blog_post_topic| self.blog_post_topics << blog_post_topic}
+  end
   
   private
   

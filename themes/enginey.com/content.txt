@@ -1,0 +1,94 @@
+      ##########################################################################
+      # Create HTML Contents   
+      puts 'Creating managed content...'
+      HtmlContent.create(:title => 'enginey_about',
+                         :body => 
+"<div id='about' class='section cssbox'><div class='cssbox_head'> 
+<h4>&nbsp;</h4> 
+</div> 
+<div class='about_content cssbox_body'> 
+EngineY is an easy to use social network framework implemented in <b>Ruby 
+on Rails</b> that is easy to customize and deploy as your own powerful and 
+feature packed social media site. <b>Empower</b> users with their own blogs. 
+<b>Enhance collaboration</b> with forums, groups and events. Let your users post 
+<b>Twitter-like status messages</b>. Track all the activity on your site with 
+a live activity stream. Build a custom client to access all of your social 
+data using EngineY's <b>RESTful API</b>.<br/><br/> 
+<button id='getit_btn' onclick=\"location.href='http://code.google.com/p/enginey'\">Get It</button> 
+<br/><br/> 
+<a href='http://www.rubymi.org'>See it live...</a> 
+</div> 
+</div> ");
+      
+# SCREEN SHOTS
+<div id="screen_images"> 
+<div class="screen_img"> 
+<a href="images/ss1.jpg">
+<img src="/images/enginey.com/ss1-tb.jpg"/>
+</a> 
+</div> 
+<div class="screen_img"> 
+<a href="images/ss2.jpg">
+<img src="/images/enginey.com/ss2-tb.jpg"/>
+</a> 
+</div> 
+</div>       
+#####################
+
+# MORE CONTENT
+<div id="more_content"> 
+<div class="title">HELP US GROW...</div> 
+<a href="http://digg.com/programming/EngineY">Digg this page</a> , 
+<a href="http://delicious.com/save?jump=yes&url=http%3A%2F%2Fwww.enginey.com">bookmark it on Del.icio.us</a>, or 
+<a href="http://clicktotweet.com/t6nL6">Tweet It!</a> 
+<br/><br/> 
+<a href="http://twitter.com/engineyfw">
+<img src="/images/enginey.com/twitter6.png"/>
+</a> 
+</div> 
+#####################
+
+# FEATURES
+<div id="features" class="section cssbox"> 
+<div class="cssbox_head"> 
+<h4 style="text-align:center;padding-top:10px;"><span class="features_title">Features</span></h4> 
+</div> 
+<div class="cssbox_body"> 
+<ul id="features_list"> 
+<li> 
+<img src='/images/enginey.com/user.png' />
+<div class="feature_txt">User profiles</div> 
+</li> 
+<li> 
+<img src='/images/enginey.com/events.png' />
+<div class="feature_txt">Events</div> 
+</li> 
+<li> 
+<img src='/images/enginey.com/blogs.png' />
+<div class="feature_txt">Blogs</div> 
+</li> 
+<li> 
+<img src='/images/enginey.com/private_msgs.png' />
+<div class="feature_txt">Private Messages</div> 
+</li> 
+<li> 
+<img src='/images/enginey.com/photos.png' />
+<div class="feature_txt">Photos</div> 
+</li> 
+<li> 
+<img src='/images/enginey.com/forums.png' />
+<div class="feature_txt">Forums</div> 
+</li> 
+<li> 
+<img src='/images/enginey.com/activity.png' />
+<div class="feature_txt">Activity Stream</div> 
+</li> 
+<li> 
+<img src='/images/enginey.com/facebook.png' />
+<div class="feature_txt">Facebook Connect</div> 
+</li> 
+<li><a href="features.html">and much more...</a></li> 
+</ul> 
+</div> 
+</div> 
+#####################  

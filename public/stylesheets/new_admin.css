@@ -455,3 +455,8 @@ label {
 input {
 	float: left;
 }
+
+.theme-block {
+	float: left;
+	clear: both;
+}

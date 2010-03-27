@@ -49,7 +49,10 @@ class User < ActiveRecord::Base
   has_one :profile_photo, :conditions => [ 'is_profile = ?', true ], :dependent => :destroy
   has_many :photos
   has_many :wall_posts, :order=>'created_at DESC'
+  
   has_many :blog_posts, :order=>'created_at DESC'
+  has_many :blog_post_topics
+  
   has_many :forum_posts, :order=>'created_at DESC'
   has_many :status_posts, :order=>'created_at DESC'
   has_many :rss_feeds

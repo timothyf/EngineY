@@ -24,6 +24,18 @@ limitations under the License.
 		<span class="help_text">maximum 5000 characters</span><br/>
 		<%= f.text_area :body, :cols=>80, :rows=>30, :class=>"mceEditor" %>
 	</div>
+	
+	<div class="form_field">
+		<label for="topics">Topics:</label><br/><br/>
+		<% @blog_post_topics.each do |topic| %>
+			<%= check_box_tag(
+                            "blog_post[blog_post_topic_list][#{topic.id}]", 
+                            "1", 
+                            @blog_post.blog_post_topics.detect{|d| d == topic}) %>
+			<%= "#{topic.name}"%><br />
+		<% end %>
+	</div>
+	
 	<div class="form_field">
     	<label for="tags">Tags:</label><br/>
 		<%= f.text_field :tag_list, :class=>'input_field' %>

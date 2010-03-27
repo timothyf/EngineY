@@ -1,0 +1,10 @@
+
+Show users that have signed up and need to be approved by an admin
+<% @pending_users.each do |user| %>
+	<div class="pending_user">
+		<%= user.name %>
+		<%= user.created_at %>
+		<%= link_to 'Approve', '' %>
+		<%= link_to 'Reject', '' %>
+	</div>
+<% end %>

@@ -1,0 +1,32 @@
+<h1>Dashboard</h1>
+
+
+<h2>At a Glance</h2>
+<table>
+	<tr>
+		<td><%= User.find(:first).blog_posts.length %> Posts</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><%= User.find(:first).blog_post_topics.length %> Topics</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><%= Tag.find(:all).length %> Tags</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><%= Comment.find(:all).length %> Comments</td>
+		<td></td>
+	</tr>
+</table>
+Your blog is powered by <a href="http://www.enginey.com">EngineY</a>.
+
+<h2>Recent Comments</h2>
+
+
+
+
+
+
+
