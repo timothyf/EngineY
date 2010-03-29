@@ -18,7 +18,8 @@ limitations under the License.
 	<% if logged_in? %>
 		<span class="title">Add a Reply:</span>
 		<div id="reply_entry">
-			<form id="forum_post_reply_form" name="forum_post_reply_form" action="<%= forum_topic_forum_posts_url(@forum_post.forum_topic) %>" method="POST">							   
+			<form id="forum_post_reply_form" name="forum_post_reply_form">	
+				<input type="hidden" name="forum_post_reply_path" id="forum_post_reply_path" value="<%= forum_topic_forum_posts_url(@forum_post.forum_topic) %>" />						   
 				<input type="hidden" name="ajax_call" id="ajax_call" value="1" />
 				<%= hidden_field(:forum_post, :parent_id, :value=>@forum_post.id) %>
 				<%= hidden_field(:forum_post, :forum_topic_id, :value=>@forum_post.forum_topic.id) %>
