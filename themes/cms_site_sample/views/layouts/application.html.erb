@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        	
+<html> 
+<head> 
+	<title>EngineY - Social Framework</title> 
+	<%= stylesheet_link_tag "themes/cms_site_sample/style.css" %>
+
+	<%= javascript_include_tag "jquery-1.4.2.min.js" %>
+	<%= javascript_include_tag "themes/simple-jquery/widget" %>
+	<%= render 'layouts/widgets' %>
+	<%= javascript_include_tag "themes/simple-jquery/application" %>
+
+</head> 
+ 
+<body> 
+<div id="wrapper"> 
+	<div id="header"> 
+		<%= render '/layouts/nav_menu' %>
+		<div id="logo"></div> 
+	</div> 
+	<div id="content"> 
+		<%= yield %>
+	</div> 
+	<div id="footer"> 
+		<a href="http://www.enginey.com"><%= image_tag 'poweredby_white.jpg' %></a>
+	</div> 
+	<div style="clear:both;"></div> 
+</div> 
+ 
+</body> 
+</html>

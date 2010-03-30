@@ -1,0 +1,230 @@
+a:visited {
+	color: blue;
+}
+
+body {
+	text-align: center;
+	width: 100%;
+	background-color: gray;
+	margin-top: 0px;
+	padding-top: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#wrapper {
+	width: 960px;
+	margin: auto;
+	background-color: white;
+	text-align: left;
+}
+
+#content {
+	float: left;
+	clear: both;
+	width: 960px;
+}
+
+#left {
+	float: left;
+	clear: both;
+}
+
+#nav {
+	float: left;
+	width: 250px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 10px;
+}
+
+#main {
+	float: left;
+	padding-bottom: 20px;
+	width: 670px;
+}
+
+#footer {
+	float: left;
+	clear: both;
+	margin-left: 40px;
+	margin-top: 30px;
+	width: 960px;
+}
+
+#footer img {
+	float: right;
+	margin-right: 100px;
+	margin-bottom: 20px;
+}
+
+#footer img {
+	border: none;
+}
+
+#nav ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+#nav ul li {
+	line-height: 2em;
+}
+
+#nav .nav_block ul {
+	list-style-type: circle;
+}
+
+#nav .nav_block ul li {
+	line-height: 1.2em;
+	padding-left: 5px;
+	margin-left: 20px;
+	font-style: italic;
+}
+
+.nav_block {
+	width: 165px;
+	padding-left: 15px;
+	margin-bottom: 15px;
+	color: #333333;
+}
+
+.nb_title {
+	font-weight: bold;
+	line-height: 1.5em;
+	color: #5b86b3;
+}
+
+.nb_body {
+	font-style: italic;
+}
+
+.keyword {
+	color: blue;
+	font-weight: bold;
+}
+
+.team_member {
+	margin-top: 20px;
+	width: 600px;
+}
+
+.team_image {
+	float: left;
+	width: 100px;
+}
+
+.team_text {
+	float: left;
+	width: 425px;
+}
+
+.member_name {
+	font-weight: bold;
+	float: left;
+	line-height: 1.5em;
+}
+
+.member_bio {
+	float: left;
+	clear: both;
+	width: 425px;
+}
+
+.doc-main, .contribute-main {
+	margin-top: 50px;
+}
+
+#header {
+	float: left;
+	clear: both;
+	height: 195px;
+	width: 960px;
+}
+
+#logo {
+	height: 165px;
+	background: url(../../../images/enginey.com/enginey_hdr.jpg);
+	
+}
+
+#page_links {
+	height: 30px;
+	text-align: left;
+	margin-left: 20px;
+}
+
+#page_links a {
+	margin-right: 10px;
+	font-size: 10pt;
+}
+
+.features_list .title {
+	font-weight: bold;
+	font-size: 14pt;
+}
+
+.section {
+	float: left;
+	margin-left: 20px;
+	color: white;
+}
+
+#about {
+	width: 500px;
+}
+
+.module_head {
+	display: none;
+}
+
+#page_home #col_1_widgets, #page_about #col_1_widgets, #page_products #col_1_widgets, #page_team #col_1_widgets {
+	float: left;
+	width: 260px;
+}
+
+#page_home #col_2_widgets, #page_about #col_2_widgets, #page_products #col_2_widgets, #page_team #col_2_widgets {
+	float: left;
+	width: 540px;
+}
+
+.loading_span {
+	display: none;
+}
+
+.form_field .help_text {
+	display: block;
+	margin-top: 5px;
+	font-size: 8pt;
+	float: left;
+	margin-left: 15px;
+}
+
+.form_field {
+	margin-bottom: 8px;
+	float: left;
+	clear: both;
+}
+
+label {
+	float: left;
+	width: 150px;
+}
+
+input {
+	float: left;
+}
+
+#page_links {
+	float: left;
+	width: 650px;
+}
+
+#admin_link {
+	float: right;
+}
+
+#admin_link a {
+	font-size:10pt;
+	margin-right: 20px;
+}

@@ -75,8 +75,7 @@ Layout = function(id, name, content_id, col_num, properties) {
 		var content = {
 			layout_id: this.id,
 			name: this.widget_name,
-			user_id: user_id,
-			authenticity_token: authenticity_token
+			user_id: user_id
 		};
 		for (attr in this.properties) { content[attr] = this.properties[attr]; }
 		send_ajax_get('/widget_layouts/load', content, this);

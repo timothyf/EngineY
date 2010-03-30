@@ -1,0 +1,14 @@
+<div>
+<div id="page_links"> 
+	<a href="/">Home</a> 
+	<a href="/pages/show/about">About</a>	
+	<a href="/pages/show/products">Products</a> 
+	<a href="/pages/show/team">Team</a> 
+</div> 
+<% if current_user && current_user.is_admin %>
+	<div id="admin_link">
+		<a href="/admin">Admin</a>
+	</div>
+<% end %>
+</div>
+<div style="clear:both;"></div>
