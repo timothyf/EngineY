@@ -342,6 +342,53 @@ class UsersController < ApplicationController
   end
   
   
+  # Function: authenticate
+  #  Authenticates user with given login and password.
+  #  Does not create session. Returns user object on
+  #  successful auth.
+  def authenticate
+    self.current_user = User.authenticate(params[:login], params[:password])
+    if (self.current_user.nil?)
+      # respond with error output
+      respond_to do |format|
+        format.html {
+          flash[:notice] = "Incorrect username or password"
+          render :action => 'new'
+        }
+        format.xml {
+          data = {:message => "Incorrect username or password"}
+          render :xml => data.to_xml(:dasherize => false), :status => 403
+        }
+        format.json {
+          data = {:message  => "Incorrect username or password"}
+          render :json => data.to_json(:dasherize => false), :status => 403
+        }
+      end
+    else
+      # valid authentication
+      # increment count for user login
+      login_count = self.current_user.login_count
+      login_count = login_count + 1
+      self.current_user.update_attribute('login_count', login_count)
+      self.current_user.update_attribute('last_seen_at',Time.zone.now)
+      
+      # respond with output
+      respond_to do |format|
+        format.html {
+          redirect_back_or_default('/')
+          flash[:notice] = "Logged in successfully"
+        }
+        format.xml {
+          render :xml => self.current_user.to_xml(:dasherize => false)
+        }
+        format.json {
+          render :json => self.current_user.to_json(:dasherize => false)
+        }
+      end
+    end 
+  end
+  
+  
   private
   def get_users_xml_select
     'id, first_name, last_name, login, sex, city, state_id, zip, country_id, 
