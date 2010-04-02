@@ -44,7 +44,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'groups/user_data', :controller=>'groups', :action=>'user_data'
   map.connect 'users/promote_to_group_admin', :controller=>'users', :action=>'promote_to_group_admin'
   map.connect 'wall_posts/delete', :controller=>'wall_posts', :action=>'destroy'
-  
+  map.connect 'users/authenticate.:format', :controller=>'users', :action=>'authenticate'
   
   map.resources :videos
   map.resources :blogs
