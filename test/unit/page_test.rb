@@ -12,9 +12,11 @@ class PageTest < ActiveSupport::TestCase
   def test_permalink_creation_on_create
     page = Page.create(
                   :title => 'Test Page',
-                  :body => 'This is a test page'
+                  :name => 'Test page'
                 )
      assert page.permalink == 'test_page'
+     assert page.title == 'Test Page'
+     assert page.name == 'Test page'
   end
   
   

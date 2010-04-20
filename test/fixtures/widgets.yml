@@ -22,10 +22,18 @@
 
 one:
   id: 1
-  name: 'Test Widget 1'
-  title: 'Test Widget 1'
+  name: Test Widget 1
+  title: Test Widget 1
+  active:  1
+  protected: 0
+  description: Widget Description
+  profile: 0
 
 two:
   id: 2
-  name: 'Test Widget 2'
-  title: 'Test Widget 2'
+  name: Test Widget 2
+  title: Test Widget 2
+  active:  1
+  protected: 0
+  description: Widget Description
+  profile: 1

@@ -11,12 +11,6 @@ class WallPostsControllerTest < ActionController::TestCase
   end
 
 
-  def test_should_get_new
-    get :new
-    assert_response :success
-  end
-
-
   def test_create_wall_post_for_user
     assert_difference('WallPost.count') do
       post :create, :user_id=>1, :wall_post => {:user_id=>1, :sender_id=>1, :message=>'Hello World' }
@@ -65,12 +59,6 @@ class WallPostsControllerTest < ActionController::TestCase
     assert wpost.user_id == 1, 'Incorrect use id'
     assert wpost.sender_id == 1, 'Incorrect sender id'
     assert wpost.message == 'Hello World', 'Incorrect message'
-  end
-
-
-  def test_should_get_edit
-    get :edit, :id => wall_posts(:one).id
-    assert_response :success
   end
 
 

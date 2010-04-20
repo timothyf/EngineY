@@ -1,7 +1,17 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+one:
+  id: 1
+  page_id: 1
+  widget_id: 1
+  col_num: 1
+  row_num: 1
+  html_content_id: 1
+
+two:
+  id: 2
+  page_id: 2
+  widget_id: 2
+  col_num: 2
+  row_num: 2
+  html_content_id: 2

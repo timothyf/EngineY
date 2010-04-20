@@ -34,21 +34,13 @@ class UsersController < ApplicationController
     url = params[:url]  
     render :partial=>'users/blog_posts_widget', :layout=>false
   end
-
-  
-  def grid_data_old
-    @users = User.find(:all)
-    respond_to do |format|
-      format.xml { render :partial => 'users/griddata.xml.builder', :layout=>false }
-    end
-  end
   
   
   # Returns a list of users in a JSON array.  This is used to display
   # the DOJO grid for the admin page.
   def grid_data
     @users = User.find(:all, :select=>'id, first_name, last_name')
-    render :json => @users.to_json
+    render :json => @users.to_json, :callback => params[:callback]
   end
   
   

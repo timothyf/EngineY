@@ -17,10 +17,8 @@ one:
    id: 1
    title: test html
    body: test body
-   widget_id: 1
 
 two:
    id: 2
    title: test html
    body: test body
-   widget_id: 2

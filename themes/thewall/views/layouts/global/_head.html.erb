@@ -1,8 +1,0 @@
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<title><%= @title -%></title>
-<%= stylesheet_link_tag 'application', :cache=>true -%>
-<%= javascript_include_tag 'application' -%>
-<%= javascript_tag %[const AUTH_TOKEN = #{form_authenticity_token.inspect};] if protect_against_forgery? -%>
-<%= yield :head -%>
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">

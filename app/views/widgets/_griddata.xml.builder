@@ -8,13 +8,10 @@ xml.rows do
       xml.cell w.id
       xml.cell w.name
       xml.cell w.title
-      xml.cell w.col_num
-      xml.cell w.page_order
-      xml.cell w.path
-      xml.cell w.index_url
-      xml.cell w.menu_item
-      xml.cell w.protected
       xml.cell w.active
+      xml.cell w.protected
+      xml.cell w.description
+      xml.cell w.profile
     end
   end
 end

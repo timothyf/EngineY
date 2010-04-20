@@ -14,11 +14,11 @@ one:
    id: 1
    title: test page
    permalink: 1.permalink.com
-   body: this is my page
+   name: this is my page
 
 two:
    id: 2
    title: test page
    permalink: 2.permalink.com
-   body: this is my page
+   name: this is my page
    

@@ -43,9 +43,7 @@ class HomeControllerTest < ActionController::TestCase
     assert_response :success
     assert :template=>'index'
     assert_not_nil assigns(:section)
-    assert_not_nil assigns(:home_widgets)  
-    assert_not_nil assigns(:photos)   
-    
+    assert_not_nil assigns(:photos)    
     assert assigns(:section) == 'MAIN', 'Incorrect section'
     assert assigns(:photos).length <= 6, 'Too many photos returned'
   end
