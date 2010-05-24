@@ -1,5 +1,13 @@
 <%= stylesheet_link_tag 'blogs' %>
 
+<% content_for :script_content do %>
+	<script>
+		function page_init() {
+		}
+	</script>
+<% end %>
+
+
 <div id="add_blog">
 	<%= render :partial=>'/blog_posts/blog_post_form', :locals => {:admin_page => true} %>
 </div>

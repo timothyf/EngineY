@@ -17,6 +17,8 @@ limitations under the License. %>
 		<%= stylesheet_link_tag 'themes/personal_blog/personal_blog' %>
         <link href="/stylesheets/themes/personal_blog/personal_blog_print.css" rel="stylesheet" type="text/css" media="print" />
     
+		<%= yield :script_content %>
+		
 		<% topics = current_user.blog_post_topics %>
 	</head>
     <body>

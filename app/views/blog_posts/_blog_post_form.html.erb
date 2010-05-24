@@ -27,12 +27,17 @@ limitations under the License.
 	
 	<div class="form_field">
 		<label for="topics">Topics:</label><br/><br/>
-		<% @blog_post_topics.each do |topic| %>
-			<%= check_box_tag(
-                            "blog_post[blog_post_topic_list][#{topic.id}]", 
-                            "1", 
-                            @blog_post.blog_post_topics.detect{|d| d == topic}) %>
-			<%= "#{topic.name}"%><br />
+		<% if @blog_post_topics %>
+			<% @blog_post_topics.each do |topic| %>
+				<%= check_box_tag(
+	                            "blog_post[blog_post_topic_list][#{topic.id}]", 
+	                            "1", 
+	                            @blog_post.blog_post_topics.detect{|d| d == topic}) %>
+				<%= "#{topic.name}"%><br />
+			<% end %>
+		<% else %>
+			You have not created any blog post topics<br/>
+			<%= link_to 'Create a topic', '' %>
 		<% end %>
 	</div>
 	
