@@ -1,12 +1,9 @@
-<% latest_post = current_user.blog_posts[0] %>
+<% posts = BlogPost.find(:all, :order => 'created_at DESC') %>
+<% latest_post = BlogPost.find(:last) %>
 
 <div id="content_wrapper">
     <div id="content">
-        <h1 id="post-173">
-        	<a href="http://blog.timothyfisher.com/?p=173">
-        		<%= latest_post.title %>
-			</a>
-		</h1>
+        <h1><%= link_to latest_post.title, blog_post_path(latest_post) %></h1>
         <p class="author fresh">Posted on <em><%= latest_post.created_at.to_s(:short_text) %></em>.</p>
         <p><%= latest_post.body %></p>
         <big>
@@ -15,26 +12,17 @@
 			</strong>
             | 
 			<strong>
-            	<a href="http://blog.timothyfisher.com/?p=173#respond">Make a Comment</a>
+				<%= link_to 'Make a Comment', blog_post_path(latest_post) %>
 			</strong>
             <small>
-                ( <strong>
-                	<a href="http://blog.timothyfisher.com/?p=173#respond">None</a>
-				  </strong>
-                so far ) 
+				(<strong> <a href="<%= blog_post_url(latest_post) %>#disqus_thread">View Comments</a></strong> so far)
             </small>
         </big>
-        <!-- Minor posts start here -->
-		<h2 class="recently">Recently on Timothy Fisher's Blog...</h2>
-		<% num_posts = current_user.blog_posts.length %>
-		<% (1..num_posts-1).each do |num| %>
-			<% post = current_user.blog_posts[num] %>
+		<h2 class="recently">Recent Posts...</h2>
+		<% num_posts = posts.length %>
+		<% posts.each do |post| %>
 	        <div class="recent_post">
-	            <h2 id="post-164">
-	            	<a href="http://blog.timothyfisher.com/?p=164">
-	            		<%= post.title %>
-					</a>
-				</h2>
+	            <h2><%= link_to post.title, blog_post_path(post) %></h2>
 	            <p class="author">
 	                Posted on <em><%= post.created_at.to_s(:short_text) %></em>.
 	            </p>

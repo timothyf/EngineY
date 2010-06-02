@@ -76,9 +76,15 @@ class BlogPostsController < ApplicationController
     if params[:user_id]
       index_blog_posts_for_user
     else
-      # show paginated view of all blog posts
-      @blog_posts = BlogPost.paginate(:all, :page => params[:page], :order => 'created_at DESC') 
-      @blog_post_count = BlogPost.count(:conditions => "published = true")
+      if params[:topic_id]
+        @blog_post_topic = BlogPostTopic.find(params[:topic_id])
+        @blog_posts = @blog_post_topic.blog_posts.paginate(:all, :page=>params[:page])
+        @blog_post_count = @blog_posts.length
+      else
+        # show paginated view of all blog posts
+        @blog_posts = BlogPost.paginate(:all, :page => params[:page], :order => 'created_at DESC') 
+        @blog_post_count = BlogPost.count(:conditions => "published = true")
+      end
     end
     respond_to do |format|
       format.html { render :template=>'blog_posts/blog_posts_list' } 
@@ -139,7 +145,7 @@ class BlogPostsController < ApplicationController
         format.xml  { render :xml => @blog_post, :status => :created, :location => @blog_post }
         format.json  { render :json => @blog_post.to_json, :status => :created, :location => @blog_post }
       else
-        format.html { render :action => "new" }
+        format.html { render :partial=>'blog_posts_edit', :layout=>true }
         format.xml  { render :xml => @blog_post.errors, :status => :unprocessable_entity }
         format.json  { render :json => @blog_post.errors.to_json, :status => :unprocessable_entity }
       end

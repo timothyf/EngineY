@@ -34,7 +34,7 @@ limitations under the License.
 		<% end %>
 	</div>
 	<div class="blog_post_body">
-		<%= snippet(blog_post.body, 50, "#{link_to "Read more...", blog_post}") %>
+		<%= truncate_html(blog_post.body, 250, "&nbsp;&nbsp;#{link_to "Read more...", blog_post}") %>
 	</div>
 	<div style="clear:both;"></div>
 </div>

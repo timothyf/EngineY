@@ -19,96 +19,29 @@ limitations under the License. %>
     
 		<%= yield :script_content %>
 		
-		<% topics = current_user.blog_post_topics %>
+		<% topics = BlogPostTopic.find(:all) %>
+		
+		<script type="text/javascript">  var disqus_developer = 1; </script> 
 	</head>
     <body>
         <div id="wrapper">
             <div class="content_padding">
                 <div id="header_effect">
                     <div id="header">
-                        <p><a href="http://blog.timothyfisher.com"><%= Network.find(:first).name %></a></p>
+                        <p><%= link_to Network.find(:first).name, '/' %></p>
                     </div>
                 </div>
 				<%= yield %>
                 <div id="side_one" class="side">
-                    <h3>Find Me</h3>
-                    <% if User.find(:first).twitter_id && User.find(:first).twitter_id != '' %>
-	                    Follow me on twitter
-						<a href="http://twitter.com/<%= User.find(:first).twitter_id %>">
-							<img src="http://blog.timothyfisher.com/wp-content/uploads/2009/08/twitter.gif"/>
-						</a>
-					<% end %>
-                    <br/><br/>
-                    <a href="http://www.linkedin.com/in/timothyfisher"><img src="http://blog.timothyfisher.com/wp-content/uploads/2009/08/badge_linkedin.gif"/></a>
-                    <br/><br/>
-                    <a href="http://timothyfisher.emurse.com">View my resume</a>
-                    <h3>RSS</h3>
-                    <ul>
-                        <li>
-                            <img src="http://blog.timothyfisher.com/wp-content/themes/fadtastic_theme/images/icon_rss.gif" alt="RSS Feed for Timothy Fisher&#8217;s Blog" class="vertical_align" border="0"><a href="http://blog.timothyfisher.com/?feed=rss2">Complete Feed</a>
-                        </li>
-                    </ul>
-                    <h3>Subscribe Via RSS</h3>
-                    <ul>
-                        <li>
-                            <a href="http://www.bloglines.com/sub/http://blog.timothyfisher.com/?feed=rss2" target="subscriptions"><img src="http://www.bloglines.com/images/sub_modern1.gif" alt="Subscribe with Bloglines" width="94" height="20" /></a>
-                        </li>
-                        <li>
-                            <a href="http://www.newsburst.com/Source/?add=http://blog.timothyfisher.com/?feed=rss2" target="subscriptions"><img src="http://i.i.com.com/cnwk.1d/i/newsbursts/btn/newsburst3.gif" alt="Add your feed to Newsburst from CNET News.com" width="96" height="20" /></a>
-                        </li>
-                        <li>
-                            <a href="http://www.google.com/reader/preview/*/feed/http://blog.timothyfisher.com/?feed=rss2" title="Subscribe in Google Reader"><img src="http://blog.timothyfisher.com/wp-content/themes/fadtastic_theme/images/subscribe/googleread2.jpg" alt="Subscribe in Google Reader" width="91" height="17" /></a>
-                        </li>
-                        <li>
-                            <a href="http://add.my.yahoo.com/rss?url=http://blog.timothyfisher.com/?feed=rss2" title="Add to My Yahoo!" target="subscriptions"><img src="http://us.i1.yimg.com/us.yimg.com/i/us/my/addtomyyahoo4.gif" alt="Add to My Yahoo!" /></a>
-                        </li>
-                        <li>
-                            <a href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=http://blog.timothyfisher.com/?feed=rss2" title="Subscribe in NewsGator Online" target="subscriptions"><img src="http://www.newsgator.com/images/ngsub1.gif" alt="Subscribe in NewsGator Online" width="91" /></a>
-                        </li>
-                        <li>
-                            <a href="http://feeds.my.aol.com/add.jsp?url=http://blog.timothyfisher.com/?feed=rss2" title="Subscribe in your AOL" target="subscriptions"><img src="http://blog.timothyfisher.com/wp-content/themes/fadtastic_theme/images/subscribe/addtomyaol.gif" alt="The latest comments to all posts in RSS" /></a>
-                        </li>
-                    </ul>
-                    <h3>Meta</h3>
-                    <ul>
-                        <li><small>Powered by <a href="http://www.enginey.com">EngineY</a></small></li>
-						<% if logged_in? %>
-							<li><%= link_to 'Admin', '/admin' %></li>
-						<% end %>
-                    </ul>
+					<%= render :partial=>'/home/find_me' %>
+					<%= render :partial=>'/home/rss_links' %>
+					<%= render :partial=>'/home/meta_links' %>
                 </div>
                 <div id="side_two" class="side">
-                    <h3>Topics</h3>
-                    <ul>
-                    	<% topics.each do |topic| %>
-	                        <li class="cat-item cat-item-8">
-	                            <a href="http://blog.timothyfisher.com/?cat=8" title="View all posts filed under <%= topic.name %>">
-	                            	<%= topic.name %>
-								</a>
-	                        </li>
-						<% end %>
-                    </ul>
-                    <h3>Archives</h3>
-                    <ul>
-                        <li>
-                            <a href='http://blog.timothyfisher.com/?m=201002' title='February 2010'>February 2010</a>
-                        </li>
-                        <li>
-                            <a href='http://blog.timothyfisher.com/?m=200911' title='November 2009'>November 2009</a>
-                        </li>
-                        <li>
-                            <a href='http://blog.timothyfisher.com/?m=200908' title='August 2009'>August 2009</a>
-                        </li>
-                        <li>
-                            <a href='http://blog.timothyfisher.com/?m=200907' title='July 2009'>July 2009</a>
-                        </li>
-                        <li>
-                            <a href='http://blog.timothyfisher.com/?m=200903' title='March 2009'>March 2009</a>
-                        </li>
-                    </ul>
+					<%= render :partial=>'/home/topics_list', :locals=>{:topics=>topics} %>
+					<%= render :partial=>'/home/archives_list' %>
                 </div>
-                <div class="clear">
-                </div>
+                <div class="clear"></div>
             </div>
         </div>
         <div id="footer">
@@ -120,5 +53,21 @@ limitations under the License. %>
                 </div>
             </div>
         </div>
+
+		<script type="text/javascript">
+		//<![CDATA[
+		(function() {
+			var links = document.getElementsByTagName('a');
+			var query = '?';
+			for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+			}
+			document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/timothyfishersblog/get_num_replies.js' + query + '"></' + 'script>');
+		})();
+		//]]>
+		</script>
+
     </body>
 </html>

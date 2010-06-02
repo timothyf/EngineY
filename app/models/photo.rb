@@ -48,10 +48,11 @@ class Photo < ActiveRecord::Base
   
   has_attachment :content_type => :image, 
                  :storage => :file_system, 
+                 :processor    => :rmagick,
                  #:storage => :s3,
                  :max_size => 50.megabyte,
                  :resize_to => '640x640>',
-                 :thumbnails => { :thumb => '32x32>', 
+                 :thumbnails => { :thumb => '32x32', 
                                   :small => '48x48', 
                                   :medium => '82x82',
                                   :member => '96x96',

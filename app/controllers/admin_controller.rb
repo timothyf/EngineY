@@ -273,9 +273,22 @@ class AdminController < ApplicationController
   end
   
   
+  def blog_post_new
+    @blog_post = BlogPost.new
+    @blog_post_topics = BlogPostTopic.find(:all)
+    render 'blog_post_form'
+  end
+  
+  
   def blog_post_edit
     @blog_post = BlogPost.find(params[:id])
+    @blog_post_topics = BlogPostTopic.find(:all)
     render 'blog_post_form'
+  end
+  
+  
+  def blog_post_delete
+    
   end
   
   

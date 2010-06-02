@@ -1,0 +1,13 @@
+<div id="blog_post_topic_list">
+	<ul>
+	<% @blog_post_topics.each do |topic| %>
+		<li>
+			<%= check_box_tag(
+                        "blog_post[blog_post_topic_list][#{topic.id}]", 
+                        "1", 
+                        @blog_post.blog_post_topics.detect{|d| d == topic}) %>
+			<label><%= "#{topic.name}"%></label>
+		</li>
+	<% end %>
+	</ul>
+</div>

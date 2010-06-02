@@ -1,0 +1,14 @@
+<h3>Find Me</h3>
+<div id="twitter_link">
+	<% if User.find(:first).twitter_id && User.find(:first).twitter_id != '' %>
+	    Follow me on twitter
+		<a href="http://twitter.com/<%= User.find(:first).twitter_id %>">
+			<%= image_tag 'personal_blog/twitter.gif' %>
+		</a>
+	<% end %>
+</div>
+<div id="linkedin_link" style="margin-top:15px;">
+	<% if User.find(:first).linked_in_url && User.find(:first).linked_in_url != '' %>
+		<%= link_to image_tag('personal_blog/badge_linkedin.gif'), User.find(:first).linked_in_url %>
+	<% end %>
+</div>

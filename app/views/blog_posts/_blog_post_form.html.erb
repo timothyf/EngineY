@@ -13,6 +13,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
+<script type='text/javascript'>
+	var blog_post_id = <%= @blog_post.id.to_s %>;
+</script>
 <% form_for(@blog_post, :html => { :multipart => true }) do |f| -%>			
 	<%= f.error_messages %>
 	<div class="form_field">
@@ -28,17 +31,17 @@ limitations under the License.
 	<div class="form_field">
 		<label for="topics">Topics:</label><br/><br/>
 		<% if @blog_post_topics %>
-			<% @blog_post_topics.each do |topic| %>
-				<%= check_box_tag(
-	                            "blog_post[blog_post_topic_list][#{topic.id}]", 
-	                            "1", 
-	                            @blog_post.blog_post_topics.detect{|d| d == topic}) %>
-				<%= "#{topic.name}"%><br />
-			<% end %>
+			<%= render :partial=>'/blog_posts/blog_post_topic_list'%>
 		<% else %>
 			You have not created any blog post topics<br/>
-			<%= link_to 'Create a topic', '' %>
 		<% end %>
+		<div id="create_topic">
+			<%= link_to 'Create a new topic', 'javascript:show_blog_topic_field()' %>
+			<div id="blog_post_topic_field" style="display:none;">
+				<input type="text" id="blog_post_topic_entry" name="blog_post_topic_entry" />
+				<%= link_to 'Save', 'javascript:save_blog_topic()' %>
+			</div>
+		</div>
 	</div>
 	
 	<div class="form_field">

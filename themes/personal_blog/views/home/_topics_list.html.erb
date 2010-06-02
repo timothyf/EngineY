@@ -1,0 +1,9 @@
+<h3>Topics</h3>
+<ul>
+	<% topics.each do |topic| %>
+        <li>
+			<%= link_to topic.name, '/blog_posts?topic_id=' + topic.id.to_s  %>
+        </li>
+	<% end %>
+	<li><%= link_to 'All', '/blog_posts' %>
+</ul>

@@ -21,6 +21,21 @@ class BlogPostTopicsController < ApplicationController
       format.xml  { render :xml => @blog_post_topics }
     end
   end
+  
+  
+  def ajax_save
+    topic = params[:blog_post_topic]
+    BlogPostTopic.create(:name => topic, :user_id => current_user.id)
+    @blog_post_topics = BlogPostTopic.find(:all)
+    render :text => ''
+  end
+  
+  
+  def fetch_topic_list
+    @blog_post = BlogPost.find(params[:blog_post_id])
+    @blog_post_topics = BlogPostTopic.find(:all)
+    render :partial=>'/blog_posts/blog_post_topic_list', :layout=>false
+  end
 
 
   def show

@@ -506,4 +506,28 @@ ul.blogroll li {
 	line-height: 2;
 }
 
+#login_form label {
+	display: block;
+	float: left;
+	clear: both;
+	width: 90px;
+	margin-top: 30px;
+	font-weight: bold;
+}
+
+#login_form input {
+	display: block;
+	float: left;
+	width: 150px;	
+	margin-top: 30px;
+}
+
+#login_form #login_btn input {
+	margin-top: 25px;
+	margin-left: 160px;
+	width: 80px;
+	clear: both;
+}
+
+
 

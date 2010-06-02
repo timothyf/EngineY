@@ -1,0 +1,7 @@
+<h3>Meta</h3>
+<ul>
+    <li><small>Powered by <a href="http://www.enginey.com">EngineY</a></small></li>
+	<% if logged_in? %>
+		<li><%= link_to 'Admin', '/admin' %></li>
+	<% end %>
+</ul>

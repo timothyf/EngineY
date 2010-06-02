@@ -76,6 +76,21 @@ namespace :enginey do
                         :featured => false
                         )  
       end
+      BlogPost.create(:user => user1,
+                      :title => "Old Blog Post",
+                      :body => "This site is being launched as a new community site for anyone who programs in or aspires to program in the Ruby programming language.  This site is not affiliated with a single user group, but provides a single point of contact for you to keep up with what is going on in the Ruby community throughout Michigan.  Here you will find notification of upcoming Ruby related events in Michigan and nearby, a community of like-minded Ruby enthusiasts to network with, and a place to share your knowledge with others.<br/><br/>I hope you enjoy the new RubyMI community site.<br/><br/>Sincerely,<br/>Timothy Fisher",
+                      :published => true,
+                      :featured => false,
+                      :created_at => '2010/02/15'
+                      )
+                      
+      BlogPost.create(:user => user1,
+                      :title => "Older Blog Post #{number}",
+                      :body => "This site is being launched as a new community site for anyone who programs in or aspires to program in the Ruby programming language.  This site is not affiliated with a single user group, but provides a single point of contact for you to keep up with what is going on in the Ruby community throughout Michigan.  Here you will find notification of upcoming Ruby related events in Michigan and nearby, a community of like-minded Ruby enthusiasts to network with, and a place to share your knowledge with others.<br/><br/>I hope you enjoy the new RubyMI community site.<br/><br/>Sincerely,<br/>Timothy Fisher",
+                      :published => true,
+                      :featured => false,
+                      :created_at => '2010/02/23'
+                      )
       
       
       ##########################################################################
@@ -134,6 +149,12 @@ namespace :enginey do
       WidgetLayout.create(:widget_id => 8, :page_id => 1, :col_num => 2)
       WidgetLayout.create(:widget_id => 9, :page_id => 1, :col_num => 3)
       WidgetLayout.create(:widget_id => 10, :page_id => 1, :col_num => 3, :html_content_id => 1)
+      
+      ##########################################################################
+      # Set Theme
+      puts 'Setting theme...'
+      Theme.create(:name=>'personal_blog')
+      
       
       puts 'Database population done!'
     end

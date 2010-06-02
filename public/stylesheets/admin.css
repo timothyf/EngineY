@@ -7,6 +7,17 @@
 	width: 220px;
 }
 
+#blog_post_topic_list ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+#blog_post_topic_list ul li {
+	margin: 0px;
+	padding: 0px;
+}
+
 
 
 
