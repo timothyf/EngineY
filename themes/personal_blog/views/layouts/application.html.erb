@@ -35,11 +35,14 @@ limitations under the License. %>
                 <div id="side_one" class="side">
 					<%= render :partial=>'/home/find_me' %>
 					<%= render :partial=>'/home/rss_links' %>
+					<%= render :partial=>'/home/blog_gadgets' %>
 					<%= render :partial=>'/home/meta_links' %>
                 </div>
                 <div id="side_two" class="side">
 					<%= render :partial=>'/home/topics_list', :locals=>{:topics=>topics} %>
 					<%= render :partial=>'/home/archives_list' %>
+					<%= render :partial=>'/home/friend_connect' %>
+					<%= render :partial=>'/home/google_ads' %>
                 </div>
                 <div class="clear"></div>
             </div>
@@ -68,6 +71,6 @@ limitations under the License. %>
 		})();
 		//]]>
 		</script>
-
+		<%= render :partial=>'/home/google_analytics' %>
     </body>
 </html>

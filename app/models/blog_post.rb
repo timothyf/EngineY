@@ -25,7 +25,7 @@ class BlogPost < ActiveRecord::Base
   has_many :replies, :as => :item
   
   validates_length_of :title, :maximum=>200
-  validates_length_of :body,  :maximum=>10000
+  validates_length_of :body,  :maximum=>15000
   
   attr_accessor :blog_post_topic_list
   

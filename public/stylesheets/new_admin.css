@@ -482,3 +482,14 @@ input {
 	margin-top: 10px;
 	font-weight: bold;
 }
+
+.admin_photo {
+	float: left;
+	width: 120px;
+}
+
+#add_photo {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+}

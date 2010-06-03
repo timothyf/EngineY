@@ -75,16 +75,25 @@ class BlogPostsController < ApplicationController
     @section = 'BLOGS' 
     if params[:user_id]
       index_blog_posts_for_user
-    else
-      if params[:topic_id]
+    elsif params[:topic_id]
         @blog_post_topic = BlogPostTopic.find(params[:topic_id])
         @blog_posts = @blog_post_topic.blog_posts.paginate(:all, :page=>params[:page])
         @blog_post_count = @blog_posts.length
-      else
+    elsif params[:month]
+      month = params[:month].to_i
+      # show blog posts from the specified month and year
+      start_date = "#{params[:year]}-0#{month.to_s}-01"
+      end_date = "#{params[:year]}-0#{(month+1).to_s}-01"
+      puts '############### start date = ' + start_date
+      puts '############### end date = ' + end_date
+      @blog_posts = BlogPost.paginate(:all, :page => params[:page],
+                                      :conditions => "created_at > '#{start_date}' AND created_at < '#{end_date}'", 
+                                      :page => params[:page], :order => 'created_at DESC') 
+      @blog_post_count = BlogPost.count(:conditions => "published = 'true' AND created_at > '#{start_date}' AND created_at < '#{end_date}'")
+    else
         # show paginated view of all blog posts
         @blog_posts = BlogPost.paginate(:all, :page => params[:page], :order => 'created_at DESC') 
         @blog_post_count = BlogPost.count(:conditions => "published = true")
-      end
     end
     respond_to do |format|
       format.html { render :template=>'blog_posts/blog_posts_list' } 

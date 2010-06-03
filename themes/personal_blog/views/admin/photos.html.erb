@@ -4,9 +4,8 @@
 	<% @photos.each do |photo| %>
 		<% if photo.parent_id == nil %>
 			<div class="admin_photo">
-				<%= link_to image_tag(photo.public_filename()), photo_url(photo) %><br/>
-				URL: <%= photo.public_filename() %><br/>
-				<%= link_to 'Delete', '' %>
+				<%= link_to image_tag(photo.public_filename(:member)), photo.public_filename() %><br/>
+				<%= link_to 'Delete', "/admin/photo_delete?id=#{photo.id}" %>
 			</div>
 		<% end %>
 	<% end %>
@@ -16,9 +15,9 @@
 	<% end %>
 </div>
 
-<h1>Add an Image</h1>
 <div id="add_photo">
-	<% form_for(:photo, :url => photos_path, :html => { :multipart => true }) do |f| -%>			
+	<h1>Add an Image</h1>
+	<% form_for(:photo, :url => '/admin/photo_add', :html => { :multipart => true }) do |f| -%>			
 		<%= f.error_messages %>
 		<p>
 	    	<label for="photo">Image:</label>

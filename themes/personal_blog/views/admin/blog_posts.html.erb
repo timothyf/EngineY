@@ -14,10 +14,9 @@
 	<table id="blog_post_topics">
 		<thead>
 			<th width="50px">ID</th>
-			<th width="100px">User</th>
-			<th width="150px">Name</th>
-			<th width="90px">Parent ID</th>
-			<th width="90px">Default</th>
+			<th width="80px">User</th>
+			<th width="120px">Name</th>
+			<th width="60px">Default</th>
 			<th width="200px">Actions</th>
 		</thead>
 		<tbody>
@@ -26,7 +25,6 @@
 					<td><%= topic.id %></td>
 					<td><%= topic.user.login %></td>
 					<td><%= topic.name %></td>
-					<td><%= topic.parent_id %></td>
 					<td><%= topic.default %></td>
 					<td>
 						<%= link_to 'Edit', '/admin/blog_post_topic_edit?id=' + topic.id.to_s %> |
@@ -41,15 +39,22 @@
 <% end %>
 
 <h2 class="ic-db">Blog Posts</h2>
-<%= link_to 'Add Post', '/admin/blog_post_new' %><br/><br/>
+<%= link_to 'Add Post', '/admin/blog_post_new' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%= link_to 'Export Posts', '/admin/blog_post_export' %><br/><br/>
+
+<% form_for( :fmfile, :url => '/admin/blog_post_import', :html => { :method => :post, :name => 'blog_post_import', :enctype => 'multipart/form-data' } ) do |f| %>
+	<%= f.file_field :document, :accept => 'text/xml', :name => 'blog_posts_file' %>
+	<%= submit_tag 'Import Blog Posts' %>
+<% end %>
+
+<br/><br/>
 <table id="blog_posts">
 	<thead>
 		<th width="50px">ID</th>
-		<th width="100px">User</th>
-		<th width="150px">Title</th>
-		<th width="90px">Parent ID</th>
+		<th width="80px">User</th>
+		<th width="220px">Title</th>
 		<th width="90px">Published</th>
-		<th width="90px">Featured</th>
+		<th width="180px">Pub Date</th>
 		<th width="200px">Actions</th>
 	</thead>
 	<tbody>
@@ -58,9 +63,8 @@
 				<td><%= post.id %></td>
 				<td><%= post.user.login %></td>
 				<td><%= post.title %></td>
-				<td><%= post.parent_id %></td>
-				<td><%= post.published %></td>
-				<td><%= post.featured %></td>
+				<td style="text-align:center;"><%= post.published %></td>
+				<td><%= post.created_at.to_s %>
 				<td>
 					<%= link_to 'Edit', '/admin/blog_post_edit?id=' + post.id.to_s %> |
 					<%= link_to 'Delete', '/admin/blog_post_delete?id=' + post.id.to_s, :confirm => 'Are you sure you want to delete this blog post?' %> |

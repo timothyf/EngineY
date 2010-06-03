@@ -7,31 +7,24 @@
 		
 		<%= stylesheet_link_tag 'new_admin' %>
 		
-		<%= javascript_include_tag 'admin' %>
-		
-		<%= yield :script_content %>
-		
-		<%= jqgrid_stylesheets %> 
-		<%= jqgrid_javascripts %>
-		
-		<%= include_tiny_mce_if_needed %>
-		
+		<%= javascript_include_tag 'admin' %>		
+		<%= yield :script_content %>		
+		<%= include_tiny_mce_if_needed %>		
 	</head>
+	
 	<body>
 		<div class="push"></div>
 		<div id="container">
 			<div id="header">
 				<div id="logo">
-					<a href="http://www.kliroseis.gr/demos/easyadmin/index.php" class="logo">Personal Blog Admin</a>
+					<%= link_to @network.name + ' Admin', '/admin', {:class=>'logo'} %>
 				</div>
 				<div id="admin-details">
 					<% if current_user.profile_photo %>
 						<%= image_tag(current_user.profile_photo.public_filename(:small), :alt=>current_user.name) %>
-					<% else %>
-						
 					<% end %>
 					 Welcome <strong>Admin</strong>! 
-					 <a href="/logout" class="a-red">Logout?</a><br/>
+					<%= link_to 'Logout?', '/logout', {:class=>"a-red"}%><br/>
 					<%= link_to 'Edit profile', user_path(current_user) + '/edit' %> | 
 					<%= link_to 'Visit site', '/' %>
 				</div>

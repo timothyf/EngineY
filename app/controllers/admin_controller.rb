@@ -180,9 +180,10 @@ class AdminController < ApplicationController
   # Display the Blog Posts tab of the Admin page.
   def blog_posts
     @page = 'blog_posts'
+    @blog_post_topics = BlogPostTopic.find(:all)
     respond_to do |format|
       format.html {
-        @blog_posts = BlogPost.find(:all)
+        @blog_posts = BlogPost.find(:all, :order => 'created_at DESC')
       }
       format.json { 
         blog_posts = BlogPost.find(:all) do
@@ -288,7 +289,73 @@ class AdminController < ApplicationController
   
   
   def blog_post_delete
-    
+    @blog_post = BlogPost.find(params[:id])
+    @blog_post.destroy
+    redirect_to '/admin/blog_posts'
+  end
+  
+  
+  # Exports all blog posts to an XML or JSON file
+  def blog_post_export
+    headers['Content-Type'] = "text/xml"
+    headers['Content-Disposition'] = 'attachment; filename="blog_posts_export.xml"'
+    @posts = BlogPost.find(:all)
+    render :template=>'blog_posts/export.xml.builder', :xml=>@posts, :type => :builder 
+  end
+  
+  
+  # Imports blog posts from an XML or JSON file into the database
+  def blog_post_import
+    require 'rexml/document'
+    doc = REXML::Document.new(params[:blog_posts_file].read) 
+    doc.elements.each("posts/post") do |element| 
+      blog_post = BlogPost.create(
+          :user => current_user,
+          :title => element.elements["title"].text,
+          :body => element.elements["body"].text,
+          :created_at => element.elements["created_at"].text,
+          :updated_at => element.elements["created_at"].text,
+          :views => element.elements["views"].text,
+          :published => false
+      )
+      
+      # process topics
+      element.elements.each("topics/topic") do |topic_el|
+        topic = topic_el.elements["name"].text
+        bp_topic = BlogPostTopic.find_or_create_by_name(topic)
+        blog_post.blog_post_topics << bp_topic
+        blog_post.save
+      end
+      
+      # process tags
+      tags = []
+      element.elements.each("tags/tag") do |tag_el|
+        tags << tag_el.elements["name"].text
+      end
+      blog_post.tag_list = tags.join(',')
+      blog_post.save
+    end
+    redirect_to '/admin/blog_posts'
+  end
+  
+  
+  def photo_add
+    sleep 5
+    @photo = Photo.new(params[:photo])
+    @photo.user = current_user;
+    if @photo.save
+      flash[:notice] = 'Photo was successfully created.'
+      redirect_to '/admin/photos'    
+    else
+      redirect_to '/admin/photos'
+    end
+  end
+  
+  
+  def photo_delete
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    redirect_to '/admin/photos'
   end
   
   

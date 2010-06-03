@@ -31,7 +31,7 @@ module BlogPostsHelper
     html += "<ul>"
     (1..4).each do |num|
       dt = date - num.month
-      html += "<li> " + link_to(months[dt.month-1] + ' 2010', '') + "</li>"
+      html += "<li> " + link_to(months[dt.month-1] + ' 2010', "/blog_posts?month=#{dt.month}&year=#{dt.year}") + "</li>"
     end
     html += "</ul>"
     html
