@@ -47,6 +47,12 @@ class BlogPost < ActiveRecord::Base
       false
     end
   end
+  
+  
+  # Returns a count of the blog posts which have been published
+  def self.published_count
+    BlogPost.count(:conditions => "published = true")
+  end
 
   
   # This method is used to update the database with posts from an external feed

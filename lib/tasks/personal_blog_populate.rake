@@ -85,7 +85,7 @@ namespace :enginey do
                       )
                       
       BlogPost.create(:user => user1,
-                      :title => "Older Blog Post #{number}",
+                      :title => "Older Blog Post",
                       :body => "This site is being launched as a new community site for anyone who programs in or aspires to program in the Ruby programming language.  This site is not affiliated with a single user group, but provides a single point of contact for you to keep up with what is going on in the Ruby community throughout Michigan.  Here you will find notification of upcoming Ruby related events in Michigan and nearby, a community of like-minded Ruby enthusiasts to network with, and a place to share your knowledge with others.<br/><br/>I hope you enjoy the new RubyMI community site.<br/><br/>Sincerely,<br/>Timothy Fisher",
                       :published => true,
                       :featured => false,

@@ -18,10 +18,6 @@ module BlogPostsHelper
   end
   
   
-  #### DO PROPER DATE MATH     INCLUDE THE WHOLE DATE NOT JUST THE MONTH
-  #### THIS WILL TAKE CARE OF YEAR CHANGE
-  
-  
   def show_archive_links
     # iterate over last 5 months
     date = Time.new
@@ -29,12 +25,27 @@ module BlogPostsHelper
 
     html = ''
     html += "<ul>"
-    (1..4).each do |num|
-      dt = date - num.month
-      html += "<li> " + link_to(months[dt.month-1] + ' 2010', "/blog_posts?month=#{dt.month}&year=#{dt.year}") + "</li>"
+    (1..36).each do |num|
+      date = date - 1.month
+      posts = get_posts_for_month_year(date)
+      if posts && posts.length > 0
+        html += "<li> " + link_to(months[date.month-1] + " #{date.year.to_s}", "/blog_posts?month=#{date.month}&year=#{date.year}") + "</li>"
+      end
     end
     html += "</ul>"
     html
+  end
+  
+  
+  private
+  
+  def get_posts_for_month_year(date)
+    start_date = "#{date.year.to_s}-#{date.strftime('%m')}-01"
+    end_date = "#{date.year.to_s}-#{(date + 1.month).strftime('%m')}-01"
+    @blog_posts = BlogPost.find(:all, 
+                                :conditions => "created_at > '#{start_date}' AND created_at < '#{end_date}'", 
+                                :order => 'created_at DESC')
+    @blog_posts
   end
   
   
