@@ -18,16 +18,16 @@ class Configuration
   
   
   # The self.get method is not used yet..
-  def self.get
-    {
-      :use_proxy => false,
-      :proxy_host => '10.0.6.251',
-      :proxy_port => '3128',
-      :enable_self_registration => true,
-      :max_tweets => 5,
-      :enable_facebook_connect => false
-    }
-  end
+#  def self.get
+#    {
+#      :use_proxy => false,
+#      :proxy_host => '10.0.6.251',
+#      :proxy_port => '3128',
+#      :enable_self_registration => true,
+#      :max_tweets => 5,
+#      :enable_facebook_connect => false
+#    }
+#  end
   
   
   # Sets the configuration (not used yet)

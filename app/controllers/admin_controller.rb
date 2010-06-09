@@ -452,8 +452,8 @@ class AdminController < ApplicationController
   
   # Used to display the current Analytics code
   def analytics_code
-    if HtmlContent.find_by_content_id('analytics')
-      @analytics = HtmlContent.find_by_content_id('analytics')
+    if HtmlContent.find_by_title('?analytics?')
+      @analytics = HtmlContent.find_by_title('?analytics?')
     else
       @analytics = HtmlContent.new
     end
@@ -468,7 +468,7 @@ class AdminController < ApplicationController
     else
       analytics = HtmlContent.new
       analytics.body = params[:analytics_text]
-      analytics.content_id = 'analytics'
+      analytics.title = '?analytics?'
       analytics.save
     end    
     redirect_to :action => 'settings' 

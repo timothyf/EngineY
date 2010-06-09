@@ -35,7 +35,11 @@ limitations under the License.
 			</div>
 		<% end %>
 	<% else %>
-		You have not posted any projects.<br/>
+		<% if @user == current_user %>
+			You have not posted any projects.<br/>
+		<% else %>
+			User has not posted any projects.<br/>
+		<% end %>
 		<%= link_to 'View projects...', projects_url() %>
 	<% end %>
 	<div style="clear:both;"></div>

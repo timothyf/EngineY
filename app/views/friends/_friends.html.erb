@@ -36,5 +36,9 @@ limitations under the License.
 	<% end %>
 	
 <% else %>
-	You have not added any friends. <%= link_to 'Find some now.', '/users' %>
+	<% if @user == current_user %>
+		You have not added any friends. <%= link_to 'Find some now.', '/users' %>
+	<% else %>
+		User has not added any friends.
+	<% end %>
 <% end %>

@@ -345,58 +345,98 @@ namespace :railsnet do
       puts 'Creating managed content...'
       HtmlContent.create(:title => 'sample_content',
                          :body => 'This is an example of <b>managed content</b>.');
-      
-      ##########################################################################
-      # Create Widgets   
-      puts 'Creating widgets...'
-      Widget.create(:name => 'members_home', :description => 'Display some members', :profile => false)
-      Widget.create(:name => 'groups_home', :description => 'Display some groups', :profile => false)
-      Widget.create(:name => 'events_home', :description => 'Display upcoming events', :profile => false)
-      Widget.create(:name => 'announcements_home', :description => 'Display recent announcements', :profile => false)
-      Widget.create(:name => 'activity_feed_home', :description => 'Display recent activities', :profile => false)
-      Widget.create(:name => 'blog_posts_home', :description => 'Display recent blog posts', :profile => false)
-      Widget.create(:name => 'links_home', :description => 'Display some links', :profile => false)
-      Widget.create(:name => 'projects_home', :description => 'Display some projects', :profile => false)
-      Widget.create(:name => 'job_posts_home', :description => 'Display recent job posts', :profile => false)
-      Widget.create(:name => 'forum_posts_home', :description => 'Display recent forum posts', :profile => false)
-      Widget.create(:name => 'photos_home', :description => 'Slide show of photos', :profile => false)
-      Widget.create(:name => 'html_content_home', :description => 'Managed Content Widget', :profile => false)
-      
-      Widget.create(:name => 'status_posts_profile', :description => 'Display users status posts', :profile => true)
-      Widget.create(:name => 'about_me_profile', :description => 'Display users bio', :profile => true)
-      Widget.create(:name => 'blog_posts_profile', :description => 'Display users blog posts', :profile => true)
-      Widget.create(:name => 'activity_feed_profile', :description => 'Display users activities', :profile => true)
-      Widget.create(:name => 'links_profile', :description => 'Display users links', :profile => true)
-      Widget.create(:name => 'projects_profile', :description => 'Display users projects', :profile => true)
+                         
+                         
+     ##########################################################################
+     # Create Modules and widgets
+     puts 'Creating modules and widgets...'
+     mod_id = EyModule.create(:name => 'blog_posts')
+     Widget.create(:ey_module_id => mod_id, :name => 'blog_posts_home', :description => 'Display recent blog posts', :profile => false)
+     Widget.create(:ey_module_id => mod_id, :name => 'blog_posts_profile', :description => 'Display users blog posts', :profile => true)
+     
+     mod_id = EyModule.create(:name => 'members')
+     Widget.create(:ey_module_id => mod_id, :name => 'members_home', :description => 'Display some members', :profile => false)
+     
+     mod_id = EyModule.create(:name => 'groups')
+     Widget.create(:ey_module_id => mod_id, :name => 'groups_home', :description => 'Display some groups', :profile => false)
+     Widget.create(:ey_module_id => mod_id, :name => 'groups_profile', :description => 'Display users groups', :profile => true)
+
+     mod_id = EyModule.create(:name => 'events')
+     Widget.create(:ey_module_id => mod_id, :name => 'events_home', :description => 'Display upcoming events', :profile => false)
+     Widget.create(:ey_module_id => mod_id, :name => 'events_profile', :description => 'Display users events', :profile => true)
+     
+     mod_id = EyModule.create(:name => 'announcements')
+     Widget.create(:ey_module_id => mod_id, :name => 'announcements_home', :description => 'Display recent announcements', :profile => false)
+     
+     mod_id = EyModule.create(:name => 'activity_feed')
+     Widget.create(:ey_module_id => mod_id, :name => 'activity_feed_home', :description => 'Display recent activities', :profile => false)
+     Widget.create(:ey_module_id => mod_id, :name => 'activity_feed_profile', :description => 'Display users activities', :profile => true)
+     
+     mod_id = EyModule.create(:name => 'links')
+     Widget.create(:ey_module_id => mod_id, :name => 'links_home', :description => 'Display some links', :profile => false)
+     Widget.create(:ey_module_id => mod_id, :name => 'links_profile', :description => 'Display users links', :profile => true)
+     
+     mod_id = EyModule.create(:name => 'projects')
+     Widget.create(:ey_module_id => mod_id, :name => 'projects_home', :description => 'Display some projects', :profile => false)
+     Widget.create(:ey_module_id => mod_id, :name => 'projects_profile', :description => 'Display users projects', :profile => true)
+     
+     mod_id = EyModule.create(:name => 'job_posts')
+     Widget.create(:ey_module_id => mod_id, :name => 'job_posts_home', :description => 'Display recent job posts', :profile => false)
+     
+     mod_id = EyModule.create(:name => 'forum_posts')
+     Widget.create(:ey_module_id => mod_id, :name => 'forum_posts_home', :description => 'Display recent forum posts', :profile => false)
+     Widget.create(:ey_module_id => mod_id, :name => 'forum_posts_profile', :description => 'Display users forum posts', :profile => true)
+     
+     mod_id = EyModule.create(:name => 'photos')
+     Widget.create(:ey_module_id => mod_id, :name => 'photos_home', :description => 'Slide show of photos', :profile => false)
+     Widget.create(:ey_module_id => mod_id, :name => 'photos_profile', :description => 'Slide show of photos', :profile => true)
+     
+     mod_id = EyModule.create(:name => 'html_content')
+     Widget.create(:ey_module_id => mod_id, :name => 'html_content_home', :description => 'Managed Content Widget', :profile => false)
+     
+     mod_id = EyModule.create(:name => 'status_posts')
+     Widget.create(:ey_module_id => mod_id, :name => 'status_posts_profile', :description => 'Display users status posts', :profile => true)
+     
+     mod_id = EyModule.create(:name => 'about_me')
+     Widget.create(:ey_module_id => mod_id, :name => 'about_me_profile', :description => 'Display users bio', :profile => true)
+                         
 
       ##########################################################################
       # Create Pages
       puts 'Creating pages...'
-      Page.create(:title => 'home', :name => 'RubyMI Home')
-      Page.create(:title => 'profile', :name => 'User Profile')
+      home_pg = Page.create(:name => 'home', :title => 'RubyMI Home')
+      prof_pg = Page.create(:name => 'profile', :title => 'User Profile')
       
       ##########################################################################
       # Create Layouts
       puts 'Creating layouts...'
-      WidgetLayout.create(:widget_id => 1, :page_id => 1, :col_num => 1)
-      WidgetLayout.create(:widget_id => 2, :page_id => 1, :col_num => 1)
-      WidgetLayout.create(:widget_id => 3, :page_id => 1, :col_num => 1)
-      WidgetLayout.create(:widget_id => 4, :page_id => 1, :col_num => 2)
-      WidgetLayout.create(:widget_id => 5, :page_id => 1, :col_num => 2)
-      WidgetLayout.create(:widget_id => 6, :page_id => 1, :col_num => 2)
-      WidgetLayout.create(:widget_id => 7, :page_id => 1, :col_num => 2)
-      WidgetLayout.create(:widget_id => 8, :page_id => 1, :col_num => 2)
-      WidgetLayout.create(:widget_id => 9, :page_id => 1, :col_num => 3)
-      WidgetLayout.create(:widget_id => 10, :page_id => 1, :col_num => 3)
-      WidgetLayout.create(:widget_id => 11, :page_id => 1, :col_num => 3)
-      WidgetLayout.create(:widget_id => 12, :page_id => 1, :col_num => 3, :html_content_id => 1)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("members_home").id, :page_id => home_pg.id, :col_num => 1)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("groups_home").id, :page_id => home_pg.id, :col_num => 1)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("events_home").id, :page_id => home_pg.id, :col_num => 1)
       
-      WidgetLayout.create(:widget_id => 13, :page_id => 2, :col_num => 2)
-      WidgetLayout.create(:widget_id => 14, :page_id => 2, :col_num => 2)
-      WidgetLayout.create(:widget_id => 15, :page_id => 2, :col_num => 2)
-      WidgetLayout.create(:widget_id => 16, :page_id => 2, :col_num => 2)
-      WidgetLayout.create(:widget_id => 17, :page_id => 2, :col_num => 3)
-      WidgetLayout.create(:widget_id => 18, :page_id => 2, :col_num => 3)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("announcements_home").id, :page_id => home_pg.id, :col_num => 2)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("activity_feed_home").id, :page_id => home_pg.id, :col_num => 2)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("blog_posts_home").id, :page_id => home_pg.id, :col_num => 2)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("links_home").id, :page_id => home_pg.id, :col_num => 2)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("projects_home").id, :page_id => home_pg.id, :col_num => 2)
+      
+      WidgetLayout.create(:widget_id => Widget.find_by_name("job_posts_home").id, :page_id => home_pg.id, :col_num => 3)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("forum_posts_home").id, :page_id => home_pg.id, :col_num => 3)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("photos_home").id, :page_id => home_pg.id, :col_num => 3)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("html_content_home").id, :page_id => home_pg.id, :col_num => 3, :html_content_id => 1)
+      
+      WidgetLayout.create(:widget_id => Widget.find_by_name("groups_profile").id, :page_id => prof_pg.id, :col_num => 1)
+      
+      WidgetLayout.create(:widget_id => Widget.find_by_name("status_posts_profile").id, :page_id => prof_pg.id, :col_num => 2)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("about_me_profile").id, :page_id => prof_pg.id, :col_num => 2)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("blog_posts_profile").id, :page_id => prof_pg.id, :col_num => 2)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("activity_feed_profile").id, :page_id => prof_pg.id, :col_num => 2)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("photos_profile").id, :page_id => prof_pg.id, :col_num => 2)
+      
+      WidgetLayout.create(:widget_id => Widget.find_by_name("events_profile").id, :page_id => prof_pg.id, :col_num => 3)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("forum_posts_profile").id, :page_id => prof_pg.id, :col_num => 3)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("links_profile").id, :page_id => prof_pg.id, :col_num => 3)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("projects_profile").id, :page_id => prof_pg.id, :col_num => 3)
       
       puts 'Database population done!'
     end

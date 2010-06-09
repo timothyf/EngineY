@@ -34,12 +34,14 @@ limitations under the License.
 		<% end -%>
 		<div style="clear:both;"></div>
 	</div>
-	<div id="facebook_login">
-		<h5>Signin with your Facebook account</h5>
-		<div id="facebook_login_button">
-			<%= fb_login_button('window.location = "/users/link_facebook_account";')%>
+	<% if Configuration.ENABLE_FACEBOOK_CONNECT %>
+		<div id="facebook_login">
+			<h5>Signin with your Facebook account</h5>
+			<div id="facebook_login_button">
+				<%= fb_login_button('window.location = "/users/link_facebook_account";')%>
+			</div>
 		</div>
-	</div>
+	<% end %>
 	<div style="clear:both;"></div>
 </div>
 

@@ -35,7 +35,11 @@ limitations under the License.
 			</div>
 		<% end %>
 	<% else %>
-		You have not posted any links.<br/>
+		<% if @user == current_user %>
+			You have not posted any links.<br/>
+		<% else %>
+			User has not posted any links.<br/>
+		<% end %>
 		<%= link_to 'View links...', links_url() %>
 	<% end %>
 	<div style="clear:both;"></div>

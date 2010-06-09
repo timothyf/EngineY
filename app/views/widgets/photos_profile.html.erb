@@ -1,0 +1,56 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<% widget_title = "My Photos" %>
+
+<% @user = User.find(user_id) %>
+
+<% content_for :module_header do %>
+	<div class="head_left">
+		<%= image_tag('photos.png', :alt=>'events', :align=>'absmiddle')%>&nbsp;&nbsp;<%= widget_title %>
+	</div>
+	<div class="head_right">
+	
+	</div>
+	<div style="clear:both;"></div>
+<% end %>
+
+<% content_for :module_body do %>
+	<% displayed = 0 %>
+	<% @user.photos.each do |photo| %>
+		<% if photo.is_profile == false || photo.is_profile == nil %>
+			<% displayed = displayed + 1 %>
+			<div class="photo_display">
+				<%= link_to image_tag(photo.public_filename(:medium)), photo_path(photo.id) %>
+			</div>
+		<% end %>
+	<% end %>
+	<% if displayed == 0 %>
+		<% if @user == current_user %>
+			You have not uploaded any photos yet.
+		<% else %>
+			User has not uploaded any photos.
+		<% end %>
+	<% end %>
+	<div style="clear:both;"></div>
+<% end %>
+
+<% content_for :module_footer do %>
+	<% if logged_in? %>
+		<div class="foot_left"><%= link_to 'Add Photos', new_photo_path %></div>
+	<% end %>
+	<div class="foot_right"><%= link_to 'View All', photos_url %></div>
+	<div style="clear:both;"></div>
+<% end %>

@@ -192,7 +192,7 @@ class UsersController < ApplicationController
         else 
           @section = 'MEMBERS'
         end
-        @page_name = 'profile'
+        @page = Page.find_by_name('profile')
         if @user.twitter_id && @user.display_tweets
           @tweets = @user.fetch_tweets
         end

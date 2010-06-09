@@ -31,16 +31,13 @@ limitations under the License.
 			<div id="user_friends" class="user_profile_section">
 				<%= render :partial => 'friends/friends_widget' %>
 			</div>
-			<div id="user_groups" class="user_profile_section">
-				<%= render :partial => 'groups/groups_profile' %>
-			</div>
+			<div id="col_1_widgets"></div>
 		</div>
 		<div class="column_2">
 			<div id="col_2_widgets"></div>
 			<% if @user.twitter_id && @user.display_tweets %>
 				<%= render :partial => 'tweets/display_tweets' %>
 			<% end %>
-			<%= render :partial => 'photos/photos_profile' %>
 			<%= render :partial => 'shared/wall_posts_widget', :locals=>{:parent=>@user} %>
 		</div>
 	</div>
@@ -48,8 +45,6 @@ limitations under the License.
 <div class="col2">
 	<%= render :partial => 'users/add_friend_widget' %>
 	<%= render :partial => 'users/user_control_widget' %>
-	<%= render :partial => 'events/events_profile' %>
-	<%= render :partial => 'forum_posts/forum_posts_profile' %>
 	<% if current_user == @user %>
 		<%= render :partial => 'messages/unread_messages_widget' %>
 	<% end %>

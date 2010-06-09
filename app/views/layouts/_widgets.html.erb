@@ -1,10 +1,8 @@
-<% if @page_name %>
-	<% page = Page.find_by_title(@page_name) %>
-	<% if page %>
-		<% layouts = page.widget_layouts %>
-		<% layouts.each do |layout| %>
-			<% layout.widget_name = Widget.find(layout.widget_id).name %>
-		<% end %>
+
+<% if @page %>
+	<% layouts = @page.widget_layouts %>
+	<% layouts.each do |layout| %>
+		<% layout.widget_name = Widget.find(layout.widget_id).name %>
 	<% end %>
 <% end %>
 

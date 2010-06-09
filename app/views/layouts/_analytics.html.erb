@@ -1,4 +1,6 @@
-<% if HtmlContent.find_by_title('analytics') %>
-	<%= HtmlContent.find_by_content_id('analytics').body %>
+<div id="analytics_code">
+<% if HtmlContent.find_by_title('?analytics?') %>
+	<%= HtmlContent.find_by_title('?analytics?').body %>
 <% end %>
+</div>
 

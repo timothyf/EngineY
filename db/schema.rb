@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100326174110) do
+ActiveRecord::Schema.define(:version => 20100608195539) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -132,11 +132,6 @@ ActiveRecord::Schema.define(:version => 20100326174110) do
 
   add_index "comments", ["user_id"], :name => "fk_comments_user"
 
-  create_table "content_pages", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "countries", :force => true do |t|
     t.string   "name"
     t.string   "abbreviation"
@@ -165,6 +160,12 @@ ActiveRecord::Schema.define(:version => 20100326174110) do
     t.string   "website"
     t.string   "phone"
     t.string   "organized_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ey_modules", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -261,15 +262,6 @@ ActiveRecord::Schema.define(:version => 20100326174110) do
     t.text     "description"
     t.boolean  "featured"
     t.date     "end_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "layouts", :force => true do |t|
-    t.integer  "page_id"
-    t.integer  "widget_id"
-    t.integer  "col_num"
-    t.integer  "row_num"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -534,6 +526,7 @@ ActiveRecord::Schema.define(:version => 20100326174110) do
     t.datetime "updated_at"
     t.text     "description"
     t.boolean  "profile"
+    t.integer  "ey_module_id"
   end
 
 end

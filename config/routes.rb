@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :ey_modules
+
+  map.resources :modules
+
 
   map.resources :follows
   map.resources :contents

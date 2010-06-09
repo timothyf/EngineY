@@ -35,5 +35,6 @@
 class Widget < ActiveRecord::Base
   
   has_many  :widget_layouts
+  belongs_to :ey_module
   
 end

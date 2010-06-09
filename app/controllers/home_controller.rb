@@ -76,8 +76,7 @@ class HomeController < ApplicationController
       redirect_to :action => 'install'
     else
       @section = 'MAIN'
-      @page_name = 'home' 
-      @page = Page.find_by_title('home')
+      @page = Page.find_by_name('home')
       @photos = Photo.find(:all, :limit=>6, 
                            :select=>'id, parent_id, filename', 
                            :order => Photo.connection.adapter_name == 'PostgreSQL' ? 'RANDOM()' : 'RAND()',
