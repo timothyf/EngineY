@@ -1,0 +1,12 @@
+<h1>Editing ey_module</h1>
+
+<% form_for(@ey_module) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @ey_module %> |
+<%= link_to 'Back', ey_modules_path %>

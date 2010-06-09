@@ -1,0 +1,11 @@
+<h1>New ey_module</h1>
+
+<% form_for(@ey_module) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', ey_modules_path %>
