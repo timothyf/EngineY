@@ -47,8 +47,10 @@ limitations under the License.
 </head>
 
 <body>
-	<%= fb_connect_javascript_tag %>
-	<%= init_fb_connect('XFBML', :js => :jquery) %> 
+	<% if Configuration.ENABLE_FACEBOOK_CONNECT %>
+		<%= fb_connect_javascript_tag %>
+		<%= init_fb_connect('XFBML', :js => :jquery) %> 
+	<% end %>
 		<div id="content">
 			<div id="header">
 				<div id="masthead"></div>

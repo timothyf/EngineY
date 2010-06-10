@@ -10,7 +10,7 @@ body {
 }  
 
 #header {
-	background-image: url(/images/mycompany_header.jpg);
+	background-image: url(/images/themes/mycompany/mycompany_header.jpg);
 	color: #283F4B;
 	height: 164px;
 }

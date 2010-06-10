@@ -46,12 +46,23 @@ class AdminController < ApplicationController
   end
   
   
-  def pages
-    @page = 'pages'
+  def contents
+    @page = 'contents'
+    @html_contents = HtmlContent.find(:all)
+  end
+  
+  
+  def modules
+    @page = 'modules'
     @widgets = Widget.find(:all)
     @layouts = WidgetLayout.find(:all)
     @pages = Page.find(:all) 
-    @html_contents = HtmlContent.find(:all) 
+  end
+  
+  
+  def pages
+    @page = 'pages'
+    @pages = Page.find(:all) 
   end
   
   
@@ -246,6 +257,27 @@ class AdminController < ApplicationController
   def content_edit
     @html_content = HtmlContent.find(params[:id])
     render 'html_content_form'
+  end
+  
+  
+  def content_delete
+    
+  end
+  
+  
+  def widget_new
+    @widget = Widget.new
+    render 'widget_form'
+  end
+  
+  
+  def widget_edit
+    
+  end
+  
+  
+  def widget_delete
+    
   end
   
   

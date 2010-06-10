@@ -113,9 +113,9 @@ ul#nav-menu {
 
 ul#nav-menu li {
 	float:left;
-	font-size:14px;
+	font-size:12px;
 	line-height:40px;
-	margin:0 10px 0 0;
+	margin:0 4px 0 0;
 	padding:0;
 }
 
@@ -456,9 +456,41 @@ input {
 	float: left;
 }
 
+.admin_tab_content {
+	float: left;
+	margin-left: 20px;
+}
+
+#current_theme {
+	float: left;
+	margin-bottom: 40px;
+}
+
+#select_theme {
+	float: left;
+	clear: both;
+}
+
 .theme-block {
 	float: left;
 	clear: both;
+	margin-bottom: 40px;
+}
+
+.theme_info {
+	float: left;
+	width: 260px;
+}
+
+.theme_image {
+	float: left;
+	width: 200px;
+	margin-left: 30px;
+}
+
+.theme_name {
+	font-weight: bold;
+	font-size: 12pt;
 }
 
 #blog_post_topic_list ul {

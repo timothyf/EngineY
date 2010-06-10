@@ -16,46 +16,49 @@ limitations under the License.
 
 <%
 # These are the items displayed in the top navigation bar
+# if restricted = true, this means that the item requires a logged in user
+# and the logged in user's id will be appended to the index_url
 def nav_menu_items
    [
-    {'name'=>'members','title'=>'Members', 'index_url'=>'users'},
-    {'name'=>'blogs','title'=>'Blogs', 'index_url'=>'blog_posts'},
-    {'name'=>'groups','title'=>'Groups', 'index_url'=>'groups'},
-    {'name'=>'events','title'=>'Events', 'index_url'=>'events'},
-    {'name'=>'photos','title'=>'Photos', 'index_url'=>'photo_manager'},
-    {'name'=>'classifieds','title'=>'Classifieds', 'index_url'=>'classifieds'},
-    {'name'=>'forum','title'=>'Forum', 'index_url'=>'forum_topics'}
+	{'name'=>'main','title'=>'Home', 'index_url'=>'/', 'restricted'=>'false', 'roles'=>''},
+	{'name'=>'profile','title'=>'My Page', 'index_url'=>"/users", 'restricted'=>'true', 'roles'=>''},
+    {'name'=>'members','title'=>'Members', 'index_url'=>'/users', 'restricted'=>'false', 'roles'=>''},
+    {'name'=>'blogs','title'=>'Blogs', 'index_url'=>'/blog_posts', 'restricted'=>'false', 'roles'=>''},
+    {'name'=>'groups','title'=>'Groups', 'index_url'=>'/groups', 'restricted'=>'false', 'roles'=>''},
+    {'name'=>'events','title'=>'Events', 'index_url'=>'/events', 'restricted'=>'false', 'roles'=>''},
+    {'name'=>'photos','title'=>'Photos', 'index_url'=>'/photo_manager', 'restricted'=>'false', 'roles'=>''},
+    {'name'=>'classifieds','title'=>'Classifieds', 'index_url'=>'/classifieds', 'restricted'=>'false', 'roles'=>''},
+    {'name'=>'forum','title'=>'Forum', 'index_url'=>'/forum_topics', 'restricted'=>'false', 'roles'=>''}
   ]
 end
 %>
 <div id="navigation">
-	<ul id="nav_list">
-		<% if @section == 'MAIN' %>
-			<li id="current_menu" class="nav_list_item current_menu"><%= link_to 'Main', root_url, :class=>'nav_list_link' %></li>
-		<% else %>
-			<li class="nav_list_item"><%= link_to 'Main', root_url, :class=>'nav_list_link' %></li>
-		<% end %>
-		<% if logged_in? %>
-			<% if @section == 'MY PAGE' %>
-				<li id="current_menu" class="nav_list_item current_menu"><%= link_to 'My Page', user_path(current_user), :class=>'nav_list_link' %></li>
-			<% else %>
-				<% if (current_user) %>
-					<li class="nav_list_item"><%= link_to 'My Page', user_path(current_user), :class=>'nav_list_link' %></li>
-				<% else %>
-					<li class="nav_list_item"><%= link_to 'My Page', root_url, :class=>'nav_list_link' %></li>
-				<% end %>
-			<% end %>
-		<% end %>
-		
+	<ul id="nav_list">		
 		<% nav_menu_items.each do |item| %>
-			<% if @section == item['name'].upcase %>
-				<li id="current_menu" class="nav_list_item current_menu"><%= link_to item['title'], '/'+ item['index_url'], :class=>'nav_list_link' %></li>
-			<% else %>
-				<li class="nav_list_item"><%= link_to item['title'], '/'+ item['index_url'], :class=>'nav_list_link' %></li>
+			<% if item['restricted'] == 'false' || logged_in? %>
+				<% if @section == item['name'].upcase %>
+					<li id="current_menu" class="nav_list_item current_menu">
+						<% if item['restricted'] == 'true' && logged_in? %>
+							<%= link_to item['title'], item['index_url'] + "/#{current_user.id}", :class=>'nav_list_link' %>
+						<% else %>
+							<%= link_to item['title'], item['index_url'], :class=>'nav_list_link' %>
+						<% end %>
+					</li>
+				<% else %>
+					<% if item['restricted'] == 'true' && logged_in? %>
+						<li class="nav_list_item">
+							<%= link_to item['title'], item['index_url'] + "/#{current_user.id}", :class=>'nav_list_link' %>
+						</li>
+					<% else %>
+						<li class="nav_list_item">
+							<%= link_to item['title'], item['index_url'], :class=>'nav_list_link' %>
+						</li>
+					<% end %>
+				<% end %>
 			<% end %>
 		<% end %>	
 
-		<% if logged_in? && current_user.roles.include?(Role.creator) %>
+		<% if logged_in_as_admin? %>
 			<% if @section == 'MANAGE' %>
 				<li id="current_menu" class="nav_list_item current_menu"><%= link_to 'Manage', { :controller=>'admin'}, :class=>'nav_list_link' %></li>
 			<% else %>
@@ -63,6 +66,7 @@ end
 			<% end %>
 		<% end %>
 	</ul>
+<!--
 	<ul id="nav_list_right" style="float:right;">
 		<% if @section == 'BUG' %>
 			<li class="nav_list_item current_menu" id="current_menu"><%= link_to 'Report a Bug', bug_reports_url, :class=>'nav_list_link' %></li>
@@ -70,5 +74,6 @@ end
 			<li class="nav_list_item"><%= link_to 'Report a Bug', bug_reports_url, :class=>'nav_list_link' %></li>
 		<% end %>
 	</ul>
+-->
 	<div style="clear:both;"></div>
 </div>

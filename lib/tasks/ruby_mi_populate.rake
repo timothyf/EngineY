@@ -350,55 +350,55 @@ namespace :railsnet do
      ##########################################################################
      # Create Modules and widgets
      puts 'Creating modules and widgets...'
-     mod_id = EyModule.create(:name => 'blog_posts')
-     Widget.create(:ey_module_id => mod_id, :name => 'blog_posts_home', :description => 'Display recent blog posts', :profile => false)
-     Widget.create(:ey_module_id => mod_id, :name => 'blog_posts_profile', :description => 'Display users blog posts', :profile => true)
+     mod = EyModule.create(:name => 'blog_posts')
+     Widget.create(:ey_module_id => mod.id, :name => 'blog_posts_home', :description => 'Display recent blog posts', :profile => false)
+     Widget.create(:ey_module_id => mod.id, :name => 'blog_posts_profile', :description => 'Display users blog posts', :profile => true)
      
-     mod_id = EyModule.create(:name => 'members')
-     Widget.create(:ey_module_id => mod_id, :name => 'members_home', :description => 'Display some members', :profile => false)
+     mod = EyModule.create(:name => 'members')
+     Widget.create(:ey_module_id => mod.id, :name => 'members_home', :description => 'Display some members', :profile => false)
      
-     mod_id = EyModule.create(:name => 'groups')
-     Widget.create(:ey_module_id => mod_id, :name => 'groups_home', :description => 'Display some groups', :profile => false)
-     Widget.create(:ey_module_id => mod_id, :name => 'groups_profile', :description => 'Display users groups', :profile => true)
+     mod = EyModule.create(:name => 'groups')
+     Widget.create(:ey_module_id => mod.id, :name => 'groups_home', :description => 'Display some groups', :profile => false)
+     Widget.create(:ey_module_id => mod.id, :name => 'groups_profile', :description => 'Display users groups', :profile => true)
 
-     mod_id = EyModule.create(:name => 'events')
-     Widget.create(:ey_module_id => mod_id, :name => 'events_home', :description => 'Display upcoming events', :profile => false)
-     Widget.create(:ey_module_id => mod_id, :name => 'events_profile', :description => 'Display users events', :profile => true)
+     mod = EyModule.create(:name => 'events')
+     Widget.create(:ey_module_id => mod.id, :name => 'events_home', :description => 'Display upcoming events', :profile => false)
+     Widget.create(:ey_module_id => mod.id, :name => 'events_profile', :description => 'Display users events', :profile => true)
      
-     mod_id = EyModule.create(:name => 'announcements')
-     Widget.create(:ey_module_id => mod_id, :name => 'announcements_home', :description => 'Display recent announcements', :profile => false)
+     mod = EyModule.create(:name => 'announcements')
+     Widget.create(:ey_module_id => mod.id, :name => 'announcements_home', :description => 'Display recent announcements', :profile => false)
      
-     mod_id = EyModule.create(:name => 'activity_feed')
-     Widget.create(:ey_module_id => mod_id, :name => 'activity_feed_home', :description => 'Display recent activities', :profile => false)
-     Widget.create(:ey_module_id => mod_id, :name => 'activity_feed_profile', :description => 'Display users activities', :profile => true)
+     mod = EyModule.create(:name => 'activity_feed')
+     Widget.create(:ey_module_id => mod.id, :name => 'activity_feed_home', :description => 'Display recent activities', :profile => false)
+     Widget.create(:ey_module_id => mod.id, :name => 'activity_feed_profile', :description => 'Display users activities', :profile => true)
      
-     mod_id = EyModule.create(:name => 'links')
-     Widget.create(:ey_module_id => mod_id, :name => 'links_home', :description => 'Display some links', :profile => false)
-     Widget.create(:ey_module_id => mod_id, :name => 'links_profile', :description => 'Display users links', :profile => true)
+     mod = EyModule.create(:name => 'links')
+     Widget.create(:ey_module_id => mod.id, :name => 'links_home', :description => 'Display some links', :profile => false)
+     Widget.create(:ey_module_id => mod.id, :name => 'links_profile', :description => 'Display users links', :profile => true)
      
-     mod_id = EyModule.create(:name => 'projects')
-     Widget.create(:ey_module_id => mod_id, :name => 'projects_home', :description => 'Display some projects', :profile => false)
-     Widget.create(:ey_module_id => mod_id, :name => 'projects_profile', :description => 'Display users projects', :profile => true)
+     mod = EyModule.create(:name => 'projects')
+     Widget.create(:ey_module_id => mod.id, :name => 'projects_home', :description => 'Display some projects', :profile => false)
+     Widget.create(:ey_module_id => mod.id, :name => 'projects_profile', :description => 'Display users projects', :profile => true)
      
-     mod_id = EyModule.create(:name => 'job_posts')
-     Widget.create(:ey_module_id => mod_id, :name => 'job_posts_home', :description => 'Display recent job posts', :profile => false)
+     mod = EyModule.create(:name => 'job_posts')
+     Widget.create(:ey_module_id => mod.id, :name => 'job_posts_home', :description => 'Display recent job posts', :profile => false)
      
-     mod_id = EyModule.create(:name => 'forum_posts')
-     Widget.create(:ey_module_id => mod_id, :name => 'forum_posts_home', :description => 'Display recent forum posts', :profile => false)
-     Widget.create(:ey_module_id => mod_id, :name => 'forum_posts_profile', :description => 'Display users forum posts', :profile => true)
+     mod = EyModule.create(:name => 'forum_posts')
+     Widget.create(:ey_module_id => mod.id, :name => 'forum_posts_home', :description => 'Display recent forum posts', :profile => false)
+     Widget.create(:ey_module_id => mod.id, :name => 'forum_posts_profile', :description => 'Display users forum posts', :profile => true)
      
-     mod_id = EyModule.create(:name => 'photos')
-     Widget.create(:ey_module_id => mod_id, :name => 'photos_home', :description => 'Slide show of photos', :profile => false)
-     Widget.create(:ey_module_id => mod_id, :name => 'photos_profile', :description => 'Slide show of photos', :profile => true)
+     mod = EyModule.create(:name => 'photos')
+     Widget.create(:ey_module_id => mod.id, :name => 'photos_home', :description => 'Slide show of photos', :profile => false)
+     Widget.create(:ey_module_id => mod.id, :name => 'photos_profile', :description => 'Slide show of photos', :profile => true)
      
-     mod_id = EyModule.create(:name => 'html_content')
-     Widget.create(:ey_module_id => mod_id, :name => 'html_content_home', :description => 'Managed Content Widget', :profile => false)
+     mod = EyModule.create(:name => 'html_content')
+     Widget.create(:ey_module_id => mod.id, :name => 'html_content_home', :description => 'Managed Content Widget', :profile => false)
      
-     mod_id = EyModule.create(:name => 'status_posts')
-     Widget.create(:ey_module_id => mod_id, :name => 'status_posts_profile', :description => 'Display users status posts', :profile => true)
+     mod = EyModule.create(:name => 'status_posts')
+     Widget.create(:ey_module_id => mod.id, :name => 'status_posts_profile', :description => 'Display users status posts', :profile => true)
      
-     mod_id = EyModule.create(:name => 'about_me')
-     Widget.create(:ey_module_id => mod_id, :name => 'about_me_profile', :description => 'Display users bio', :profile => true)
+     mod = EyModule.create(:name => 'about_me')
+     Widget.create(:ey_module_id => mod.id, :name => 'about_me_profile', :description => 'Display users bio', :profile => true)
                          
 
       ##########################################################################

@@ -4,16 +4,16 @@
 		<input type="hidden" name="admin_page" value="1" />
 	<% end %>
 	<div class="form_field">
+    	<label for="name">Name:</label><br/>
+		<%= f.text_field :name, :class=>'input_field' %>
+	</div>
+	<div class="form_field">
     	<label for="title">Title:</label><br/>
 		<%= f.text_field :title, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
     	<label for="permalink">Permalink:</label><br/>
 		<%= f.text_field :permalink, :class=>'input_field' %>
-	</div>
-	<div class="form_field">
-    	<label for="name">Name:</label><br/>
-		<%= f.text_field :name, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
     	<%= f.submit "Save", :class=>'add_button' %>

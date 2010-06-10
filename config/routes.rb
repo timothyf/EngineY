@@ -110,7 +110,7 @@ ActionController::Routing::Routes.draw do |map|
     a.resources :domain_themes
   end
   
-  map.connect 'pages/show/:title', :controller => 'pages', :action => 'show'
+  map.connect 'pages/show/:name', :controller => 'pages', :action => 'show'
   
   map.resources :pages
 

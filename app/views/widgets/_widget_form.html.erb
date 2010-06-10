@@ -1,0 +1,29 @@
+<% form_for(@widget) do |f| -%>			
+	<%= f.error_messages %>
+	<% if defined? admin_page %>
+		<input type="hidden" name="admin_page" value="1" />
+	<% end %>
+	<div class="form_field">
+    	<label for="title">Name:</label><br/>
+		<%= f.text_field :title, :class=>'input_field' %>
+	</div>
+	<div class="form_field">
+    	<label for="title">Title:</label><br/>
+		<%= f.text_field :title, :class=>'input_field' %>
+	</div>
+	<div class="form_field">
+    	<label for="title">Module:</label><br/>
+		<%= f.text_field :title, :class=>'input_field' %>
+	</div>
+	<div class="form_field">
+    	<label for="title">Description:</label><br/>
+		<%= f.text_field :title, :class=>'input_field' %>
+	</div>
+	<div class="form_field">
+    	<label for="title">Profile:</label><br/>
+		<%= f.text_field :title, :class=>'input_field' %>
+	</div>
+	<div class="form_field">
+    	<%= f.submit "Save", :class=>'add_button' %>
+	</div>
+<% end %>

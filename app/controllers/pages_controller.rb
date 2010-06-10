@@ -15,8 +15,8 @@
 class PagesController < ApplicationController
 
   def show
-    @page = Page.find_by_title(params[:title])
-    @page_name = @page.title
+    @page = Page.find_by_name(params[:name])
+    @page_name = @page.name
     if current_user
       @user = current_user
     end
