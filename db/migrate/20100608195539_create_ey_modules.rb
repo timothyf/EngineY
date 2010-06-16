@@ -2,6 +2,7 @@ class CreateEyModules < ActiveRecord::Migration
   def self.up
     create_table :ey_modules do |t|
       t.string :name
+      t.boolean :active, :default => true
       t.timestamps
     end
     add_column :widgets, :ey_module_id, :integer

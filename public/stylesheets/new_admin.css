@@ -69,19 +69,46 @@ body {
 	background:#FFFFFF url(../img/bg_content.gif) repeat-y scroll right top;
 	border:1px solid #999999;
 	margin:0 auto;
-	width:960px;	
+	width: 100%;	
 }
 
 #header {
 	-moz-background-clip:border;
 	-moz-background-inline-policy:continuous;
 	-moz-background-origin:padding;
-	background:transparent url(../images/admin_bg_header.jpg) no-repeat scroll left top;
-	height:100px;	
+	background-color: darkblue;
+	height:120px;
+	width: 100%;
+	color: white;	
 }
 
 .clearfix {
 	display:inline-block;
+}
+
+#left_nav {
+	width: 250px;
+	float: left;
+}
+
+.nav_section {
+	margin-left: 20px;
+	border-bottom: 1px solid #cccccc;
+	margin-right: 25px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.nav_section_title {
+	font-size: 12pt;
+}
+
+.nav_section ul {
+	list-style-type: none;
+}
+
+.nav_section ul li {
+	line-height: 1.5em;
 }
 
 #content {
@@ -173,7 +200,7 @@ ul#nav-menu li a:hover {
 }
 
 a.logo {
-	color:#222222;
+	color:white;
 	font-size:40px;
 	font-style:italic;
 	font-weight:bold;

@@ -56,7 +56,8 @@ class AdminController < ApplicationController
     @page = 'modules'
     @widgets = Widget.find(:all)
     @layouts = WidgetLayout.find(:all)
-    @pages = Page.find(:all) 
+    @pages = Page.find(:all)
+    @modules = EyModule.find(:all)
   end
   
   
@@ -226,6 +227,16 @@ class AdminController < ApplicationController
         @forum_posts = ForumPost.find(:all)
       }
     end
+  end
+  
+  
+  def api_keys
+    @users = User.with_api_key
+  end
+  
+  
+  def api_test
+    
   end
   
   

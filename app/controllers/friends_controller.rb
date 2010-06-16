@@ -109,7 +109,7 @@ class FriendsController < ApplicationController
   
   def update 
     @user = User.find(current_user)
-    @friend = User.find(params[:friend_id])
+    @friend = User.find(params[:id])
     if Friendship.accept(@user, @friend)
       respond_to do |format|
         format.html { 

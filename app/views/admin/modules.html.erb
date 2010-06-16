@@ -1,5 +1,7 @@
 <style>
-	table#pages th, table#pages td, table#widgets th, table#widgets td, 
+	table#pages th, table#pages td, 
+	table#modules th, table#modules td,
+	table#widgets th, table#widgets td, 
 	table#layouts th, table#layouts td,
 	table#contents th, table#contents td {
 		text-align: left;
@@ -9,6 +11,32 @@
 		width: 900px;
 	}	
 </style>
+
+
+<h2 class="ic-db">Modules</h2>
+<table id="modules">
+	<thead>
+		<th width="50px">ID</th>
+		<th width="160px">Name</th>
+		<th width="300px">Actions</th>
+	</thead>
+	<tbody>
+		<% @modules.each do |emodule| %>
+			<% if emodule.active %>
+				<tr class="active_module">
+			<% else %>
+				<tr class="inactive_module">
+			<% end %>
+				<td><%= emodule.id %></td>
+				<td><%= emodule.name %></td>
+				<td>
+					<%= link_to 'Edit', '/admin/module_edit?id=' + emodule.id.to_s %> |
+					<%= link_to 'Deactivate', '/admin/module_deactivate?id=' + emodule.id.to_s, :confirm => 'Are you sure you want to deactivate this module?' %> |
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
 
 
 <h2 class="ic-db">Widgets</h2>

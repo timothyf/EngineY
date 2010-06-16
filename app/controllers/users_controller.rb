@@ -28,6 +28,11 @@ class UsersController < ApplicationController
   before_filter :login_required, :only => [:edit, :update]
   
   
+  def online_users
+    who_is_online
+  end
+  
+  
   # Called from the blog settings of the 'My Blog' widget on a user page
   # this sets an RSS feed URL for mirroring
   def update_blog_feed_url

@@ -111,6 +111,12 @@ class User < ActiveRecord::Base
   end
   
   
+  # Returns an array of users who have an API key
+  def self.with_api_key
+    User.find(:all, :conditions => "api_key != ''")
+  end
+  
+  
   # Creates a follows relationship between this user and someone he wishes to follow
   def follow(followee_id)
     Follow.create(:follower_id => id,
