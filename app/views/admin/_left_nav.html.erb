@@ -1,0 +1,39 @@
+<div id="left_nav">
+	<div class="nav_section">
+		<div class="nav_section_title"><%= link_to 'Dashboard', '/admin' %></div>
+	</div>
+	<div class="nav_section">
+		<div class="nav_section_title"><%= link_to 'Content' %></div>
+		<ul>
+			<li><%= link_to 'Users', '/admin/users' %></li>
+			<li><%= link_to 'Groups', '/admin/groups' %></li>
+			<li><%= link_to 'Events', '/admin/events' %></li>
+			<li><%= link_to 'Blog Posts', '/admin/blog_posts' %></li>
+			<li><%= link_to 'Forums', '/admin/forums' %></li>
+			<li><%= link_to 'Managed Content', '/admin/contents' %></li>
+		</ul>
+	</div>
+	<div class="nav_section">
+		<div class="nav_section_title"><%= link_to 'Pages and Modules', '' %></div>
+		<ul>
+			<li><%= link_to 'Pages', '/admin/pages' %></li>
+			<li><%= link_to 'Modules', '/admin/modules' %></li>
+		</ul>
+	</div>
+	<div class="nav_section">
+		<div class="nav_section_title"><%= link_to 'API', '/admin/api' %></div>
+		<ul>
+			<li><%= link_to 'Keys', '/admin/api_keys' %></li>
+			<li><%= link_to 'Test Center', '/admin/api_test' %></li>
+		</ul>
+	</div>
+	<div class="nav_section">
+		<div class="nav_section_title"><%= link_to 'Stats', '/admin/stats' %></div>
+	</div>
+	<div class="nav_section">
+		<div class="nav_section_title"><%= link_to 'Settings', '/admin/settings' %></div>
+	</div>
+	<div class="nav_section">
+		<div class="nav_section_title"><%= link_to 'Return to Site', '/home' %></div>
+	</div>
+</div>
