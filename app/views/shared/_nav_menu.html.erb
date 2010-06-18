@@ -17,18 +17,20 @@ limitations under the License.
 <%
 # These are the items displayed in the top navigation bar
 # if restricted = true, this means that the item requires a logged in user
-# and the logged in user's id will be appended to the index_url
+# and the logged in user's id will be appended to the url
+# To remove an item from the menu bar, just comment out the corresponding line here
 def nav_menu_items
    [
-	{'name'=>'main','title'=>'Home', 'index_url'=>'/', 'restricted'=>'false', 'roles'=>''},
-	{'name'=>'profile','title'=>'My Page', 'index_url'=>"/users", 'restricted'=>'true', 'roles'=>''},
-    {'name'=>'members','title'=>'Members', 'index_url'=>'/users', 'restricted'=>'false', 'roles'=>''},
-    {'name'=>'blogs','title'=>'Blogs', 'index_url'=>'/blog_posts', 'restricted'=>'false', 'roles'=>''},
-    {'name'=>'groups','title'=>'Groups', 'index_url'=>'/groups', 'restricted'=>'false', 'roles'=>''},
-    {'name'=>'events','title'=>'Events', 'index_url'=>'/events', 'restricted'=>'false', 'roles'=>''},
-    {'name'=>'photos','title'=>'Photos', 'index_url'=>'/photo_manager', 'restricted'=>'false', 'roles'=>''},
-    #{'name'=>'classifieds','title'=>'Classifieds', 'index_url'=>'/classifieds', 'restricted'=>'false', 'roles'=>''},
-    {'name'=>'forum','title'=>'Forum', 'index_url'=>'/forum_topics', 'restricted'=>'false', 'roles'=>''}
+	{'name'=>'main',   'title'=>'Home',    'url'=>'/',              'restricted'=>'false', 'roles'=>''},
+	{'name'=>'profile','title'=>'My Page', 'url'=>"/users",         'restricted'=>'true',  'roles'=>''},
+    {'name'=>'members','title'=>'Members', 'url'=>'/users',         'restricted'=>'false', 'roles'=>''},
+    {'name'=>'blogs',  'title'=>'Blogs',   'url'=>'/blog_posts',    'restricted'=>'false', 'roles'=>''},
+    {'name'=>'groups', 'title'=>'Groups',  'url'=>'/groups',        'restricted'=>'false', 'roles'=>''},
+    {'name'=>'events', 'title'=>'Events',  'url'=>'/events',        'restricted'=>'false', 'roles'=>''},
+    {'name'=>'photos', 'title'=>'Photos',  'url'=>'/photo_manager', 'restricted'=>'false', 'roles'=>''},
+    #{'name'=>'classifieds','title'=>'Classifieds', 'url'=>'/classifieds', 'restricted'=>'false', 'roles'=>''},
+    {'name'=>'forum',  'title'=>'Forum',   'url'=>'/forum_topics',   'restricted'=>'false', 'roles'=>''}
+	#{'name'=>'manage','title'=>'Manage', 'url'=>'/admin', 'restricted'=>'true', 'roles'=>'admin'}
   ]
 end
 %>
@@ -36,25 +38,34 @@ end
 	<ul id="nav_list">		
 		<% nav_menu_items.each do |item| %>
 			<% if item['restricted'] == 'false' || logged_in? %>
-				<% if @section == item['name'].upcase %>
-					<li id="current_menu" class="nav_list_item current_menu">
-						<% if item['restricted'] == 'true' && logged_in? %>
-							<%= link_to item['title'], item['index_url'] + "/#{current_user.id}", :class=>'nav_list_link' %>
-						<% else %>
-							<%= link_to item['title'], item['index_url'], :class=>'nav_list_link' %>
-						<% end %>
-					</li>
+				<!-- Item is not restricted or a user is logged in -->
+				<% if item['roles'] != '' %>
+					<!-- Item is role restricted -->
 				<% else %>
-					<% if item['restricted'] == 'true' && logged_in? %>
-						<li class="nav_list_item">
-							<%= link_to item['title'], item['index_url'] + "/#{current_user.id}", :class=>'nav_list_link' %>
+					<!-- Item is not role restricted -->
+					<% if @section == item['name'].upcase %>
+						<li id="current_menu" class="nav_list_item current_menu">
+							<% if item['restricted'] == 'true' && logged_in? %>
+								<%= link_to item['title'], item['url'] + "/#{current_user.id}", :class=>'nav_list_link' %>
+							<% else %>
+								<%= link_to item['title'], item['url'], :class=>'nav_list_link' %>
+							<% end %>
 						</li>
 					<% else %>
-						<li class="nav_list_item">
-							<%= link_to item['title'], item['index_url'], :class=>'nav_list_link' %>
-						</li>
+						<% if item['restricted'] == 'true' && logged_in? %>
+							<li class="nav_list_item">
+								<%= link_to item['title'], item['url'] + "/#{current_user.id}", :class=>'nav_list_link' %>
+							</li>
+						<% else %>
+							<li class="nav_list_item">
+								<%= link_to item['title'], item['url'], :class=>'nav_list_link' %>
+							</li>
+						<% end %>
 					<% end %>
 				<% end %>
+			<% else %>
+				<!-- Item is restricted or a user is not logged in -->
+				<!-- do not show menu item -->
 			<% end %>
 		<% end %>	
 

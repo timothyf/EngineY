@@ -166,6 +166,7 @@ ActiveRecord::Schema.define(:version => 20100608195539) do
 
   create_table "ey_modules", :force => true do |t|
     t.string   "name"
+    t.boolean  "active",     :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

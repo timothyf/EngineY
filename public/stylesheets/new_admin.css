@@ -77,7 +77,8 @@ body {
 	-moz-background-inline-policy:continuous;
 	-moz-background-origin:padding;
 	background-color: darkblue;
-	height:120px;
+	background: url(../images/header-glow-short.png);
+	height:93px;
 	width: 100%;
 	color: white;	
 }
@@ -185,7 +186,7 @@ ul#nav-menu li a:hover {
 
 #header #logo {
 	float:left;
-	line-height:100px;
+	line-height:80px;
 	padding:0 0 0 20px;
 	width:670px;
 }
