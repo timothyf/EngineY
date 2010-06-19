@@ -31,9 +31,11 @@ class RepliesController < ApplicationController
         flash[:notice] = 'Reply was successfully created.'
         format.html { redirect_to(@reply) }
         format.xml  { render :xml => @reply, :status => :created, :location => @reply }
+        format.json  { render :json => @reply, :status => :created, :location => @reply }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @reply.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @reply.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -46,9 +48,11 @@ class RepliesController < ApplicationController
         flash[:notice] = 'Reply was successfully updated.'
         format.html { redirect_to(@reply) }
         format.xml  { head :ok }
+        format.json { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @reply.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @reply.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -60,6 +64,7 @@ class RepliesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(replies_url) }
       format.xml  { head :ok }
+      format.json { head :ok }
     end
   end
   

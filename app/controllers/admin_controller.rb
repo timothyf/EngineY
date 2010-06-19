@@ -471,8 +471,8 @@ class AdminController < ApplicationController
   
   
   def privacy_edit
-    if HtmlContent.find_by_content_id('privacy')
-      @privacy = HtmlContent.find_by_content_id('privacy')
+    if HtmlContent.find_by_title('privacy')
+      @privacy = HtmlContent.find_by_title('privacy')
     else
       @privacy = HtmlContent.new
     end
@@ -486,7 +486,7 @@ class AdminController < ApplicationController
     else
       privacy = HtmlContent.new
       privacy.body = params[:privacy_text]
-      privacy.content_id = 'privacy'
+      privacy.title = 'privacy'
       privacy.save
     end    
     redirect_to :action => 'settings' 

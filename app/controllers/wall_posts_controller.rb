@@ -60,9 +60,11 @@ class WallPostsController < ApplicationController
         flash[:notice] = 'WallPost was successfully updated.'
         format.html { redirect_to(@wall_post) }
         format.xml  { head :ok }
+        format.json { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @wall_post.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @wall_post.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -75,6 +77,7 @@ class WallPostsController < ApplicationController
     respond_to do |format|
       format.html { render :partial => 'shared/wall_posts', :locals=>{:parent=>@parent}, :layout=>false }
       format.xml  { head :ok }
+      format.json { head :ok }
     end
   end
   

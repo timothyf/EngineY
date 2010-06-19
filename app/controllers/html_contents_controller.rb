@@ -22,16 +22,13 @@ class HtmlContentsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @html_contents }
+      format.json { render :json => @html_contents }
     end
   end
 
 
   def new
     @html_content = HtmlContent.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @html_content }
-    end
   end
 
 
@@ -53,9 +50,11 @@ class HtmlContentsController < ApplicationController
           end  
         }
         format.xml  { render :xml => @html_content, :status => :created, :location => @html_content }
+        format.json  { render :json => @html_content, :status => :created, :location => @html_content }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @html_content.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @html_content.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -74,9 +73,11 @@ class HtmlContentsController < ApplicationController
           end  
          }
         format.xml  { head :ok }
+        format.json { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @html_content.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @html_content.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -88,6 +89,7 @@ class HtmlContentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(html_contents_url) }
       format.xml  { head :ok }
+      format.json { head :ok }
     end
   end
 end

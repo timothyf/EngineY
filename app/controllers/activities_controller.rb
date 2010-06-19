@@ -29,6 +29,7 @@ class ActivitiesController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @activities }
       format.rss { render :layout => false }
+      format.json { render :json => @activities }
     end
   end
   

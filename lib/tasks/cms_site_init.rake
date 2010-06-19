@@ -17,6 +17,8 @@ namespace :enginey do
       network = Network.create(:name => NETWORK_NAME,
                      :organization => 'EngineY',
                      :website => 'http://www.enginey.com',
+                     :url => 'http://www.enginey.com',
+                     :admin_email => 'admin@rubymi.org',
                      :description => 'The homepage for the EngineY framework.')
     
       

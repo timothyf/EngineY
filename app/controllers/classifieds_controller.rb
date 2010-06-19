@@ -22,6 +22,7 @@ class ClassifiedsController < ApplicationController
     respond_to do |format|
       format.html { render :template=>'classifieds/classifieds_list' } 
       format.xml  { render :xml => @classifieds }
+      format.json { render :json => @classifieds }
     end
   end
 
@@ -31,6 +32,7 @@ class ClassifiedsController < ApplicationController
     respond_to do |format|
       format.html { render :template=>'classifieds/classifieds_show' } 
       format.xml  { render :xml => @classified }
+      format.json  { render :json => @classified }
     end
   end
 
@@ -53,9 +55,11 @@ class ClassifiedsController < ApplicationController
         flash[:notice] = 'Classified was successfully created.'
         format.html { redirect_to(classifieds_path) }
         format.xml  { render :xml => @classified, :status => :created, :location => @classified }
+        format.json  { render :json => @classified, :status => :created, :location => @classified }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @classified.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @classified.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -68,9 +72,11 @@ class ClassifiedsController < ApplicationController
         flash[:notice] = 'Classified was successfully updated.'
         format.html { redirect_to(@classified) }
         format.xml  { head :ok }
+        format.json { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @classified.errors, :status => :unprocessable_entity }
+        format.json { render :json => @classified.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -82,6 +88,7 @@ class ClassifiedsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(classifieds_url) }
       format.xml  { head :ok }
+      format.json { head :ok }
     end
   end
 end

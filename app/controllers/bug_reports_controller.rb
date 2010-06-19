@@ -27,6 +27,7 @@ class BugReportsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @bug_reports }
+      format.json  { render :json => @bug_reports }
     end
   end
 
@@ -36,6 +37,7 @@ class BugReportsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @bug_report }
+      format.json  { render :json => @bug_report }
     end
   end
 
@@ -60,9 +62,11 @@ class BugReportsController < ApplicationController
         flash[:notice] = 'BugReport was successfully created.'
         format.html { redirect_to(bug_reports_url) }
         format.xml  { render :xml => @bug_report, :status => :created, :location => @bug_report }
+        format.json  { render :json => @bug_report, :status => :created, :location => @bug_report }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @bug_report.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @bug_report.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -75,9 +79,11 @@ class BugReportsController < ApplicationController
         flash[:notice] = 'BugReport was successfully updated.'
         format.html { redirect_to(@bug_report) }
         format.xml  { head :ok }
+        format.json { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @bug_report.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @bug_report.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -89,6 +95,7 @@ class BugReportsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(bug_reports_url) }
       format.xml  { head :ok }
+      format.json { head :ok }
     end
   end
 end

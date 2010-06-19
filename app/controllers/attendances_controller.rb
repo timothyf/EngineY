@@ -58,6 +58,7 @@ class AttendancesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to event_path(event.id) }
       format.xml  { head :ok }
+      format.json { head :ok }
     end
   end
   

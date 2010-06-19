@@ -22,6 +22,8 @@ namespace :enginey do
       network = Network.create(:name => NETWORK_NAME,
                      :organization => 'Ruby Enthusiasts of Michigan',
                      :website => 'http://www.rubymi.org',
+                     :url => 'http://www.rubymi.org',
+                     :admin_email => 'admin@rubymi.org',
                      :description => 'Welcome to the Ruby Enthusiasts of Michigan website.  This site serves as a hub for all of the Ruby related activities and events that happen in and around Michigan.')
     
       
