@@ -24,15 +24,7 @@ limitations under the License.
 	<%= stylesheet_link_tag 'style' %>
 	<%= stylesheet_link_tag "style_rubymi.css" %>
 	
-	<%= stylesheet_link_tag '../javascripts/dojo/dijit/themes/tundra/tundra.css' %>
-	<%= stylesheet_link_tag '../javascripts/dojo/dojox/grid/resources/Grid.css' %>
-	<%= stylesheet_link_tag '../javascripts/dojo/dojox/grid/resources/tundraGrid.css' %>
-	
-	
-
-	<script type="text/javascript" src="/javascripts/dojo/release/dojo/dojo/dojo.js" djConfig="isDebug:false, parseOnLoad: true"></script>
-	<script type="text/javascript" src="/javascripts/dojo/release/dojo/dojo/mydojo.js"></script>
-
+	<%= javascript_include_tag "jquery-1.4.2.min.js" %>
 	
 	<script type="text/javascript">
 		<% if @home_widgets && @home_widgets.length > 0 %>
@@ -47,8 +39,6 @@ limitations under the License.
 			var profile_widgets = [];
 			var user_id = 0;
 		<% end %>
-
-
 	</script>
     
 	<%= javascript_include_tag "slide_show" %>
@@ -71,7 +61,7 @@ limitations under the License.
 
 <body>
 <%= fb_connect_javascript_tag %>
-<%= init_fb_connect('XFBML', :js => :dojo) %> 
+<%= init_fb_connect('XFBML', :js => :jquery) %> 
 	<div id="content">
 		<div id="header">
 			<div id="masthead"></div>

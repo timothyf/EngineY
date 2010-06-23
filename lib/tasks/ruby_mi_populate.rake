@@ -1,7 +1,7 @@
 namespace :enginey do
   namespace :db do
     desc "Add sample data to the database"
-    task :ruby_mi_populate => :environment do
+    task :rubymi_populate => :environment do
       
       ##########################################################################
       # SETUP, modify this to change how you want to configure your sample data

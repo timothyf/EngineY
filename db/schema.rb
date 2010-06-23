@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100608195539) do
+ActiveRecord::Schema.define(:version => 20100618150950) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -300,6 +300,8 @@ ActiveRecord::Schema.define(:version => 20100608195539) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url"
+    t.string   "admin_email"
   end
 
   create_table "pages", :force => true do |t|

@@ -23,7 +23,7 @@ limitations under the License.
 <h1>Discussion Forum</h1>
 <div id="forum_table">
 	<% if logged_in? && current_user.is_admin %>
-		<button class="tundra" dojoType="dijit.form.Button" onclick="add_new_topic()">Add New Topic</button><br/><br/>
+		<button onclick="add_new_topic()">Add New Topic</button><br/><br/>
 	<% end %>
 	<div id="topic_header">
 		<div class="topic_title">Forum</div>

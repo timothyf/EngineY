@@ -16,22 +16,6 @@ limitations under the License.
 <%= stylesheet_link_tag 'groups' %>
 <%= stylesheet_link_tag 'common' %>
 
-<style>
-	.gridContainer {
-		height:350px;
-		border-top:1px solid #000;
-		border-left:1px solid #000;	
-	}
-</style>
-
-<script type="text/javascript">
-	var jsonStore = new dojo.data.ItemFileReadStore({ url: "/groups/user_data?group_id=<%= @group.id %>" });
-	
-	
-
-
-</script>
-
 
 <div id="members_links">
 	<% if logged_in? %>
@@ -46,13 +30,13 @@ limitations under the License.
 <div id="users_table">
 	<% if logged_in? && current_user.is_group_admin(@group) %>
 		<div id="manage_btns">
-			<button dojoType="dijit.form.Button" id="promote_btn" onclick="handle_promote_to_admin_btn()">Promote to Administrator</button>
-			<button dojoType="dijit.form.Button" id="demote_btn" onclick="handle_demote_from_admin_btn()">Demote from Administrator</button>
-			<button dojoType="dijit.form.Button" id="remove_btn" onclick="handle_remove_from_group_btn()">Remove</button>
+			<button id="promote_btn" onclick="handle_promote_to_admin_btn()">Promote to Administrator</button>
+			<button id="demote_btn" onclick="handle_demote_from_admin_btn()">Demote from Administrator</button>
+			<button id="remove_btn" onclick="handle_remove_from_group_btn()">Remove</button>
 		</div>
 	<% end %>
 	<div class="gridContainer">
-		<table id="gridNode" jsId="grid" dojoType="dojox.grid.DataGrid" store="jsonStore" rowSelector="20px">
+		<table id="gridNode" >
 			<thead>
 				<tr>
 					<th field="id" width="30px">ID</th>

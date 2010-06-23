@@ -14,7 +14,7 @@
 
 class UserMailer < ActionMailer::Base
   
-  def initialize
+  def init
     @network = Network.find(:first)
     @url = @network.url
     @network_name = @network.name
@@ -24,6 +24,7 @@ class UserMailer < ActionMailer::Base
   
   # Send the activation code to users who sign up
   def signup_notification(user)
+    init
     setup_email(user)
     @subject    += 'Please activate your new account'  
     @body[:url]  = "#{@url}/activate/#{user.activation_code}" 
@@ -32,6 +33,7 @@ class UserMailer < ActionMailer::Base
   
   # Send a new user signup notification to the site admins
   def new_user_signup(user)
+    init
     setup_admin_email(user)
     @subject    += 'New User Signup'  
     @body[:url]  = "#{@url}" 
@@ -40,6 +42,7 @@ class UserMailer < ActionMailer::Base
 
   # Send a new user activated notification to the site admins
   def new_user_activated(user)
+    init
     setup_admin_email(user)
     @subject    += 'New User Activated'  
     @body[:url]  = "#{@url}" 
@@ -48,6 +51,7 @@ class UserMailer < ActionMailer::Base
 
   # Send a notice to a user who has received a friend request
   def friend_request_notification(friendship)
+    init
     setup_email(friendship.friend)
     @subject += Friendship Request
     @content_type = "text/html"
@@ -56,6 +60,7 @@ class UserMailer < ActionMailer::Base
   
   # Send a notification to all users when a new announcement is posted
   def announcement_notification(announcement) 
+    init
     setup_all_user_email
     @subject += announcement.title
     @body[:announcement] = announcement
@@ -65,6 +70,7 @@ class UserMailer < ActionMailer::Base
   
   # Send a notification to the owner of a wall with a new post.
   def wall_post_notification(wall_post)
+    init
     setup_email(wall_post.user)
     @subject    += 'Wall Post Notification'  
     @body[:url]  = "#{@url}" 
@@ -74,6 +80,7 @@ class UserMailer < ActionMailer::Base
   
   # Send a notification to the recipient of a message.
   def message_notification(message)
+    init
     setup_email(message.recipient)
     @subject    += 'Message Notification'  
     @body[:message] = message
@@ -84,6 +91,7 @@ class UserMailer < ActionMailer::Base
  
   # Send an invitation to a non-user
   def invite_notification(invite)
+    init
     @recipients  = "#{invite.email}"
     @from        = "#{invite.user.email}"
     @subject     = "An Invitation to Join #{@network_name} "
@@ -94,6 +102,7 @@ class UserMailer < ActionMailer::Base
 
   
   def activation(user)
+    init
     setup_email(user)
     @subject    += 'Your account has been activated!'
     @body[:url]  = "#{@url}"

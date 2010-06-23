@@ -1,3 +1,6 @@
+/*
+	Simple jQuery Theme Script
+ */
 
 function init_widgets(json) {
 	var layouts_js = eval(json);
@@ -48,7 +51,7 @@ Layout = function(id, name, content_id, col_num, properties) {
 	this.retry_count = 0;
 	
 	this.change_display = function() {
-		if ($(this.widget_name + '_body').style.display == 'none') {
+		if ($("#" + this.widget_name + '_body').css('display') == 'none') {
 			this.expand_widget();
 		}
 		else {
@@ -57,17 +60,13 @@ Layout = function(id, name, content_id, col_num, properties) {
 	};
 	
 	this.collapse_widget = function() {
-		var wipeOut = dojo.fx.wipeOut({node: this.widget_name + '_body',duration: 500});
-		wipeOut.play();
-		var img = dojo.byId(this.widget_name + '_collapse_img');
-		img.src = "/images/expand.png";
+		$("#" + this.widget_name + '_body').slideUp();
+		$("#" + this.widget_name + '_collapse_img').attr({src : "/images/expand.png"});
 	}
 	
 	this.expand_widget = function() {
-		var wipeIn = dojo.fx.wipeIn({node: this.widget_name + '_body',duration: 500});
-		wipeIn.play();
-		var img = dojo.byId(this.widget_name + '_collapse_img');
-		img.src = "/images/collapse.png";
+		$("#" + this.widget_name + '_body').slideDown();
+		$("#" + this.widget_name + '_collapse_img').attr({src : "/images/collapse.png"});
 	}
 	
 	this.load = function() {
@@ -83,28 +82,7 @@ Layout = function(id, name, content_id, col_num, properties) {
 			authenticity_token: authenticity_token
 		};
 		for (attr in this.properties) { content[attr] = this.properties[attr]; }
-		dojo.xhrGet({
-			url: '/widget_layouts/load',
-			timeout: 14000, // give up after 14 seconds
-			content: content,
-			error: (function(widget_obj){
-				return function(data){
-					widget_obj.retry_count += 1;
-					if (widget_obj.retry_count > 2 ) {
-						widget_load_error(widget_obj.id, data);
-					}
-					else {
-						// try reloading
-						widget_obj.load();
-					}
-				}
-			})(this),
-			load: (function(widget_obj){
-				return function(data){
-					widget_loaded(widget_obj.id, data);
-				}
-			})(this)
-		});
+		send_ajax_get('/widget_layouts/load', content, this);
 	};
 	
 	// Create a DOM node to hold a widget that is being loaded
@@ -117,28 +95,49 @@ Layout = function(id, name, content_id, col_num, properties) {
 		loadingSpan.appendChild(document.createTextNode('Loading...'));
 		newdiv.appendChild(loadingSpan);
 		if (this.col_num == '1') {
-			dojo.byId('col_1_widgets').appendChild(newdiv);
+			$("#col_1_widgets").append(newdiv);
 		}
 		else if (this.col_num == '2') {
-			dojo.byId('col_2_widgets').appendChild(newdiv);
+			$("#col_2_widgets").append(newdiv);
 		}
 		else if (this.col_num == '3') {
-			dojo.byId('col_3_widgets').appendChild(newdiv);
+			$("#col_3_widgets").append(newdiv);
 		}
 	}
 	
 	// A widget has been loaded, place its content into the DOM tree
 	function widget_loaded(layout_id, data) {
-		var newdiv = document.createElement('div');
-		newdiv.innerHTML = data;
-		dojo.byId('layout_' + layout_id).innerHTML = '';
-		dojo.byId('layout_' + layout_id).appendChild(newdiv);
+		$("#layout_" + layout_id).html(data);
 	}
 	
 	// Called if an error occurs while loading a widget.  This includes timeouts.
 	function widget_load_error(layout_id, data) {
-		dojo.byId('layout_' + layout_id).innerHTML = '<div class="cant_load">Did not load widget:<br/><i>' + widget_name + '</i><br/>Try refreshing the page</div>';
-		// add code to retry widget load
+		$("#layout_" + layout_id).innerHTML = '<div class="cant_load">Did not load widget:<br/><i>' + widget_name + '</i><br/>Try refreshing the page</div>';
+	}
+	
+	function send_ajax_get(url, content, obj) {
+		$.ajax({
+			url: url,
+			timeout: 14000, // give up after 14 seconds
+			data: content,
+			error: (function(widget_obj){
+				return function(data){
+					widget_obj.retry_count += 1;
+					if (widget_obj.retry_count > 2 ) {
+						widget_load_error(widget_obj.id, data);
+					}
+					else {
+						// try reloading
+						widget_obj.load();
+					}
+				}
+			})(obj),
+			success: (function(widget_obj){
+				return function(data){
+					widget_loaded(widget_obj.id, data);
+				}
+			})(obj)
+		});
 	}
 	
 };

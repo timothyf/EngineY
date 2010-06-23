@@ -36,9 +36,9 @@ limitations under the License.
 	</div>
 	<div id="message_controls">
 		<% if !(@message.sender == current_user) %>
-			<button class="tundra" dojoType="dijit.form.Button" onclick="location.href = '<%= new_message_path({:recipient_id=>@message.sender.id, :subject=>'RE: ' + @message.subject}) %>'">Reply</button>
+			<button onclick="location.href = '<%= new_message_path({:recipient_id=>@message.sender.id, :subject=>'RE: ' + @message.subject}) %>'">Reply</button>
 		<% end %>
-		<button class="tundra" dojoType="dijit.form.Button" onclick="location.href = '<%= user_messages_path(current_user) %>'">Inbox</button>
+		<button onclick="location.href = '<%= user_messages_path(current_user) %>'">Inbox</button>
 	</div>
 	<div style="clear:both;"></div>
 </div>

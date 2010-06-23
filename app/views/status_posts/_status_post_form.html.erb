@@ -4,7 +4,6 @@
 	<input type="hidden" id="activity_layout_id" name="activity_layout_id" value="<%= @activity_profile_layout_id %>" />
 	<label>What are you doing now?</label><br/>
 	<%= text_area(:status_post, :body, :cols => 60, :rows => 3 ) %>
-	<!-- <button dojoType="dijit.form.Button" onclick="post_status()">Submit</button> -->
 	<a href="javascript:post_status()">Submit</a>
 	<!-- include checkbox to send post to Twitter -->
 </form>
