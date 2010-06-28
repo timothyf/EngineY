@@ -14,7 +14,7 @@
 
 class Configuration
   
-  @@config = {}
+  @@settings = nil
   
   
   # The self.get method is not used yet..
@@ -28,62 +28,80 @@ class Configuration
 #      :enable_facebook_connect => false
 #    }
 #  end
-  
-  
-  # Sets the configuration (not used yet)
-  def self.set(params)
-    @@config[:use_proxy] = params[:use_proxy]
-    @@config[:proxy_host] = params[:proxy_host]
-    @@config[:proxy_port] = params[:proxy_port]
+
+  def self.create_defaults
+    ConfigSetting.create(:name=>'use_proxy', :value=>'false')
+    ConfigSetting.create(:name=>'proxy_host', :value=>'')
+    ConfigSetting.create(:name=>'proxy_port', :value=>'')
+    ConfigSetting.create(:name=>'enable_facebook_connect', :value=>'false')
+    ConfigSetting.create(:name=>'require_activate_for_user_create_via_api', :value=>'false')
+    ConfigSetting.create(:name=>'enable_self_registration', :value=>'true')
+    ConfigSetting.create(:name=>'max_tweets_per_user', :value=>'5')
   end
   
   
-  # Read configuration from a YAML file
-  def self.read
-    # read from enginey.yaml
-  end
-  
-  
-  # Write configuration to a YAML file
-  def self.write
-    # write to enginey.yaml
+  def self.read_settings
+    @@settings = ConfigSetting.find(:all)
   end
   
   
   def self.ENABLE_FACEBOOK_CONNECT
-    false
+    read_settings if @@settings == nil
+    if (@@settings.select {|setting|setting.name == 'enable_facebook_connect'})[0].value == 'true'
+      return true
+    else
+      return false
+    end
   end
   
   
   def self.USE_PROXY
-    false
+    read_settings if @@settings == nil
+    if (@@settings.select {|setting|setting.name == 'use_proxy'})[0].value == 'true'
+      return true
+    else
+      return false
+    end
   end
   
   
   def self.PROXY_HOST
-    '10.0.6.251'
+    read_settings if @@settings == nil
+    (@@settings.select {|setting|setting.name == 'proxy_host'})[0].value
   end
   
   
   def self.PROXY_PORT
-    '3128'
+    read_settings if @@settings == nil
+   (@@settings.select {|setting|setting.name == 'proxy_port'})[0].value
   end
   
   
   def self.REQUIRE_ACTIVATE_FOR_USER_CREATE_VIA_API
-    false
+    read_settings if @@settings == nil
+    if (@@settings.select {|setting|setting.name == 'require_activate_for_user_create_via_api'})[0].value == 'true'
+      return true
+    else
+      return false
+    end
   end
   
   
   # Setting this field to true lets users register and activate with no approval required
   def self.ENABLE_SELF_REGISTRATION
-    true
+    read_settings if @@settings == nil
+    if (@@settings.select {|setting|setting.name == 'enable_self_registration'})[0].value == 'true'
+      return true
+    else
+      return false
+    end
   end
   
   
   # The maximum number of tweets to fetch per user
   def self.MAX_TWEETS
-    5
+    read_settings if @@settings == nil
+    (@@settings.select {|setting|setting.name == 'max_tweets_per_user'})[0].value.to_i
   end
   
   

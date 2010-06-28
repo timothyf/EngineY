@@ -40,6 +40,11 @@ class AdminController < ApplicationController
   end
   
   
+  def stats
+    @page = 'stats'
+  end
+  
+  
   def photos
     @page = 'photos'
     @photos = Photo.find(:all) 
@@ -67,6 +72,12 @@ class AdminController < ApplicationController
   end
   
   
+  def tabs
+    @page = 'tabs'
+    @tabs = NavItem.find(:all)
+  end
+  
+  
   # Display the Users tab of the Admin page.
   def users
     @page = 'users'
@@ -74,6 +85,7 @@ class AdminController < ApplicationController
       format.html {
         @users = User.find(:all)
         @admins = User.admins_and_creators
+        @pending_users = User.pending_users
       }
       format.json { 
         users = User.find(:all) do
@@ -439,6 +451,13 @@ class AdminController < ApplicationController
   end
   
   
+  def user_approve
+    @user = User.find(params[:id])
+    @user.approve
+    redirect_to '/admin/users'
+  end
+  
+  
   def user_activate
     @user = User.find(params[:id])
     @user.activate
@@ -461,6 +480,16 @@ class AdminController < ApplicationController
   
   
   def network_name
+    @network = Network.find(:first)
+  end
+  
+  
+  def network_url
+    @network = Network.find(:first)
+  end
+  
+  
+  def network_admin_email
     @network = Network.find(:first)
   end
   
@@ -523,6 +552,12 @@ class AdminController < ApplicationController
     network = Network.find(params[:id]) 
     if params[:network_name]
       network.update_attributes(:name => params[:network_name]) 
+    end
+    if params[:network_url]
+      network.update_attributes(:url => params[:network_url]) 
+    end
+    if params[:network_admin_email]
+      network.update_attributes(:admin_email => params[:network_admin_email]) 
     end
     if params[:network_description]
       network.update_attributes(:description => params[:network_description]) 

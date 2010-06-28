@@ -1,35 +1,73 @@
 <div id="settings">
-	<fieldset>
-		<label>Network Name:</label>
-		<span><%= @network.name %></span>
-		<%= link_to 'Edit', '/admin/network_name' %>
-	</fieldset>
-	<fieldset>
-		<label>Network Description:</label>
-		<span><%= @network.description %></span>
-		<%= link_to 'Edit', '/admin/network_description' %>
-	</fieldset>
-	<fieldset>
-		<label>Site Theme:</label>
-		<span style="font-weight:bold;">Current Theme:</span>
-		<% theme = Theme.find(:first) %>
-		<% if theme && theme.name != nil && theme.name != '' %>
-			<span><%= theme.name %></span>
-		<% else %>
-			<span>No theme set</span>
-		<% end %>
-		<%= link_to 'Change Theme', '/admin/theme/edit' %>
-	</fieldset>
-	<fieldset>
-		<label>Privacy Statement:</label>
-		<span class="help_text">
-			Privacy statment is displayed when user clicks the Privacy link in the page footer.
-		</span>
-		<span><%= link_to 'Edit Privacy Statement', '/admin/privacy_edit' %></span>
-	</fieldset>
-	<fieldset>
-		<label>Google Analytics:</label>
-		<span class="help_text">Code you set here will be included at the bottom of each page in your site</span>
-		<span><%= link_to 'Edit Analytics Code', '/admin/analytics_code' %></span>
-	</fieldset>
+	<div class="setting_item">
+		<div class="left">
+			<label>Network Name:</label>
+			<span class="control"><%= link_to 'Edit', '/admin/network_name' %></span>
+		</div>
+		<div class="right">
+			<span><%= @network.name %></span>
+		</div>
+	</div>
+	<div class="setting_item">
+		<div class="left">
+			<label>Network URL:</label>
+			<span class="control"><%= link_to 'Edit', '/admin/network_url' %></span>
+		</div>
+		<div class="right">
+			<span><%= @network.url %></span>
+		</div>
+	</div>
+	<div class="setting_item">
+		<div class="left">
+			<label>Network Admin Email:</label>
+			<span class="control"><%= link_to 'Edit', '/admin/network_admin_email' %></span>
+		</div>
+		<div class="right">
+			<span><%= @network.admin_email %></span>
+		</div>
+	</div>
+	<div class="setting_item">
+		<div class="left">
+			<label>Network Description:</label>
+			<span class="control"><%= link_to 'Edit', '/admin/network_description' %></span>
+		</div>
+		<div class="right">
+			<span><%= @network.description %></span>
+		</div>
+	</div>
+	<div class="setting_item">
+		<div class="left">
+			<label>Site Theme:</label>
+			<span class="control"><%= link_to 'Change Theme', '/admin/theme/edit' %></span>
+		</div>
+		<div class="right">
+			<% theme = Theme.find(:first) %>
+			<% if theme && theme.name != nil && theme.name != '' %>
+				<span><%= theme.name %></span>
+			<% else %>
+				<span>No theme set</span>
+			<% end %>
+		</div>
+	</div>
+	<div class="setting_item">
+		<div class="left">
+			<label>Privacy Statement:</label>
+			<span class="control"><%= link_to 'Edit Privacy Statement', '/admin/privacy_edit' %></span>
+		</div>
+		<div class="right">
+			<span class="help_text">
+				Privacy statment is displayed when user clicks the Privacy link in the page footer.
+			</span>
+		</div>
+	</div>
+	<div class="setting_item">
+		<div class="left">
+			<label>Google Analytics:</label>
+			<span class="control"><%= link_to 'Edit Analytics Code', '/admin/analytics_code' %></span>
+		</div>
+		<div class="right">
+			<span class="help_text">Code you set here will be included at the bottom of each page in your site</span>
+		</div>
+	</div>
+	<div style="clear:both;"></div>
 </div>

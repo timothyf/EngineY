@@ -1,0 +1,42 @@
+<style>
+	table#tabs th, table#tabs td {
+		text-align: left;
+	}
+	
+	#content {
+		width: 900px;
+	}	
+</style>
+
+<h2 class="ic-db">Tabs</h2>
+<%= link_to 'Add Tab', '/admin/tab_new' %>
+<table id="tabs">
+	<thead>
+		<th width="50px">ID</th>
+		<th width="140px">Name</th>
+		<th width="140px">Title</th>
+		<th width="150px">Url</th>
+		<th width="100px">Enabled</th>
+		<th width="300px">Actions</th>
+	</thead>
+	<tbody>
+		<% @tabs.each do |tab| %>
+			<% if tab.enabled == false %>
+				<tr class="disabled">
+			<% else %>
+				<tr>
+			<% end %>
+				<td><%= tab.id %></td>
+				<td><%= tab.name %></td>
+				<td><%= tab.title %></td>
+				<td><%= tab.url %></td>
+				<td><%= tab.enabled %></td>
+				<td>
+					<%= link_to 'Edit', '/admin/tab_edit?id=' + tab.id.to_s %> |
+					<%= link_to 'Delete', '/admin/tab_delete?id=' + tab.id.to_s, :confirm => 'Are you sure you want to delete this tab?' %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+

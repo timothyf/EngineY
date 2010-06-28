@@ -81,7 +81,7 @@ class User < ActiveRecord::Base
                   :state, :state_id, :password, :password_confirmation, :website, :blog, 
                   :blog_feed, :about_me, :display_tweets, :twitter_id, :linked_in_url, 
                   :facebook_url, :receive_emails, :last_seen_at, :login_count, :facebook_id,
-                  :activated_at
+                  :activated_at, :enabled
   
   # we want the user activity stream message after activating, not after creating
   #after_create :log_activity
@@ -336,6 +336,12 @@ class User < ActiveRecord::Base
   end
   
   
+  # Return pending users
+  def self.pending_users
+    User.find(:all, :conditions => ['enabled = 0'])
+  end
+  
+  
   # Return the site admins
   def self.admins
     User.find(:all, :conditions => ['role_id = ?', Role.admin.id], :joins => :permissions)
@@ -392,6 +398,15 @@ class User < ActiveRecord::Base
     Permission.create(:user_id=>self.id, :role_id=>Role.find_by_rolename('group_admin').id, :group_id=>group_id)
   end
 
+
+  # Enables a pending user
+  def approve
+    self.enabled = true
+    save(false)
+    log_activity
+    User.reset_cache
+  end
+  
   
   # Activates the user in the database.
   def activate
@@ -408,7 +423,7 @@ class User < ActiveRecord::Base
     # the existence of an activation code means they have not activated yet
     activation_code.nil?
   end
-  
+    
   
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)

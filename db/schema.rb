@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100618150950) do
+ActiveRecord::Schema.define(:version => 20100628192855) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -131,6 +131,13 @@ ActiveRecord::Schema.define(:version => 20100618150950) do
   end
 
   add_index "comments", ["user_id"], :name => "fk_comments_user"
+
+  create_table "config_settings", :force => true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "countries", :force => true do |t|
     t.string   "name"
@@ -289,6 +296,18 @@ ActiveRecord::Schema.define(:version => 20100618150950) do
     t.integer  "sender_id"
     t.integer  "recipient_id"
     t.boolean  "read",         :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "nav_items", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.string   "url"
+    t.boolean  "login_required"
+    t.boolean  "login_allowed"
+    t.boolean  "admin_required"
+    t.boolean  "enabled"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

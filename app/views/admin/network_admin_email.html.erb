@@ -1,0 +1,7 @@
+<h2>Edit Network Admin Email</h2>
+<form action="/admin/save_network">
+	<input type="hidden" name="id" value="<%= @network.id %>" />
+	<input type="text" name="network_admin_email" value="<%= @network.admin_email %>" />
+	<br/>
+	<input type="submit" value="Save" />
+</form>

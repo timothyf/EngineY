@@ -234,6 +234,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    if Configuration.ENABLE_SELF_REGISTRATION == false
+      @user.enabled = false
+    end
     if @user.facebook_id
       create_facebook_user
     else

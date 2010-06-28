@@ -1,0 +1,11 @@
+<h1>New nav_item</h1>
+
+<% form_for(@nav_item) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', nav_items_path %>

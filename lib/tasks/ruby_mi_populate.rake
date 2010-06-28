@@ -30,6 +30,13 @@ namespace :enginey do
       puts 'Populating roles...'
       network.init_network() 
       
+      
+      ##########################################################################
+      puts 'Creating config settings...'
+      ConfigSetting.destroy_all
+      Configuration.create_defaults
+      
+
       ##########################################################################
       puts 'Creating users...'
       Activity.destroy_all
@@ -408,6 +415,42 @@ namespace :enginey do
       puts 'Creating pages...'
       home_pg = Page.create(:name => 'home', :title => 'RubyMI Home')
       prof_pg = Page.create(:name => 'profile', :title => 'User Profile')
+      
+      
+      ##########################################################################
+      # Create Nav Items
+      puts 'Creating nav items...'
+      NavItem.create(:name => 'main', :title => 'Home', :url => '/', 
+                     :login_required => false, :login_allowed => true, 
+                     :admin_required => false, :enabled => true)
+      NavItem.create(:name => 'profile', :title => 'My Page', :url => '/users', 
+                     :login_required => true, :login_allowed => true, 
+                     :admin_required => false, :enabled => true)
+      NavItem.create(:name => 'members', :title => 'Members', :url => '/users', 
+                     :login_required => false, :login_allowed => true, 
+                     :admin_required => false, :enabled => true)
+      NavItem.create(:name => 'blogs', :title => 'Blogs', :url => '/blog_posts',
+                     :login_required => false, :login_allowed => true, 
+                     :admin_required => false, :enabled => true)
+      NavItem.create(:name => 'groups', :title => 'Groups', :url => '/groups',
+                     :login_required => false, :login_allowed => true, 
+                     :admin_required => false, :enabled => true)
+      NavItem.create(:name => 'events', :title => 'Events', :url => '/events',
+                     :login_required => false, :login_allowed => true, 
+                     :admin_required => false, :enabled => true)
+      NavItem.create(:name => 'photos', :title => 'Photos', :url => '/photo_manager',
+                     :login_required => false, :login_allowed => true, 
+                     :admin_required => false, :enabled => true)
+      NavItem.create(:name => 'classifieds', :title => 'Classifieds', :url => '/classifieds',
+                     :login_required => false, :login_allowed => true, 
+                     :admin_required => false, :enabled => false)
+      NavItem.create(:name => 'forum', :title => 'Forum', :url => '/forum_topics',
+                     :login_required => false, :login_allowed => true, 
+                     :admin_required => false, :enabled => true)
+      NavItem.create(:name => 'manage', :title => 'Manage', :url => '/admin',
+                     :login_required => true, :login_allowed => true, 
+                     :admin_required => true, :enabled => false)
+
       
       ##########################################################################
       # Create Layouts

@@ -41,36 +41,12 @@ end
   # Authenticate the user, then flush expired sessions from the sessions table
   # Update the last_seen_at and login_count attributes for the user
   def create
-    self.current_user = User.authenticate(params[:login], params[:password])
-    if logged_in?
-      expire_action :controller => :home, :action => :index
-      flush_expired_sessions
-      login_count = self.current_user.login_count
-      login_count = login_count + 1
-      self.current_user.update_attribute('login_count', login_count)
-      self.current_user.update_attribute('last_seen_at',Time.zone.now)
-      if params[:remember_me] == "1"
-        current_user.remember_me unless current_user.remember_token?
-        cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
-      end
-      #redirect_back_or_default('/')
-      #flash[:notice] = "Logged in successfully"
+    user = User.find_by_login(params[:login])
+    if (user && !user.enabled) 
+      # user exists but is not enabled
       respond_to do |format|
         format.html {
-          redirect_back_or_default('/')
-          flash[:notice] = "Logged in successfully"
-        }
-        format.xml  {
-          render :xml => self.current_user.to_xml(:dasherize => false)
-        }
-        format.json  {
-          render :json => self.current_user.to_json(:dasherize => false)
-        }
-      end           
-    else
-      respond_to do |format|
-        format.html {
-          flash[:notice] = "Incorrect username or password"
+          flash[:notice] = "User has not been approved by an Admin"
           render :action => 'new'
         }
         format.xml  {
@@ -81,6 +57,65 @@ end
           data = {} 
           render :json => data.to_json(:dasherize => false), :status => 403
         }
+      end
+    elsif (user && !user.active?)
+      # user exists but is not yet activated
+      respond_to do |format|
+        format.html {
+          flash[:notice] = "You have not activated your account yet.  Please check your email"
+          render :action => 'new'
+        }
+        format.xml  {
+          data = {} 
+          render :xml => data.to_xml(:dasherize => false), :status => 403
+        }
+        format.json  {
+          data = {} 
+          render :json => data.to_json(:dasherize => false), :status => 403
+        }
+      end
+    else
+      self.current_user = User.authenticate(params[:login], params[:password])
+      if logged_in?
+        expire_action :controller => :home, :action => :index
+        flush_expired_sessions
+        login_count = self.current_user.login_count
+        login_count = login_count + 1
+        self.current_user.update_attribute('login_count', login_count)
+        self.current_user.update_attribute('last_seen_at',Time.zone.now)
+        if params[:remember_me] == "1"
+          current_user.remember_me unless current_user.remember_token?
+          cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
+        end
+        #redirect_back_or_default('/')
+        #flash[:notice] = "Logged in successfully"
+        respond_to do |format|
+          format.html {
+            redirect_back_or_default('/')
+            flash[:notice] = "Logged in successfully"
+          }
+          format.xml  {
+            render :xml => self.current_user.to_xml(:dasherize => false)
+          }
+          format.json  {
+            render :json => self.current_user.to_json(:dasherize => false)
+          }
+        end           
+      else
+        respond_to do |format|
+          format.html {
+            flash[:notice] = "Incorrect username or password"
+            render :action => 'new'
+          }
+          format.xml  {
+            data = {} 
+            render :xml => data.to_xml(:dasherize => false), :status => 403
+          }
+          format.json  {
+            data = {} 
+            render :json => data.to_json(:dasherize => false), :status => 403
+          }
+        end
       end
     end
   end

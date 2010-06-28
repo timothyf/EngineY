@@ -112,6 +112,10 @@ body {
 	line-height: 1.5em;
 }
 
+.nav_section ul li a {
+		color: #595959;
+}
+
 #content {
 	float:left;
 	padding:0 10px 10px;
@@ -221,8 +225,9 @@ a.a-red {
 	color:#FF0000;
 }
 
-.pad-lr {
+.section {
 	padding:0 15px;
+	color: 	#595959;
 }
 
 .hidethis {
@@ -405,23 +410,46 @@ a.a-dark {
 	padding: 20px;
 }
 
-#settings fieldset {
+#settings .setting_item {
 	margin-bottom: 20px;
+	border: 1px solid #cccccc;
+	float: left;
+	clear: both;
+	width: 650px;
 }
 
-#settings fieldset label {
+#settings .setting_item .left {
+	float: left;
+	width: 160px;
+	margin: 10px;
+}
+
+#settings .setting_item .right {
+	float: left;
+	width: 430px;
+	margin: 10px;
+}
+
+#settings .setting_item label {
 	font-weight: bold;
 	font-size: 12pt;
 	margin-bottom: 5px;
 	display: block;
+	width: 175px;
 }
 
-#settings fieldset .help_text {
+#settings .setting_item .help_text {
 	font-size: 10pt;
 	color: gray;
-	display: block;
+	float: left;
+	width: 300px;
 	margin-bottom: 5px;
 	margin-top: -3px;
+}
+
+#settings .setting_item .control {
+	float: left;
+	clear: both;
 }
 
 #quick_tasks ul {
@@ -552,4 +580,11 @@ input {
 	float: left;
 	clear: both;
 	margin-top: 20px;
+}
+
+#tabs .disabled {
+	color: gray;
+}
+
+
 }

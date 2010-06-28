@@ -34,6 +34,9 @@ def nav_menu_items
   ]
 end
 %>
+
+<% nav_items = NavItem.find_all_by_enabled(true) %>
+
 <div id="navigation">
 	<ul id="nav_list">		
 		<% nav_menu_items.each do |item| %>

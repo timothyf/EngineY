@@ -25,6 +25,13 @@ namespace :enginey do
       puts 'Populating roles...'
       network.init_network() 
       
+      
+      ##########################################################################
+      puts 'Creating config settings...'
+      ConfigSetting.destroy_all
+      Configuration.create_defaults
+      
+      
       ##########################################################################
       puts 'Creating users...'
       Activity.destroy_all
