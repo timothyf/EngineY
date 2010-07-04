@@ -20,7 +20,19 @@ limitations under the License.
                   current_user.friends.include?(@user) || 
 				  current_user.pending_friends.include?(@user) %>
 			<% form_for(:friendship, :url => user_friends_path(:user_id => current_user.id, :friend_id => @user.id)) do |f| %>
-				<%= submit_tag "Add as Friend" %>
+				<%= submit_tag "Friend Request" %>
+			<% end %>
+		<% end %>
+		<% unless @user == current_user %>
+			Followees: <%= current_user.followees.size.to_s %>
+			<% if current_user.followees.include?(@user) %>
+				<% form_for(:follow, :url => user_follows_path(:user_id => current_user.id, :followee_id => @user.id)) do |f| %>
+					<%= submit_tag "Unfollow User" %>
+				<% end %>
+			<% else %>
+				<% form_for(:follow, :url => user_follows_path(:user_id => current_user.id, :followee_id => @user.id)) do |f| %>
+					<%= submit_tag "Follow User" %>
+				<% end %>
 			<% end %>
 		<% end %>
 	<% end %> 

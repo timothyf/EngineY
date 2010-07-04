@@ -34,18 +34,21 @@ class FollowsController < ApplicationController
 
 
   def create
-    @follow = Follow.new(params[:follow])
     followee_id = params[:followee_id] 
     @follow = Follow.new(:follower_id => current_user.id,
                          :followee_id => followee_id)
     respond_to do |format|
       if @follow.save
         flash[:notice] = 'Follow was successfully created.'
-        format.html { redirect_to(@follow) }
+        format.html { 
+          redirect_to user_path(followee_id)
+        }
         format.xml  { render :xml => @follow, :status => :created, :location => @follow }
         format.json { render :json => @follow, :status => :created, :location => @follow }
       else
-        format.html { render :action => "new" }
+        format.html { 
+          redirect_to user_path(followee_id)
+        }
         format.xml  { render :xml => @follow.errors, :status => :unprocessable_entity }
         format.json { render :json => @follow.errors, :status => :unprocessable_entity }
       end
