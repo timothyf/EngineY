@@ -1,4 +1,4 @@
-class CreateLikes < ActiveRecord::Migration
+class ActsAsLikableMigration < ActiveRecord::Migration
   def self.up
     create_table :likes, :force => true do |t|
       t.references :user, :null => false
@@ -14,4 +14,3 @@ class CreateLikes < ActiveRecord::Migration
     drop_table :likes
   end
 end
-

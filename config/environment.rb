@@ -28,6 +28,7 @@ Rails::Initializer.run do |config|
   config.gem 'disguise'
   config.gem "ruby-openid", :lib => "openid"
   config.gem "aws-s3", :lib => "aws/s3"
+  config.gem "jammit"
   
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"

@@ -25,6 +25,7 @@
 class StatusPost < ActiveRecord::Base
   include Streamable 
   acts_as_streamable
+  acts_as_likable
   
   belongs_to :user
   

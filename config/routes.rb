@@ -4,6 +4,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :ey_modules
 
   map.resources :modules
+  
+  Jammit::Routes.draw(map)
 
 
   map.resources :follows

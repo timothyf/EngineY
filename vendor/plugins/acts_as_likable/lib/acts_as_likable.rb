@@ -19,7 +19,7 @@ module Adventtec
             module SingletonMethods
                 def find_likes_cast_by_user(user)
                     likable = ActiveRecord::Base.send(:class_name_of_active_record_descendant, self).to_s
-                    Vote.find(:all,
+                    Like.find(:all,
                         :conditions => ["user_id = ? likable_type = ?", user.id, likable],
                         :order => "created_at DESC"
                     )
@@ -31,25 +31,15 @@ module Adventtec
                 
                 # Same as likable.likes.size
                 def likes_count
-                    self.likes.size
+                    self.likes.count
                 end
                 
                 def users_who_liked
-                    users = []
-                    self.likes.each { |v| 
-                        users << v.user
-                    }
-                    users
+                    self.likes.find(:all, :include => [:user]).map(&:user) 
                 end
                 
                 def liked_by_user?(user)
-                   rtn = false
-                   if user
-                       self.likes.each { |v| 
-                           rtn = true if user.id == v.user_id
-                       }
-                   end
-                   rtn
+                    user && self.likes.first(:conditions => {:user_id => user.id})
                 end
             end
         end
