@@ -1,9 +1,11 @@
 embed_assets: on
 
 javascripts:
-
+  workspace:
+    - public/javascripts/*.js
 
 stylesheets:
+  common:
+    - public/stylesheets/*.css
+    - public/stylesheets/themes/**/*.css
 
-
-templates:

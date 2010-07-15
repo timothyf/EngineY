@@ -225,3 +225,41 @@ function forum_post_reply_saved(request) {
 	tinyMCE.activeEditor.setContent("");
 }
 
+function like_activity_item(activity_id, user_id, like_id) {
+	$.post('/likes.json',
+		   '&user_id=' + user_id + '&likable_id=' + activity_id +'&likable_type=Activity',
+		   function (data) {activity_like_saved(data, activity_id, user_id, like_id);});
+}
+
+function unlike_activity_item(activity_id, user_id, like_id) {
+	$.ajax({url:'/likes/' + like_id + '.json',
+			type: 'POST',
+		    data: '_method=delete',
+			dataType: 'text',
+		    success: function (data) {activity_like_saved(data, activity_id, user_id, like_id);},
+		   });
+}
+
+function activity_like_saved(data, activity_id, user_id, like_id) {
+	if (data.id) {
+		like_id = data.id;
+	}
+	$.get('/likes/like_text',
+	      '&activity_id=' + activity_id,
+	      function(data) {update_like_text(data, activity_id, user_id, like_id);})
+}
+
+function update_like_text(data, activity_id, user_id, like_id) {
+	$('#like_users' + activity_id).html(data);	
+	// change like/dislike link
+	if ($('#like_lnk_' + activity_id).html() == 'Unlike') {
+		$('#like_lnk_' + activity_id).html('Like');
+		var href = "javascript:like_activity_item(" + activity_id + ", " + user_id + "," + like_id + ")";
+		$('#like_lnk_' + activity_id).attr("href", href);
+	}
+	else {
+		$('#like_lnk_' + activity_id).html('Unlike');
+		var href = "javascript:unlike_activity_item(" + activity_id + ", " + user_id + "," + like_id + ")";
+		$('#like_lnk_' + activity_id).attr("href", href);
+	}
+}

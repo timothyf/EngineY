@@ -1,0 +1,90 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+
+<%
+# These are the items displayed in the top navigation bar
+# if restricted = true, this means that the item requires a logged in user
+# and the logged in user's id will be appended to the url
+# To remove an item from the menu bar, just comment out the corresponding line here
+def nav_menu_items
+   [
+	{'name'=>'main',   'title'=>'Home',    'url'=>'/',              'restricted'=>'false', 'roles'=>''},
+	{'name'=>'profile','title'=>'Profile', 'url'=>"/users",         'restricted'=>'true',  'roles'=>''},
+    {'name'=>'events', 'title'=>'Events',  'url'=>'/events',        'restricted'=>'false', 'roles'=>''},
+    {'name'=>'photos', 'title'=>'Photos',  'url'=>'/photo_manager', 'restricted'=>'false', 'roles'=>''},
+	#{'name'=>'manage','title'=>'Manage', 'url'=>'/admin', 'restricted'=>'true', 'roles'=>'admin'}
+  ]
+end
+%>
+
+<% nav_items = NavItem.find_all_by_enabled(true) %>
+
+<div id="navigation">
+	<% if logged_in? %>
+		<ul id="nav_list">		
+			<% nav_menu_items.each do |item| %>
+				<% if item['restricted'] == 'false' || logged_in? %>
+					<!-- Item is not restricted or a user is logged in -->
+					<% if item['roles'] != '' %>
+						<!-- Item is role restricted -->
+					<% else %>
+						<!-- Item is not role restricted -->
+						<% if @section == item['name'].upcase %>
+							<li id="current_menu" class="nav_list_item current_menu">
+								<% if item['restricted'] == 'true' && logged_in? %>
+									<%= link_to item['title'], item['url'] + "/#{current_user.id}", :class=>'nav_list_link' %>
+								<% else %>
+									<%= link_to item['title'], item['url'], :class=>'nav_list_link' %>
+								<% end %>
+							</li>
+						<% else %>
+							<% if item['restricted'] == 'true' && logged_in? %>
+								<li class="nav_list_item">
+									<%= link_to item['title'], item['url'] + "/#{current_user.id}", :class=>'nav_list_link' %>
+								</li>
+							<% else %>
+								<li class="nav_list_item">
+									<%= link_to item['title'], item['url'], :class=>'nav_list_link' %>
+								</li>
+							<% end %>
+						<% end %>
+					<% end %>
+				<% else %>
+					<!-- Item is restricted or a user is not logged in -->
+					<!-- do not show menu item -->
+				<% end %>
+			<% end %>	
+
+			<% if logged_in_as_admin? %>
+				<% if @section == 'MANAGE' %>
+					<li id="current_menu" class="nav_list_item current_menu"><%= link_to 'Manage', { :controller=>'admin'}, :class=>'nav_list_link' %></li>
+				<% else %>
+					<li class="nav_list_item"><%= link_to 'Manage', { :controller=>'admin'}, :class=>'nav_list_link' %></li>
+				<% end %>
+			<% end %>
+		</ul>
+	<!--
+		<ul id="nav_list_right" style="float:right;">
+			<% if @section == 'BUG' %>
+				<li class="nav_list_item current_menu" id="current_menu"><%= link_to 'Report a Bug', bug_reports_url, :class=>'nav_list_link' %></li>
+			<% else %>
+				<li class="nav_list_item"><%= link_to 'Report a Bug', bug_reports_url, :class=>'nav_list_link' %></li>
+			<% end %>
+		</ul>
+	-->
+		<div style="clear:both;"></div>
+	<% end %>
+</div>

@@ -31,6 +31,7 @@ class Activity < ActiveRecord::Base
   belongs_to :user
   belongs_to :item, :polymorphic => true
   has_many :feeds
+  acts_as_likable
   
   GLOBAL_FEED_SIZE = 10
   

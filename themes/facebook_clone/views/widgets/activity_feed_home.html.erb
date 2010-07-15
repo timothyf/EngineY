@@ -1,0 +1,65 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<% widget_title = "Latest Activity" %>
+
+<% if logged_in? && include_friends %>
+	<% @user = User.find(current_user.id) %>
+	<% activities = @user.friends_activity_stream %>
+<% else %>
+	<% activities = Activity.find(:all, :limit=>8, :order=>'created_at DESC', :include=>[:user, :item]) %>
+<% end %>
+<% @activities = activities[0...8] %>
+
+
+<% content_for :module_body do %>
+	<% @activities.each do |activity| %>
+		<div class="activity_item">
+			<div class="activity_user_img">
+				<% if activity.user %>
+				<% if activity.user.profile_photo %>
+					<%= link_to image_tag(activity.user.profile_photo.public_filename(:small), :alt=>activity.user.name), user_url(activity.user) %>
+				<% else %>
+					<%= link_to '<div class="no_photo_user_widget"></div>', user_url(activity.user) %>
+				<% end %>
+				<% else %>
+					No User
+				<% end %>
+			</div>
+			<div class="activity_feed_item">
+				<%= activity_feed_message(activity) %>
+				<div class="activity_likes">
+					<span class="like_link">
+						<% if current_user.like_this?(activity) == true %>
+							<a id="like_lnk_<%= activity.id.to_s %>" href="javascript:unlike_activity_item(<%= activity.id %>, <%= current_user.id %>, <%= current_user.get_like(activity).id %>)">Unlike</a>
+						<% else %>
+							<a id="like_lnk_<%= activity.id.to_s %>" href="javascript:like_activity_item(<%= activity.id %>, <%= current_user.id %>, null)">Like</a>
+						<% end %>
+					</span>
+					<span class="like_users" id="like_users<%= activity.id.to_s %>">
+						<%= display_like_text(activity) %>
+					</span>
+					<div class="clear:both;"></div>
+				</div>
+			</div>
+		</div>
+	<% end %>		
+<% end %>
+
+<% content_for :module_footer do %>
+	<%= link_to 'View All', activities_path %>&nbsp;|&nbsp;
+	<%= link_to 'RSS', formatted_activities_url(:rss) %>
+	<%= link_to image_tag('feed.png', :alt=>'rss', :align=>'absmiddle'), formatted_activities_url(:rss) %>
+<% end %>

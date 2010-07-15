@@ -1,0 +1,96 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+
+<% content_for :script_content do %>
+	<script>
+		function page_init() {
+			// delay slideshow start to allow photos widget to load via ajax
+			setTimeout(start_slideshow, 10000);
+		}
+		
+		function start_slideshow() {
+			<% photo = @photos[0] %>
+			var slide_show = new SlideShow("widget_photo", 3000);
+			<% @photos.each do |photo| %>
+			{
+				var img<%= photo.id %> = new Image();
+				img<%= photo.id %>.onload = function(){slide_show.add_slide(img<%= photo.id %>);};
+				img<%= photo.id %>.src = "<%= photo.public_filename(:display) %>";
+			}
+			<% end %>
+		}
+	</script>
+<% end %>
+
+<% if logged_in? %>
+	<div class="col1">
+		<div class="column_1">
+		    <% if flash[:notice] %>
+		      <div class="notice"><%= flash[:notice] %></div>
+		    <% end %>
+			<%= render :partial => 'users/user_control_widget' %>
+			<div id="col_1_widgets"></div>
+		</div>
+		<div class="column_2">
+			<h2>News Feed</h2>
+			<div id="col_2_widgets"></div>
+			<!-- display HTML widgets
+			<% if @html_contents %>
+				<% @html_contents.each do |html_content| %>
+					<%= render :partial => 'html_contents/html_content_widget', :locals=>{:content=>html_content} %>
+				<% end %>
+			<% end %>
+			-->
+		</div>
+	</div>
+	<div class="col2">
+		<!-- place holder for AJAX widgets -->
+		<div id="col_3_widgets"></div>
+	</div>
+	<div style="clear:both;"></div>
+<% else %>
+	<div class="main">
+	    <% if flash[:notice] %>
+	      <div class="notice"><%= flash[:notice] %></div>
+	    <% end %>
+		<div id="login_form">
+			<h5>Sign in with your login and password</h5>
+			<% form_tag session_path do -%>
+				<div class="form_field">
+					<label for="login">Login:</label>
+					<%= text_field_tag 'login' %>
+				</div>
+				<div class="form_field">
+					<label for="password">Password:</label>
+					<%= password_field_tag 'password' %>
+				</div>	
+				<div id="login_btn">
+					<%= submit_tag 'Log in', :class=>'login_btn' %>
+				</div>
+			<% end -%>
+			<div style="clear:both;"></div>
+		</div>
+		<% if Configuration.ENABLE_FACEBOOK_CONNECT %>
+			<div id="facebook_login">
+				<h5>Signin with your Facebook account</h5>
+				<div id="facebook_login_button">
+					<%= fb_login_button('window.location = "/users/link_facebook_account";')%>
+				</div>
+			</div>
+		<% end %>
+		<div style="clear:both;"></div>
+	</div>
+<% end %>

@@ -1,12 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :nav_items
-
   map.resources :ey_modules
-
   map.resources :modules
   
   Jammit::Routes.draw(map)
-
 
   map.resources :follows
   map.resources :contents
@@ -54,6 +51,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'users/authenticate.:format', :controller=>'users', :action=>'authenticate'
   map.connect 'blog_post_topics/ajax_save', :controller=>'blog_post_topics', :action=>'ajax_save'
   map.connect 'blog_post_topics/fetch_topic_list', :controller=>'blog_post_topics', :action=>'fetch_topic_list'
+  map.connect 'likes/like_text', :controller=>'likes', :action=>'like_text'
   
   map.resources :blog_post_topics
   map.resources :videos
@@ -66,6 +64,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :memberships
   map.resource :session
+  map.resources :likes
   
   
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil

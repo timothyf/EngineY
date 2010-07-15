@@ -1,0 +1,154 @@
+body {
+	font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+}
+
+a, a:visited, #user_control_widget a, #user_control_widget a:visited {
+	color: #3B5998;
+}
+
+#content {
+	width: 100%;
+}
+
+#main {
+	width: 981px;
+	margin: auto;
+	border-right:1px solid #BBBBBB;
+}
+
+#header, #footer {
+	background-color: #3B5998 !important;
+	width: 100%;
+	height: 40px;
+}
+
+#header a, #header a:visited {
+	color: white;
+}
+
+#logo_text {
+	float: left;
+	width: 150px;
+	margin-left: 150px;
+	font-weight: bold;
+	font-size:14pt;
+	color: white;
+	padding-top: 10px;
+}
+
+#header #navigation {
+	margin-left: 60px;
+	width: 300px;
+}
+
+.current_menu {
+	background-color: white;
+}
+
+.nav_list_item {
+	height: 24px;
+}
+
+.nav_list_link {
+	height: 18px;
+}
+
+.column_1 {
+	width: 175px;
+}
+
+.column_2 {
+	width: 470px;
+	border-left:1px solid #BBBBBB;
+}
+
+.activity_item {
+	float: left;
+	clear: both;
+	border-bottom:1px solid #BBBBBB;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.activity_user_img {
+	float: left;
+	width: 80px;
+}
+
+.activity_feed_item {
+	float: left;
+	width: 380px;
+	border: none;
+	font-size: 13px;
+}
+
+.activity_user_link {
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.activity_user_link a {
+	text-decoration: none;
+}
+
+.activity_user_link a:hover {
+	text-decoration: underline;
+}
+
+.activity_text {
+	float: left;
+	margin-left: 8px;
+}
+
+.activity_date {
+	font-size: 11px;
+	color: #808080;
+	width: 50px;
+	float: left;
+	clear: both;
+	line-height: 1em;
+	margin-top: 8px;
+	margin-left: 10px;
+}
+
+.like_link {
+	float: left;
+	width: 40px;
+	line-height: 1em;
+}
+
+.activity_likes {
+	font-size: 11px;
+	margin-top: 8px;
+	float: left;
+}
+
+.like_users {
+	float: left;
+	color: #808080;
+	line-height: 1em;
+}
+
+.like_link a, .like_link a:visited {
+	font-size: 11px;
+}
+
+.like_link a {
+	text-decoration: none;
+}
+
+.like_link a:hover {
+	text-decoration: underline;
+}
+
+#user_control_widget {
+	width: 175px;
+}
+
+#activity_feed_home_head {
+	display: none;
+}
+
+#status_posts_profile_head {
+	display: none;
+}

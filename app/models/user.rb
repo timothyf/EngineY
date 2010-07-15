@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
   has_many :groups, :through => :memberships 
   
+  has_many :likes
+  
   # TODO: 
   #   Add a condition to only get the attendances set in the future.
   #   Do not get attendances for past events
@@ -108,6 +110,25 @@ class User < ActiveRecord::Base
       return self.status_posts[0]
     end
     nil
+  end
+  
+  
+  # Return true if the user likes the activity passed in, otherwise false
+  def like_this?(activity)
+    @likes = Like.find_likes_cast_by_user(self)
+    if @likes
+      results = @likes.select{|like| (like.likable_id == activity.id && like.likable_type == 'Activity') }
+      if results && results.size > 0
+        return true
+      end
+    end
+    return false
+  end
+  
+  
+  # Returns the Like object associated with the Activity passed in for this user, if this user 'likes' the activity
+  def get_like(activity)
+    Like.find_by_user_id_and_likable_id_and_likable_type(self.id, activity.id, 'Activity')
   end
   
   

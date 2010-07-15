@@ -13,6 +13,26 @@
 #   limitations under the License.
 module ActivityFeedHelper
   
+  def display_like_text(activity)
+		if current_user.like_this?(activity) == true
+			if activity.likes.size > 1
+				text = "You and #{(activity.likes.size - 1).to_s} other #{activity.likes.size > 2 ? 'people':'person'} like this"
+			else
+				text = "You like this"
+			end
+		elsif activity.likes && activity.likes.size > 0
+			if activity.likes.size > 1
+				text = "#{(activity.likes.size).to_s} people like this"
+			else
+				text = "1 person likes this"
+			end
+		else
+			text = "Be the first to like this"
+		end
+		return text
+  end
+  
+  
   def user_link(user)
     "#{link_to(user.name, user_url(user))}"
   end
@@ -41,14 +61,14 @@ module ActivityFeedHelper
         end
       when "Photo"
         if activity.action == 'destroy'
-          %(#{user_link(user)} deleted a photo.  #{activity_date(activity)})
+          %(<span class="activity_text"><span class="activity_user_link">#{user_link(user)}</span> deleted a photo.</span>#{activity_date(activity)})
         else
           if activity.item
             photo = Photo.find(activity.item.id, :select=>"id, user_id, filename, parent_id, created_at")
-            %(#{user_link(user)} uploaded a photo - <a href="/photos/#{photo.id}">#{image_tag(photo.public_filename(:small))}</a>.  #{activity_date(photo)})
+            %(<span class="activity_text"><span class="activity_user_link">#{user_link(user)}</span> uploaded a photo - <a href="/photos/#{photo.id}">#{image_tag(photo.public_filename(:small))}</a>.</span>#{activity_date(photo)})
           else
             # photo no longer exists, but still need to display upload event for history
-            %(#{user_link(user)} uploaded a photo.  #{activity_date(activity)})
+            %(<span class="activity_text"><span class="activity_user_link">#{user_link(user)}</span> uploaded a photo.</span>#{activity_date(activity)})
           end
         end    
       when "Group"
@@ -71,7 +91,7 @@ module ActivityFeedHelper
         end
       when "Membership"
         membership = activity.item
-       %(#{user_link(user)} joined the group, <a href="/groups/#{membership.group.id}">#{membership.group.name}</a>.  #{activity_date(membership)})
+       %(<span class="activity_text"><span class="activity_user_link">#{user_link(user)}</span> joined the group, <a href="/groups/#{membership.group.id}">#{membership.group.name}</a>.  </span>#{activity_date(membership)})
       when "ForumPost"
         forum_post = activity.item
         %(#{user_link(user)} posted a new message to the forum, <a href="/forum_posts/#{forum_post.id}">#{forum_post.title}</a>.  #{activity_date(forum_post)})
@@ -88,7 +108,7 @@ module ActivityFeedHelper
         %(#{user.name} posted a new review for #{book_review.name}.  #{activity_date(book_review)})       
       when "StatusPost"
         status_post = activity.item
-        %(#{user_link(user)} #{EngineyUtil.linkify(status_post.body)} #{activity_date(status_post)})
+        %(<span class="activity_text"><span class="activity_user_link">#{user_link(user)}</span> #{EngineyUtil.linkify(status_post.body)}</span>#{activity_date(status_post)})
       when "Link"
         link = activity.item
         if link
