@@ -10,6 +10,7 @@
 	}	
 </style>
 
+
 <h2 class="ic-db">Managed Content</h2>
 <%= link_to 'Add Content', '/admin/content_new' %>
 <table id="contents">
@@ -34,3 +35,8 @@
 <% if @html_contents.length == 0 %>
 	No HTML Contents have been created.
 <% end %>
+
+<div class="admin_page_detail">
+	In order to display managed content, the content must be associated with an HTML Contents
+	widget and a widget layout which places it onto a page.
+</div>

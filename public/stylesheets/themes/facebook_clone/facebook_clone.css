@@ -6,6 +6,11 @@ a, a:visited, #user_control_widget a, #user_control_widget a:visited {
 	color: #3B5998;
 }
 
+#nav_list .nav_list_item a, #nav_list_right .nav_list_item a:visited {
+    color: white;
+}
+
+
 #content {
 	width: 100%;
 }
@@ -38,7 +43,7 @@ a, a:visited, #user_control_widget a, #user_control_widget a:visited {
 
 #header #navigation {
 	margin-left: 60px;
-	width: 300px;
+	width: 500px;
 }
 
 .current_menu {

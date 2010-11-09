@@ -300,6 +300,10 @@ h2 {
 	padding:0 0 0 45px;
 }
 
+h2.no_image {
+	padding: 0px;
+}
+
 h3 {
 	border-bottom:1px solid #CCCCCC;
 	font-size:13px;
@@ -586,5 +590,49 @@ input {
 	color: gray;
 }
 
+.admin_page_title {
+	color: #4096EE;
+	padding: 0px;
+}
 
+.admin_page_desc {
+	font-size: 12pt;
+}
+
+.admin_page_detail {
+	margin-top: 20px;
+	font-size: 10pt;
+}
+
+#api_test_form {
+}
+
+#api_test_form label {
+	width: 100px;
+	font-weight: bold;
+}
+
+#api_test_form #query_string {
+	width: 600px;
+}
+
+#api_test_form button {
+
+}
+
+#api_test_results {
+	float: left;
+	clear: both;
+}
+
+#api_test_results textarea {
+	width: 600px;
+	height: 200px;
+}
+
+#query_submit {
+	float: left;
+	clear: both;
+	margin-top: 10px;
+	margin-bottom: 40px;
 }

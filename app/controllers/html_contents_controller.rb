@@ -44,7 +44,7 @@ class HtmlContentsController < ApplicationController
         flash[:notice] = 'HtmlContent was successfully created.'
         format.html { 
           if params['admin_page']
-            redirect_to('/admin/pages')
+            redirect_to('/admin/contents')
           else
             redirect_to(@html_content) 
           end  
@@ -67,7 +67,7 @@ class HtmlContentsController < ApplicationController
         flash[:notice] = 'HtmlContent was successfully updated.'
         format.html { 
           if params['admin_page']
-            redirect_to('/admin/pages')
+            redirect_to('/admin/contents')
           else
             redirect_to('/') 
           end  

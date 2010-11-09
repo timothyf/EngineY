@@ -1,0 +1,55 @@
+<h2 class="admin_page_title">Pages, Tabs, and Modules</h2>
+
+<div class="admin_page_desc">
+This admin section is where you manage pages, tabs, modules, widgets, and layouts that are 
+make up your site.
+</div>
+
+
+<div class="admin_section_links">
+	<ul>
+		<li><%= link_to 'Pages', '/admin/pages' %></li>
+		<li><%= link_to 'Tabs', '/admin/tabs' %></li>
+		<li><%= link_to 'Modules', '/admin/modules' %></li>
+		<li><%= link_to 'Widgets', '/admin/modules' %></li>
+		<li><%= link_to 'Widget Layouts', '/admin/modules' %></li>
+	</ul>
+</div>
+
+<div class="admin_page_detail">
+	Each of the elements that you will manage in this section are described here:
+	<p>
+		<b>Pages</b> – Pages can be dynamically added and removed from your site.  Any page that is
+		created should have a method for navigating to it, which can be through a Tab or through functionality
+		contained within a widget.
+	</p>
+	<p>
+		<b>Tabs</b> - Tabs are the navigational elements listed across the top of your pages that provide
+		each access to key areas of your site.  
+	</p>
+	<p>
+		<b>Modules</b> - Modules are large chunks of functionality of your site that can be activated and
+		deactivated.  Popular modules include blogs, groups, events, etc.  Each module may contain one or
+		more widgets which also need to be configured.  However deactivating a module will also deactivate
+		all of its associated widgets.
+	</p>
+	<p>
+		<b>Widgets</b> – Widgets are the sections of content that appear on pages.  For example the home page 
+		of your site will usually be composed of a number of widgets which might include a members widget,
+		a groups widget, and an activity feed widget.  Widgets are the manner in which new features and
+		functionality can be added into your site.
+	</p>
+	<p>
+		<b>Widget Layouts</b> – Widget layouts bind widgets to a specific page and column for display. 
+		So this table is what is defining what gets put on a page and where it is displayed. You could 
+		have lots of widgets available in the widgets table, but if there is not any Widget Layouts created, 
+		you will not see any widgets on your page. This allows you to reuse widgets on the same page or on 
+		different pages. You can also bind the HTML Contents widget with a piece of Managed Content stored 
+		in the html_contents table. This provides you with CMS capability.
+	</p>
+	<p>
+		<b>HTML Contents</b> – This table holds chunks of HTML content that can be displayed using the 
+		html_contents_home widget.  Modules are managed under the 
+		<%= link_to 'Content', '/admin/contents' %> admin section.
+	</p>
+</div>

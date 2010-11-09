@@ -3,13 +3,18 @@
 	<% if defined? admin_page %>
 		<input type="hidden" name="admin_page" value="1" />
 	<% end %>
+	
 	<div class="form_field">
     	<label for="page_id">Page ID:</label>
-		<%= f.text_field :page_id, :class=>'input_field' %>
+		<%= f.collection_select(:page_id, Page.all(:order => 'name'), :id, :name, { :prompt => 'Select Page' } ) %>
 	</div>
 	<div class="form_field">
     	<label for="widget_id">Widget ID:</label>
-		<%= f.text_field :widget_id, :class=>'input_field' %>
+		<%= f.collection_select(:widget_id, Widget.all(:order => 'name'), :id, :name, { :prompt => 'Select Widget' } ) %>
+	</div>
+	<div class="form_field">
+    	<label for="content_id">HTML Content ID:</label>
+		<%= f.collection_select(:html_content_id, HtmlContent.all(:order => 'title'), :id, :title, { :prompt => 'Select Content' } ) %>
 	</div>
 	<div class="form_field">
     	<label for="col_num">Col #:</label>
@@ -18,10 +23,6 @@
 	<div class="form_field">
     	<label for="row_num">Row #:</label>
 		<%= f.text_field :row_num, :class=>'input_field' %>
-	</div>
-	<div class="form_field">
-    	<label for="content_id">HTML Content ID:</label>
-		<%= f.text_field :html_content_id, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
     	<%= f.submit "Save", :class=>'add_button' %>

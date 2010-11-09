@@ -21,11 +21,14 @@ class WidgetLayoutsController < ApplicationController
   # A template file that contains the text 'home' is a widget displayed on the home page.  
   # A template file that contains the text 'profile' is a widget displayed on the profile page.
   def load
+    user_id = params[:user_id]
     layout_id = params[:layout_id]
+    # pass either a layout_id or a widget name
     if layout_id
       @layout = WidgetLayout.find(layout_id) 
       @widget_name = @layout.widget.name  
     else
+      # if no layout_id is passed, use the first layout for the widget whose name is passed
       @widget_name = params[:name]
       widget = Widget.find_by_name(@widget_name)
       @layout = WidgetLayout.find_by_widget_id(widget.id)
@@ -37,7 +40,6 @@ class WidgetLayoutsController < ApplicationController
     if @widget_name == 'html_content_home'
       @content = HtmlContent.find(@layout.html_content_id)
     end
-    user_id = params[:user_id]
     if params[:include_friends] && params[:include_friends] == 'true'
       include_friends = true
     end
@@ -48,6 +50,7 @@ class WidgetLayoutsController < ApplicationController
   end
   
   
+  # Used by an Admin function to create a new Widget layout
   def create
     @widget_layout = WidgetLayout.new(params[:widget_layout])
     respond_to do |format|
@@ -55,7 +58,7 @@ class WidgetLayoutsController < ApplicationController
         flash[:notice] = 'WidgetLayout was successfully created.'
         format.html { 
           if params['admin_page']
-            redirect_to('/admin/pages')
+            redirect_to('/admin/modules')
           else
             redirect_to(@widget_layout) 
           end  
@@ -69,6 +72,7 @@ class WidgetLayoutsController < ApplicationController
   end
 
 
+  # Used by an Admin function to update an existing widget layout
   def update
     @widget_layout = WidgetLayout.find(params[:id])
     respond_to do |format|
@@ -76,7 +80,7 @@ class WidgetLayoutsController < ApplicationController
         flash[:notice] = 'WidgetLayout was successfully updated.'
         format.html { 
           if params['admin_page']
-            redirect_to('/admin/pages')
+            redirect_to('/admin/modules')
           else
             redirect_to(@widget_layout) 
           end  
@@ -90,6 +94,7 @@ class WidgetLayoutsController < ApplicationController
   end
 
 
+  # Used by an Admin function to delete an existing widget layout.
   def destroy
     @widget_layout = WidgetLayout.find(params[:id])
     @widget_layout.destroy

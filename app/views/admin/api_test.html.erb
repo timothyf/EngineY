@@ -1,9 +1,17 @@
-<h2>API Test Center&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>(Coming Soon)</i></h2>
+<h2 class="no_image">API Test Center&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>(Coming Soon)</i></h2>
 
-<label>Enter your query:</label>
-<input type="text" size="60" value="" name="query_string" id="query_string">
+<div id="api_test_form">
+	<label>Enter your query:</label>
+	<input type="text" size="60" value="" name="query_string" id="query_string">
 
-<br/><br/><br/><br/>
+	<div id="query_submit">
+		Submit as: 
+		<button onclick="javascript:submit_test_query('GET',$('#query_string').val())">GET</button>
+		<button onclick="javascript:submit_test_query('POST',$('#query_string').val())">POST</button>
+	</div>
 
-<label>Results</label>
-<textarea width="160"></textarea>
+	<div id="api_test_results">
+		<label>Results:</label>
+		<textarea width="160"></textarea>
+	</div>
+</div>

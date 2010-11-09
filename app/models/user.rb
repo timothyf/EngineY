@@ -134,7 +134,7 @@ class User < ActiveRecord::Base
   
   # Returns an array of users who have an API key
   def self.with_api_key
-    User.find(:all, :conditions => "api_key != ''")
+    User.find(:all, :conditions => "api_key != '' AND api_key is not null")
   end
   
   

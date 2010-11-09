@@ -42,4 +42,23 @@ function blog_topic_saved(response) {
 		}
 	});
 }
+
+function submit_test_query(method, query) {
+	var method = method;
+	var query = query;
+	$.ajax({
+	   type: method,
+	   url: query,
+	   success: query_success,
+	   error: query_error
+	 });
+}
+
+function query_success(data) {
+	alert('success');
+}
+
+function query_error(data) {
+	alert('error');
+}
 	 
