@@ -73,7 +73,11 @@ module ActivityFeedHelper
         end    
       when "Group"
         group = activity.item
-        %(A new group was created, #{link_to(group.name, group_url(group))} #{activity_date(group)})
+        if group
+          %(A new group was created, #{link_to(group.name, group_url(group))} #{activity_date(group)})
+        else
+          %(A new group was created, group no longer exists)
+        end
       when "BlogPost"
         blog_post = activity.item
         if blog_post

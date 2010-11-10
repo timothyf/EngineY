@@ -29,13 +29,19 @@ class PhotosController < ApplicationController
     respond_to do |format|
       format.html { render :partial=>'photo_comments' } 
       format.xml  { head :ok }
+      format.json  { head :ok }
     end
   end
   
 
   def index
     @section = 'PHOTOS' 
-    @photos = Photo.non_profile_photos
+    @photos = Photo.non_profile_photos  
+    respond_to do |format|
+      format.html {}
+      format.xml  { render :xml => @photos }
+      format.json { render :json => @photos.to_json }
+    end
   end
   
   
@@ -79,6 +85,7 @@ class PhotosController < ApplicationController
         puts @photo.errors.to_xml
         format.html { render :action => "edit" }
         format.xml  { render :xml => @photo.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @photo.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -90,6 +97,7 @@ class PhotosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(photos_url) }
       format.xml  { head :ok }
+      format.json { head :ok }
     end
   end
 

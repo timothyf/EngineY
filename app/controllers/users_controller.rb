@@ -41,8 +41,7 @@ class UsersController < ApplicationController
   end
   
   
-  # Returns a list of users in a JSON array.  This is used to display
-  # the DOJO grid for the admin page.
+  # Returns a list of users in a JSON array.
   def grid_data
     @users = User.find(:all, :select=>'id, first_name, last_name')
     render :json => @users.to_json, :callback => params[:callback]

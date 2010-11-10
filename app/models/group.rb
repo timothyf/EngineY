@@ -40,6 +40,8 @@ class Group < ActiveRecord::Base
   has_many :permissions
   has_many :admins, :source=>:user, :through => :permissions
   
+  validates_presence_of :name
+  
   
   after_create :log_activity
 

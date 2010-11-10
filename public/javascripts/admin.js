@@ -55,10 +55,10 @@ function submit_test_query(method, query) {
 }
 
 function query_success(data) {
-	alert('success');
+	$('#api_test_data').val(data);
 }
 
 function query_error(data) {
-	alert('error');
+	alert('An Error Occurred');
 }
 	 
