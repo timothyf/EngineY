@@ -79,11 +79,6 @@ EyWidget = function(id, name, content_id, col_num, properties, loadable) {
 	}
 	
 	this.load = function() {
-		/*if (this.retry_count == 0) {
-			// create a DOM node to hold the returned content before requesting it
-			// this will help hold its place on the page
-			this.create_widget_node();
-		}*/
 		var content = {
 			widget_id: this.id,
 			name: this.widget_name,
