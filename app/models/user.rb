@@ -410,6 +410,11 @@ class User < ActiveRecord::Base
   end
   
   
+  def is_event_owner(event)
+    event.user == self
+  end
+  
+  
   def make_site_admin
     Permission.create(:user_id=>self.id, :role_id=>Role.find_by_rolename('administrator').id)
   end

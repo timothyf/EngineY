@@ -14,6 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 %>
 <%= stylesheet_link_tag 'events' %>
+
+<% content_for :script_content do %>
+	<%= javascript_include_tag 'wall_posts' %>
+<% end %>
 	
 <div class="column_1">
 	<%= render :partial => 'event_details' %>
