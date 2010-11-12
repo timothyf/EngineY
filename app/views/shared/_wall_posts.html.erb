@@ -25,7 +25,7 @@ limitations under the License.
 			<%= post.message %><br/>
 		</div>
 		<div class="wall_post_controls">
-			<% if current_user == @user %>
+			<% if current_user == @user || (@group && current_user.is_group_admin(@group)) %>
 				<a href="javascript:delete_wall_post(<%= post.id %>)">Delete</a>
 			<% end %>
 		</div>

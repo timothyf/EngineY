@@ -15,6 +15,10 @@ limitations under the License.
 %>
 <%= stylesheet_link_tag 'groups' %>
 <%= stylesheet_link_tag 'common' %>
+
+<% content_for :script_content do %>
+	<%= javascript_include_tag 'wall_posts' %>
+<% end %>
 	
 <div class="column_1">
 	<span class="group_title"><%= @group.name %></span>

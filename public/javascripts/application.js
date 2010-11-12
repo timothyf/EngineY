@@ -1,9 +1,12 @@
 /*
 	Simple jQuery Theme Script
  */
+if(typeof page_data === "undefined") {
+	page_data = {};
+}
 
 $(document).ready(function() {
-  site_init();
+	site_init();
 });
 
 
@@ -11,54 +14,13 @@ $(document).ready(function() {
  * Perform site-wide initialization
  */
 function site_init() {	
-	load_widgets();
+	if (page_data.widgets) {
+		page_data.widgets.load();
+	}
 	// if the current page has a page_init function, call that
 	if(typeof page_init == 'function') { 
 		page_init();
 	}
-}
-
-function submit_wall_post() {
-	before_wall_post();
-	$.post("/wall_posts/create", 
-		   $("#wall_post_entry_form").serialize(),
-		   function (data) {wall_post_saved(data);});
-}
-
-function delete_wall_post(id) {
-	$.post('/wall_posts/delete',
-	       { id:id },
-		    function (data) {wall_post_deleted(data);});
-}
-
-function wall_post_deleted(request) {
-	$("#wall_posts_content").html(request);
-	// clear wall post message area, need to clear tinymce i think
-	//$('wall_post_message').value == '';
-}
-
-function before_wall_post() {
-	tinyMCE.triggerSave(true,true);
-	$("#wall_post_entry").css('display', 'none');
-}
-
-// have to call this after the new tinymce editor is loaded upon a save
-// tinyMCE.execCommand('mceAddControl', false, id); 
-
-function wall_post_saved(request) {
-	$("#wall_posts_content").html(request);
-	// clear wall post message area
-	//$("#wall_post_message").val('');
-	tinyMCE.getInstanceById('wall_post_message').setContent('');
-}
-
-function show_wall_post_entry() {
-	$("#wall_post_entry").slideDown();
-}
-
-function cancel_wall_post() {
-	$("#wall_post_entry").slideUp();
-	tinyMCE.getInstanceById('wall_post_message').setContent('');
 }
 
 function handle_promote_to_admin_btn() {
@@ -143,44 +105,44 @@ function show_blog_drafts() {
 }
 
 function post_status(event) {
-	activity_layout_id = $("#activity_layout_id").val();
-	layout_id = $("#layout_id").val();
+	var activity_widget_id = $("#activity_widget_id").val();
+	var status_post_widget_id = $("#widget_id").val();
 	$.post('/status_posts/create',
 	       $("#status_post_entry_form").serialize(),
-		   function (data) {status_post_saved(data, layout_id, activity_layout_id);});
+		   function (data) {status_post_saved(data, status_post_widget_id, activity_widget_id);});
 }
 
 // Called after new status successfully posted to server
 // now we want to refresh the activity stream and activity post widgets to reflect new content
-function status_post_saved(data, layout_id, activity_layout_id) {
-	find_layout_by_id(layout_id).load();
-	find_layout_by_id(activity_layout_id).load();
+function status_post_saved(data, status_post_widget_id, activity_widget_id) {
+	page_data.widgets.find_widget_by_id(status_post_widget_id).load();
+	page_data.widgets.find_widget_by_id(activity_widget_id).load();
 }
 
 /*
  * Called when the Only Statuses checkbox is checked in the activity stream of a users profile page.
  */
-function filter_activities(layout_id) {
+function filter_activities(widget_id) {
 	var status = $('#status_checkbox').attr('checked');
 	var include_friends = $('#friends_checkbox').attr('checked');
 	
 	var only_statuses = (status == true ? 'true':'false')
 	var include_friends = (include_friends == true ? 'true':'false')
 	
-	var layout = find_layout_by_id(layout_id);
-	layout.properties = {only_statuses:only_statuses, include_friends:include_friends};
-	layout.load();
+	var activities_widget = page_data.widgets.find_widget_by_id(widget_id);
+	activities_widget.properties = {only_statuses:only_statuses, include_friends:include_friends};
+	activities_widget.load();
 }
 
 /*
  * Called when the Only Friends checkbox is checked in the activity stream on the home page.
  */
-function only_friends_activities(layout_id) {
+function only_friends_activities(widget_id) {
 	var include_friends = $('#friends_checkbox').attr('checked');	
 	include_friends = (include_friends == true ? 'true':'false')	
-	var layout = find_layout_by_id(layout_id);
-	layout.properties = {include_friends:include_friends};
-	layout.load();
+	var activities_widget = page_data.widgets.find_widget_by_id(widget_id);
+	activities_widget.properties = {include_friends:include_friends};
+	activities_widget.load();
 }
 
 function add_new_topic() {

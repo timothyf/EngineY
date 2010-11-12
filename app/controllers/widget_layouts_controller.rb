@@ -22,13 +22,13 @@ class WidgetLayoutsController < ApplicationController
   # A template file that contains the text 'profile' is a widget displayed on the profile page.
   def load
     user_id = params[:user_id]
-    layout_id = params[:layout_id]
-    # pass either a layout_id or a widget name
-    if layout_id
-      @layout = WidgetLayout.find(layout_id) 
+    widget_id = params[:widget_id]
+    # pass either a widget_id or a widget name
+    if widget_id
+      @layout = WidgetLayout.find(widget_id) 
       @widget_name = @layout.widget.name  
     else
-      # if no layout_id is passed, use the first layout for the widget whose name is passed
+      # if no widget_id is passed, use the first layout for the widget whose name is passed
       @widget_name = params[:name]
       widget = Widget.find_by_name(@widget_name)
       @layout = WidgetLayout.find_by_widget_id(widget.id)

@@ -15,7 +15,7 @@
 class WallPostObserver < ActiveRecord::Observer
   
   def after_save(wall_post)  
-    if wall_post.user.receive_emails
+    if wall_post.user && wall_post.user.receive_emails
       UserMailer.deliver_wall_post_notification(wall_post)
     end
   end

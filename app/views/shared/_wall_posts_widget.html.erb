@@ -13,6 +13,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
+<script type="text/javascript">
+	// register this as a non-loadable widget
+	page_data.widgets.register(new EyWidget('wall_posts_widget', 'wall_posts_widget', null, 2, null, false));
+</script>
+
 <div class="module" id="wall_posts_widget">
 	<div class="module_head">
 		<div class="head_left">
@@ -20,14 +25,14 @@ limitations under the License.
 		</div>
 		<div class="head_right">
 			<div id="expand_collapse_btn">
-				<a href="javascript:widget_change_display('wall_posts')">
-					<img id="wall_posts_collapse_img" src="/images/collapse.png"/>
+				<a href="javascript:widget_change_display('wall_posts_widget')">
+					<img id="wall_posts_widget_collapse_img" src="/images/collapse.png"/>
 				</a>
 			</div>	
 		</div>
 		<div style="clear:both;"></div>
 	</div>
-	<div class="module_body" id="wall_posts_body">
+	<div class="module_body" id="wall_posts_widget_body">
 		<% if logged_in? %>
 			<%= link_to 'Add Comment', 'javascript:show_wall_post_entry()' %>
 		<% end %>

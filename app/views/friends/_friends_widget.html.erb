@@ -13,10 +13,27 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
+
 <% if @user.pending_friends.length > 0 %>
-	<div class="module">
-		<div class="module_head">Friends Pending</div>
-		<div class="module_body">
+	<script type="text/javascript">
+		// register this as a non-loadable widget
+		page_data.widgets.register(new EyWidget('pending_friends_widget', 'pending_friends_widget', null, 1, null, false));
+	</script>
+	<div class="module" id="pending_friends_widget">
+		<div class="module_head">
+			<div class="head_left">
+				<%= image_tag('group.png', :alt=>'events', :align=>'absmiddle')%>&nbsp;&nbsp;Friends Pending
+			</div>
+			<div class="head_right">
+				<div id="expand_collapse_btn">
+					<a href="javascript:widget_change_display('pending_friends_widget')">
+						<img id="pending_friends_widget_collapse_img" src="/images/collapse.png"/>
+					</a>
+				</div>	
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		<div class="module_body" id="pending_friends_widget_body">
 			<%= render :partial => 'friends/pending_friends' %>
 		</div>
 		<div class="module_foot">
@@ -28,21 +45,26 @@ limitations under the License.
 		</div>
 	</div>
 <% end %>
-<div class="module">
+
+<script type="text/javascript">
+	// register this as a non-loadable widget
+	page_data.widgets.register(new EyWidget('my_friends_widget', 'my_friends_widget', null, 1, null, false));
+</script>
+<div class="module" id="my_friends_widget">
 	<div class="module_head">
 		<div class="head_left">
 			<%= image_tag('group.png', :alt=>'events', :align=>'absmiddle')%>&nbsp;&nbsp;My Friends
 		</div>
 		<div class="head_right">
 			<div id="expand_collapse_btn">
-				<a href="javascript:widget_change_display('my_friends')">
-					<img id="my_friends_collapse_img" src="/images/collapse.png"/>
+				<a href="javascript:widget_change_display('my_friends_widget')">
+					<img id="my_friends_widget_collapse_img" src="/images/collapse.png"/>
 				</a>
 			</div>	
 		</div>
 		<div style="clear:both;"></div>
 	</div>
-	<div class="module_body" id="my_friends_body">
+	<div class="module_body" id="my_friends_widget_body">
 		<%= render :partial => 'friends/friends' %>
 		<div style="clear:both;"></div>
 	</div>
@@ -58,10 +80,27 @@ limitations under the License.
 		</div>
 	<% end %>
 </div>
+
 <% if @user.requested_friends.length > 0 %>
-	<div class="module">
-		<div class="module_head">My Requested Friends</div>
-		<div class="module_body">
+	<script type="text/javascript">
+		// register this as a non-loadable widget
+		page_data.widgets.register(new EyWidget('requested_friends_widget', 'requested_friends_widget', null, 1, null, false));
+	</script>
+	<div class="module" id="requested_friends_widget">
+		<div class="module_head">
+			<div class="head_left">
+				<%= image_tag('group.png', :alt=>'events', :align=>'absmiddle')%>&nbsp;&nbsp;My Requested Friends
+			</div>
+			<div class="head_right">
+				<div id="expand_collapse_btn">
+					<a href="javascript:widget_change_display('requested_friends_widget')">
+						<img id="requested_friends_widget_collapse_img" src="/images/collapse.png"/>
+					</a>
+				</div>	
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		<div class="module_body" id="requested_friends_widget_body">
 			<%= render :partial => 'friends/requested_friends' %>
 			<div style="clear:both;"></div>
 		</div>

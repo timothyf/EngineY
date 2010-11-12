@@ -1,54 +1,63 @@
-/*
-	Simple jQuery Theme Script
- */
 
-function init_widgets(json) {
-	var layouts_js = eval(json);
-	var widgets = [];
-	for (i=0; i<layouts_js.length; i++) {
-		var layout = layouts_js[i];
-		widgets.push(new Layout(layout.id, layout.widget_name, layout.content_id, layout.col_num, null));
-	}
-	return widgets;
-}
-
-/*
- *  Load AJAX widgets from the server.  These widgets appear slightly after
- *  the page has loaded.
- */
-function load_widgets() {
-	for (i = 0; i < widgets.length; i++) {
-		widgets[i].create_widget_node();
-		widgets[i].load();
-	}
-}
-
-function find_layout_by_id(id) {
-	for (i = 0; i < widgets.length; i++) {
-		if (widgets[i].id == id) {
-			return widgets[i];
+PageWidgets = function() {	
+	this.widgets = [];
+	
+	// register a widget with the page
+	this.register = function(widget) {
+		this.widgets.push(widget);
+	};
+	
+	// Registers all of the page's widgets given a JSON string containing the widget data
+	// which has been set on the server side
+	this.init_widgets = function(json) {
+		var widgets_js = eval(json);
+		for (i=0; i<widgets_js.length; i++) {
+			var widget = widgets_js[i];
+			this.register(new EyWidget(widget.id, widget.widget_name, widget.content_id, widget.col_num, null, true));
 		}
-	}	
-	return null;
-}
+	};
+	
+	/*
+	 *  Load AJAX widgets from the server.  These widgets appear slightly after
+	 *  the page has loaded.
+	 */
+	this.load = function() {
+		for (i = 0; i < this.widgets.length; i++) {
+			if (this.widgets[i].loadable) {
+				this.widgets[i].create_widget_node();
+				this.widgets[i].load();
+			}
+		}	
+	};
+	
+	this.find_widget_by_id = function(id) {
+		for (i = 0; i < this.widgets.length; i++) {
+			if (this.widgets[i].id == id) {
+				return this.widgets[i];
+			}
+		}	
+		return null;
+	};
+};
 
-function widget_change_display(layout_id) {
-	var layout = find_layout_by_id(layout_id);
-	layout.change_display();
+
+function widget_change_display(widget_id) {
+	page_data.widgets.find_widget_by_id(widget_id).change_display();
 }
 
 /*
- * Layout Class
+ * EyWidget Class
  * This class represents the placement of a specific widget with a specific page location
  * 
  */
-Layout = function(id, name, content_id, col_num, properties) {
+EyWidget = function(id, name, content_id, col_num, properties, loadable) {
 	this.id = id;	
 	this.widget_name = name;
 	this.content_id = content_id;
 	this.properties = properties;
 	this.col_num = col_num;
 	this.retry_count = 0;
+	this.loadable = loadable;
 	
 	this.change_display = function() {
 		if ($("#" + this.widget_name + '_body').css('display') == 'none') {
@@ -76,7 +85,7 @@ Layout = function(id, name, content_id, col_num, properties) {
 			this.create_widget_node();
 		}*/
 		var content = {
-			layout_id: this.id,
+			widget_id: this.id,
 			name: this.widget_name,
 			user_id: user_id,
 			authenticity_token: authenticity_token
@@ -88,7 +97,7 @@ Layout = function(id, name, content_id, col_num, properties) {
 	// Create a DOM node to hold a widget that is being loaded
 	this.create_widget_node = function() {
 		var newdiv = document.createElement('div');
-		newdiv.setAttribute('id', 'layout_' + this.id);
+		newdiv.setAttribute('id', 'widget_' + this.id);
 		newdiv.className = 'widget_content';
 		loadingSpan = document.createElement('span');
 		loadingSpan.className = 'loading_span';
@@ -106,13 +115,13 @@ Layout = function(id, name, content_id, col_num, properties) {
 	}
 	
 	// A widget has been loaded, place its content into the DOM tree
-	function widget_loaded(layout_id, data) {
-		$("#layout_" + layout_id).html(data);
+	function widget_loaded(widget_id, data) {
+		$("#widget_" + widget_id).html(data);
 	}
 	
 	// Called if an error occurs while loading a widget.  This includes timeouts.
-	function widget_load_error(layout_id, data) {
-		$("#layout_" + layout_id).innerHTML = '<div class="cant_load">Did not load widget:<br/><i>' + widget_name + '</i><br/>Try refreshing the page</div>';
+	function widget_load_error(widget_id, data) {
+		$("#widget_" + widget_id).innerHTML = '<div class="cant_load">Did not load widget:<br/><i>' + widget_name + '</i><br/>Try refreshing the page</div>';
 	}
 	
 	function send_ajax_get(url, content, obj) {

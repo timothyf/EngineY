@@ -1,4 +1,3 @@
-
 <% if @page %>
 	<% layouts = @page.widget_layouts %>
 	<% layouts.each do |layout| %>
@@ -7,8 +6,12 @@
 <% end %>
 
 <script type="text/javascript">
+	if(typeof page_data === "undefined") {
+		page_data = {};
+	}
+	page_data.widgets = new PageWidgets();
 	<% if layouts && layouts.length > 0 %>
-		var widgets = init_widgets('<%= layouts.to_json(:methods => :widget_name) %>');
+		page_data.widgets.init_widgets('<%= layouts.to_json(:methods => :widget_name) %>');
 	<% else %>
 		var widgets = [];
 	<% end %>

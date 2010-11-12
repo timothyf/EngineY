@@ -1,7 +1,7 @@
 <form style="display:inline;" id="status_post_entry_form" name="status_post_entry_form" action="/status_posts/create" method="POST">
 	<input type="hidden" id="authenticity_token" name="authenticity_token" value="<%= form_authenticity_token %>" />
-	<input type="hidden" id="layout_id" name="layout_id" value="<%= @layout.id %>" />
-	<input type="hidden" id="activity_layout_id" name="activity_layout_id" value="<%= @activity_profile_layout_id %>" />
+	<input type="hidden" id="widget_id" name="widget_id" value="<%= @layout.id %>" />
+	<input type="hidden" id="activity_widget_id" name="activity_widget_id" value="<%= @activity_profile_layout_id %>" />
 	<label>What's on your mind?</label><br/>
 	<%= text_area(:status_post, :body, :cols => 60, :rows => 3 ) %>
 	<a href="javascript:post_status()">Submit</a>
