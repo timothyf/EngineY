@@ -1,4 +1,4 @@
-#   Copyright 2009 Timothy Fisher
+#   Copyright 2009-2010 Timothy Fisher
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -294,12 +294,6 @@ class User < ActiveRecord::Base
 #  end
   
   
-  # Return the site creator
-  def creator
-    
-  end
-  
-  
   # Return pending users
   def self.pending_users
     User.find(:all, :conditions => ['enabled = 0'])
@@ -434,7 +428,7 @@ class User < ActiveRecord::Base
   
   def remember_me_until(time)
     self.remember_token_expires_at = time
-    self.remember_token            = encrypt("#{email}--#{remember_token_expires_at}")
+    self.remember_token = encrypt("#{email}--#{remember_token_expires_at}")
     save(false)
   end
   
@@ -501,26 +495,6 @@ class User < ActiveRecord::Base
     admin = User.find_by_login('admin')
     unless admin.nil? or admin == self
       Friendship.connect(self, admin)
-    end
-  end
-  
-  
-  class << self
-    # export member list in PDF format
-    def pdf_list
-      users = User.find(:all)
-    end
-    
-    
-    # export member list in TEXT format
-    def txt_list
-      users = User.find(:all)
-    end
-    
-    
-    # export member list in Excel format
-    def xls_list
-      users = User.find(:all)
     end
   end
   
