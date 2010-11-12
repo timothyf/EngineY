@@ -13,24 +13,28 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
+<script type="text/javascript">
+	// register this as a non-loadable widget
+	page_data.widgets.register(new EyWidget('user_messages_widget', 'user_messages_widget', null, 3, null, false));
+</script>
 
 <% unread_messages = @user.unread_messages %>
 
-<div class="module right_side_widget">
+<div class="module right_side_widget" id="user_messages_widget">
 	<div class="module_head">
 		<div class="head_left">
 			<%= image_tag('email.png', :alt=>'events', :align=>'absmiddle')%>&nbsp;&nbsp;My Messages (<%= unread_messages.size %>)
 		</div>
 		<div class="head_right">
 			<div id="expand_collapse_btn">
-				<a href="javascript:widget_change_display('my_messages')">
-					<img id="my_messages_collapse_img" src="/images/collapse.png"/>
+				<a href="javascript:widget_change_display('user_messages_widget')">
+					<img id="user_messages_widget_collapse_img" src="/images/collapse.png"/>
 				</a>
 			</div>	
 		</div>
 		<div style="clear:both;"></div>
 	</div>
-	<div class="module_body" id="my_messages_body">
+	<div class="module_body" id="user_messages_widget_body">
 		<% unread_messages.each do |msg| %>
 			<div class="unread_message"><%= link_to msg.subject, message_path(msg) %></div>
 		<% end %>
