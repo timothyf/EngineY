@@ -87,23 +87,7 @@ class AdminController < ApplicationController
         @admins = User.admins_and_creators
         @pending_users = User.pending_users
       }
-      format.json { 
-        users = User.find(:all) do
-          if contains_search(params)
-            login =~ "%#{params[:login]}%" if params[:login].present?
-            first_name =~ "%#{params[:first_name]}%" if params[:first_name].present?
-            last_name  =~ "%#{params[:last_name]}%" if params[:last_name].present?                
-            email     =~ "%#{params[:email]}%" if params[:email].present?   
-            activated_at =~ "%#{params[:activated_at]}%" if params[:activated_at].present?     
-          end
-          paginate :page => params[:page], :per_page => params[:rows]      
-          order_by "#{params[:sidx]} #{params[:sord]}"
-        end
-        
-        render :json => users.to_jqgrid_json([:id,:login, :first_name,:last_name,
-                                                          :email,:activated_at, 
-                                                          :password, :password_confirmation, :admin_flag], 
-                                                         params[:page], params[:rows], users.total_entries) }
+      format.json {}
     end 
   end
   
@@ -111,24 +95,7 @@ class AdminController < ApplicationController
   def admin_users
     respond_to do |format|
       format.html {}
-      format.json { 
-        @page = 'users'
-        admins = User.find(:all, :conditions => ['role_id = ? OR role_id = ?', Role.creator.id, Role.admin.id], :joins => :permissions) do
-          if contains_search(params)
-            login =~ "%#{params[:login]}%" if params[:login].present?
-            first_name =~ "%#{params[:first_name]}%" if params[:first_name].present?
-            last_name  =~ "%#{params[:last_name]}%" if params[:last_name].present?                
-            email     =~ "%#{params[:email]}%" if params[:email].present?   
-            activated_at =~ "%#{params[:activated_at]}%" if params[:activated_at].present?     
-          end
-          paginate :page => params[:page], :per_page => params[:rows]      
-          order_by "#{params[:sidx]} #{params[:sord]}"
-        end
-        
-        render :json => admins.to_jqgrid_json([:id,:login, :first_name,:last_name,
-                                                          :email,:activated_at, 
-                                                          :password, :password_confirmation], 
-                                                         params[:page], params[:rows], admins.total_entries) }
+      format.json {}
     end 
   end
   
@@ -140,20 +107,7 @@ class AdminController < ApplicationController
       format.html {
         @groups = Group.find(:all)
       }
-      format.json { 
-        groups = Group.find(:all) do
-          if contains_search(params)
-            name =~ "%#{params[:name]}%" if params[:name].present?
-            featured =~ "%#{params[:featured]}%" if params[:featured].present?   
-            creator_id =~ "%#{params[:creator_id]}%" if params[:creator_id].present? 
-          end
-          paginate :page => params[:page], :per_page => params[:rows]      
-          order_by "#{params[:sidx]} #{params[:sord]}"
-        end 
-        render :json => groups.to_jqgrid_json([:id,:name, :creator_id, :featured ], 
-                                                         params[:page], 
-                                                         params[:rows], 
-                                                         groups.total_entries) }
+      format.json { }
     end
   end
   
@@ -171,7 +125,7 @@ class AdminController < ApplicationController
     end
     respond_to do |format|
       format.html {}
-      format.json { render :json => users.to_jqgrid_json([:id, :login, :first_name, :last_name, :email], params[:page], params[:rows], total_entries) }
+      format.json {}
     end
   end
 
@@ -183,20 +137,7 @@ class AdminController < ApplicationController
       format.html {
         @events = Event.find(:all)
       }
-      format.json { 
-        events = Event.find(:all) do
-          if contains_search(params)
-            name =~ "%#{params[:name]}%" if params[:name].present?
-            start_time =~ "%#{params[:start_time]}%" if params[:start_time].present?    
-            end_time =~ "%#{params[:end_time]}%" if params[:end_time].present?   
-            location =~ "%#{params[:location]}%" if params[:location].present?   
-            organizer =~ "%#{params[:organizer]}%" if params[:organizer].present?     
-          end
-          paginate :page => params[:page], :per_page => params[:rows]      
-          order_by "#{params[:sidx]} #{params[:sord]}"
-        end
-        render :json => events.to_jqgrid_json([:id, :name, :start_time, :end_time, :location, :organizer ], 
-                                                         params[:page], params[:rows], events.total_entries) }
+      format.json {}
     end
   end
   
@@ -209,23 +150,7 @@ class AdminController < ApplicationController
       format.html {
         @blog_posts = BlogPost.find(:all, :order => 'created_at DESC')
       }
-      format.json { 
-        blog_posts = BlogPost.find(:all) do
-          if contains_search(params)
-            user_id     =~ "%#{params[:user_id]}%"    if params[:user_id].present?
-            title       =~ "%#{params[:title]}%"      if params[:title].present?    
-            parent_id   =~ "%#{params[:parent_id]}%"  if params[:parent_id].present?   
-            published    =~ "%#{params[:published]}%"   if params[:published].present?   
-            featured   =~ "%#{params[:featured]}%"  if params[:featured].present?     
-          end
-          paginate :page => params[:page], :per_page => params[:rows]      
-          order_by "#{params[:sidx]} #{params[:sord]}"
-        end
-        render :json => blog_posts.to_jqgrid_json([:id, :user_id, 
-                                                          :title, :parent_id, 
-                                                          :published, :featured ], 
-                                                         params[:page], params[:rows], 
-                                                         blog_posts.total_entries) }
+      format.json {}
     end
   end
   

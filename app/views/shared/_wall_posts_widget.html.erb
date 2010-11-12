@@ -26,13 +26,13 @@ limitations under the License.
 		<div class="head_right">
 			<div id="expand_collapse_btn">
 				<a href="javascript:widget_change_display('wall_posts_widget')">
-					<img id="wall_posts_widget_collapse_img" src="/images/collapse.png"/>
+					<img id="widget_wall_posts_widget_collapse_img" src="/images/collapse.png"/>
 				</a>
 			</div>	
 		</div>
 		<div style="clear:both;"></div>
 	</div>
-	<div class="module_body" id="wall_posts_widget_body">
+	<div class="module_body" id="widget_wall_posts_widget_body">
 		<% if logged_in? %>
 			<%= link_to 'Add Comment', 'javascript:show_wall_post_entry()' %>
 		<% end %>

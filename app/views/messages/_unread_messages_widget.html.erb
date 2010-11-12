@@ -28,13 +28,13 @@ limitations under the License.
 		<div class="head_right">
 			<div id="expand_collapse_btn">
 				<a href="javascript:widget_change_display('user_messages_widget')">
-					<img id="user_messages_widget_collapse_img" src="/images/collapse.png"/>
+					<img id="widget_user_messages_widget_collapse_img" src="/images/collapse.png"/>
 				</a>
 			</div>	
 		</div>
 		<div style="clear:both;"></div>
 	</div>
-	<div class="module_body" id="user_messages_widget_body">
+	<div class="module_body" id="widget_user_messages_widget_body">
 		<% unread_messages.each do |msg| %>
 			<div class="unread_message"><%= link_to msg.subject, message_path(msg) %></div>
 		<% end %>

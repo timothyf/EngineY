@@ -104,6 +104,7 @@ function show_blog_drafts() {
 	}
 }
 
+// Called to post a status update
 function post_status(event) {
 	var activity_widget_id = $("#activity_widget_id").val();
 	var status_post_widget_id = $("#widget_id").val();

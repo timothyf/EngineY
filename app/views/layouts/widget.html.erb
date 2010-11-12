@@ -14,13 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 %>
 <div class="module">
-	<div class="module_head" id="<%= @widget_name %>_head">
+	<div class="module_head" id="widget_<%= @layout.id %>_head">
 		<%= yield :module_header %>
 	</div>
-	<div class="module_body" id="<%= @widget_name %>_body">
+	<div class="module_body" id="widget_<%= @layout.id %>_body">
 		<%= yield :module_body %>
 	</div>
-	<div class="module_foot" id="<%= @widget_name %>_foot">
+	<div class="module_foot" id="widget_<%= @layout.id %>_foot">
 		<%= yield :module_footer %>
 	</div>
 </div>

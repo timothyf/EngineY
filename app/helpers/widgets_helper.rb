@@ -17,7 +17,7 @@ module WidgetsHelper
     open_div = "<div id='expand_collapse_btn'>"
     href = "javascript:widget_change_display('#{@layout.id}')"
     open_link = '<a href="' + href + '">'
-    image_tag = "<img id='#{@widget_name}_collapse_img' src='/images/collapse.png'/>"
+    image_tag = "<img id='widget_#{@layout.id}_collapse_img' src='/images/collapse.png'/>"
     close_tags = "</a></div>"
     return open_div + open_link + image_tag + close_tags
   end
