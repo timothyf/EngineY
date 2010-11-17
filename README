@@ -13,7 +13,7 @@ Run the following three commands in order:
 
 rake db:create:all
 rake db:migrate
-rake railsnet:db:ruby_mi_populate
+rake enginey:db:ruby_mi_populate
 This will create the database with the correct schema and populate it with data for a sample site. This will allow you to run the application and have a look around. You will be able to login with the following id and password:
 User ID: admin
 Password: admin
