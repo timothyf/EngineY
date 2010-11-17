@@ -1,0 +1,51 @@
+<%#
+Copyright 2009 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<% 
+	widget_title = "My Messages" 
+	@user = User.find(user_id) 
+	unread_messages = @user.unread_messages
+%>
+
+<% content_for :module_header do %>
+	<% if current_user == @user %>
+		<div class="head_left">
+			<%= image_tag('email.png', :alt=>'messages', :align=>'absmiddle')%>&nbsp;&nbsp;<%= widget_title %> (<%= unread_messages.size %>)
+		</div>
+		<div class="head_right">
+			<%= show_expand_collapse_btn %>	
+		</div>
+		<div style="clear:both;"></div>
+	<% end %>
+<% end %>
+
+<% content_for :module_body do %>
+	<% if current_user == @user %>
+		<% unread_messages.each do |msg| %>
+			<div class="unread_message"><%= link_to msg.subject, message_path(msg) %></div>
+		<% end %>
+		<div style="clear:both;"></div>
+	<% end %>
+<% end %>
+
+<% content_for :module_footer do %>
+	<% if current_user == @user %>
+		<div class="foot_left"></div>
+		<div class="foot_right">
+			<%= link_to 'View Inbox', user_messages_path(@user) %>
+		</div>
+		<div style="clear:both;"></div>
+	<% end %>
+<% end %>
