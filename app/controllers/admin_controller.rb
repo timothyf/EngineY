@@ -177,6 +177,23 @@ class AdminController < ApplicationController
   end
   
   
+  def module_new
+    @module = EyModule.new
+    render 'module_form'
+  end
+  
+  
+  def module_edit
+    @module = EyModule.find(params[:id])
+    render 'module_form'
+  end
+  
+  
+  def module_delete
+    
+  end
+  
+  
   def page_new
     @page = Page.new
     render 'page_form'
@@ -220,12 +237,13 @@ class AdminController < ApplicationController
   
   
   def widget_edit
-    
+    @widget = Widget.find(params[:id])
+    render 'widget_form'
   end
   
   
   def widget_delete
-    
+
   end
   
   

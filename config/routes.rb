@@ -24,7 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :api_key
 
   map.resources :widget_layouts, :collection => {:load => :get}
-  map.resources :widgets, :collection => {:grid_data=>:get, :load=>:get}
+  map.resources :widgets, :collection => {:grid_data=>:get, :render_widget=>:get}
   map.resources :users, :collection => {:online_users=>:get, :grid_data=>:get, :link_facebook_account => :get, :fb_register_all_users => :get}
   map.resources :forum_posts, :collection => {:grid_data=>:get}
   map.resources :blog_posts, :collection => {:publish=>:get}

@@ -4,24 +4,26 @@
 		<input type="hidden" name="admin_page" value="1" />
 	<% end %>
 	<div class="form_field">
-    	<label for="title">Name:</label><br/>
-		<%= f.text_field :title, :class=>'input_field' %>
+    	<label for="name">Name:</label><br/>
+		<%= f.text_field :name, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
     	<label for="title">Title:</label><br/>
 		<%= f.text_field :title, :class=>'input_field' %>
 	</div>
+	
 	<div class="form_field">
-    	<label for="title">Module:</label><br/>
-		<%= f.text_field :title, :class=>'input_field' %>
+    	<label for="module">Module:</label><br/>
+		<%= f.collection_select(:ey_module_id, EyModule.all(:order => 'name'), :id, :name, { :prompt => 'Select Module' } ) %>
+	</div>
+	
+	<div class="form_field">
+    	<label for="desc">Description:</label><br/>
+		<%= f.text_field :description, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
-    	<label for="title">Description:</label><br/>
-		<%= f.text_field :title, :class=>'input_field' %>
-	</div>
-	<div class="form_field">
-    	<label for="title">Profile:</label><br/>
-		<%= f.text_field :title, :class=>'input_field' %>
+    	<label for="profile">Profile:</label><br/>
+		<%= f.text_field :profile, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
     	<%= f.submit "Save", :class=>'add_button' %>

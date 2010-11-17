@@ -147,6 +147,19 @@ class User < ActiveRecord::Base
                   :followee_id => followee_id)
   end
   
+  
+  def activity_stream(only_statuses, include_friends)
+  	if only_statuses && include_friends
+  		return friends_status_activity_stream
+  	elsif include_friends
+  		return friends_activity_stream
+  	elsif only_statuses
+  		return status_activity_stream
+  	else
+  		return activities
+  	end
+  end
+  
     
   # Return only activities that represent status posts
   def status_activity_stream

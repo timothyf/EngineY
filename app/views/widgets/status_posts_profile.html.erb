@@ -14,9 +14,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 %>
 
-<% widget_title = 'Status' %>
+<%
+	widget_title = 'Status'
+	activity_widget = Widget.find_by_name('activity_feed_profile')
+	@activity_profile_layout_id = WidgetLayout.find_by_widget_id(activity_widget.id).id
+	
+	@user = User.find(user_id)
+%>
 
-<% @user = User.find(user_id) %>
 
 <% content_for :module_header do %>
 	<div class="head_left">

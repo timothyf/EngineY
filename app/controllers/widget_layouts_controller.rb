@@ -20,6 +20,12 @@ class WidgetLayoutsController < ApplicationController
   # to define the widget views.  
   # A template file that contains the text 'home' is a widget displayed on the home page.  
   # A template file that contains the text 'profile' is a widget displayed on the profile page.
+  # Params:
+  # @user_id = the ID of the user who's page is being viewed
+  # @widget_id = the ID of the WidgetLayout which points to a widget to load
+  # @name = the name of a widget to load
+  # @include_friends = used by the activity feed widget to determine which content to include
+  # @only_statuses = used by the activity feed widget to determine which content to include
   def load
     user_id = params[:user_id]
     widget_id = params[:widget_id]
@@ -47,7 +53,7 @@ class WidgetLayoutsController < ApplicationController
       only_statuses = true
     end
     render :template=>'widgets/'+ @widget_name, :locals=>{:include_friends=>include_friends, :only_statuses=>only_statuses, :user_id=>user_id}, :layout => 'widget'
-  end
+  end 
   
   
   # Used by an Admin function to create a new Widget layout

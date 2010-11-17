@@ -1,4 +1,8 @@
 
+/*
+ * PageWidgets class
+ * This class manages all of the widgets displayed on the page.
+ */
 PageWidgets = function() {	
 	this.widgets = [];
 	
@@ -50,7 +54,7 @@ function widget_change_display(widget_id) {
 
 /*
  * EyWidget Class
- * This class represents the placement of a specific widget with a specific page location
+ * This class represents a widget that exists on a page
  * 
  * @id - the id of the WidgetLayout for this widget
  * @name - the name of this widget
@@ -60,12 +64,12 @@ function widget_change_display(widget_id) {
  * @loadable = boolean value, true means this widget can be loaded via ajax
  */
 EyWidget = function(id, name, content_id, col_num, properties, loadable) {
-	this.id = id;	// use layout id as the widget id since it is unique
+	this.id = id;	// use layout id as the widget id since it is unique to a page
 	this.dom_id = 'widget_' + id; // the id of the DIV element holding this widget
 	this.dom_body_id = this.dom_id + '_body'; // the id of the DIV holding the body of the widget
 	this.widget_name = name;
 	this.content_id = content_id;
-	this.properties = properties;
+	this.properties = properties; // additional data to send on the load request
 	this.col_num = col_num;
 	this.loadable = loadable;
 	this.retry_count = 0;
@@ -97,7 +101,8 @@ EyWidget = function(id, name, content_id, col_num, properties, loadable) {
 			authenticity_token: authenticity_token
 		};
 		for (attr in this.properties) { content[attr] = this.properties[attr]; }
-		send_ajax_get('/widget_layouts/load', content, this);
+		//send_ajax_get('/widget_layouts/load', content, this);
+		send_ajax_get('/widgets/render_widget', content, this);
 	};
 	
 	// Create a DOM node to hold a widget that is being loaded
@@ -126,8 +131,8 @@ EyWidget = function(id, name, content_id, col_num, properties, loadable) {
 	}
 	
 	// Called if an error occurs while loading a widget.  This includes timeouts.
-	function widget_load_error(widget_id, data) {
-		$("#" + widget_obj.dom_id).innerHTML = '<div class="cant_load">Did not load widget:<br/><i>' + widget_obj.name + '</i><br/>Try refreshing the page</div>';
+	function widget_load_error(widget_obj, data) {
+		$("#" + widget_obj.dom_id).html('<div class="cant_load">Did not load widget:<br/><i>' + widget_obj.widget_name + '</i><br/>Try refreshing the page</div>');
 	}
 	
 	function send_ajax_get(url, content, obj) {
