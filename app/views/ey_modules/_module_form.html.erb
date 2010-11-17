@@ -1,0 +1,17 @@
+<% form_for(@module) do |f| -%>			
+	<%= f.error_messages %>
+	<% if defined? admin_page %>
+		<input type="hidden" name="admin_page" value="1" />
+	<% end %>
+	<div class="form_field">
+    	<label for="name">Name:</label><br/>
+		<%= f.text_field :name, :class=>'input_field' %>
+	</div>
+	<div class="form_field">
+    	<label for="profile">Active:</label><br/>
+		<%= f.text_field :active, :class=>'input_field' %>
+	</div>
+	<div class="form_field">
+    	<%= f.submit "Save", :class=>'add_button' %>
+	</div>
+<% end %>
