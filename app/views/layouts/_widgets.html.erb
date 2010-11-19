@@ -21,4 +21,10 @@
 	<% else %>
 		var user_id = null;
 	<% end %>
+	
+	<% if @group %>
+		var group_id = <%= @group.id %>;
+	<% else %>
+		var group_id = null;
+	<% end %>
 </script>

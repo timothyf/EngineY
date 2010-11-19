@@ -98,6 +98,7 @@ EyWidget = function(id, name, content_id, col_num, properties, loadable) {
 			widget_id: this.id,
 			name: this.widget_name,
 			user_id: user_id,
+			group_id: group_id,
 			authenticity_token: authenticity_token
 		};
 		for (attr in this.properties) { content[attr] = this.properties[attr]; }

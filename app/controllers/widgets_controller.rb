@@ -32,6 +32,7 @@ class WidgetsController < ApplicationController
   # @name = the name of a widget to load
   def render_widget
     user_id = params[:user_id]
+    @group_id = params[:group_id]
     layout_id = params[:widget_id]
     @layout = WidgetLayout.find(layout_id)
     @widget_name = params[:name]

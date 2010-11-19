@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :documents
+
   map.resources :nav_items
   map.resources :ey_modules
   map.resources :modules

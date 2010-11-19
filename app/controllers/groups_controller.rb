@@ -86,6 +86,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @page = Page.find_by_name('group')
     if @group
       respond_to do |format|
         format.html # show.html.erb

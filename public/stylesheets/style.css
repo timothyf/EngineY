@@ -586,6 +586,8 @@ a, a:visited {
 	font-weight: bold;
 	font-size: 16pt;
 	line-height: 1.4em;
+	width: 100%;
+	margin-bottom: 20px;
 }
 
 #status_post {

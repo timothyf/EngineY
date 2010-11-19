@@ -13,19 +13,20 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<% widget_title = "Latest Activity" %>
-
-<% @user = User.find(user_id) %>
-<% if only_statuses && include_friends  %>
-	<% activities = @user.friends_status_activity_stream %>
-<% elsif include_friends %>
-	<% activities = @user.friends_activity_stream %>
-<% elsif only_statuses %>
-	<% activities = @user.status_activity_stream %>
-<% else %>
-	<% activities = @user.activities %>
-<% end %>
-<% @activities = activities[0...8] %>
+<%
+	widget_title = "Latest Activity"
+	if params[:include_friends] && params[:include_friends] == 'true'
+	  include_friends = true
+	end
+	if params[:only_statuses] && params[:only_statuses] == 'true'
+	  only_statuses = true
+	end
+	
+	@user = User.find(user_id)
+	
+	activities = @user.activity_stream(only_statuses, include_friends)
+	@activities = activities[0...8]
+%>
 
 
 <% content_for :module_body do %>
