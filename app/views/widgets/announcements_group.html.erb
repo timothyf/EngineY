@@ -1,0 +1,51 @@
+<%#
+Copyright 2009-2010 Timothy Fisher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%>
+<%
+	widget_title = 'Group Announcements'
+	@group = Group.find(@group_id)
+%>
+
+<% content_for :module_header do %>
+	<div class="head_left">
+		<%= image_tag('comments.png', :alt=>'events', :align=>'absmiddle')%>&nbsp;&nbsp;<%= widget_title %>
+	</div>
+	<div class="head_right">
+		<%= show_expand_collapse_btn %>
+	</div>
+	<div style="clear:both;"></div>
+<% end %>
+
+<% content_for :module_body do %>
+	<% if @group.announcements && @group.announcements.length != 0 %>
+		<%= @group.announcements %>
+	<% else %>
+		<% if logged_in? && current_user.is_group_admin(@group) %>
+			<span class="help_text">
+				<%= link_to 'Enter some text here now...', edit_group_path(@group) %>
+			</span>
+		<% else %>
+			<span class="help_text">
+				No announcements exist yet...
+			</span>
+		<% end %>
+	<% end %>
+<% end %>
+
+<% if logged_in? && current_user.is_group_admin(@group) %>
+	<% content_for :module_footer do %>
+		<%= link_to 'Edit', edit_group_url(@group) %>
+	<% end %>
+<% end %>
