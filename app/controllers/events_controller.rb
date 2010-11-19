@@ -38,7 +38,12 @@ class EventsController < ApplicationController
   # Does not include past events
   def index
     @section = 'EVENTS' 
-    @events = Event.find(:all, :conditions=>'start_time>now()', :order=>'start_time ASC')
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+      @events = Event.find(:all, :conditions=>"group_id=#{@group.id} AND start_time>now()", :order=>'start_time ASC')
+    else
+      @events = Event.find(:all, :conditions=>'start_time>now()', :order=>'start_time ASC')
+    end
     respond_to do |format|
       format.html { render :template => 'events/index' }
       format.xml  { render :xml => @events }
@@ -72,11 +77,17 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+    end
   end
 
 
   def edit
     @event = Event.find(params[:id])
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+    end
   end
 
 
@@ -84,6 +95,9 @@ class EventsController < ApplicationController
     sleep 4  # required for photo upload
     @event = Event.new(params[:event])
     @event.user = current_user
+    if params[:group_id]
+      @event.group_id = params[:group_id]
+    end
     respond_to do |format|
       if @event.save
         if params[:event_photo]  

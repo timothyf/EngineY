@@ -56,7 +56,8 @@ limitations under the License.
 			<%= render :partial => 'shared/nav_menu' %>
 		</div>
 		<div id="main">
-			<% if @section == 'MAIN' || @section == 'PROFILE' || (@section == 'MEMBERS' && @user != nil)%>
+			<% if @section == 'MAIN' || @section == 'PROFILE' || 
+				  @section == 'GROUP' || (@section == 'MEMBERS' && @user != nil)%>
 				<%= yield %>
 			<% else %>
 				<div class="col1">

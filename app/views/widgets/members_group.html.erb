@@ -14,12 +14,19 @@ See the License for the specific language governing permissions and
 limitations under the License.
 %>
 <%
+	widget_title = 'Group Members'
 	@group = Group.find(@group_id)
 %>
 
 
 <% content_for :module_header do %>
-	Members
+	<div class="head_left">
+		<%= image_tag('group.png', :alt=>'events', :align=>'absmiddle')%>&nbsp;&nbsp;<%= widget_title %>
+	</div>
+	<div class="head_right">
+		<%= show_expand_collapse_btn %>	
+	</div>
+	<div style="clear:both;"></div>
 <% end %>
 
 <% content_for :module_body do %>

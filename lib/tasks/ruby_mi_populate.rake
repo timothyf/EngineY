@@ -365,6 +365,7 @@ namespace :enginey do
      
      mod = EyModule.create(:name => 'members')
      Widget.create(:ey_module_id => mod.id, :name => 'members_home', :description => 'Display some members', :profile => false)
+     Widget.create(:ey_module_id => mod.id, :name => 'members_group', :description => 'Display group members', :profile => false)
      
      mod = EyModule.create(:name => 'groups')
      Widget.create(:ey_module_id => mod.id, :name => 'groups_home', :description => 'Display some groups', :profile => false)
@@ -373,9 +374,11 @@ namespace :enginey do
      mod = EyModule.create(:name => 'events')
      Widget.create(:ey_module_id => mod.id, :name => 'events_home', :description => 'Display upcoming events', :profile => false)
      Widget.create(:ey_module_id => mod.id, :name => 'events_profile', :description => 'Display users events', :profile => true)
+     Widget.create(:ey_module_id => mod.id, :name => 'events_group', :description => 'Display group events', :profile => true)
      
      mod = EyModule.create(:name => 'announcements')
      Widget.create(:ey_module_id => mod.id, :name => 'announcements_home', :description => 'Display recent announcements', :profile => false)
+     Widget.create(:ey_module_id => mod.id, :name => 'announcements_group', :description => 'Display group announcements', :profile => false)
      
      mod = EyModule.create(:name => 'activity_feed')
      Widget.create(:ey_module_id => mod.id, :name => 'activity_feed_home', :description => 'Display recent activities', :profile => false)
@@ -408,13 +411,16 @@ namespace :enginey do
      
      mod = EyModule.create(:name => 'about_me')
      Widget.create(:ey_module_id => mod.id, :name => 'about_me_profile', :description => 'Display users bio', :profile => true)
-                         
+                 
+     mod = EyModule.create(:name => 'wall_posts')
+     Widget.create(:ey_module_id => mod.id, :name => 'wall_posts_group', :description => 'Wall posts for a group', :profile => false)        
 
       ##########################################################################
       # Create Pages
       puts 'Creating pages...'
       home_pg = Page.create(:name => 'home', :title => 'RubyMI Home')
       prof_pg = Page.create(:name => 'profile', :title => 'User Profile')
+      group_pg = Page.create(:name => 'group', :title => 'Group')
       
       
       ##########################################################################
@@ -482,6 +488,9 @@ namespace :enginey do
       WidgetLayout.create(:widget_id => Widget.find_by_name("forum_posts_profile").id, :page_id => prof_pg.id, :col_num => 3)
       WidgetLayout.create(:widget_id => Widget.find_by_name("links_profile").id, :page_id => prof_pg.id, :col_num => 3)
       WidgetLayout.create(:widget_id => Widget.find_by_name("projects_profile").id, :page_id => prof_pg.id, :col_num => 3)
+      
+      WidgetLayout.create(:widget_id => Widget.find_by_name("members_group").id, :page_id => group_pg.id, :col_num => 1)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("announcements_group").id, :page_id => group_pg.id, :col_num => 2)
       
       puts 'Database population done!'
     end

@@ -20,7 +20,12 @@ limitations under the License.
 		<div id="events_add"><%= link_to 'Add an Event', new_event_path %></div>
 	<% end %>
 </div>
-<h1>All Events (<%= @events.size %>)</h1>
+
+<% if @group %>
+	<h1>Events for <% @group.name %></h1>
+<% else %>
+	<h1>All Events (<%= @events.size %>)</h1>
+<% end %>
 
 <div id="events_table">
 	<% if !@past_events %>

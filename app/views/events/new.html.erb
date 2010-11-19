@@ -15,7 +15,11 @@ limitations under the License.
 %>
 <%= stylesheet_link_tag 'events' %>
 
-<h1>Add an Event</h1>		
+<% if @group %>
+	<h1>Add Group Event for <%= @group.name %></h1>
+<% else %>
+	<h1>Add an Event</h1>
+<% end %>		
 <div id="add_event">
 	<%= render :partial => 'event_form' %>
 </div>

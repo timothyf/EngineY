@@ -50,7 +50,6 @@ limitations under the License.
 			<div id="col_1_widgets"></div>
 		</div>
 		<div class="column_2">
-			<%= render :partial => 'groups/announcements_widget' %>
 			<div class="module">
 				<% if logged_in? %>
 					<% unless @group.users.include?(current_user) %>
@@ -60,9 +59,13 @@ limitations under the License.
 					<% end %>
 				<% end %> 
 			</div>
-			<%= render :partial => 'shared/wall_posts_widget', :locals=>{:parent=>@group} %>
 			<div id="col_2_widgets"></div>
 		</div>
 	</div>
 </div>
+<div class="col2">
+	<%= render :partial => 'users/user_control_widget' %>
+	<div id="col_3_widgets"></div>
+</div>
+<div style="clear:both;"></div>
 
