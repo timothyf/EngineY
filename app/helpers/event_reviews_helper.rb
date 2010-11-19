@@ -1,0 +1,2 @@
+module EventReviewsHelper
+end

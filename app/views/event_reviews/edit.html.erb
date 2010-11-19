@@ -1,0 +1,12 @@
+<h1>Editing event_review</h1>
+
+<% form_for(@event_review) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @event_review %> |
+<%= link_to 'Back', event_reviews_path %>

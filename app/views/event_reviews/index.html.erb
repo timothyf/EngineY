@@ -1,0 +1,18 @@
+<h1>Listing event_reviews</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @event_reviews.each do |event_review| %>
+  <tr>
+    <td><%= link_to 'Show', event_review %></td>
+    <td><%= link_to 'Edit', edit_event_review_path(event_review) %></td>
+    <td><%= link_to 'Destroy', event_review, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New event_review', new_event_review_path %>

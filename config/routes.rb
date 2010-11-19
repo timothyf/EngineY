@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :event_reviews
+
   map.resources :documents
 
   map.resources :nav_items
