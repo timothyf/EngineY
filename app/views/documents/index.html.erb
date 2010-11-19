@@ -1,0 +1,18 @@
+<h1>Listing documents</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @documents.each do |document| %>
+  <tr>
+    <td><%= link_to 'Show', document %></td>
+    <td><%= link_to 'Edit', edit_document_path(document) %></td>
+    <td><%= link_to 'Destroy', document, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New document', new_document_path %>
