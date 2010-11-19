@@ -31,7 +31,7 @@ limitations under the License.
 <% end %>
 
 <% content_for :module_body do %>
-	<% for link in @links %>
+	<% for idea in @ideas %>
 		<div class="idea_brief">
 			<div class="idea_title"><%= link_to idea.title, idea.url %></div>
 			<div class="idea_poster">

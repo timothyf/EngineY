@@ -14,7 +14,12 @@
 class IdeasController < ApplicationController
 
   def index
-    @ideas = Idea.find(:all)
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+      @ideas = Idea.find(:all, :conditions => "group_id = #{@group.id}")
+    else
+      @ideas = Idea.find(:all)
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @ideas }
@@ -35,17 +40,26 @@ class IdeasController < ApplicationController
 
   def new
     @idea = Idea.new
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+    end
   end
 
 
   def edit
     @idea = Idea.find(params[:id])
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+    end
   end
 
 
   def create
     @idea = Idea.new(params[:idea])
     @idea.user = current_user
+    if params[:group_id]
+      @idea.group_id = params[:group_id]
+    end
     respond_to do |format|
       if @idea.save
         flash[:notice] = 'Idea was successfully created.'

@@ -380,6 +380,11 @@ namespace :enginey do
      Widget.create(:ey_module_id => mod.id, :name => 'announcements_home', :description => 'Display recent announcements', :profile => false)
      Widget.create(:ey_module_id => mod.id, :name => 'announcements_group', :description => 'Display group announcements', :profile => false)
      
+     mod = EyModule.create(:name => 'ideas')
+     Widget.create(:ey_module_id => mod.id, :name => 'ideas_home', :description => 'Display recent ideas', :profile => false)
+     Widget.create(:ey_module_id => mod.id, :name => 'ideas_profile', :description => 'Display users ideas', :profile => true)
+     Widget.create(:ey_module_id => mod.id, :name => 'ideas_group', :description => 'Display group ideas', :profile => false)
+     
      mod = EyModule.create(:name => 'activity_feed')
      Widget.create(:ey_module_id => mod.id, :name => 'activity_feed_home', :description => 'Display recent activities', :profile => false)
      Widget.create(:ey_module_id => mod.id, :name => 'activity_feed_profile', :description => 'Display users activities', :profile => true)
@@ -491,7 +496,9 @@ namespace :enginey do
       
       WidgetLayout.create(:widget_id => Widget.find_by_name("members_group").id, :page_id => group_pg.id, :col_num => 1)
       WidgetLayout.create(:widget_id => Widget.find_by_name("announcements_group").id, :page_id => group_pg.id, :col_num => 2)
-      
+      WidgetLayout.create(:widget_id => Widget.find_by_name("events_group").id, :page_id => group_pg.id, :col_num => 3)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("ideas_group").id, :page_id => group_pg.id, :col_num => 3)
+
       puts 'Database population done!'
     end
   end

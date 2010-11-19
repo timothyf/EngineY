@@ -4,4 +4,6 @@ class Idea < ActiveRecord::Base
   acts_as_streamable
   
   belongs_to :user
+  belongs_to :group
+  
 end
