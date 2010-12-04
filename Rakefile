@@ -9,7 +9,7 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 
-require 'disguise/tasks'
+#require 'disguise/tasks'
 
 test_dir = File.expand_path('test')
 
