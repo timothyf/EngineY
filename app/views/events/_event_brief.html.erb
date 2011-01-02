@@ -28,7 +28,7 @@ limitations under the License.
 	<div class="event_brief_text">
 		<span id="event_name"><%= link_to event.name, event_url(event) %></span><br/>
 		<%= event.start_time.to_s(:event_brief) %> to <%= event.end_time.to_s(:event_brief) %><br/>
-		<%= event.location %><br/>
+		<%= event.location.name %><br/>
 		<%= event.description %><br/>
 		Organized By: <%= event.organized_by %><br/>
 		Event Type: <%= event.event_type %>

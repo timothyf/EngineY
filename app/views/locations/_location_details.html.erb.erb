@@ -1,0 +1,16 @@
+<div class="module" style="background-color:white;">
+	<div class="module_head">Location Details</div>
+	<div class="module_body">
+		<div id="location_description">
+			<div class="event_detail_name"><%= @location.name %></div>
+			<%= link_to @location.website, @location.website %><br/>
+			Name: <%= @location.name %><br/>
+			Street: <%= @location.street %><br/>
+			City/Town: <%= @location.city %><br/>
+                        State: <%= @location.state %><br />
+			Website: <%= @location.website %><br/>
+			Phone: <%= @location.phone %>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+</div>

@@ -27,8 +27,9 @@ limitations under the License.
 			<div class="event_detail_name"><%= @event.name %></div>
 			<%= link_to @event.website, @event.website %><br/>
 			Time: <%= @event.start_time.to_s(:event_brief) %><br/>
-			Location: <%= @event.location %><br/>
-			City/Town: <%= @event.city %><br/>
+			Location: <%= @event.location.name %><br/>
+			City/Town: <%= @event.location.city %><br/>
+                        State: <%= @event.location.state %><br />
 			Event Type: <%= @event.event_type %><br/>
 			Organized By: <%= @event.organized_by %>					
 		</div>

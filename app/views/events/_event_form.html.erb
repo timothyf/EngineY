@@ -40,20 +40,20 @@ limitations under the License.
 	<div class="datetime"><%= f.datetime_select :end_time, :twelve_hour => true, :class=>'input_field' %></div>
 
 	<label for="location">Location:</label>
-	<%= f.text_field :location, :class=>'input_field' %>
+        <div class="input_field"><%= select "event", "location_id", @locations.map {|l| [l.name, l.id]}, :class=>'input_field' %></div>
 
-	<label for="street">Street:</label>
-	<%= f.text_field :street, :class=>'input_field' %>
+	<%#*<label for="street">Street:</label>%>
+	<%#= f.text_field :street, :class=>'input_field' %>
 
-	<label for="city">City:</label>
-	<%= f.text_field :city, :class=>'input_field' %>
+	<%#*<label for="city">City:</label>%>
+	<%#= f.text_field :city, :class=>'input_field' %>
 
-	<label for="website">Website or Map:</label>
-	<%= f.text_field :website, :class=>'input_field' %>
-	<div class="field_help_text">Add the web address for the venue or link to a Google Map</div>
+	<%#*<label for="website">Website or Map:</label>%>
+	<%#= f.text_field :website, :class=>'input_field' %>
+	<%#*<div class="field_help_text">Add the web address for the venue or link to a Google Map</div>%>
 
-	<label for="phone">Phone:</label>
-	<%= f.text_field :phone, :class=>'input_field' %>
+	<%#*<label for="phone">Phone:</label>%>
+	<%#= f.text_field :phone, :class=>'input_field' %>
 
 	<label for="organized_by">Organized By:</label>
 	<%= f.text_field :organized_by, :class=>'input_field' %>

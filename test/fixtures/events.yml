@@ -32,11 +32,8 @@ one:
    photo_id: 1
    description: Test Event 1 Desc
    event_type: Test Type
-   location: Testville, USA
-   street: Testers Rd.
-   city: TestTown
+   location_id: 1
    website: http://www.test.com
-   phone: 555-555-5555
    organized_by: Testers of America
 
 two:
@@ -48,10 +45,7 @@ two:
    photo_id: 1
    description: Test Event 1 Desc
    event_type: Test Type
-   location: Testville, USA
-   street: Testers Rd.
-   city: TestTown
+   location_id: 2
    website: http://www.test.com
-   phone: 555-555-5555
    organized_by: Testers of America
     

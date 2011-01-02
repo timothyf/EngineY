@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'json'
 
 
 # This class provides tests for the RESTful API of the Event object.
@@ -35,11 +36,8 @@ class EventsTest < ActionController::IntegrationTest
                                    :user_id => 1,
                                    :description => 'Test API Event 1 Desc',
                                    :event_type => 'API Type',
-                                   :location => 'Testville, USA',
-                                   :street => 'Testers Rd.',
-                                   :city => 'TestTown',
+                                   :location_id => 1,
                                    :website => 'http://www.test.com',
-                                   :phone => '555-555-5555',
                                    :organized_by => 'API Testers of America'}
       assert_response 401
   end
@@ -50,6 +48,9 @@ class EventsTest < ActionController::IntegrationTest
   # /events.xml
   def test_should_create_event_via_API_XML
       get "/logout"
+
+
+
       post "/events.xml", :api_key=>'testapikey',
                           :event => {:name => 'Test API Event 1',
                                    :start_time => Time.now.to_s(:db),
@@ -57,11 +58,8 @@ class EventsTest < ActionController::IntegrationTest
                                    :user_id => 1,
                                    :description => 'Test API Event 1 Desc',
                                    :event_type => 'API Type',
-                                   :location => 'Testville, USA',
-                                   :street => 'Testers Rd.',
-                                   :city => 'TestTown',
+                                   :location_id => 1,
                                    :website => 'http://www.test.com',
-                                   :phone => '555-555-5555',
                                    :organized_by => 'API Testers of America'}
       assert_response :created
   end
@@ -78,7 +76,7 @@ class EventsTest < ActionController::IntegrationTest
                                    :user_id => 1,
                                    :description => 'Test API Event 1 Desc',
                                    :event_type => 'API Type',
-                                   :location => 'Testville, USA',
+                                   :location_id => 1,
                                    :street => 'Testers Rd.',
                                    :city => 'TestTown',
                                    :website => 'http://www.test.com',
@@ -119,7 +117,7 @@ class EventsTest < ActionController::IntegrationTest
                                    :user_id => 1,
                                    :description => 'Test API Event 1 Desc',
                                    :event_type => 'API Type',
-                                   :location => 'Testville, USA',
+                                   :location_id => 1,
                                    :street => 'Testers Rd.',
                                    :city => 'TestTown',
                                    :website => 'http://www.test.com',
@@ -139,7 +137,7 @@ class EventsTest < ActionController::IntegrationTest
                                    :user_id => 1,
                                    :description => 'Test API Event 1 Desc',
                                    :event_type => 'API Type',
-                                   :location => 'Testville, USA',
+                                   :location_id => 1,
                                    :street => 'Testers Rd.',
                                    :city => 'TestTown',
                                    :website => 'http://www.test.com',
@@ -154,7 +152,7 @@ class EventsTest < ActionController::IntegrationTest
     assert event['name'] == 'Test Event 1', 'Incorrect name'
     assert event['description'] == 'Test Event 1 Desc', 'Incorrect description'
     assert event['event_type'] == 'Test Type', 'Incorrect event type'
-    assert event['location'] == 'Testville, USA', 'Incorrect location'
+    assert event['location_id'] == 1
     assert event['street'] == 'Testers Rd.', 'Incorrect street'
     assert event['city'] == 'TestTown', 'Incorrect city'
   end
@@ -163,7 +161,7 @@ class EventsTest < ActionController::IntegrationTest
     assert event['name'] == 'Test API Event 1', 'Incorrect name'
     assert event['description'] == 'Test API Event 1 Desc', 'Incorrect description'
     assert event['event_type'] == 'API Type', 'Incorrect event type'
-    assert event['location'] == 'Testville, USA', 'Incorrect location'
+    assert event['location_id'] == 1
     assert event['street'] == 'Testers Rd.', 'Incorrect street'
     assert event['city'] == 'TestTown', 'Incorrect city'
   end

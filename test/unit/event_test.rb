@@ -36,11 +36,8 @@ class EventTest < ActiveSupport::TestCase
                           :event_type => 'Test',
                           :start_time => Time.now,
                           :end_time => Time.now,
-                          :location => 'Michigan, USA',
-                          :street => 'Richmond',
-                          :city => 'Southgate',
+                          :location_id => 1,
                           :website => 'www.myevent.com',
-                          :phone => '555-1212',
                           :organized_by => 'Joe Tester'              
                            })
     assert event, 'Failed to create book review' 

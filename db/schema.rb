@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100707160333) do
+ActiveRecord::Schema.define(:version => 20101212153538) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -146,12 +146,29 @@ ActiveRecord::Schema.define(:version => 20100707160333) do
     t.datetime "updated_at"
   end
 
+  create_table "documents", :force => true do |t|
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "domain_themes", :force => true do |t|
     t.string "uri"
     t.string "name"
   end
 
   add_index "domain_themes", ["uri"], :name => "index_domain_themes_on_uri"
+
+  create_table "event_reviews", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -161,14 +178,14 @@ ActiveRecord::Schema.define(:version => 20100707160333) do
     t.string   "event_type"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.string   "location"
-    t.string   "street"
-    t.string   "city"
     t.string   "website"
-    t.string   "phone"
     t.string   "organized_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_id"
+    t.string   "feed_url"
+    t.string   "article_guid"
+    t.integer  "location_id"
   end
 
   create_table "ey_modules", :force => true do |t|
@@ -248,6 +265,7 @@ ActiveRecord::Schema.define(:version => 20100707160333) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_id"
   end
 
   create_table "invites", :force => true do |t|
@@ -289,6 +307,19 @@ ActiveRecord::Schema.define(:version => 20100707160333) do
     t.integer  "user_id"
     t.string   "title"
     t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "phone"
+    t.string   "website"
+    t.boolean  "active",     :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

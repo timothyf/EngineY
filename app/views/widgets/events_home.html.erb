@@ -41,7 +41,7 @@ limitations under the License.
 						<%= link_to event.name, event_url(event) %>
 					</span><br/>
 					<%= event.start_time.to_s(:event_brief) %><br/>
-					<%= event.location %>
+					<%= event.location.name %>
 				</div>
 			</div>
 		<% end %>

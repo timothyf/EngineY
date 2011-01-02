@@ -140,6 +140,16 @@ class AdminController < ApplicationController
       format.json {}
     end
   end
+
+  def locations
+    @page = 'locations'
+    respond_to do |format|
+      format.html {
+        @locations = Location.find(:all)
+      }
+      format.json{}
+    end
+  end
   
       
   # Display the Blog Posts tab of the Admin page.
@@ -372,13 +382,25 @@ class AdminController < ApplicationController
   
   def event_new
     @event = Event.new
+    @locations = Location.find(:all, :order => "name")
     render 'event_form'
   end
   
   
   def event_edit
     @event = Event.find(params[:id])
+    @locations = Location.find(:all, :order => "name")
     render 'event_form'
+  end
+
+  def location_new
+    @location = Location.new
+    render 'location_form'
+  end
+
+  def location_edit
+    @location = Location.find(params[:id])
+    render 'location_form'
   end
   
   
@@ -565,7 +587,7 @@ class AdminController < ApplicationController
       event_params = {:name => params[:name], 
                       :start_time => params[:start_time],
                       :end_time => params[:end_time],
-                      :location => params[:location],
+                      :location_id => params[:location_id],
                       :organizer => params[:organizer]}
       if params[:id] == "_empty"
         event = Event.create(event_params)

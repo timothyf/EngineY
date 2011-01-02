@@ -27,7 +27,7 @@
 				<td><%= event.name %></td>
 				<td><%= event.start_time.to_s(:basic) %></td>
 				<td><%= event.end_time.to_s(:basic) %></td>
-				<td><%= event.location %></td>
+				<td><%= event.location.name %></td>
 				<td><%= event.organized_by %></td>
 				<td>
 					<%= link_to 'Edit', '/admin/event_edit?id=' + event.id.to_s %> |

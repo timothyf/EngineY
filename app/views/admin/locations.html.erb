@@ -1,0 +1,44 @@
+<style>
+	table#events th, table#events td {
+		text-align: left;
+	}
+
+	#content {
+		width: 900px;
+	}
+</style>
+
+<h2 class="ic-db">Locations</h2>
+<%= link_to 'Add Location', '/admin/location_new' %>
+<table id="locations">
+	<thead>
+		<th width="50px">ID</th>
+		<th width="190px">Name</th>
+		<th width="150px">Street</th>
+		<th width="150px">City</th>
+		<th width="150px">Website</th>
+		<th width="100px">Phone</th>
+                <th width="100px">Created At</th>
+                <th width="100px">Updated At</th>
+		<th width="200px">Actions</th>
+	</thead>
+	<tbody>
+		<% @locations.each do |location| %>
+			<tr>
+				<td><%= location.id %></td>
+				<td><%= location.name %></td>
+				<td><%= location.street %></td>
+                                <td><%= location.city %></td>
+                                <td><%= location.website %></td>
+                                <td><%= location.phone %></td>
+				<td><%= location.created_at.to_s(:basic) %></td>
+				<td><%= location.updated_at.to_s(:basic) %></td>
+				<td>
+					<%= link_to 'Edit', '/admin/location_edit?id=' + location.id.to_s %> |
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+

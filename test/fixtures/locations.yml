@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  name: Name
+  street: 1 Main
+  city: Detroit
+  state: Michigan
+  country: USA
+  phone: 3033333333
+  active: true
+  created_at: 2010-12-12 08:35:38
+  updated_at: 2010-12-12 08:35:38
+
+two:
+  id: 2
+  name: Name2
+  street: 1 Main
+  city: Westminster
+  state: Colorado
+  country: MyString
+  phone: 3033333334
+  active: true
+  created_at: 2010-12-12 08:35:38
+  updated_at: 2010-12-12 08:35:38

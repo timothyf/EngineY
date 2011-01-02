@@ -1,0 +1,28 @@
+
+<% form_for(@location) do |f| -%>
+	<%= f.error_messages %>
+
+
+    <label for="name">Name:</label>
+    <%= f.text_field :name, :class=>'input_field' %>
+
+    <label for="street">Street:</label>
+    <%= f.text_field :street, :class=>'input_field' %>
+
+    <label for="city">City:</label>
+    <%= f.text_field :city, :class=>'input_field' %>
+
+    <label for="city">State:</label>
+    <%= f.text_field :state, :class=>'input_field' %>
+
+    <label for="website">Website or Map:</label>
+    <%= f.text_field :website, :class=>'input_field' %>
+    <div class="field_help_text">Add the web address for the venue or link to a Google Map</div>
+
+    <label for="phone">Phone:</label>
+    <%= f.text_field :phone, :class=>'input_field' %>
+
+    <%= f.submit "Add Location", :class=>'add_button' %>
+    <div style="clear:both"></div>
+
+<% end %>

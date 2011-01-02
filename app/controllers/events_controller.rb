@@ -77,6 +77,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @locations = Location.find(:all, :order => "name")
     if params[:group_id]
       @group = Group.find(params[:group_id])
     end
@@ -85,6 +86,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @locations = Location.find(:all, :order => "name")
     if params[:group_id]
       @group = Group.find(params[:group_id])
     end

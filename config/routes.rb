@@ -33,6 +33,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :forum_posts, :collection => {:grid_data=>:get}
   map.resources :blog_posts, :collection => {:publish=>:get}
   map.resources :events, :collection => {:full_index=>:get}
+  map.resources :locations, :coolection => {:index => :get}
   map.resources :stats, :collection => {:index=>:get}
   map.resources :memberships, :collection => {:find=>:get}
   

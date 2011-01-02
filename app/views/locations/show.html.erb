@@ -1,0 +1,22 @@
+<%= stylesheet_link_tag 'locations' %>
+
+<% content_for :script_content do %>
+	<%= javascript_include_tag 'wall_posts' %>
+<% end %>
+
+<div class="column_1">
+	<%= render :partial => 'location_details' %>
+	<div class="module">
+		<div class="module_head">Location Name</div>
+		<div class="module_body">
+			<%= @location.name %>
+		</div>
+	</div>
+</div>
+<div class="column_2">
+	<% if (current_user && current_user.is_admin) %>
+		<%= render :partial => 'location_admin_widget' %>
+	<% end %>
+</div>
+
+

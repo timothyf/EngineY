@@ -42,6 +42,7 @@ class Event < ActiveRecord::Base
   
   has_one     :profile_photo
   belongs_to  :user  # the creator
+  belongs_to  :location
   has_many    :wall_posts, :order=>'created_at DESC'
   
   validates_presence_of :start_time, :end_time, :name
