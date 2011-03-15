@@ -1,7 +1,11 @@
 class CreateEventReviews < ActiveRecord::Migration
   def self.up
     create_table :event_reviews do |t|
-
+      t.references  :event
+      t.references  :group
+      t.references  :user
+      t.string      :title
+      t.text        :body
       t.timestamps
     end
   end

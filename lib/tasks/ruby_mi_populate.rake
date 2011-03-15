@@ -420,6 +420,9 @@ namespace :enginey do
      mod = EyModule.create(:name => 'wall_posts')
      Widget.create(:ey_module_id => mod.id, :name => 'wall_posts_group', :description => 'Wall posts for a group', :profile => false)        
 
+     mod = EyModule.create(:name => 'event_reviews')
+     Widget.create(:ey_module_id => mod.id, :name => 'event_reviews_group', :description => 'Event reviews for a group', :profile => false)        
+
       ##########################################################################
       # Create Pages
       puts 'Creating pages...'
@@ -498,6 +501,7 @@ namespace :enginey do
       WidgetLayout.create(:widget_id => Widget.find_by_name("announcements_group").id, :page_id => group_pg.id, :col_num => 2)
       WidgetLayout.create(:widget_id => Widget.find_by_name("events_group").id, :page_id => group_pg.id, :col_num => 3)
       WidgetLayout.create(:widget_id => Widget.find_by_name("ideas_group").id, :page_id => group_pg.id, :col_num => 3)
+      WidgetLayout.create(:widget_id => Widget.find_by_name("event_reviews_group").id, :page_id => group_pg.id, :col_num => 3)
 
       puts 'Database population done!'
     end

@@ -38,6 +38,7 @@ class Group < ActiveRecord::Base
   has_one :profile_photo
   has_many :wall_posts, :order=>'created_at DESC'
   has_many :ideas
+  has_many :documents
   has_many :permissions
   has_many :admins, :source=>:user, :through => :permissions
   
