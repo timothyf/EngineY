@@ -39,5 +39,11 @@ module EngineY
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     
+    config.time_zone = 'Eastern Time (US & Canada)'
+    
+    config.active_record.observers = :announcement_observer, :invite_observer, :user_observer, :message_observer, :wall_post_observer
+    
+    config.action_mailer.delivery_method = :smtp
+    
   end
 end
