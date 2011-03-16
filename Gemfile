@@ -8,3 +8,6 @@ gem 'disguise', ">= 3.0.2"
 gem "ruby-openid"
 gem "aws-s3"
 gem "jammit"
+gem 'hpricot'
+gem 'devise'
+gem 'omniauth'
