@@ -21,9 +21,9 @@ module AuthenticatedSystem
 
 
     def login_from_fb
-      if facebook_session
-        self.current_user = User.find_by_fb_user(facebook_session.user)
-      end
+      #if facebook_session
+      #  self.current_user = User.find_by_fb_user(facebook_session.user)
+      #end
     end
 
 

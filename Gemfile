@@ -11,3 +11,4 @@ gem "jammit"
 gem 'hpricot'
 gem 'devise'
 gem 'omniauth'
+gem 'will_paginate', '3.0.pre2'

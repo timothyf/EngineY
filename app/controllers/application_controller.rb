@@ -24,8 +24,8 @@ class ApplicationController < ActionController::Base
   #include Facebooker::Rails::Controller
   
   before_filter :set_vars, :update_session
-  before_filter :set_facebook_session
-  helper_method :facebook_session
+  #before_filter :set_facebook_session
+  #helper_method :facebook_session
   
   before_filter :api_filter
 
